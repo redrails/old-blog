@@ -2,6 +2,10 @@
    SINGLE PAGE/POST
    ========================================================================== */
 
+body {
+  font-size: 14px;
+}
+
 #main {
   @include container;
   @include clearfix;
