@@ -62,7 +62,7 @@ Having tidied up the data, we can now perform some exploratory analysis.
 
 ``` r
 # number of job posts per role
-lapply(list(dataScientists,dataAnalysts),nrow)
+lapply(list(dataScientists, dataAnalysts), nrow)
 ```
 
     ## [[1]]
@@ -79,12 +79,12 @@ Who earns more money? Unfortunately, the Indeed API doesn't return any salary de
 
 ``` r
 # get salary figures for all data scientist postions
-dsSalary <- lapply(dataScientists$results.url,function(x)getSalary(x,"GBP"))
-dsSalary <- do.call(rbind,dsSalary)
+dsSalary <- lapply(dataScientists$results.url, function(x)getSalary(x,"GBP"))
+dsSalary <- do.call(rbind, dsSalary)
 
 # get salary figures for all data analyst postions
-daSalary <- lapply(dataAnalysts$results.url,function(x)getSalary(x,"GBP"))
-daSalary <- do.call(rbind,daSalary)
+daSalary <- lapply(dataAnalysts$results.url, function(x)getSalary(x,"GBP"))
+daSalary <- do.call(rbind, daSalary)
 
 # quick look at our salary dataset
 head(daSalary)
@@ -103,11 +103,11 @@ That function is not perfect, so it may warn that NAs were introduced by coercio
 
 ``` r
 # filtering out jobs with no advertised salary or retaining those with annual salaries
-dsSalary <- dsSalary[!is.na(dsSalary$minSal) & dsSalary$period=="year",]
-daSalary <- daSalary[!is.na(daSalary$minSal) & daSalary$period=="year",]
+dsSalary <- dsSalary[! is.na(dsSalary$minSal) & dsSalary$period=="year",]
+daSalary <- daSalary[! is.na(daSalary$minSal) & daSalary$period=="year",]
 
 # number of postions with an advertised annual salary
-lapply(list(dsSalary, daSalary),nrow)
+lapply(list(dsSalary, daSalary), nrow)
 ```
 
     ## [[1]]
@@ -119,15 +119,15 @@ lapply(list(dsSalary, daSalary),nrow)
 Job postings often have an attached salary range. We want a single figure for each job, so we take the midpoint of this range.
 
 ``` r
-dsSalary$Sal=mapply(function(x,y){(x+y)/2}, dsSalary$minSal, dsSalary$maxSal)
-daSalary$Sal=mapply(function(x,y){(x+y)/2}, daSalary$minSal, daSalary$maxSal)
+dsSalary$Sal <- mapply(function(x,y){(x+y)/2}, dsSalary$minSal, dsSalary$maxSal)
+daSalary$Sal <- mapply(function(x,y){(x+y)/2}, daSalary$minSal, daSalary$maxSal)
 ```
 
 We can now plot the cumulative distribution of salaries for data scientists and data analysts. We just need to append a label to each group.
 
 ``` r
-dsSalary$type = "Data Scientist"
-daSalary$type = "Data Analyst"
+dsSalary$type <- "Data Scientist"
+daSalary$type <- "Data Analyst"
 ggplot(rbind(dsSalary, daSalary), aes(Sal, colour = type)) + stat_ecdf(size = 1) +
 geom_text(size=8, aes(100000, .3, label = "Data Analyst", color = "Data Analyst")) + 
 geom_text(size=8, aes(100000, .2, label = "Data Scientist", color= "Data Scientist")) + 
