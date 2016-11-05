@@ -42,9 +42,10 @@ Not all of those jobs are actually data scientist or data analyst positions (res
 
 ``` r
 # removing junior and senior roles
-dataScientists <- dataScientists[grepl("data scientist", dataScientists$results.jobtitle,
+dataScientists <- dataScientists[grepl("data scientist",dataScientists$results.jobtitle,
 ignore.case = TRUE) & !grepl("senior|junior|lead|manage|intern|analyst|graduate",
 dataScientists$results.jobtitle,ignore.case = TRUE),]
+
 dataAnalysts <- dataAnalysts[grepl("data analyst", dataAnalysts$results.jobtitle, 
 ignore.case = TRUE) & !grepl("senior|junior|lead|manage|intern|scientist|graduate",
 dataAnalysts$results.jobtitle,ignore.case = TRUE),]
