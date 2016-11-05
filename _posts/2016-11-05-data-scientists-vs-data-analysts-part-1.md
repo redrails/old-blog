@@ -7,6 +7,7 @@ tags:
   - scientist
   - science
   - analyst
+  - R
   - salary
   - jobbR
 ---
