@@ -145,8 +145,8 @@ From the plot, it's clear that data scientists earn significantly more money tha
 
 ### Summary
 
-We've extracted job data from the Indeed API (using the [jobbR]((https://github.com/dashee87/jobbR)) package), cleaned it up and produced a simple graph to illustrate the salary gap between data scientists and data analysts. Part 2 will focus on the job descriptions and use natural language processing to predict data scientist and data analyst positions based on their advertised skill set
+We've extracted job data from the Indeed API (using the [jobbR](https://github.com/dashee87/jobbR) package), cleaned it up and produced a simple graph to illustrate the salary gap between data scientists and data analysts. Part 2 will focus on the job descriptions and use natural language processing to predict data scientist and data analyst positions based on their advertised skill set
 
-I've posted the R code here. Before you move onto Part 2, investigate how data scientists compare to data engineers, data architects, quantitative analysts, etc. Or check where your salary fits on the distribution. Do you feel underpaid?
+I've posted the R code [here](https://github.com/dashee87/blogScripts/tree/master/R). Before you move onto Part 2, investigate how data scientists compare to data engineers, data architects, quantitative analysts, etc. Or check where your salary fits on the distribution. Do you feel underpaid?
 
 Thanks for reading! Please post your comments below!
