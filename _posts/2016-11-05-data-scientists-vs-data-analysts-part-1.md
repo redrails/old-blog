@@ -30,20 +30,24 @@ require(jobbR)
 require(ggplot2)
 
 # collecting data scientist jobs from the Indeed API
-dataScientists <- jobSearch(publisher = "yourpublisherID", query = "data+scientist",country = "uk",location = "london",all = TRUE)
+dataScientists <- jobSearch(publisher = "yourpublisherID", query = "data+scientist",
+country = "uk", location = "london", all = TRUE)
 
 # collecting data analyst jobs from the Indeed API
-dataAnalysts <- jobSearch(publisher = "yourpublisherID", query = "data+analyst",country = "uk",location = "london",all = TRUE)
+dataAnalysts <- jobSearch(publisher = "yourpublisherID", query = "data+analyst",
+country = "uk", location = "london", all = TRUE)
 ```
 
 Not all of those jobs are actually data scientist or data analyst positions (research scientists will be included, for example). Let's restrict our data sets to data Scientists and dta analysts, respectively (and remove junior/senior/managerial roles).
 
 ``` r
 # removing junior and senior roles
-
-dataScientists <- dataScientists[grepl("data scientist",dataScientists$results.jobtitle,ignore.case = TRUE) & !grepl("senior|junior|lead|manage|intern|analyst|graduate",dataScientists$results.jobtitle,ignore.case = TRUE),]
-
-dataAnalysts <- dataAnalysts[grepl("data analyst",dataAnalysts$results.jobtitle,ignore.case = TRUE) & !grepl("senior|junior|lead|manage|intern|scientist|graduate",dataAnalysts$results.jobtitle,ignore.case = TRUE),]
+dataScientists <- dataScientists[grepl("data scientist", dataScientists$results.jobtitle,
+ignore.case = TRUE) & !grepl("senior|junior|lead|manage|intern|analyst|graduate",
+dataScientists$results.jobtitle,ignore.case = TRUE),]
+dataAnalysts <- dataAnalysts[grepl("data analyst", dataAnalysts$results.jobtitle, 
+ignore.case = TRUE) & !grepl("senior|junior|lead|manage|intern|scientist|graduate",
+dataAnalysts$results.jobtitle,ignore.case = TRUE),]
 ```
 
 The API documentation claims that duplicate job postings shouldn't have been returned from our API call, but let's ensure our data set only includes uniques job posts (we'll use the Indeed jobkey to identify duplicates).
@@ -93,6 +97,7 @@ head(daSalary)
     ## 5   unknown unknown      GBP     NA     NA
     ## 6 Permanent    year      GBP  45000  50000
 
+
 That function is not perfect, so it may warn that NAs were introduced by coercion. We need to filter out the jobs for which no salary figures could be retrieved. Also, let's restrict the analysis to jobs with annual salary numbers.
 
 ``` r
@@ -122,10 +127,18 @@ We can now plot the cumulative distribution of salaries for data scientists and 
 ``` r
 dsSalary$type = "Data Scientist"
 daSalary$type = "Data Analyst"
-ggplot(rbind(dsSalary,daSalary),aes(Sal, colour = type)) + stat_ecdf(size=1) + geom_text(size=8,aes(100000, .3, label="Data Analyst", color="Data Analyst")) + geom_text(size=8,aes(100000, .2, label="Data Scientist", color="Data Scientist")) + labs(title ="Annual Salary: Data Analysts vs Data Scientists", x = "Annual Salary (GBP)", y = "Cumulative Proportion") + theme(axis.title=element_text(size=14,face="bold"),plot.title=element_text(size=16,face="bold"),legend.position="none",axis.text=element_text(size=11))
+ggplot(rbind(dsSalary, daSalary), aes(Sal, colour = type)) + stat_ecdf(size = 1) +
+geom_text(size=8, aes(100000, .3, label = "Data Analyst", color = "Data Analyst")) + 
+geom_text(size=8, aes(100000, .2, label = "Data Scientist", color= "Data Scientist")) + 
+labs(title = "Annual Salary: Data Analysts vs Data Scientists", 
+x = "Annual Salary (GBP)", y = "Cumulative Proportion") + 
+theme(axis.title = element_text(size = 14,face = "bold"), 
+plot.title = element_text(size = 16,face = "bold"), legend.position = "none",
+axis.text = element_text(size = 11))
 ```
 
 ![Data Scientist and Data Analyst Salary]({{ site.url }}{{ site.baseurl }}/images/data_scientist_analyst_salary.png)
+
 
 From the plot, it's clear that data scientists earn significantly more money than their data analyst counterparts, which is not particularly surprising to me. According to the graph, the median annual salary for a data scientist is approximately £60,000, which is higher than I expected (remember, we removed senior/manager roles). Then again, we only have data for jobs where the salary was advertised. Maybe high salaries are more likely to be publicised.
 
