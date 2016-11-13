@@ -4,8 +4,6 @@ excerpt: "This post should display a **header with an overlay image**, if the th
   header:
     overlay_image: /assets/images/data-scientist-analyst-screen.jpg
     caption: "Screen of a Data Scientist (removeaaa)???"
-    cta_label: ""
-    cta_url: ""
 categories:
   - data science
 tags:
