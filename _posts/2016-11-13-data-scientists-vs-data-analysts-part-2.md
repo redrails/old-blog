@@ -1,5 +1,6 @@
 ---
 title: "Data Scientists vs Data Analysts- Part 2"
+excerpt: ""
 header:
   overlay_image: data-scientist-analyst-screen.jpg
   caption: ""
