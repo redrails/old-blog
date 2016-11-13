@@ -216,7 +216,7 @@ all_jobs <- rbind(dataScientists, dataAnalysts)
 all_job_descripts <- c(ds_job_descripts, da_job_descripts)
 all_occurs <- rbind(ds_occurs, da_occurs)
 
-# constructing training set (random sample half of the size of the total set)
+# constructing training set (random sample 70 % of the size of the total set)
 set.seed(1000)
 training=sample(1:nrow(all_jobs),floor(7*nrow(all_jobs)/10))
 ```
