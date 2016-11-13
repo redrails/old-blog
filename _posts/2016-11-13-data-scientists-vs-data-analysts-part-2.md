@@ -1,7 +1,7 @@
 ---
 title: "Data Scientists vs Data Analysts- Part 2"
 header:
-  image: /assets/images/data-scientist-analyst-screen.jpg
+  image: /images/data-scientist-analyst-screen.jpg
   caption: "Screen of a Data Scientist???"
 categories:
   - data science
