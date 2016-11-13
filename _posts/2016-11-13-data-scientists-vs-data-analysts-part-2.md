@@ -223,7 +223,7 @@ training=sample(1:nrow(all_jobs),floor(7*nrow(all_jobs)/10))
 
 Naive Bayes is a relatively simple (yet powerful) machine learning technique, which has been employed extensively in document classification (e.g. [spam filters](https://en.wikipedia.org/wiki/Naive_Bayes_spam_filtering)). It's founded on [Bayes Theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem), with the assumption that each feature is independent. That assumption is simplistic (that's why it's called naive) and unlikely to hold in reality. For example, a job description containing 'Excel' is more likely to contain 'VBA' than one without 'Excel'. Nevertheless, Naive Bayes is fast, flexible and [well suited to the task at hand](https://web.stanford.edu/class/cs124/lec/naivebayes.pdf).
 
-To construct our Naive Bayes model, the priors are simply the proportion of training documents that belong to either class (data scientist or data analyst in our case). We calculate the proportion of occurences of each word for each job type (similar to the bar chart) (e.g. P(Python&#124; Data Scientist) &#2248; 0.7 and P(Python&#124; Data Analyst) = 0.15). We also factor in skills that are missing from the description (e.g. P(Python Missing&#124; Data Scientist) = 1 - P(Python&#124; Data Scientist) 	&#8773; 0.3) (this approach is commonly called [Bernoulli Bayes](http://nlp.stanford.edu/IR-book/html/htmledition/the-bernoulli-model-1.html)).
+To construct our Naive Bayes model, the priors are simply the proportion of training documents that belong to either class (data scientist or data analyst in our case). We calculate the proportion of occurences of each word for each job type (similar to the bar chart) (e.g. P(Python&#124; Data Scientist) &#8773; 0.7 and P(Python&#124; Data Analyst) &#8773; 0.15). We also factor in skills that are missing from the description (e.g. P(Python Missing&#124; Data Scientist) = 1 - P(Python&#124; Data Scientist) 	&#8773; 0.3) (this approach is commonly called [Bernoulli Bayes](http://nlp.stanford.edu/IR-book/html/htmledition/the-bernoulli-model-1.html)).
 
 We score each classification class by multiplying the priors by the likelihood probabilities for each word that occurs and doesn't occur in the text. As computers can struggle with the accuracy of very small numbers, models tend to take the log probabilities. So, instead of multiplications, we sum the logs. The class with the higher score is deemed the winner.
 
@@ -274,7 +274,7 @@ table(training_output[c("job_type","naive")])
     ##    FALSE   116    3
     ##    TRUE     14  122
 
-It looks like our model performed well on the training set (only 17/255 incorrect classifications). Let's really test its accuracy by evaluating its performance on the remaining half of the dataset.
+It looks like our model performed well on the training set (only 17/255 incorrect classifications). Let's really test its accuracy by evaluating its performance on the remaining 30 % of the dataset.
 
 ``` r
 test_output=data.frame(
@@ -333,7 +333,7 @@ Become a Data Scientist (The Easy Way)
 
 Imagine you're a recent graduate or just someone looking to get into data science: you could make yourself more employable by acquiring a broad subset of the skills in the `skills` dataframe... or you could find an easy route through our Naive Bayes model. The model has two types of errors: false positives (FPs- mispredicted data analyst positions) and false negatives (FNs- mispredicted data scientist positions).
 
-Starting with the FPs, as we saw earlier, data analyst jobs tend to have fewer skills mentioned in the job description. That means the FPs must advertise numerous skills more typical of a data scientist. Thus, the FPs would appear to be bad choices, as you'd possibly be doing the job of a data scientist with the title (and salary) of a data analyst.
+Starting with the FPs, as we saw earlier, data analyst jobs tend to have fewer skills mentioned in the job description. That means the FPs advertise numerous skills more typical of a data scientist. Thus, the FPs would appear to be bad choices for jobseekers, as you'd possibly be doing the job of a data scientist with the title (and salary) of a data analyst.
 
 ``` r
 # false positives
@@ -360,6 +360,6 @@ That job doesn't seem too daunting. Memorise a few lines from the [neural net wi
 Summary
 -------
 
-Using the [jobbR package](https://github.com/dashee87/jobbR) and web scraping, we retrieved data scientist and data analyst job descriptions and highlighted their different skill sets. Combining a bag-of-words model with a simple Naive Bayes classifier, we were able to predict (with approximately 90 % accuracy) the job type from the job description. 
+Using the [jobbR package](https://github.com/dashee87/jobbR) and web scraping, we retrieved data scientist and data analyst job descriptions and visualised their different skill sets. Combining a bag-of-words model with a simple Naive Bayes classifier, we were able to predict (with approximately 90 % accuracy) the job type from the job description. 
 
 As always, I've posted the R code [here](https://github.com/dashee87/blogScripts/tree/master/R). Thanks for reading! Please post your comments below!
