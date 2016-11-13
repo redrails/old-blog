@@ -289,7 +289,7 @@ table(test_output[c("job_type", "naive")])
     ##    FALSE    50    3
     ##    TRUE      6   51
 
-Our relatively simple Naive Bayes model correctly predicted the job type with about \(\approx\) 90 % accuracy (a better estimate of the range could be derived from [k-fold or monte carlo cross validation](http://stats.stackexchange.com/questions/51416/k-fold-vs-monte-carlo-cross-validation)). The results are summarised in pie charts (an important skill I forgot to include in my `skills` dataframe).
+Our relatively simple Naive Bayes model correctly predicted the job type with about 90 % accuracy (a better estimate of the range could be derived from [k-fold or monte carlo cross validation](http://stats.stackexchange.com/questions/51416/k-fold-vs-monte-carlo-cross-validation)). The results are summarised in pie charts (an important skill I forgot to include in my `skills` dataframe).
 
 ``` r
 plot_ly() %>%
