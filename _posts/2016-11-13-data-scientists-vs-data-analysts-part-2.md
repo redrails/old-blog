@@ -5,7 +5,7 @@ header:
   overlay_image: /assets/images/unsplash-image-1.jpg
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
   cta_label: "More Info"
-  cta_url: "https://unsplash.com"
+  cta_url: "https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-1/"
 categories:
   - data science
 tags:
