@@ -1,8 +1,8 @@
 ---
 title: "Data Scientists vs Data Analysts- Part 2"
 header:
-  overlay_image: data-scientist-screen-square.png
-  caption: "The screen of a Data Scientist (remove)???"
+  overlay_image: data-scientist-analyst-screen.jpg
+  caption: "The screen of a Data Scientist (removee)???"
 categories:
   - data science
 tags:
