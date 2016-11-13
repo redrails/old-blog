@@ -12,7 +12,7 @@ tags:
 author: "David Sheehan"
 date: "13 November 2016"
 header:
-  overlay_image: data_scientist_screen.png
+  overlay_image: data-scientist-screen-square.png
   caption: "The screen of a Data Scientist???"
 ---
 
