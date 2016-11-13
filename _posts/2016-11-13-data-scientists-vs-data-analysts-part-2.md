@@ -1,5 +1,8 @@
 ---
 title: "Data Scientists vs Data Analysts- Part 2"
+header:
+  overlay_image: data-scientist-screen-square.png
+  caption: "The screen of a Data Scientist (remove)???"
 categories:
   - data science
 tags:
@@ -11,9 +14,6 @@ tags:
   - jobbR
 author: "David Sheehan"
 date: "13 November 2016"
-header:
-  overlay_image: data-scientist-screen-square.png
-  caption: "The screen of a Data Scientist???"
 ---
 
 {% include base_path %}
