@@ -2,9 +2,9 @@
 title: "Data Scientists vs Data Analysts- Part 2"
 excerpt: "This post should display a **header with an overlay image**, if the theme supports it."
 header:
-  overlay_image: /images/data-scientist-analyst-screen.jpg
+  overlay_image: data-scientist-analyst-screen.jpg
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
-  cta_label: "More Info"
+  cta_label: "Part 1"
   cta_url: "https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-1/"
 categories:
   - data science
