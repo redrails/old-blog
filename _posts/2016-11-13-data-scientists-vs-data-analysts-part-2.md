@@ -2,7 +2,7 @@
 title: "Data Scientists vs Data Analysts- Part 2"
 excerpt: "This post should display a **header with an overlay image**, if the theme supports it."
 header:
-  overlay_image: assets/images/data-scientist-analyst-screen.jpg
+  overlay_image: /assets/images/data-scientist-analyst-screen.jpg
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
   cta_label: "More Info"
   cta_url: "https://unsplash.com"
