@@ -1,6 +1,6 @@
 ---
 title: "Data Scientists vs Data Analysts- Part 2"
-excerpt: "This post will explore the skills of a data scientist/analyst and harness NLP to accurately predict data scientist positions"
+excerpt: "This post explores the desired skills of data scientists/analysts and harnesses NLP to accurately predict data scientist positions from the job description"
 header:
   overlay_image: data-scientist-analyst-screen-1.jpg
   overlay_filter: 0.4
@@ -187,7 +187,7 @@ Apologies for small text on the x-axis, click [here](https://plot.ly/~dashee/11.
 
 It's clear from the graph that the skill set of data scientists and data analysts differ significantly. It's interesting to note that Python narrowly beats R as the most commonly requested skill for data scientists. Excel is the most popular skill for data analysts, followed closely by SQL. In fact, the ubiquity of SQL is apparent by its relatively high frequency for both job types. So, if you're looking to learn data science/analytics, SQL might be the place to start.
 
-The bars generally appear much lower for the data analyst group, which suggests that these postings tend to have less emphasis on hard skills (or at least less emphasis on the skills inlcuded in the `skills` data frame). We can plot the cumulative distribution of the number of skills mentioned per job description. It confirms our hypothesis that data analyst jobs include fewer easily defined skills, as that curve is clearly shifed to the lower values.
+The bars generally appear much lower for the data analyst group, which suggests that these postings tend to have less emphasis on hard skills (or at least less emphasis on the skills inlcuded in the `skills` data frame). We can plot the cumulative distribution of the number of different skills mentioned per job description. It confirms our hypothesis that data analyst jobs include fewer easily defined skills, as that curve is clearly shifed to the lower values.
 
 ``` r
 ggplot(rbind(data.frame(type = "Data Scientist", 
@@ -223,7 +223,7 @@ training=sample(1:nrow(all_jobs),floor(7*nrow(all_jobs)/10))
 
 Naive Bayes is a relatively simple (yet powerful) machine learning technique, which has been employed extensively in document classification (e.g. [spam filters](https://en.wikipedia.org/wiki/Naive_Bayes_spam_filtering)). It's founded on [Bayes Theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem), with the assumption that each feature is independent. That assumption is simplistic (that's why it's called naive) and unlikely to hold in reality. For example, a job description containing 'Excel' is more likely to contain 'VBA' than one without 'Excel'. Nevertheless, Naive Bayes is fast, flexible and [well suited to the task at hand](https://web.stanford.edu/class/cs124/lec/naivebayes.pdf).
 
-To construct our Naive Bayes model, the priors are simply the proportion of training documents that belong to either class (data scientist or data analyst in our case). We calculate the proportion of occurences of each word for each job type (similar to the bar chart) (e.g. P(Python&#124; Data Scientist) = 0.7 and P(Python&#124; Data Analyst) = 0.15). We also factor in skills that are missing from the description (e.g. P(Python Missing&#124; Data Scientist) = 1 - P(Python&#124; Data Scientist) = 0.3) (this approach is commonly called [Bernoulli Bayes](http://nlp.stanford.edu/IR-book/html/htmledition/the-bernoulli-model-1.html)).
+To construct our Naive Bayes model, the priors are simply the proportion of training documents that belong to either class (data scientist or data analyst in our case). We calculate the proportion of occurences of each word for each job type (similar to the bar chart) (e.g. P(Python&#124; Data Scientist) &#2248; 0.7 and P(Python&#124; Data Analyst) = 0.15). We also factor in skills that are missing from the description (e.g. P(Python Missing&#124; Data Scientist) = 1 - P(Python&#124; Data Scientist) = 0.3) (this approach is commonly called [Bernoulli Bayes](http://nlp.stanford.edu/IR-book/html/htmledition/the-bernoulli-model-1.html)).
 
 We score each classification class by multiplying the priors by the likelihood probabilities for each word that occurs and doesn't occur in the text. As computers can struggle with the accuracy of very small numbers, models tend to take the log probabilities. So, instead of multiplications, we sum the logs. The class with the higher score is deemed the winner.
 
