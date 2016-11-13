@@ -19,6 +19,8 @@ author: "David Sheehan"
 date: "13 November 2016"
 ---
 
+{% include base_path %}
+
 In [Part 1](https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-1/), we used the [jobbR package](https://github.com/dashee87/jobbR) to collect information for data scientist and data analyst positions from the Indeed API. We found that data scientists earned significantly more than data analysts (no big surprises there). Given the disparity in salary, can we identify the difference in skills required by each group. If so, maybe we can predict data scientist roles from the job descriptions?
 
 Data Collection
