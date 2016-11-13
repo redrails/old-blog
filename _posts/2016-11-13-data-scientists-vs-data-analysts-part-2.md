@@ -1,6 +1,6 @@
 ---
 title: "Data Scientists vs Data Analysts- Part 2"
-excerpt: ""
+excerpt: "This post will explore the skills of a data scientist/analyst and harness NLP to accurately predict data scientist positions"
 header:
   overlay_image: data-scientist-analyst-screen.jpg
   caption: ""
