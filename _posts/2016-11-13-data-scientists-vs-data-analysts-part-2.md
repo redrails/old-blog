@@ -2,7 +2,7 @@
 title: "Data Scientists vs Data Analysts- Part 2"
 excerpt: "This post will explore the skills of a data scientist/analyst and harness NLP to accurately predict data scientist positions"
 header:
-  overlay_image: data-scientist-analyst-screen.jpg
+  overlay_image: data-scientist-analyst-screen-1.jpg
   caption: ""
   cta_label: "Part 1"
   cta_url: "https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-1/"
