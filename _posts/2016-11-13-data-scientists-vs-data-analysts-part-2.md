@@ -178,8 +178,11 @@ plot_ly(rbind(data.frame(job = "Data Scientist",
 ```
 
 
-
+<!---
 <iframe  src="https://plot.ly/~dashee/7/job-description-skills-data-scientist-v-data-analyst.embed?link=false" width="100%" height="650" frameborder="no" scrolling="no"></iframe>
+--->
+
+![Data Scientist and Data Analyst All Skills]({{ site.url }}{{ site.baseurl }}/images/data_scientist_data_analyst_skills.png)
 
 Apologies for small text on the x-axis, click [here](https://plot.ly/~dashee/11.embed?link=false&modebar=false) for a better version.
 
@@ -324,7 +327,11 @@ plot_ly() %>%
          margin = list(b = 0)) 
 ```
 
+<!---
 <iframe  src="https://plot.ly/~dashee/9/predictive-accuracy-of-naive-bayes-data-scientist-model.embed?link=false" width="100%" height="400" frameborder="no" scrolling="no"></iframe>
+--->
+
+![Data Scientist Naive Bayes Model]({{ site.url }}{{ site.baseurl }}/images/data_scientist_naive_bayes.png)
 
 I'm sure more sophisticated techniques (support vector machines, recursive double corkscrew neural nets (RDCNNs)- one of those may have been made up) could have achieved even better predictions, but I'm actually more intrigued by the errors.
 
