@@ -1,28 +1,3 @@
----
-title: "Europe's Major Football Leagues Are Getting Less Competitive"
-excerpt: "Using both graph theory and conventional statistics, this post explores whether Europe's major football (soccer) leagues are becomming less competitive."
-layout: single
-header:
-  overlay_image: football-overlay.jpg
-  overlay_filter: 0.4
-  caption: ""
-categories:
-  - data science
-  - football
-tags:
-  - football
-  - soccer
-  - epl
-  - la liga
-  - visNetwork
-  - igraph
-  - R
-author: "David Sheehan"
-date: "12 December 2016"
----
-
-{% include base_path %}
-
 ### Background
 
 This work was somewhat motivated by a post I read on [another interesting data science blog](https://longhowlam.wordpress.com/2016/09/12/some-insights-in-soccer-transfers-using-market-basket-analysis/); its combination of network graphs and football seemed both accessible and visualing appealing. Due to the profileration of social media and technological advances, [graph/network based approaches are becoming more common](https://blogs.thomsonreuters.com/answerson/future-graph-shaped/). Graph theory has been employed to study [disease propagation](http://journal.frontiersin.org/article/10.3389/fphy.2015.00071/full), [elephant rest sites](http://onlinelibrary.wiley.com/doi/10.1111/ecog.02379/full), [relationships in The Simpsons](http://thesimpsonsuniverse.weebly.com/network.html) and even [MMA finishes](http://www.fightprior.com/2016/09/29/finishCooccurrence/), so I wanted to try it out for myself.
@@ -45,61 +20,20 @@ require(ggplot2) # vanilla graphs
 require(purrr) # map lists to functions
 
 options(stringsAsFactors = FALSE)
-epl_1213 <- read.csv(text = getURL("http://www.football-data.co.uk/mmz4281/1213/E0.csv"), 
+epl_1213 <- read.csv(text=getURL("http://www.football-data.co.uk/mmz4281/1213/E0.csv"), 
                      stringsAsFactors = FALSE)
-head(epl_1213)
+head(epl_1213[,1:10])
 ```
 
-    ##   Div     Date  HomeTeam   AwayTeam FTHG FTAG FTR HTHG HTAG HTR    Referee
-    ## 1  E0 18/08/12   Arsenal Sunderland    0    0   D    0    0   D      C Foy
-    ## 2  E0 18/08/12    Fulham    Norwich    5    0   H    2    0   H   M Oliver
-    ## 3  E0 18/08/12 Newcastle  Tottenham    2    1   H    0    0   D M Atkinson
-    ## 4  E0 18/08/12       QPR    Swansea    0    5   A    0    1   A  L Probert
-    ## 5  E0 18/08/12   Reading      Stoke    1    1   D    0    1   A   K Friend
-    ## 6  E0 18/08/12 West Brom  Liverpool    3    0   H    1    0   H     P Dowd
-    ##   HS AS HST AST HF AF HC AC HY AY HR AR B365H B365D B365A  BWH BWD  BWA
-    ## 1 14  3   4   2 12  8  7  0  0  0  0  0  1.40  4.50  8.50 1.35 4.6 9.00
-    ## 2 11  4   9   2 12 11  6  3  0  0  0  0  1.80  3.60  4.50 1.80 3.5 4.40
-    ## 3  6 12   4   6 12  8  3  5  2  2  0  0  2.50  3.40  2.75 2.60 3.3 2.75
-    ## 4 20 12  11   8 11 14  5  3  2  2  0  0  2.00  3.40  3.80 2.00 3.4 3.60
-    ## 5  9  6   3   3  9 14  4  3  2  4  0  1  2.38  3.25  3.10 2.40 3.2 3.10
-    ## 6 15 14  10   7 10 11  7  3  1  4  0  1  4.20  3.50  1.91 4.10 3.5 1.85
-    ##    GBH GBD  GBA  IWH IWD IWA  LBH LBD  LBA  PSH  PSD  PSA  WHH WHD WHA
-    ## 1 1.35 4.6 9.00 1.35 4.5 7.3 1.40 4.5 8.00 1.44 4.76 8.78 1.44 4.0 8.0
-    ## 2 1.80 3.5 4.40 1.80 3.4 4.0 1.80 3.5 4.50 1.82 3.81 4.80 1.85 3.3 4.5
-    ## 3 2.60 3.3 2.75 2.40 3.2 2.7 2.60 3.3 2.70 2.65 3.47 2.82 2.70 3.0 2.8
-    ## 4 2.00 3.4 3.60 2.10 3.3 3.1 2.00 3.4 3.75 2.05 3.53 4.01 2.00 3.3 3.8
-    ## 5 2.40 3.2 3.10 2.40 3.2 2.7 2.40 3.3 2.88 2.40 3.37 3.26 2.40 3.3 2.9
-    ## 6 4.10 3.5 1.85 3.30 3.3 2.0 3.75 3.5 1.95 4.39 3.59 1.94 3.80 3.3 2.0
-    ##    SJH SJD  SJA  VCH  VCD  VCA  BSH  BSD  BSA Bb1X2 BbMxH BbAvH BbMxD
-    ## 1 1.36 4.5 9.50 1.44 4.75 8.50 1.40 4.33 8.50    39  1.44  1.40  4.89
-    ## 2 1.80 3.6 4.50 1.83 3.75 4.75 1.83 3.50 4.33    39  1.85  1.80  3.82
-    ## 3 2.50 3.4 2.80 2.62 3.40 2.75 2.50 3.40 2.70    39  2.70  2.55  3.47
-    ## 4 2.10 3.3 3.60 2.00 3.50 4.00 2.00 3.40 3.60    39  2.10  2.01  3.55
-    ## 5 2.40 3.2 3.00 2.40 3.30 3.25 2.30 3.30 3.10    39  2.45  2.36  3.40
-    ## 6 4.00 3.4 1.91 4.33 3.60 1.95 4.00 3.40 1.91    39  4.38  4.01  3.61
-    ##   BbAvD BbMxA BbAvA BbOU BbMx.2.5 BbAv.2.5 BbMx.2.5.1 BbAv.2.5.1 BbAH
-    ## 1  4.47  9.50  8.37   33     1.83     1.76       2.15       2.05   23
-    ## 2  3.59  4.80  4.44   35     1.95     1.89       2.01       1.92   21
-    ## 3  3.32  2.85  2.73   35     2.00     1.88       2.01       1.92   23
-    ## 4  3.37  4.20  3.76   33     2.18     2.09       1.81       1.73   22
-    ## 5  3.27  3.26  3.03   33     2.28     2.18       1.76       1.67   24
-    ## 6  3.44  2.00  1.93   33     2.18     2.08       1.81       1.74   22
-    ##   BbAHh BbMxAHH BbAvAHH BbMxAHA BbAvAHA PSCH PSCD PSCA
-    ## 1 -1.25    2.02    1.96    1.96    1.91 1.44 4.72 8.71
-    ## 2 -0.50    1.83    1.80    2.14    2.09 1.84 3.75 4.75
-    ## 3  0.00    1.93    1.88    2.03    1.97 2.83 3.35 2.72
-    ## 4 -0.25    1.80    1.75    2.21    2.13 2.00 3.53 4.15
-    ## 5 -0.25    2.07    2.01    1.91    1.86 2.47 3.30 3.22
-    ## 6  0.50    2.00    1.96    1.97    1.92 4.76 3.74 1.84
+    ##   Div     Date  HomeTeam   AwayTeam FTHG FTAG FTR HTHG HTAG HTR
+    ## 1  E0 18/08/12   Arsenal Sunderland    0    0   D    0    0   D
+    ## 2  E0 18/08/12    Fulham    Norwich    5    0   H    2    0   H
+    ## 3  E0 18/08/12 Newcastle  Tottenham    2    1   H    0    0   D
+    ## 4  E0 18/08/12       QPR    Swansea    0    5   A    0    1   A
+    ## 5  E0 18/08/12   Reading      Stoke    1    1   D    0    1   A
+    ## 6  E0 18/08/12 West Brom  Liverpool    3    0   H    1    0   H
 
 For each match in a given season, the data frame includes the score and various other data we can ignore (mostly betting odds). First, we must think about our network. Networks are composed of nodes and edges, where an edge connecting two nodes indicates a relationship. In its simplest form, think of a network of people, where two nodes are joined by an edge if they're friends. We can have either undirected or directed networks. The latter means that there's a direction to the relationship (e.g. following someone on Twitter does imply that they follow you, which contrasts with Facebook friends). We'll keep things simple, so we'll opt for an undirected graph.
-
-  
-{% include facebook_network.html %}
-
-{% include twitter_network.html %}
-
 
 The nodes are the 20 teams of 2012-13 EPL season, but what are the edges? Using the `epl_1213` data frame, we'll say two teams are connected if each team gained at least one point in the two matches they played against each other (teams play each other both home and away in Europe's major football leagues). Equivalently, two teams are not connected if one team won both encounters. We can imagine how our network will look. The big teams should have fewer connections as they are more likely to have beaten their opponents both home and away. Similarly, the weaker teams will be less conencted, as they will have lost regularly. In the middle, we'll have teams that didn't regularly defeat the poor teams, but were resilient against the bigger teams.
 
@@ -188,15 +122,13 @@ We have a set of nodes with some supplementary information (for example, the `va
 
 ``` r
 # plot network graph
-visNetwork(nodes,edge_list,main = "EPL 2012-13 Season") %>%
+visNetwork(nodes,edge_list,main = "EPL 2012-13 Season",width="800px") %>%
   visEdges(color = list(color="gray",opacity=0.25)) %>%
   visOptions( highlightNearest = TRUE, nodesIdSelection = TRUE) %>%
   visEvents(stabilizationIterationsDone="function () {this.setOptions( { physics: false } );}") %>%
-  visLayout(randomSeed=91)
+  visLayout(randomSeed=91) %>%
+        visSave("C:/Users/Terri/Desktop/Blog/blog 4/visNetworks/epl201213_network.html")
 ```
-
-
-{% include epl201213_network.html %}
 
 I admit it's not as visualling stunning as I hoped it would be (how many times have I heard that one???). Some crests are indecipherably bundled on top of each other. Feel free to move the nodes around (one of the perks of using `visNetwork`). But it somewhat recreates what we expected: the big and small teams are positioned on the extemities, while mid table teams are clustered tightly in the centre. To study graph properties (e.g. connectedness), we'll switch to the [igraph package](http://igraph.org/r/) (note: `igraph` can also produce network graphs, they just won't be interactive). Again, we just pass the function our set of nodes and edges.
 
@@ -212,7 +144,7 @@ plot( x=0:(length(degs)-1), y=1-degs, pch=19, cex=1.2, col="orange",
       xlab="Degree", ylab="Cumulative Frequency", main= " Cumulative Frequency of EPL 2012-13 Degrees")
 ```
 
-![EPL 2012-13 Cumulative Distribution Degree]({{ site.url }}{{ site.baseurl }}/images/epl201213-degrees.png)
+![](blog4_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
 We could use this distribution to quantify the competitiveness of a league/season. For example, a higher mean/median degree would imply less significantly stronger/weakers teams. Before we continue with that thought, let's establish the most central/competitive team in the 2012-13 EPL season. We'll look at the betweeness (number of shortest paths containing that node) and a variant of eigenvector centrality called pageRank (it rewards nodes that are connected to highly connected nodes and was the underlying algorithm for the Google search engine).
 
@@ -321,12 +253,12 @@ ggplot(rbind(epl_data %>% dplyr::select(Season, meanDegree) %>%
              epl_data %>% dplyr::select(Season, pointSD) %>% 
                dplyr::rename(value = pointSD) %>% dplyr::mutate(measure="Point SD")), 
        aes(x=Season, y= value ,color = measure,group=measure)) + geom_line(size=1) +
-  geom_point(size=2,color="black") + xlab("EPL Season") + ylab("Mean Degree") + 
+  geom_point(size=2,color="black") + xlab("EPL Season") + ylab("Value") + 
   ggtitle("Historical Competitiveness of English Premier League") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-![EPL Historical Competitiveness]({{ site.url }}{{ site.baseurl }}/images/epl_competitiveness.png)
+![](blog4_files/figure-markdown_github/unnamed-chunk-13-1.png)
 
 The correlation is clear from the above graph (when one goes up, the other goes down). The `pointSD` measure appears to have a wider range of values, the range of the `meanDegree` seems comparatively narrower. Note that the first few years displayed a sharp change in `pointSD`, while `meanDegree` remain relatively unchanged. Both measures suggest a decline in compettitiveness. Moving away from the pretty pictures, we'll fit a simple linear model and check whether the slope is significantly different from zero (note: this relationship can't be simply linear over longer timeframes, as there are theoretical limits to both measures (e.g. `meanDegree` varies between 0 and 19), but we should be safe over the small time period we're considering).
 
@@ -384,10 +316,6 @@ According to both models (assuming a 95% level of confidence), the EPL has becom
 
 La Liga is the home of Barcelona and Real Madrid, two undeniable giants of world sport that American readers may have even heard of. But it also includes Leganes and Eibar, two teams Spanish readers may not have heard of. This disparity means that La Liga is often labelled a [two horse race](http://thefootballforecast.com/2015/08/01/is-la-liga-a-two-horse-race/) ([Atletico Madrid might have something to say about this](https://en.wikipedia.org/wiki/2013%E2%80%9314_La_Liga#League_table)). We can check whether such statements are supported by data. We'll start off by producing a network graph for the 2012-13 season (as we did for the EPL). We'll then move onto the historical competitiveness of the league. As before, the full code is available on github.
 
-
-{% include laliga201213_network.html %}
-
-
     ##     Season meanDegree  pointSD Most_Competitive
     ## 3  1997-98       13.6 13.00809          Espanol
     ## 4  1998-99       12.8 13.60447       Ath Madrid
@@ -409,7 +337,7 @@ La Liga is the home of Barcelona and Real Madrid, two undeniable giants of world
     ## 20 2014-15       12.6 20.81365         Sociedad
     ## 21 2015-16       13.1 18.10321        La Coruna
 
-![La Liga Historical Competitiveness]({{ site.url }}{{ site.baseurl }}/images/laliga-competitiveness.png)
+![](blog4_files/figure-markdown_github/unnamed-chunk-16-1.png)
 
 In the [1999-00 season](https://en.wikipedia.org/wiki/1999%E2%80%932000_La_Liga#League_table), Deportivo La Coruna were the champions with 68 points, despite losing 11 matches (just 3 points seperated 2nd and 6th). This contrasts with the [2014-15 season](https://en.wikipedia.org/wiki/2014%E2%80%9315_La_Liga#League_table), which was won by Barcelona with 94 points and 4 defeats (Deportivo's title winning 68 points would have put them in 6th position). While the trend seems clear from the graphs, let's fit a linear model to the data to determine whether La Liga is becoming less competitive.
 
@@ -467,7 +395,7 @@ Both models suggest that La Liga is getting less competitive (again, the `pointS
 
 You might now be wondering whether all of Europe's major leagues are becoming less competitive. We can test this quite easily.
 
-![EPL Historical Competitiveness]({{ site.url }}{{ site.baseurl }}/images/epl-laliga-seriea-bundesliga-ligue1-competitveness.png)
+![](blog4_files/figure-markdown_github/unnamed-chunk-18-1.png)
 
 A few notes on the graph: the number of teams in Serie A (highest division in Italy) increased from 18 to its current 20 in the 2004-05 season (I excluded the seasons prior to the change); 18 teams compete in the Bundesliga 1 (highest division in Germany), the remaining leagues have 20 teams. With the exception of the Italian league, all leagues show a significant decrease in competitiveness (assuming a significance level of 0.05/4= 0.0125- [Bonferroni correction](https://en.wikipedia.org/wiki/Bonferroni_correction), where we've conveniently ignored Serie A due to insufficient data and poor model fit).
 
