@@ -288,7 +288,7 @@ ggplot(rbind(epl_data %>% dplyr::select(Season, meanDegree) %>%
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-![La Liga Historical Competitiveness]({{ site.url }}{{ site.baseurl }}/images/laliga_competitiveness.png)
+![English Premier League Historical Competitiveness]({{ site.url }}{{ site.baseurl }}/images/epl-competitiveness.png)
 
 The correlation is clear from the above graph (when one goes up, the other goes down). The `pointSD` measure appears to have a wider range of values, the range of the `meanDegree` seems comparatively narrower. Note that the first few years displayed a sharp change in `pointSD`, while `meanDegree` remain relatively unchanged. Both measures suggest a decline in compettitiveness. Moving away from the pretty pictures, we'll fit a simple linear model and check whether the slope is significantly different from zero (note: this relationship can't be simply linear over longer timeframes, as there are theoretical limits to both measures (e.g. `meanDegree` varies between 0 and 19), but we should be safe over the small time period we're considering).
 
@@ -370,7 +370,7 @@ La Liga is the home of Barcelona and Real Madrid, two undeniable giants of world
     ## 20 2014-15       12.6 20.81365         Sociedad
     ## 21 2015-16       13.1 18.10321        La Coruna
 
-![](blog4_files/figure-markdown_github/unnamed-chunk-16-1.png)
+![La Liga Historical Competitiveness]({{ site.url }}{{ site.baseurl }}/images/laliga_competitiveness.png)
 
 In the [1999-00 season](https://en.wikipedia.org/wiki/1999%E2%80%932000_La_Liga#League_table), Deportivo La Coruna were the champions with 68 points, despite losing 11 matches (just 3 points seperated 2nd and 6th). This contrasts with the [2014-15 season](https://en.wikipedia.org/wiki/2014%E2%80%9315_La_Liga#League_table), which was won by Barcelona with 94 points and 4 defeats (Deportivo's title winning 68 points would have put them in 6th position). While the trend seems clear from the graphs, let's fit a linear model to the data to determine whether La Liga is becoming less competitive.
 
