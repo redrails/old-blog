@@ -1,6 +1,6 @@
 ---
-title: "Europe's Major Football Leagues Are Getting Less Competitive"
-excerpt: "title"
+title: "title"
+excerpt: "excerpt"
 header:
   overlay_image: data-scientist-analyst-screen.jpg
   overlay_filter: 0.4
