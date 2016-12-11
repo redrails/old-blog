@@ -174,7 +174,7 @@ plot( x=0:(length(degs)-1), y=1-degs, pch=19, cex=1.2, col="orange",
       xlab="Degree", ylab="Cumulative Frequency", main= " Cumulative Frequency of EPL 2012-13 Degrees")
 ```
 
-![](blog4_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![Cumulative Distribution Degrees EPL 2012-13]({{ site.url }}{{ site.baseurl }}/images/epl201213-degrees.png)
 
 We could use this distribution to quantify the competitiveness of a league/season. For example, a higher mean/median degree would imply less significantly stronger/weakers teams. Before we continue with that thought, let's establish the most central/competitive team in the 2012-13 EPL season. We'll look at the betweeness (number of shortest paths containing that node) and a variant of eigenvector centrality called pageRank (it rewards nodes that are connected to highly connected nodes and was the underlying algorithm for the Google search engine).
 
@@ -288,7 +288,7 @@ ggplot(rbind(epl_data %>% dplyr::select(Season, meanDegree) %>%
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-![](blog4_files/figure-markdown_github/unnamed-chunk-13-1.png)
+![La Liga Historical Competitiveness]({{ site.url }}{{ site.baseurl }}/images/laliga_competitiveness.png)
 
 The correlation is clear from the above graph (when one goes up, the other goes down). The `pointSD` measure appears to have a wider range of values, the range of the `meanDegree` seems comparatively narrower. Note that the first few years displayed a sharp change in `pointSD`, while `meanDegree` remain relatively unchanged. Both measures suggest a decline in compettitiveness. Moving away from the pretty pictures, we'll fit a simple linear model and check whether the slope is significantly different from zero (note: this relationship can't be simply linear over longer timeframes, as there are theoretical limits to both measures (e.g. `meanDegree` varies between 0 and 19), but we should be safe over the small time period we're considering).
 
@@ -428,7 +428,7 @@ Both models suggest that La Liga is getting less competitive (again, the `pointS
 
 You might now be wondering whether all of Europe's major leagues are becoming less competitive. We can test this quite easily.
 
-![](blog4_files/figure-markdown_github/unnamed-chunk-18-1.png)
+![Historical Competitiveness of Europes Top Leagues]({{ site.url }}{{ site.baseurl }}/images/epl-laliga-seriea-bundesliga-ligue1-competitveness.png)
 
 A few notes on the graph: the number of teams in Serie A (highest division in Italy) increased from 18 to its current 20 in the 2004-05 season (I excluded the seasons prior to the change); 18 teams compete in the Bundesliga 1 (highest division in Germany), the remaining leagues have 20 teams. With the exception of the Italian league, all leagues show a significant decrease in competitiveness (assuming a significance level of 0.05/4= 0.0125- [Bonferroni correction](https://en.wikipedia.org/wiki/Bonferroni_correction), where we've conveniently ignored Serie A due to insufficient data and poor model fit).
 
