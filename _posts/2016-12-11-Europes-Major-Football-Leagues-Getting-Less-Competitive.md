@@ -94,11 +94,12 @@ head(epl_1213)
 
 For each match in a given season, the data frame includes the score and various other data we can ignore (mostly betting odds). First, we must think about our network. Networks are composed of nodes and edges, where an edge connecting two nodes indicates a relationship. In its simplest form, think of a network of people, where two nodes are joined by an edge if they're friends. We can have either undirected or directed networks. The latter means that there's a direction to the relationship (e.g. following someone on Twitter does imply that they follow you, which contrasts with Facebook friends). We'll keep things simple, so we'll opt for an undirected graph.
 
-<!--  
+  
 {% include facebook_network.html %}
 
 {% include twitter_network.html %}
---> 
+
+<!--  
 
 The nodes are the 20 teams of 2012-13 EPL season, but what are the edges? Using the `epl_1213` data frame, we'll say two teams are connected if each team gained at least one point in the two matches they played against each other (teams play each other both home and away in Europe's major football leagues). Equivalently, two teams are not connected if one team won both encounters. We can imagine how our network will look. The big teams should have fewer connections as they are more likely to have beaten their opponents both home and away. Similarly, the weaker teams will be less conencted, as they will have lost regularly. In the middle, we'll have teams that didn't regularly defeat the poor teams, but were resilient against the bigger teams.
 
@@ -194,9 +195,9 @@ visNetwork(nodes,edge_list,main = "EPL 2012-13 Season") %>%
   visLayout(randomSeed=91)
 ```
 
-<!-- 
+
 {% include epl201213_network.html %}
--->
+
 
 I admit it's not as visualling stunning as I hoped it would be (how many times have I heard that one???). Some crests are indecipherably bundled on top of each other. Feel free to move the nodes around (one of the perks of using `visNetwork`). But it somewhat recreates what we expected: the big and small teams are positioned on the extemities, while mid table teams are clustered tightly in the centre. To study graph properties (e.g. connectedness), we'll switch to the [igraph package](http://igraph.org/r/) (note: `igraph` can also produce network graphs, they just won't be interactive). Again, we just pass the function our set of nodes and edges.
 
@@ -384,9 +385,9 @@ According to both models (assuming a 95% level of confidence), the EPL has becom
 
 La Liga is the home of Barcelona and Real Madrid, two undeniable giants of world sport that American readers may have even heard of. But it also includes Leganes and Eibar, two teams Spanish readers may not have heard of. This disparity means that La Liga is often labelled a [two horse race](http://thefootballforecast.com/2015/08/01/is-la-liga-a-two-horse-race/) ([Atletico Madrid might have something to say about this](https://en.wikipedia.org/wiki/2013%E2%80%9314_La_Liga#League_table)). We can check whether such statements are supported by data. We'll start off by producing a network graph for the 2012-13 season (as we did for the EPL). We'll then move onto the historical competitiveness of the league. As before, the full code is available on github.
 
-<!-- 
+ 
 {% include laliga201213_network.html %}
--->
+
 
     ##     Season meanDegree  pointSD Most_Competitive
     ## 3  1997-98       13.6 13.00809          Espanol
@@ -528,3 +529,5 @@ all_leagues %>%  dplyr::group_by(league) %>% dplyr::mutate(Season = 0:(n()-1)) %
 ### Summary
 
 Using a combination of graph theory and more conventional statistics, we've shown that Europe's major football leagues are becoming less competitive. It supports the belief that the gap between the super-rich and the smaller clubs is widening. Now, whether you think this is a good or bad development for the sport probably depends on your club allegiance. However, we can all agree that it's unlikely a team like Deportivo La Coruna will win La Liga with 68 points in the near future.
+
+--> 
