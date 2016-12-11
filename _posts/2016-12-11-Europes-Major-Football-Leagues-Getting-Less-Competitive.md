@@ -94,12 +94,13 @@ head(epl_1213)
 
 For each match in a given season, the data frame includes the score and various other data we can ignore (mostly betting odds). First, we must think about our network. Networks are composed of nodes and edges, where an edge connecting two nodes indicates a relationship. In its simplest form, think of a network of people, where two nodes are joined by an edge if they're friends. We can have either undirected or directed networks. The latter means that there's a direction to the relationship (e.g. following someone on Twitter does imply that they follow you, which contrasts with Facebook friends). We'll keep things simple, so we'll opt for an undirected graph.
 
-  
+<!--  
+
 {% include facebook_network.html %}
 
 {% include twitter_network.html %}
 
-<!--  
+
 
 The nodes are the 20 teams of 2012-13 EPL season, but what are the edges? Using the `epl_1213` data frame, we'll say two teams are connected if each team gained at least one point in the two matches they played against each other (teams play each other both home and away in Europe's major football leagues). Equivalently, two teams are not connected if one team won both encounters. We can imagine how our network will look. The big teams should have fewer connections as they are more likely to have beaten their opponents both home and away. Similarly, the weaker teams will be less conencted, as they will have lost regularly. In the middle, we'll have teams that didn't regularly defeat the poor teams, but were resilient against the bigger teams.
 
