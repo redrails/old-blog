@@ -1,8 +1,8 @@
 ---
 title: "Europe's Major Football Leagues Are Getting Less Competitive"
-excerpt: "Using a combination of graph theory and conventional statistics, this post explorers whether Europe's major football (soccer) leagues are becomming less competitive."
+excerpt: "title"
 header:
-  overlay_image: football-overlay.jpg
+  overlay_image: data-scientist-analyst-screen.jpg
   overlay_filter: 0.4
   caption: ""
 categories:
