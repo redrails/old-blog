@@ -1,3 +1,28 @@
+---
+title: "Europe's Major Football Leagues Are Getting Less Competitive"
+excerpt: "Using both graph theory and conventional statistics, this post explores whether Europe's major football (soccer) leagues are becomming less competitive."
+layout: single
+header:
+  overlay_image: football-overlay.jpg
+  overlay_filter: 0.4
+  caption: ""
+categories:
+  - data science
+  - football
+tags:
+  - football
+  - soccer
+  - epl
+  - la liga
+  - visNetwork
+  - igraph
+  - R
+author: "David Sheehan"
+date: "12 December 2016"
+---
+
+{% include base_path %}
+
 ### Background
 
 This work was somewhat motivated by a post I read on [another interesting data science blog](https://longhowlam.wordpress.com/2016/09/12/some-insights-in-soccer-transfers-using-market-basket-analysis/); its combination of network graphs and football seemed both accessible and visualing appealing. Due to the profileration of social media and technological advances, [graph/network based approaches are becoming more common](https://blogs.thomsonreuters.com/answerson/future-graph-shaped/). Graph theory has been employed to study [disease propagation](http://journal.frontiersin.org/article/10.3389/fphy.2015.00071/full), [elephant rest sites](http://onlinelibrary.wiley.com/doi/10.1111/ecog.02379/full), [relationships in The Simpsons](http://thesimpsonsuniverse.weebly.com/network.html) and even [MMA finishes](http://www.fightprior.com/2016/09/29/finishCooccurrence/), so I wanted to try it out for myself.
