@@ -1,5 +1,11 @@
 ---
-title: "Europe's Major Football Leagues Are Getting Less Competitive"
+title: "A Road Incident Model Analysis"
+excerpt: "This post looks at road accidents in the UK between 2005 and 2015 and investigates whether we can forecast the number of accidents in 2016."
+layout: single
+header:
+  overlay_image: football-overlay.jpg
+  overlay_filter: 0.4
+  caption: ""
 categories:
   - data science
   - general
@@ -11,10 +17,7 @@ tags:
   - forecast
   - R
 author: "David Sheehan"
-date: "11 December 2016"
-output:
-  md_document:
-    variant: markdown_github
+date: "17 December 2016"
 ---
 
 As my father once told me: 'If you don't get the job, at least get a blog post'. This post was motivated by a task I was given for a data scientist job, which involved predicting road accidents in the UK. I won't focus on the specific task (that would encourage cheating), but instead will explore the rich dataset and use ARIMA to predict the number of road accidents in 2016.
