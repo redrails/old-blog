@@ -20,6 +20,8 @@ author: "David Sheehan"
 date: "17 December 2016"
 ---
 
+
+
 As my father once told me: 'If you don't get the job, at least get a blog post'. This post was motivated by a task I was given for a data scientist job, which involved predicting road accidents in the UK. I won't focus on the specific task (that would encourage cheating), but instead will explore the rich dataset and use ARIMA to predict the number of road accidents in 2016.
 
 ### Getting the Data
@@ -152,7 +154,14 @@ dow_jones <- read.csv(text=getURL(
   mutate(Date=as.Date(Date)) %>% arrange(Date)
 ```
 
-![Stationary and Non-Stationary Processes]({{ site.url }}{{ site.baseurl }}/images/stationary.png)
+{% capture fig_img %}
+![Stationary Processes]({{ base_path }}/images/stationary.png)
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Stationary vs Non-Stationary Process</figcaption>
+</figure>
 
 
 ARIMA models actually consists of three seperate models, which we'll now treat in turn, starting with autoregressive models.
