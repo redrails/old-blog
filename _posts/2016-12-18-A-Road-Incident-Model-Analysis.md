@@ -152,6 +152,9 @@ dow_jones <- read.csv(text=getURL(
   mutate(Date=as.Date(Date)) %>% arrange(Date)
 ```
 
+![Stationary and Non-Stationary Processes]({{ site.url }}{{ site.baseurl }}/images/stationary.png)
+
+
 ARIMA models actually consists of three seperate models, which we'll now treat in turn, starting with autoregressive models.
 
 #### Autoregressive Model
