@@ -121,7 +121,7 @@ tot_accs %>% group_by(Day_of_Week) %>% summarize(num_accs=n()) %>%
 
 Perhaps unsurprisingly, the quietist day for road accidents is Sunday, while the greatest number of accidents occurs on Friday. Going a level lower, let's plot the accident time for each day of the week.
 
-<iframe  src="https://plot.ly/~dashee/13/hourly_accs_0515.embed?link=false" width="100%" height="650" frameborder="no" scrolling="no"></iframe>
+<iframe  src="https://plot.ly/~dashee/13/hourly_accs_0515.embed?link=false" width="100%" frameborder="no" scrolling="no"></iframe>
 
 There's a clear distinction between the weekend and weekdays (though Friday is a sort of hybrid). The weekday rush hour peaks are apparent, while the weekend hits its maximum at around midday, with a noticeable increase in the early morning compared to weekdays. Switching greats, let's turn our attention to the longer term and plot the number of road accidents per month from 2005-2015.
 
@@ -130,6 +130,8 @@ There's a clear distinction between the weekend and weekdays (though Friday is a
 yearlymon_data <- tot_accs %>% group_by(as.yearmon(Date, format="%d/%m/%Y")) %>% summarize(num_accs=n())
 colnames(yearlymon_data)[1]="YearMonth"
 ```
+
+<iframe  src="https://plot.ly/~dashee/15/monthly_accs_0515.embed?link=false" width="100%" height="650" frameborder="no" scrolling="no"></iframe>
 
 The good news is that the number of accidents has declined significantly since 2005 (and [the UK population increased by nearly 10 % in that time period](https://www.google.co.uk/publicdata/explore?ds=d5bncppjof8f9_&met_y=sp_pop_totl&idim=country:GBR:IRL:CAN&hl=en&dl=en)). You might also detect a seasonal behaviour within the numbers. February typically has the least number of accidents (partly owing to it only have 28/29 days I imagine), while November is the worst month for accidents. So the time series appears to be composed of a trend and cyclical/seasonal component. If we include a noise term to account for random monthly variations, then we should be able to decompose this time series. We'll opt for a multiplicative model (accidents is the product of its components) and use [Seasonal and Trend decomposition using Loess (STL)](https://www.otexts.org/fpp/6/5) The theory behind time series decomposition is well described [here](https://www.otexts.org/fpp/6).
 
