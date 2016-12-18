@@ -119,6 +119,8 @@ tot_accs %>% group_by(Day_of_Week) %>% summarize(num_accs=n()) %>%
 
 Perhaps unsurprisingly, the quietist day for road accidents is Sunday, while the greatest number of accidents occurs on Friday. Going a level lower, let's plot the accident time for each day of the week.
 
+<iframe  src="https://plot.ly/~dashee/13/hourly_accs_0515.embed?link=false" width="100%" height="650" frameborder="no" scrolling="no"></iframe>
+
 There's a clear distinction between the weekend and weekdays (though Friday is a sort of hybrid). The weekday rush hour peaks are apparent, while the weekend hits its maximum at around midday, with a noticeable increase in the early morning compared to weekdays. Switching greats, let's turn our attention to the longer term and plot the number of road accidents per month from 2005-2015.
 
 ``` r
