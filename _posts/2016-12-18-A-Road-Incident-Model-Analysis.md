@@ -3,7 +3,7 @@ title: "A Road Incident Model Analysis"
 excerpt: "This post looks at road accidents in the UK between 2005 and 2015 and investigates whether we can forecast the number of accidents in 2016."
 layout: single
 header:
-  overlay_image: road-overlay.jpg
+  overlay_image: road_overlay.jpg
   overlay_filter: 0.4
   caption: ""
 categories:
