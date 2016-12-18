@@ -4,7 +4,7 @@ excerpt: "This post looks at road accidents in the UK between 2005 and 2015 and 
 layout: single
 header:
   overlay_image: road_overlay.jpg
-  overlay_filter: 0.4
+  overlay_filter: 0.7
   caption: ""
 categories:
   - data science
