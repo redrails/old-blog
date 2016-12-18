@@ -160,7 +160,7 @@ dow_jones <- read.csv(text=getURL(
 
 <figure>
   {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Stationary vs Non-Stationary Process</figcaption>
+  <figcaption>Non-Stationary vs Stationary Process</figcaption>
 </figure>
 
 
@@ -192,6 +192,15 @@ for(i in 3:365){
   ar2[i] = ar2[i-1]*0.5 + ar2[i-2]*0.3 + rnorm(1)}
 ```
 
+{% capture fig_img %}
+![Autoregressive Models]({{ base_path }}/images/autoregressive.png)
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Autoregressive Models</figcaption>
+</figure>
+
 ### Moving Average Models
 
 Where autoregressive (AR) models treat output variables as linear combinations of previous values, [moving average (MA) models](https://www.otexts.org/fpp/8/4) use past forecast errors in a regression-like model.
@@ -218,11 +227,29 @@ for(i in 3:365){
   ma2[i] = rnorm(1)*0.5 - rnorm(1)*0.3 + rnorm(1)}
 ```
 
+{% capture fig_img %}
+![Autoregressive Models]({{ base_path }}/images/moving_average.png)
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>Moving Average Models</figcaption>
+</figure>
+
 Okay, so we've covered Autoregressive and Moving Average models, the constituents of an [ARMA model](https://en.wikipedia.org/wiki/Autoregressive%E2%80%93moving-average_model). But since there's no I in ARMA, we're left wondering the significance of the I in ARIMA, which stands for Integrated.
 
 ### Differencing
 
 Non-stationary time series can often be stationarised by taking the difference between successive values (unsurprisingly known as differncing). The degree (typically denoted as d) of differencing is simply the number of times the data have had past values subtracted (in practise, at most 2 rounds of differencing is generally required). Going back to the Dow Jones closing price time series, we can tell by eye (and using the [augmented dickey-fuller test](https://en.wikipedia.org/wiki/Augmented_Dickey%E2%80%93Fuller_test)) that it's not stationary. However, taking the first difference, the time series has been become stationary (values follow a normal distribution centred near zero).
+
+{% capture fig_img %}
+![Differncing]({{ base_path }}/images/differencing.png)
+{% endcapture %}
+
+<figure>
+  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
+  <figcaption>First Order Differncing of Non-Stationary Process</figcaption>
+</figure>
 
 ``` r
 # augmented Dickey Fuller Test
