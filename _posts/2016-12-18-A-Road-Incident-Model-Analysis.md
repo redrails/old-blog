@@ -26,7 +26,7 @@ As my father once told me: 'If you don't get the job, at least get a blog post'.
 
 ### Getting the Data
 
-If an injury occurs in a road accident that was reported to the police, they produce a detailed report (age/sex of casualties, vehicle/road types, etc). These reports,going back to 2005, are collated and compiled within multiple csvs, which are freely available online ([here](https://data.gov.uk/dataset/road-accidents-safety-data)). They are well formatted: missing data is marked; tidy columns with relatively intuitive names. The csvs are quite big and combined in zip files; you'll need to download them to your computer and then extract the csvs. Note that the 2015 must be downloaded seperately, while the 2005-2014 data is available under the 2014 tab. Okay, so let's get started.
+If an injury occurs in a road accident that was reported to the police, they produce a detailed report (age/sex of casualties, vehicle/road types, etc). These reports, going back to 2005, are collated and compiled within multiple csvs, which are freely available online ([here](https://data.gov.uk/dataset/road-accidents-safety-data)). They are well formatted: missing data is marked; tidy columns with relatively intuitive names. The csvs are quite big and combined in zip files; you'll need to download them to your computer and then extract the csvs. Note that the 2015 must be downloaded separately, while the 2005-2014 data is available under the 2014 tab. Okay, so let's get started.
 
 ``` r
 # loading the packages we'll need
@@ -59,7 +59,7 @@ tot_veh= rbind(read.csv("/Vehicles0514.csv") %>%
    select(-Vehicle_IMD_Decile))
 ```
 
-We now have three datasets: Accidents (time and location of accident, road type, weather conditions, etc); Casualties (age, sex, driver/passenger status, severity etc); Vehicle (type, engine capacity, etc). We'll start off with some minor exploration of the data.
+We now have three datasets: Accidents (time and location of accident, road type, weather conditions, etc); Casualties (age, sex, driver/passenger status, severity, etc); Vehicle (type, engine capacity, etc). We'll start off with some minor exploration of the data.
 
 ``` r
 # looking at the structure of the datasets
@@ -119,7 +119,7 @@ tot_accs %>% group_by(Day_of_Week) %>% summarize(num_accs=n()) %>%
     ## 6      Friday   291359 16.36 %
     ## 7    Saturday   238108 13.37 %
 
-Perhaps unsurprisingly, the quietist day for road accidents is Sunday, while the greatest number of accidents occurs on Friday. Going a level lower, let's plot the accident time for each day of the week (note: the code for the plots can be found [here](https://github.com/dashee87/blogScripts/blob/master/R/2016-12-18-A-Road-Incident-Model-Analysis.R))
+Perhaps unsurprisingly, the quietest day for road accidents is Sunday, while the greatest number of accidents occurs on Friday. Going a level lower, let's plot the accident time for each day of the week (note: the code for the plots can be found [here](https://github.com/dashee87/blogScripts/blob/master/R/2016-12-18-A-Road-Incident-Model-Analysis.R))
 
 <iframe  src="https://plot.ly/~dashee/13/hourly_accs_0515.embed?link=false" width="100%" height="500" frameborder="no" scrolling="no"></iframe>
 
@@ -134,7 +134,7 @@ colnames(yearlymon_data)[1]="YearMonth"
 
 <iframe  src="https://plot.ly/~dashee/15/monthly_accs_0515.embed?link=false" width="100%" height="500" frameborder="no" scrolling="no"></iframe>
 
-The good news is that the number of accidents has declined significantly since 2005 (and [the UK population increased by nearly 10 % in that time period](https://www.google.co.uk/publicdata/explore?ds=d5bncppjof8f9_&met_y=sp_pop_totl&idim=country:GBR:IRL:CAN&hl=en&dl=en)). You might also detect a seasonal behaviour within the numbers. February typically has the least number of accidents (partly owing to it only have 28/29 days I imagine), while November is the worst month for accidents. So the time series appears to be composed of a trend and cyclical/seasonal component. If we include a noise term to account for random monthly variations, then we should be able to decompose this time series. We'll opt for a multiplicative model (accidents is the product of its components) and use [Seasonal and Trend decomposition using Loess (STL)](https://www.otexts.org/fpp/6/5) The theory behind time series decomposition is well described [here](https://www.otexts.org/fpp/6).
+The good news is that the number of accidents has declined significantly since 2005 (and [the UK population increased by nearly 10 % in that time period](https://www.google.co.uk/publicdata/explore?ds=d5bncppjof8f9_&met_y=sp_pop_totl&idim=country:GBR:IRL:CAN&hl=en&dl=en)). You might also detect a seasonal behaviour within the numbers. February typically has the least number of accidents (partly owing to it only have 28/29 days I imagine), while November is the worst month for accidents. So the time series appears to be composed of a trend and cyclical/seasonal component. If we include a noise term to account for random monthly variations, then we should be able to decompose this time series. We'll opt for a multiplicative model (number accidents is the product of its seasonal/trend/noise components) and use [Seasonal and Trend decomposition using Loess (STL)](https://www.otexts.org/fpp/6/5) The theory behind time series decomposition is well described [here](https://www.otexts.org/fpp/6).
 
 ``` r
 # the stl function only takes additive model
@@ -146,7 +146,7 @@ decomp_accs_ts$time.series <- exp(decomp_accs_ts$time.series)
 
 <iframe  src="https://plot.ly/~dashee/17/accs_mult_model_0515.embed?link=false" width="100%" height="500" frameborder="no" scrolling="no"></iframe>
 
-While the plot illustrates the seasonal behaviour and trend within the data, if we want to forecast the number of accidents in 2016, we'll employ another form of time series decompostion called Autoregressive Integrated Moving Average (ARIMA). Before we apply ARIMA to our data, we'll make a little detour and first introduce some of key concepts behind ARIMA.
+While the plot illustrates the seasonal behaviour and trend within the data, if we want to forecast the number of accidents in 2016, we'll employ another form of time series decomposition called Autoregressive Integrated Moving Average (ARIMA). Before we apply ARIMA to our data, we'll make a little detour and first introduce some of key concepts behind ARIMA.
 
 ### Stationary Processes And Friends
 
@@ -167,7 +167,7 @@ dow_jones <- read.csv(text=getURL(
 </div>
 
 
-ARIMA models actually consists of three seperate models, which we'll now treat in turn, starting with autoregressive models.
+ARIMA models actually consist of three seperate models, which we'll now treat in turn, starting with autoregressive models.
 
 ##### Autoregressive Models
 
@@ -179,7 +179,7 @@ $$
 y_{t} = \phi_{1} y_{t-1} + ... + \phi_{p} y_{t-p} + \epsilon_{t}
 $$
 
-where $$\epsilon_t$$ denotes the stochastic component in the series. AR(0) is simply uncorrelated noise, while AR(1) represents a markov process (plotted below).
+where $$\epsilon_t$$ denotes the stochastic component in the series. AR(0) is simply uncorrelated noise, while AR(1) represents a [Markov process](https://en.wikipedia.org/wiki/Markov_chain) (plotted below).
 
 ``` r
 ### Autoregressive Models
@@ -243,11 +243,11 @@ for(i in 3:365){
 
 </div>
 
-Okay, so we've covered Autoregressive and Moving Average models, the constituents of an [ARMA model](https://en.wikipedia.org/wiki/Autoregressive%E2%80%93moving-average_model). But since there's no I in ARMA, we're left wondering the significance of the I in ARIMA, which stands for Integrated.
+Okay, so we've covered Autoregressive and Moving Average models, the constituents of an [ARMA model](https://en.wikipedia.org/wiki/Autoregressive%E2%80%93moving-average_model). But since there's no I in ARMA, we're left wondering the significance of that I.
 
 #### Differencing
 
-Non-stationary time series can often be stationarised by taking the difference between successive values (unsurprisingly known as differencing). The degree (typically denoted as d) of differencing is simply the number of times the data have had past values subtracted (in practise, at most 2 rounds of differencing is generally required). Going back to the Dow Jones closing price time series, we can tell by eye (and using the [augmented dickey-fuller test](https://en.wikipedia.org/wiki/Augmented_Dickey%E2%80%93Fuller_test)) that it's not stationary. However, taking the first difference, the time series has been become stationary (values follow a normal distribution centred near zero).
+The I in ARIMA stands for Integrated and refers to the process of differencing. Non-stationary time series can often be stationarised by taking the difference between successive values. The degree (typically denoted as d) of differencing is simply the number of times the data have had past values subtracted (in practise, at most 2 rounds of differencing is generally required). Going back to the Dow Jones closing price time series, we can tell by eye (and using the [augmented dickey-fuller test](https://en.wikipedia.org/wiki/Augmented_Dickey%E2%80%93Fuller_test)) that it's not stationary. However, taking the first difference, the time series has been become stationary (values follow a normal distribution centred near zero).
 
 <div style="text-align:center" markdown="1">
 
@@ -284,7 +284,7 @@ Bringing it all together, non-seasonal ARIMA models are generally denoted ARIMA(
 
 ### Predicting Number of Road Accidents
 
-Like some people in our dataset, I've become a little distracted. Let's return to our attempts to forecast the number of monthly road accidents in 2016. I've spent some time on the theory, but ulimately you just want to know which function to use from which package. Though you can construct an ARIMA model manually (see [here](https://www.otexts.org/fpp/8/) for a tutorial), the [forecast package](https://cran.r-project.org/web/packages/forecast/forecast.pdf) includes an [auto.arima function](https://www.otexts.org/fpp/8/7), which does all of the hard work for you (determines the appropriate values of p, d and q- though be sure to validate the output, as automated approaches can sometimes throw up strange results).
+Like some people in our dataset, I've become a little distracted. Let's return to our attempt to forecast the number of monthly road accidents in 2016. I've spent some time on the theory, but ultimately you just want to know which function to use from which package. Though you can construct an ARIMA model manually (see [here](https://www.otexts.org/fpp/8/) for a tutorial), the [forecast package](https://cran.r-project.org/web/packages/forecast/forecast.pdf) includes an [auto.arima function](https://www.otexts.org/fpp/8/7), which does all of the hard work for you (determines the appropriate values of p, d and q- though be sure to validate the output, as automated approaches can sometimes throw up strange results).
 
 ``` r
 # fitting ARIMA model to road accident data
