@@ -175,13 +175,11 @@ An [autoregressive model](https://www.otexts.org/fpp/8/3) describes a model wher
 
 In mathematical terms, an autoregressive model of order p (AR(p)) is written 
 
-$$
-\begin{displaymath} 
+$$ 
 y_{t} = \phi_{1} y_{t-1} + ... + \phi_{p} y_{t-p} + \epsilon_{t}
-\end{displaymath}
 $$
 
-where \$\$epsilon_t$$ denotes the stochastic component in the series. AR(0) is simply uncorrelated noise, while AR(1) represents a markov process (plotted below).
+where \\(epsilon_t\\) denotes the stochastic component in the series. AR(0) is simply uncorrelated noise, while AR(1) represents a markov process (plotted below).
 
 ``` r
 ### Autoregressive Models
