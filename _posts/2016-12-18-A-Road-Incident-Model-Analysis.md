@@ -169,7 +169,7 @@ dow_jones <- read.csv(text=getURL(
 
 ARIMA models actually consists of three seperate models, which we'll now treat in turn, starting with autoregressive models.
 
-##### Autoregressive Model
+##### Autoregressive Models
 
 An [autoregressive model](https://www.otexts.org/fpp/8/3) describes a model where the output is a linear combination of its p previous (or lagged) values, together with a stochastic term (e.g. white noise).
 
