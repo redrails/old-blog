@@ -127,7 +127,8 @@ There's a clear distinction between the weekend and weekdays (though Friday is a
 
 ``` r
 # just reformatting the days by the yearmonth (e.g. June 2008)
-yearlymon_data <- tot_accs %>% group_by(as.yearmon(Date, format="%d/%m/%Y")) %>% summarize(num_accs=n())
+yearlymon_data <- tot_accs %>% group_by(as.yearmon(Date, format="%d/%m/%Y")) %>% 
+                  summarize(num_accs=n())
 colnames(yearlymon_data)[1]="YearMonth"
 ```
 
@@ -138,7 +139,8 @@ The good news is that the number of accidents has declined significantly since 2
 ``` r
 # the stl function only takes additive model
 # since we want a multiplicative model, we need to first take the log
-decomp_accs_ts <- stl(ts(log(yearlymon_data$num_accs),frequency = 12,start=2005),s.window = "periodic")
+decomp_accs_ts <- stl(ts(log(yearlymon_data$num_accs),frequency = 12,start=2005),
+                      s.window = "periodic")
 decomp_accs_ts$time.series <- exp(decomp_accs_ts$time.series)
 ```
 
@@ -158,14 +160,11 @@ dow_jones <- read.csv(text=getURL(
   mutate(Date=as.Date(Date)) %>% arrange(Date)
 ```
 
-{% capture fig_img %}
-![Stationary Processes]({{ base_path }}/images/stationary.png)
-{% endcapture %}
+<div style="text-align:center" markdown="1">
 
-<figure>
-  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Non-Stationary vs Stationary Process</figcaption>
-</figure>
+![Differencing]({{ base_path }}/images/stationary.png)
+
+</div>
 
 
 ARIMA models actually consists of three seperate models, which we'll now treat in turn, starting with autoregressive models.
@@ -196,7 +195,11 @@ for(i in 3:365){
   ar2[i] = ar2[i-1]*0.5 + ar2[i-2]*0.3 + rnorm(1)}
 ```
 
-![Autoregressive Models]({{ base_path }}/images/autoregressive.png)
+<div style="text-align:center" markdown="1">
+
+![Differencing]({{ base_path }}/images/autoregressive.png)
+
+</div>
 
 ### Moving Average Models
 
@@ -224,14 +227,11 @@ for(i in 3:365){
   ma2[i] = rnorm(1)*0.5 - rnorm(1)*0.3 + rnorm(1)}
 ```
 
-{% capture fig_img %}
-![Autoregressive Models]({{ base_path }}/images/moving_average.png)
-{% endcapture %}
+<div style="text-align:center" markdown="1">
 
-<figure>
-  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Moving Average Models</figcaption>
-</figure>
+![Differencing]({{ base_path }}/images/moving_average.png)
+
+</div>
 
 Okay, so we've covered Autoregressive and Moving Average models, the constituents of an [ARMA model](https://en.wikipedia.org/wiki/Autoregressive%E2%80%93moving-average_model). But since there's no I in ARMA, we're left wondering the significance of the I in ARIMA, which stands for Integrated.
 
