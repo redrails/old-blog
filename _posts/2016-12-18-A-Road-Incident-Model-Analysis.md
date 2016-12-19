@@ -119,7 +119,7 @@ tot_accs %>% group_by(Day_of_Week) %>% summarize(num_accs=n()) %>%
     ## 6      Friday   291359 16.36 %
     ## 7    Saturday   238108 13.37 %
 
-Perhaps unsurprisingly, the quietest day for road accidents is Sunday, while the greatest number of accidents occurs on Friday. Going a level lower, let's plot the accident time for each day of the week (note: the code for the plots can be found [here](https://github.com/dashee87/blogScripts/blob/master/R/2016-12-18-A-Road-Incident-Model-Analysis.R))
+Perhaps unsurprisingly, the quietest day for road accidents is Sunday, while the greatest number of accidents occurs on Friday. Going a level lower, let's plot the accident time for each day of the week (note: the code for the plots can be found [here](https://github.com/dashee87/blogScripts/blob/master/R/2016-12-18-A-Road-Incident-Model-Analysis.R)).
 
 <iframe  src="https://plot.ly/~dashee/13/hourly_accs_0515.embed?link=false" width="100%" height="500" frameborder="no" scrolling="no"></iframe>
 
