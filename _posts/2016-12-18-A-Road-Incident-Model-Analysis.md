@@ -179,7 +179,7 @@ $$
 y_{t} = \phi_{1} y_{t-1} + ... + \phi_{p} y_{t-p} + \epsilon_{t}
 $$
 
-where \$\$epsilon_t$$ denotes the stochastic component in the series. AR(0) is simply uncorrelated noise, while AR(1) represents a markov process (plotted below).
+where \$\$\epsilon_t$$ denotes the stochastic component in the series. AR(0) is simply uncorrelated noise, while AR(1) represents a markov process (plotted below).
 
 ``` r
 ### Autoregressive Models
