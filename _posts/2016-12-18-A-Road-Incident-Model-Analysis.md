@@ -215,7 +215,7 @@ In mathematical terms, a moving average model of order q (MA(q)) is written
 
 $$y_{t} = \mu + \epsilon_{t} + \theta_{1} \epsilon_{t-1} + ... + \theta_{q} \epsilon_{t-q} $$ 
 
-where $$\mu$$ represents the mean of the series (generally set to 0) and \(\epsilon_t\) denotes mutually independent stochastic terms.
+where $$\mu$$ represents the mean of the series (generally set to 0) and $$\epsilon_t$$ denotes mutually independent stochastic terms.
 
 ``` r
 ##### Moving Average Model ######
