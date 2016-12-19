@@ -239,7 +239,11 @@ Okay, so we've covered Autoregressive and Moving Average models, the constituent
 
 Non-stationary time series can often be stationarised by taking the difference between successive values (unsurprisingly known as differncing). The degree (typically denoted as d) of differencing is simply the number of times the data have had past values subtracted (in practise, at most 2 rounds of differencing is generally required). Going back to the Dow Jones closing price time series, we can tell by eye (and using the [augmented dickey-fuller test](https://en.wikipedia.org/wiki/Augmented_Dickey%E2%80%93Fuller_test)) that it's not stationary. However, taking the first difference, the time series has been become stationary (values follow a normal distribution centred near zero).
 
+<div style="text-align:center" markdown="1">
+
 ![Differencing]({{ base_path }}/images/differencing.png)
+
+</div>
 
 ``` r
 # augmented Dickey Fuller Test
