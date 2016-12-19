@@ -169,7 +169,7 @@ dow_jones <- read.csv(text=getURL(
 
 ARIMA models actually consists of three seperate models, which we'll now treat in turn, starting with autoregressive models.
 
-#### Autoregressive Model
+##### Autoregressive Model
 
 An [autoregressive model](https://www.otexts.org/fpp/8/3) describes a model where the output is a linear combination of its p previous (or lagged) values, together with a stochastic term (e.g. white noise).
 
@@ -207,7 +207,7 @@ for(i in 3:365){
 
 </div>
 
-### Moving Average Models
+#### Moving Average Models
 
 Where autoregressive (AR) models treat output variables as linear combinations of previous values, [moving average (MA) models](https://www.otexts.org/fpp/8/4) use past forecast errors in a regression-like model.
 
@@ -239,15 +239,15 @@ for(i in 3:365){
 
 <div style="text-align:center" markdown="1">
 
-![Differencing]({{ base_path }}/images/moving_average.png)
+![Moving Average]({{ base_path }}/images/moving_average.png)
 
 </div>
 
 Okay, so we've covered Autoregressive and Moving Average models, the constituents of an [ARMA model](https://en.wikipedia.org/wiki/Autoregressive%E2%80%93moving-average_model). But since there's no I in ARMA, we're left wondering the significance of the I in ARIMA, which stands for Integrated.
 
-### Differencing
+#### Differencing
 
-Non-stationary time series can often be stationarised by taking the difference between successive values (unsurprisingly known as differncing). The degree (typically denoted as d) of differencing is simply the number of times the data have had past values subtracted (in practise, at most 2 rounds of differencing is generally required). Going back to the Dow Jones closing price time series, we can tell by eye (and using the [augmented dickey-fuller test](https://en.wikipedia.org/wiki/Augmented_Dickey%E2%80%93Fuller_test)) that it's not stationary. However, taking the first difference, the time series has been become stationary (values follow a normal distribution centred near zero).
+Non-stationary time series can often be stationarised by taking the difference between successive values (unsurprisingly known as differencing). The degree (typically denoted as d) of differencing is simply the number of times the data have had past values subtracted (in practise, at most 2 rounds of differencing is generally required). Going back to the Dow Jones closing price time series, we can tell by eye (and using the [augmented dickey-fuller test](https://en.wikipedia.org/wiki/Augmented_Dickey%E2%80%93Fuller_test)) that it's not stationary. However, taking the first difference, the time series has been become stationary (values follow a normal distribution centred near zero).
 
 <div style="text-align:center" markdown="1">
 
