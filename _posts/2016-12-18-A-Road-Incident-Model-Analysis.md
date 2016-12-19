@@ -211,7 +211,11 @@ for(i in 3:365){
 
 Where autoregressive (AR) models treat output variables as linear combinations of previous values, [moving average (MA) models](https://www.otexts.org/fpp/8/4) use past forecast errors in a regression-like model.
 
-In mathematical terms, a moving average model of order q (MA(q)) is written \[ y_{t} = \mu + \epsilon_{t} + \theta_{1} \epsilon_{t-1} + ... + \theta_{q} \epsilon_{t-q} \] where \(\mu\) represents the mean of the series (generally set to 0) and \(\epsilon_t\) denotes mutually independent stochasitic terms.
+In mathematical terms, a moving average model of order q (MA(q)) is written 
+
+$$y_{t} = \mu + \epsilon_{t} + \theta_{1} \epsilon_{t-1} + ... + \theta_{q} \epsilon_{t-q} $$ 
+
+where $$\mu$$ represents the mean of the series (generally set to 0) and \(\epsilon_t\) denotes mutually independent stochastic terms.
 
 ``` r
 ##### Moving Average Model ######
