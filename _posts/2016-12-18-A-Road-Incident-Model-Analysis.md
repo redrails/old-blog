@@ -123,7 +123,7 @@ Perhaps unsurprisingly, the quietist day for road accidents is Sunday, while the
 
 <iframe  src="https://plot.ly/~dashee/13/hourly_accs_0515.embed?link=false" width="100%" height="500" frameborder="no" scrolling="no"></iframe>
 
-There's a clear distinction between the weekend and weekdays (though Friday is a sort of hybrid). The weekday rush hour peaks are apparent, while the weekend hits its maximum at around midday, with a noticeable increase in the early morning compared to weekdays. Switching greats, let's turn our attention to the longer term and plot the number of road accidents per month from 2005-2015.
+There's a clear distinction between the weekend and weekdays (though Friday is a sort of hybrid). The weekday rush hour peaks are apparent, while the weekend hits its maximum at around midday, with a noticeable increase in the early morning compared to weekdays. Switching gears, let's turn our attention to the longer term and plot the number of road accidents per month from 2005-2015.
 
 ``` r
 # just reformatting the days by the yearmonth (e.g. June 2008)
@@ -173,7 +173,15 @@ ARIMA models actually consists of three seperate models, which we'll now treat i
 
 An [autoregressive model](https://www.otexts.org/fpp/8/3) describes a model where the output is a linear combination of its p previous (or lagged) values, together with a stochastic term (e.g. white noise).
 
-In mathematical terms, an autoregressive model of order p (AR(p)) is written \[ y_{t} = \phi_{1} y_{t-1} + ... + \phi_{p} y_{t-p} + \epsilon_{t} \] where \(\epsilon_t\) denotes the stochastic component in the series. AR(0) is simply uncorrelated noise, while AR(1) represents a markov process (plotted below).
+In mathematical terms, an autoregressive model of order p (AR(p)) is written 
+
+$$
+\begin{displaymath} 
+y_{t} = \phi_{1} y_{t-1} + ... + \phi_{p} y_{t-p} + \epsilon_{t}
+\end{displaymath}
+$$
+
+where \$\$epsilon_t$$ denotes the stochastic component in the series. AR(0) is simply uncorrelated noise, while AR(1) represents a markov process (plotted below).
 
 ``` r
 ### Autoregressive Models
