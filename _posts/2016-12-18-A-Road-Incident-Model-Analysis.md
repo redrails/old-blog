@@ -196,14 +196,7 @@ for(i in 3:365){
   ar2[i] = ar2[i-1]*0.5 + ar2[i-2]*0.3 + rnorm(1)}
 ```
 
-{% capture fig_img %}
 ![Autoregressive Models]({{ base_path }}/images/autoregressive.png)
-{% endcapture %}
-
-<figure>
-  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>Autoregressive Models</figcaption>
-</figure>
 
 ### Moving Average Models
 
@@ -246,14 +239,7 @@ Okay, so we've covered Autoregressive and Moving Average models, the constituent
 
 Non-stationary time series can often be stationarised by taking the difference between successive values (unsurprisingly known as differncing). The degree (typically denoted as d) of differencing is simply the number of times the data have had past values subtracted (in practise, at most 2 rounds of differencing is generally required). Going back to the Dow Jones closing price time series, we can tell by eye (and using the [augmented dickey-fuller test](https://en.wikipedia.org/wiki/Augmented_Dickey%E2%80%93Fuller_test)) that it's not stationary. However, taking the first difference, the time series has been become stationary (values follow a normal distribution centred near zero).
 
-{% capture fig_img %}
-![Differncing]({{ base_path }}/images/differencing.png)
-{% endcapture %}
-
-<figure>
-  {{ fig_img | markdownify | remove: "<p>" | remove: "</p>" }}
-  <figcaption>First Order Differncing of Non-Stationary Process</figcaption>
-</figure>
+![Differencing]({{ base_path }}/images/differencing.png)
 
 ``` r
 # augmented Dickey Fuller Test
