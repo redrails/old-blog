@@ -22,7 +22,7 @@ date: "17 December 2016"
 
 
 
-As my father once told me: 'If you don't get the job, at least get a blog post'. This post was motivated by a task I was given for a data scientist job, which involved predicting road accidents in the UK. I won't focus on the specific task (that would encourage cheating), but instead will explore the rich dataset and use ARIMA to predict the number of road accidents in 2016.
+As my father once told me: 'If you don't get the job, at least get a blog post'. This post was motivated by a task I was given for a data scientist job, which involved predicting road accidents in the UK. I won't focus on the specific task (that would encourage cheating), but instead will explore the rich dataset and use ARIMA to predict the number of road accidents in 2016 (as always, [the full code is posted on github](https://github.com/dashee87/blogScripts/blob/master/R/2016-12-18-A-Road-Incident-Model-Analysis.R)).
 
 ### Getting the Data
 
@@ -119,7 +119,7 @@ tot_accs %>% group_by(Day_of_Week) %>% summarize(num_accs=n()) %>%
     ## 6      Friday   291359 16.36 %
     ## 7    Saturday   238108 13.37 %
 
-Perhaps unsurprisingly, the quietist day for road accidents is Sunday, while the greatest number of accidents occurs on Friday. Going a level lower, let's plot the accident time for each day of the week.
+Perhaps unsurprisingly, the quietist day for road accidents is Sunday, while the greatest number of accidents occurs on Friday. Going a level lower, let's plot the accident time for each day of the week (note: the code for the plots can be found [here](https://github.com/dashee87/blogScripts/blob/master/R/2016-12-18-A-Road-Incident-Model-Analysis.R))
 
 <iframe  src="https://plot.ly/~dashee/13/hourly_accs_0515.embed?link=false" width="100%" height="500" frameborder="no" scrolling="no"></iframe>
 
