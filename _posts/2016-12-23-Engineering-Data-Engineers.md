@@ -54,6 +54,8 @@ The first thing to note is there are about half as many data engineers posts as 
 
 <iframe  src="https://plot.ly/~dashee/21/data_analyst_scientist_engineer.embed?link=false" width="100%" height="500" frameborder="no" scrolling="no"></iframe>
 
+Apologies for small text on the x-axis, click [here](https://plot.ly/~dashee/23.embed?link=false&modebar=false) for a better version.
+
 ### tf-idf
 
 In this post, we'll attempt to isolate the skills that are more strongly associated with data engineers than data scientists/analysts. We want words that feature frequently in data engineer job descriptions, but rarely with other job types (called [term frequency-inverse document frequency](http://nlp.stanford.edu/IR-book/html/htmledition/tf-idf-weighting-1.html), or **tf-idf** for short).
