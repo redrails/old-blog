@@ -4,7 +4,7 @@ excerpt: "Concluding my seminal series on the data professions (the New York Tim
 header:
   overlay_image: pipeline.jpg
   overlay_filter: 0.4
-  caption: "The other kind.of pipeline."
+  caption: "The other kind of pipeline."
   cta_label: "Part 2"
   cta_url: "https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-2/"
 categories:
