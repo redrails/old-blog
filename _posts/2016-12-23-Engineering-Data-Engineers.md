@@ -120,6 +120,8 @@ de_df <- data.frame(word= row.names(de_tdm),
 all_df <- data.frame(word= row.names(all_tdm),
                  tf = rowSums(ifelse(as.matrix(all_tdm)>0,1,0)),
                  row.names = NULL, stringsAsFactors = FALSE)
+```
+``` r
 # data engineer common words
 de_df %>% arrange(-tf) %>% head
 ```
