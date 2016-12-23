@@ -1,6 +1,6 @@
 ---
 title: "Engineering Data Engineers"
-excerpt: "Concluding my seminal series on the data professions (the New York Times' words, not mine), this post focuses on the mysterious and elusive data engineer"
+excerpt: "Concluding my seminal series on the data professions (the New York Times' words, not mine), this post focuses on the mysterious and elusive data engineer."
 header:
   overlay_image: pipeline.jpg
   overlay_filter: 0.4
