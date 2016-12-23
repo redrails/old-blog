@@ -2,9 +2,9 @@
 title: "Engineering Data Engineers"
 excerpt: "Concluding my seminal series on the data professions (the New York Times' words, not mine), this post focuses on the mysterious and elusive data engineer"
 header:
-  overlay_image: data-scientist-analyst-screen-1.jpg
+  overlay_image: pipeline.jpg
   overlay_filter: 0.4
-  caption: ""
+  caption: "A pipeline. Not necessarily the data kind."
   cta_label: "Part 2"
   cta_url: "https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-2/"
 categories:
@@ -22,7 +22,7 @@ date: "23 December 2016"
 
 {% include base_path %}
 
-[Part 1](https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-1/) and [Part 2](https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-2/) both compared data scientists to data analysts. But I've been neglecting the unsung heroes of the data world: data engineers. I'm not too familiar with the life of a data engineer. I imagine there's some overlap with data scientists (Python, Hadoop, etc), but with a stronger emphasis on data infastructure (Spark, AWS, etc.). Coming from a position of complete ignorance, let's see if we can use NLP to identify the skills that are specific to data engineers.
+[Part 1](https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-1/) and [Part 2](https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-2/) both compared data scientists to data analysts. But I've been neglecting the unsung heroes of the data world: data engineers. I'm not too familiar with the life of a data engineer. I imagine there's some overlap with data scientists (Python, Hadoop, etc), but with a stronger emphasis on data infastructure (Spark, AWS, etc.). Coming from a position of complete ignorance, let's see if we can use NLP to identify the skills that are specific to data engineers. As always, the full code can be found on github.
 
 ### Data Collection
 
@@ -33,12 +33,13 @@ Similar to [Part 1](https://dashee87.github.io/data%20science/data-scientists-vs
 # devtools::install_github("dashee87/jobbR")
 
 ## loading the packages we'll need
-require(jobbR)
-require(dplyr)
-require(rvest)
-require(stringr)
-require(plotly)
-require(tm)
+require(jobbR) # searching indeed API
+require(dplyr) # data frame filtering/manipulation
+require(rvest) # web scraping
+require(stringr) # counting patterns within job descriptions
+require(plotly) # interactive plots
+require(ggplot2) # vanilla plots
+require(tm) # text mining
 ```
 
     ##         job_type num_jobs
@@ -52,7 +53,7 @@ require(tm)
 
 The first thing to note is there are about half as many data engineers posts as there are data scientist posts. Data engineers appear to be paid more than data scientists (though the former is a small sample), with the lowly data analyst bringing up the rear. We'll now turn our focus to the job description. Repeating the work in [Part 2](https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-2/), we'll plot the proportion of job descriptions that contain specific predefined skills.
 
-<iframe  src="https://plot.ly/~dashee/21/data_analyst_scientist_engineer.embed?link=false" width="100%" height="600" frameborder="no" scrolling="no"></iframe>
+<iframe  src="https://plot.ly/~dashee/21/data_analyst_scientist_engineer.embed?link=false" width="100%" height="550" frameborder="no" scrolling="no"></iframe>
 
 Apologies for small text on the x-axis, click [here](https://plot.ly/~dashee/23.embed?link=false&modebar=false) for a better version.
 
