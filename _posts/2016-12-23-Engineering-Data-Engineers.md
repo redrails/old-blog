@@ -4,11 +4,12 @@ excerpt: "Concluding my seminal series on the data professions (the New York Tim
 header:
   overlay_image: pipeline.jpg
   overlay_filter: 0.4
-  caption: "A pipeline. Not necessarily the data kind."
+  caption: "The other kind.of pipeline."
   cta_label: "Part 2"
   cta_url: "https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-2/"
 categories:
   - data science
+  - R
 tags:
   - data
   - engineer
@@ -22,7 +23,7 @@ date: "23 December 2016"
 
 {% include base_path %}
 
-[Part 1](https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-1/) and [Part 2](https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-2/) both compared data scientists to data analysts. But I've been neglecting the unsung heroes of the data world: data engineers. I'm not too familiar with the life of a data engineer. I imagine there's some overlap with data scientists (Python, Hadoop, etc), but with a stronger emphasis on data infastructure (Spark, AWS, etc.). Coming from a position of complete ignorance, let's see if we can use NLP to identify the skills that are specific to data engineers. As always, the full code can be found on github.
+[Part 1](https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-1/) and [Part 2](https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-2/) both compared data scientists to data analysts. But I've been neglecting the unsung heroes of the data world: data engineers. I'm not too familiar with the life of a data engineer. I imagine there's some overlap with data scientists (Python, Hadoop, etc), but with a stronger emphasis on data infastructure (Spark, AWS, etc.). Coming from a position of complete ignorance, let's see if we can use NLP to identify the skills that are specific to data engineers. As always, [the full code can be found on github](https://github.com/dashee87/blogScripts/tree/master/R).
 
 ### Data Collection
 
