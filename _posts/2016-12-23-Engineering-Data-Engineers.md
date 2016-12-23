@@ -1,3 +1,27 @@
+---
+title: "Data Scientists vs Data Analysts- Part 2"
+excerpt: "Concluding my seminal series on the data profession (the New York Times' words, not mine), this post focuses on the mysterious and elusive data engineer"
+header:
+  overlay_image: data-scientist-analyst-screen-1.jpg
+  overlay_filter: 0.4
+  caption: ""
+  cta_label: "Part 2"
+  cta_url: "https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-2/"
+categories:
+  - data science
+tags:
+  - data
+  - engineer
+  - scientist
+  - analyst
+  - jobbR
+  - NLP
+author: "David Sheehan"
+date: "23 December 2016"
+---
+
+{% include base_path %}
+
 [Part 1](https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-1/) and [Part 2](https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-2/) both compared data scientists to data analysts. But I've been neglecting the unsung heroes of the data world: data engineers. I'm not too familiar with the life of a data engineer. I imagine there's some overlap with data scientists (Python, Hadoop, etc), but with a stronger emphasis on data infastructure (Spark, AWS, etc.). Coming from a position of complete ignorance, let's see if we can use NLP to identify the skills that are specific to data engineers.
 
 ### Data Collection
@@ -22,9 +46,13 @@ require(tm)
     ## 2   Data Analyst      158
     ## 3  Data Engineer      103
 
-![](blog3_files/figure-markdown_github/unnamed-chunk-2-1.png)
+<div style="text-align:center" markdown="1">
+![Data Scientist Data Analyst Data Engineer Salary]({{ site.url }}{{ site.baseurl }}/images/salary-data-analyst-scientist-engineer.png)
+</div>
 
 The first thing to note is there are about half as many data engineers posts as there are data scientist posts. Data engineers appear to be paid more than data scientists (though the former is a small sample), with the lowly data analyst bringing up the rear. We'll now turn our focus to the job description. Repeating the work in [Part 2](https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-2/), we'll plot the proportion of job descriptions that contain specific predefined skills.
+
+<iframe  src="https://plot.ly/~dashee/21/data_analyst_scientist_engineer.embed?link=false" width="100%" height="650" frameborder="no" scrolling="no"></iframe>
 
 ### tf-idf
 
