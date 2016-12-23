@@ -52,7 +52,7 @@ require(tm)
 
 The first thing to note is there are about half as many data engineers posts as there are data scientist posts. Data engineers appear to be paid more than data scientists (though the former is a small sample), with the lowly data analyst bringing up the rear. We'll now turn our focus to the job description. Repeating the work in [Part 2](https://dashee87.github.io/data%20science/data-scientists-vs-data-analysts-part-2/), we'll plot the proportion of job descriptions that contain specific predefined skills.
 
-<iframe  src="https://plot.ly/~dashee/21/data_analyst_scientist_engineer.embed?link=false" width="100%" height="500" frameborder="no" scrolling="no"></iframe>
+<iframe  src="https://plot.ly/~dashee/21/data_analyst_scientist_engineer.embed?link=false" width="100%" height="600" frameborder="no" scrolling="no"></iframe>
 
 Apologies for small text on the x-axis, click [here](https://plot.ly/~dashee/23.embed?link=false&modebar=false) for a better version.
 
