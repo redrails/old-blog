@@ -179,7 +179,7 @@ plot_ly(rbind(data.frame(job = "Data Scientist",
 
 
 
-<iframe  src="https://plot.ly/~dashee/7/job-description-skills-data-scientist-v-data-analyst.embed?link=false" width="100%" height="1000" frameborder="no" scrolling="no"></iframe>
+<iframe  src="https://plot.ly/~dashee/7/job-description-skills-data-scientist-v-data-analyst.embed?link=false" width="100%" height="700" frameborder="no" scrolling="no"></iframe>
 
 <!---
 ![Data Scientist and Data Analyst All Skills]({{ site.url }}{{ site.baseurl }}/images/data_scientist_data_analyst_skills.png)
