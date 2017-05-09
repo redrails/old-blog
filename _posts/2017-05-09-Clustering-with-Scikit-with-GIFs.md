@@ -66,9 +66,7 @@ def cluster_plots(set1, set2, colours1 = 'gray', colours2 = 'gray',
 cluster_plots(dataset1, dataset2)
 ```
 
-
-![](mlblog_getting_there_files/mlblog_getting_there_1_0.png)
-
+![]({{ base_path }}/images/scikit_clustering_1_0.png)
 
 ## K-means
 
@@ -113,7 +111,7 @@ cluster_plots(dataset1, dataset2,
     Cluster 3: 1018
     
 
-![png](mlblog_getting_there_files/mlblog_getting_there_3_1.png)
+![]({{ base_path }}/images/scikit_clustering_3_1.png)
 
 
 k-means performs quite well on ``Dataset1``, but fails miserably on ``Dataset2``. In fact, these two datasets illustrate the strenghts and weaknesses of k-means. The algorithm seeks and identifies globular (essentially spherical) clusters. If this assumption doesn't hold, the model output may be inadaquate (or just really bad). It doesn't end there; k-means can also underperform with clusters of different size and density.
@@ -132,7 +130,7 @@ cluster_plots(np.vstack([dataset1[:2080,],dataset1[3000:3080,]]),
 ```
 
 
-![png](mlblog_getting_there_files/mlblog_getting_there_5_0.png)
+![]({{ base_path }}/images/scikit_clustering_5_0.png)
 
 
 For all its faults, the enduring popularity of k-means (and related algorithms) stems from its versatility. Its average complexity is O(k*n*T), where k,n and T are the number of clusters, samples and iterations, respectively. As such, it's considered one of the [fastest clustering algorithms out there](http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html). And in the world of big data, this matters. If your boss wants 10 customer segments by close of business, then you'll probably use k-means and just hope no one knows the word [globular](https://www.merriam-webster.com/dictionary/globular). 
@@ -158,7 +156,7 @@ cluster_plots(dataset1, dataset2, em_dataset1.predict(dataset1),  em_dataset2.pr
 ```
 
 
-![png](mlblog_getting_there_files/mlblog_getting_there_8_0.png)
+![]({{ base_path }}/images/scikit_clustering_8_0.png)
 
 
 No surprises there. EM clusters the first dataset perfectly, as the underlying data is normally distributed. In contrast, `Dataset2` cannot be accurately modelled as a GMM, so that's why EM performs so poorly in this case.
@@ -207,7 +205,7 @@ cluster_plots(dataset1, dataset2, hc_dataset1, hc_dataset2)
     
 
 
-![png](mlblog_getting_there_files/mlblog_getting_there_11_1.png)
+![]({{ base_path }}/images/scikit_clustering_11_1.png)
 
 
 You might notice that HC didn't perform so well on the noisy circles. By imposing simple connectivity constraints (points can only cluster with their n(=5) nearest neighbours), HC captures the non-globular structures within the dataset.
@@ -228,7 +226,7 @@ cluster_plots(dataset2, dataset2,hc_dataset2,hc_dataset2_connectivity,
     
 
 
-![png](mlblog_getting_there_files/mlblog_getting_there_13_1.png)
+![]({{ base_path }}/images/scikit_clustering_13_1.png)
 
 
 Conveniently, the position of each observation isn't necessary for HC, but rather the distance between each point (e.g. a n x n matrix). However, the main disadvantage of HC is that it requires too much memory for large datasets (that n x n matrix blows up pretty quickly). Divisive clustering is $O(2^n)$, while agglomerative clustering comes in somewhat better at $O(n^2 log(n))$ (though special cases of $O(n^2)$ are available for single and maximum linkage agglomerative clustering).
@@ -239,7 +237,7 @@ Mean shift describes a [general non-parametric technique](https://en.wikipedia.o
 
 <div style="text-align:center" markdown="1">
 
-![Mean Shift Algorithm]({{ base_path }}/images/meam_shift_0.gif)
+![Mean Shift Algorithm]({{ base_path }}/images/mean_shift_0.gif)
 
 </div>
 
@@ -272,9 +270,7 @@ cluster_plots(dataset1, dataset2, meanshifts[0].predict(dataset1), meanshifts[1]
     Dataset2: 8 clusters
     
 
-
-![png](mlblog_getting_there_files/mlblog_getting_there_16_1.png)
-
+![]({{ base_path }}/images/scikit_clustering_16_1.png)
 
 Mean shift clusters `Dataset1` well, but performs quite poorly on `Dataset2`. This shouldn't be too surprising. It's easy to imagine where you should overlay 4 balls on the first dataset. There's just no way you could accurately partition `Dataset2` with two balls (see the GIF below if you don't believe me). We've only considered a flat kernel (i.e. makes no distinction how the points are distributed within the ball), but, in some cases, a [Gaussian kernel might be more appropriate](http://sociograph.blogspot.co.uk/2011/11/accessible-introduction-to-mean-shift.html). Unfortunately, [scikit currently only accepts flat kernels](https://github.com/scikit-learn/scikit-learn/issues/442), so let's pretend I never mentioned Gaussian kernels. Either way, you'd need some really exotic kernel to identify the two clusters in `Dataset2`. 
 
@@ -330,8 +326,7 @@ cluster_plots(dataset1, dataset2, ap_dataset1, ap_dataset2)
     # Clusters: 117
     
 
-
-![png](mlblog_getting_there_files/mlblog_getting_there_19_1.png)
+![]({{ base_path }}/images/scikit_clustering_19_1.png)
 
 
 It's clear that the default settings in the [sklearn implementation of AP](http://scikit-learn.org/stable/modules/generated/sklearn.cluster.AffinityPropagation.html) didn't perform very well on the two datasets (in fact, neither execution converged). AP can suffer from non-convergence, though appropriate calibration of the damping parameter can minimise this risk. While AP doesn't explicitly require you to specify the number of clusters, the preference parameter fulfills this role in practice. Playing around with preference values, you'll notice that AP is considerably slower than k-means. That's because AP runtime complexity is O(n^2), where n represents the number of points in the dataset. But it's not all bad news. AP simply requires a similarity/affinity matrix, so the exact spatial position of each point is irrelevant. This also means that the algorithm is relatively insensitive to high dimensional data, assuming your measure of similarity is robust in higher dimensions (not the case for squared Euclidean distance!). Finally, AP is purely deterministic; so there's no need for multiple random restarts á la kmeans. For all of these reasons, [AP outperforms its competitors](http://science.sciencemag.org/content/315/5814/972) in complex computer visions tasks (e.g. clustering human faces).
@@ -355,8 +350,7 @@ cluster_plots(dataset1, dataset2, ap_dataset1, ap_dataset2)
     # Clusters: 3
     
 
-
-![png](mlblog_getting_there_files/mlblog_getting_there_21_1.png)
+![]({{ base_path }}/images/scikit_clustering_21_1.png)
 
 
 As you can see, I eventually arrived at some parameters that returned decent clustering for `Dataset1`. And just in case you're curious how the clustering was affected by the parameters.
@@ -398,8 +392,7 @@ cluster_plots(dataset1, dataset2, dbscan_dataset1, dbscan_dataset2)
     Number of Noise Points: 2 (1000)
     
 
-
-![png](mlblog_getting_there_files/mlblog_getting_there_24_1.png)
+![]({{ base_path }}/images/scikit_clustering_24_1.png)
 
 
 Wow! It managed to correctly segment `Dataset2` without knowing number of clusters beforehand. But before you throw k-means in the bin and get a DBSCAN tattoo ([a google image search returned nothing interesting](https://www.google.co.uk/search?q=dbscan+tattoo&safe=off&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjbvJWFz_vRAhUBWhoKHTOrCsAQ_AUICCgB&biw=1600&bih=794)), DBSCAN does have its flaws too. In rare cases, border points can flip between clusters, depending on the order by which the data is processed, meaning different executions can return different outputs. Like all clustering techniques discussed in this tutorial, DBSCAN suffers from the [curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality)- distance functions become less meaningful in higher dimensions, as all points are 'far away' from each other. For similar reasons, it can be hard to determine the appropriate values of epsilon and minPts (though trial and error will ususually sffice in 2 dimensions- see below GIF).
