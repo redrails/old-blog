@@ -69,7 +69,7 @@ cluster_plots(dataset1, dataset2)
 
 ![]({{ base_path }}/images/scikit_clustering_1_0.png)
 
-## K-means
+# K-means
 
 Based on absolutely no empirical evidence (the threshold for baseless assertions is much lower in blogging than academia), [k-means](https://en.wikipedia.org/wiki/K-means_clustering) is probably the most popular clustering algorithm of them all. The algorithm itself is relatively simple: Starting with a pre-specified number of cluster centres (which can be distributed randomly or smartly (see `kmeans++`)), each point is initally assigned to its nearest centre. In the next step, for each segment, the centres are moved to the centroid of the clustered points. The points are then  reassigned to their nearest centre. The process is repeated until moving the centres derives little or no improvement (measured by the within cluster sum of squares- the total squared distance between each point and its cluster centre). The alogorithm is concisely illustrated by the GIF below.
 
