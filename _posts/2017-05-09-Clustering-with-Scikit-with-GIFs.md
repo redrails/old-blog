@@ -1,11 +1,11 @@
 ---
 title: "Clustering with Scikit with GIFs"
-excerpt: "This posts describes (with GIFs and words) the most common clustering algorithm available within Scikit-learn."
+excerpt: "This posts describes (with GIFs and words) the most common clustering algorithms available through Scikit-learn."
 layout: single
 header:
   overlay_image: cluster_of_grapes.jpg
   overlay_filter: 0.4
-  caption: "Cluster of grapes (best stock photo I could find)"
+  caption: "Cluster of grapes (best free stock photo I could find)"
 categories:
   - data science
   - general
@@ -23,6 +23,7 @@ date: "09 May 2017"
 
 It's a common task for a data scientist: you need to generate segments (or clusters- I'll use the terms interchangably) of the customer base. Where does one start? With definitions, of course!!! Clustering is the subfield of unsupervised learning that aims to partition unlabelled datasets into consistent groups based on some shared unknown characteristics. All the tools you'll need are in Scikit-Learn, so I'll leave the code to a minimum. Instead, through the medium of GIFs, this tutorial will describe the most common techniques. If GIFs aren't your thing (what are you doing on the internet?), then the [scikit clustering documentation](http://scikit-learn.org/stable/modules/clustering.html) is quite thorough.
 
+You can download this jupyter notebook [here](https://github.com/dashee87/blogScripts/blob/master/Jupyter/2017-05-09-Clustering-with-Scikit-with-GIFs.ipynb) and the gifs can be downloaded from [this folder](https://github.com/dashee87/dashee87.github.io/tree/master/images) (or you can just right click on the GIFs and select 'Save image as...').
 
 # Techniques
 
@@ -221,11 +222,6 @@ cluster_plots(dataset2, dataset2,hc_dataset2,hc_dataset2_connectivity,
              title1='Without Connectivity', title2='With Connectivity')
 ```
 
-    C:\Program Files\Anaconda3\lib\site-packages\sklearn\cluster\hierarchical.py:418: UserWarning: the number of connected components of the connectivity matrix is 2 > 1. Completing it to avoid stopping the tree early.
-      connectivity, n_components = _fix_connectivity(X, connectivity)
-    
-
-
 ![]({{ base_path }}/images/scikit_clustering_13_1.png)
 
 
@@ -410,8 +406,3 @@ But these concerns are either minor or not unique to DBSCAN. A much bigger issue
 You may be wondering which clustering algorithm is the best. Well, the nature of the data will answer that question. For example, a large dataset could preclude computationally intensive algorithms (e.g hierarchical clustering or affinity propagation). Is anything known about the underlying structure (e.g. globular versus non-globular)? Are you looking for a specific number of clusters? Do you need to illustrate your work with a GIF (I'm looking at you, Affinity Propagation)? So, unfortunately, you need to have various algorithms in your toolbox, ready to deploy as the circumstances dicate (or you could just use k-means for everything).
 
 Hopefully, you enjoyed this tutorial on clustering. I intend to do a few more follow up posts (e.g. how to find the optimal number of clusters). Please get in touch if you have any questions or GIF requests!
-
-
-```python
-
-```
