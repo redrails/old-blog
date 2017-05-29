@@ -5,21 +5,20 @@
   
   <style>  
   
-   table{
+  #betfair_table table{
   margin: 1em 0;
-  width: 100%;
   overflow: hidden;
   background: #FFF;
   color: #024457;
-  text-align: center;
+  text-align: left;
 }
-tr {
-border: 1px solid #D9E4E6;
-}
-tr:nth-child(odd) {
+
+
+#betfair_table tr:nth-child(odd) {
 background-color: #EAF3F3;
 }
-th {
+
+#betfair_table th {
 display: none;
 text-align: center;
 border-bottom: 0.5em solid #FFF;
@@ -29,29 +28,24 @@ color: #FFF;
 padding: 1em;
 text-align: center;
 }
-th:first-child {
+
+#betfair_table th:first-child {
 border-right: 0.2em solid #FFF;
 border-left: 0em
 display: table-cell;
 text-align: center;
 }
-th:nth-child(2) {
+#betfair_table th:nth-child(2) {
 display: table-cell;
 }
-th:nth-child(2) span {
+#betfair_table th:nth-child(2) span {
 display: none;
 }
-th:nth-child(2):after {
+
+#betfair_table th:nth-child(2):after {
 content: attr(data-th);
 }
-@media (min-width: 480px) {
-th:nth-child(2) span {
-display: block;
-}
-th:nth-child(2):after {
-display: none;
-}
-}
+
 td {
 display: block;
 word-wrap: break-word;
@@ -61,7 +55,7 @@ border-right: 0.3em solid #FFF;
 border-left: 0.3em solid #FFF;
 }
 
-td:first-child {
+#betfair_table td:first-child {
 display: table-cell;
 text-align: center;
 border-right: 0.3em solid #FFF;
@@ -69,7 +63,7 @@ border-left: 0.3em solid #FFF;
 }
 
 
-th, td {
+table#betfair_table th, td {
 text-align: center;
 margin: .4em 1em;
 display: table-cell;
@@ -78,20 +72,9 @@ padding: 0.4em;
 
 
 
-body {
-padding: 0 0.4em;
+#betfair_table tr {
 font-family: Arial, sans-serif;
 color: #024457;
-background: #f2f2f2;
-}
-
-h1 {
-font-family: Verdana;
-font-weight: normal;
-color: #024457;
-}
-h1 span {
-color: #167F92;
 }
 
 
@@ -132,8 +115,8 @@ background-color: lightyellow;
   <input type="button" class = "button" id = "odds" value="Convert to Decimal Odds" onclick="return change_button(this);" />
   
   
-  <table style="width:50%" id = "betfair_table"> 
-  <caption><b>Chance of Occurence (EPL Fixtures 4-5 Feb 2017)</b><br/> Source: Betfair Exchange</caption>
+  <table style="width:80%" id = "betfair_table"> 
+  <caption><b>Chance of Occurence (EPL Fixtures 21st May 2017)</b><br/> Source: Betfair Exchange</caption>
   <thead>
   <tr>
   <th>Match</th>
@@ -196,7 +179,7 @@ background-color: lightyellow;
   el.value =  "Convert to " + el.value;
   document.getElementById("betfair_table").caption.innerHTML = 
   "<b>"+document.getElementById("betfair_table").caption.innerHTML + 
-  " (EPL Fixtures 4-5 Feb 2017)</b><br/> Source: Betfair Exchange";
+  " (EPL Fixtures 21st May 2017)</b><br/> Source: Betfair Exchange";
   }
   </script>
   
