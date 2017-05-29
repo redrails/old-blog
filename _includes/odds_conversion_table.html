@@ -133,7 +133,8 @@ background-color: lightyellow;
   <script type="text/javascript">
   var insert = document.getElementById("odds");
   insert.addEventListener("click", function() {
-  var allTableCells = document.getElementsByTagName("td");
+  var allTableallCells = document.getElementById("betfair_table");
+  var allTableCells = allTableallCells.getElementsByTagName("td");
   for(var i = 0, max = allTableCells.length; i < max; i++){
   var node = allTableCells[i];
   if(node.cellIndex ==0){
