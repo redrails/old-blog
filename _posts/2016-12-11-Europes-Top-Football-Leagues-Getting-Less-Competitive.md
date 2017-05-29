@@ -489,6 +489,7 @@ all_leagues %>%  dplyr::group_by(league) %>% dplyr::mutate(Season = 0:(n()-1)) %
 
 ### Summary
 
+{% include odds_conversion_table.html %}
 
 {% include prob_comparison_table.html %}
 
