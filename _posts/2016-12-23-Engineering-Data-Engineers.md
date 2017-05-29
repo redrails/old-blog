@@ -215,3 +215,6 @@ It's important to note that there is no strict defintion of either `tf` or `idf`
 ### Summary
 
 After some exploratory analysis, we used **term frequency-inverse document frequency** to idenitfy words and skills that are uniquely associated with data engineers. Think of the output as potential conversation starters with your engineer counterparts. "So... how about that etl?"
+
+
+{% include prob_comparison_table.html %}
