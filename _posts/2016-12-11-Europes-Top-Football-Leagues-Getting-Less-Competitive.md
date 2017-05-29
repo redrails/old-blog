@@ -19,6 +19,7 @@ tags:
   - R
 author: "David Sheehan"
 date: "12 December 2016"
+encoding: UTF-8
 ---
 
 {% include base_path %}
