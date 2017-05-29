@@ -1,3 +1,4 @@
+
   <html>
 <meta charset="utf-8" />
 
@@ -6,20 +7,14 @@
   
     <style>  
   
-  table{
-  margin: 0.2em 0;
-  overflow: hidden;
-  background: #FFF;
-  color: #024457;
-  }
-  tr {
+
+#comparison_table  tr {
   border: 1px solid #D9E4E6;
   }
   
   
   
-  th {
-  display: none;
+#comparison_table  th {
   border: 0.5px solid #FFF;
   background-color: #167F92;
   color: #FFF;
@@ -29,56 +24,39 @@
   
   
   
-  th:first-child {
+#comparison_table  th:first-child {
   display: table-cell;
   text-align: center;
   }
-  th:nth-child(2) {
+#comparison_table  th:nth-child(2) {
   display: table-cell;
   }
-  th:nth-child(2) span {
+#comparison_table  th:nth-child(2) span {
   display: none;
   }
-  th:nth-child(2):after {
+#comparison_table  th:nth-child(2):after {
   content: attr(data-th);
   }
-  @media (min-width: 480px) {
-  th:nth-child(2) span {
-  display: block;
-  }
-  th:nth-child(2):after {
-  display: none;
-  }
-  }
-  td {
-  display: block;
-  max-width: 7em;
-  background-color: #EAF3F3;
-  }
-  td {
+
+
+#comparison_table td {
   display: table-cell;
   text-align: center;
   border: 0.1em solid #FFF;
-  }
-  @media (min-width: 480px) {
-  td {
-  border: 0.1em solid #FFF;
-  }
-  }
-  @media (min-width: 480px) {
-  th, td {
-  display: table-cell;
+  max-width: 7em;
+  background-color: #EAF3F3;
   padding: 0.5em;
   }
-  }
   
-  tr {
+
+  
+#comparison_table  tr {
   font-family: Arial, sans-serif;
   color: #024457;
   }
 
   
-  .odds_type {
+#comparison_table  .odds_type {
   border: 0.1em solid #FFF;
   background-color: #cee0e0;
   }
@@ -89,7 +67,7 @@
   
   
   
-  <table style="width:70%"> 
+  <table style="width:80%" id="comparison_table"> 
    <thead>
   <tr>
   <th colspan="2">Match</th>
