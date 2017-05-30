@@ -89,7 +89,7 @@ data.frame(avg_home_goals = mean(epl_data$homeGoals),
 You'll notice that, on average, the home team scores more goals than the away team. This is the so called 'home (field) advantage' (discussed [here](https://jogall.github.io/2017-05-12-home-away-pref/)) and [isn't specific to soccer](http://bleacherreport.com/articles/1803416-is-home-field-advantage-as-important-in-baseball-as-other-major-sports). This is a convenient time to introduce the [Poisson distribution](https://en.wikipedia.org/wiki/Poisson_distribution). It's a discrete probability distribution that describes the probability of the number of events within a specific time period (e.g 90 mins) with a known average rate of occurence. A key assumption is that the number of events is independent of time. In our context, this means that goals don't become more/less likely by the number of goals already scored in the match. Instead, the number of goals is expressed purely as function an average rate of goals. If that was unclear, maybe this mathmatical formulation will make clearer:
 
 $$
-P\left( x \right) = \frac{{e^{-\lambda} \lambda ^x }}{{x!}}, \lambda>0
+P\left( x \right) = \frac{e^{-\lambda} \lambda ^x }{x!}, \lambda>0
 $$
 
 \(\lambda\) represents the average rate (average number of goals, average number of letters you recieve, etc.). So, we can treat the number of goals scored by the home and away team as Poisson distributions. The plot below shows the proportion of goals scored compared to the number of goals estimated by the corresponding Poisson distributions.
