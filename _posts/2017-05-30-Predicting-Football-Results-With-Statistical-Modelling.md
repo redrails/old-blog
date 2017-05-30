@@ -1,4 +1,27 @@
-Football (or soccer to my American readers) is full of clichés: "It's a game of two halves", "taking it one game at a time" and "Liverpool have failed to win the Premier League". You're less likely to hear "Treating the number of goals scored by each team as independent Poisson processes, statistical modelling suggests that the home team have a 60% chance of winning today". But this is actually a bit of cliché too (it has been discussed [here](https://www.pinnacle.com/en/betting-articles/soccer/how-to-calculate-poisson-distribution), [here](https://help.smarkets.com/hc/en-gb/articles/115001457989-How-to-calculate-Poisson-distribution-for-football-betting), [here](http://pena.lt/y/2014/11/02/predicting-football-using-r/) and [here](http://opisthokonta.net/?p=296)). As we'll discover, a simple Poisson model is, well, overly simplistic. But it's a good starting point and a nice intuitive way to learn about statistical modelling. But if you're looking to make money, [this guy makes ??5000 per month without leaving the house](http://www.make5000poundspermonth.co.uk/).
+---
+title: "Predicting Football Results With Statistical Modelling"
+excerpt: "Combining the world's most popular sport with everyone's favourite discrete distribution, this post checks whether you can predict football matches with the Poisson distribution."
+layout: single
+header:
+  overlay_image: football-overlay.jpg
+  overlay_filter: 0.4
+  caption: ""
+categories:
+  - data science
+  - football
+  - R
+tags:
+  - football
+  - soccer
+  - epl
+  - Poisson
+  - Betfair
+  - R
+author: "David Sheehan"
+date: "30 May 2017"
+---
+
+Football (or soccer to my American readers) is full of clichés: "It's a game of two halves", "taking it one game at a time" and "Liverpool have failed to win the Premier League". You're less likely to hear "Treating the number of goals scored by each team as independent Poisson processes, statistical modelling suggests that the home team have a 60% chance of winning today". But this is actually a bit of cliché too (it has been discussed [here](https://www.pinnacle.com/en/betting-articles/soccer/how-to-calculate-poisson-distribution), [here](https://help.smarkets.com/hc/en-gb/articles/115001457989-How-to-calculate-Poisson-distribution-for-football-betting), [here](http://pena.lt/y/2014/11/02/predicting-football-using-r/) and [here](http://opisthokonta.net/?p=296)). As we'll discover, a simple Poisson model is, well, overly simplistic. But it's a good starting point and a nice intuitive way to learn about statistical modelling. But if you're looking to make money, [this guy makes £5000 per month without leaving the house](http://www.make5000poundspermonth.co.uk/).
 
 Poisson Distribution
 --------------------
@@ -71,7 +94,11 @@ P\left( x \right) = \frac{{e^{ - \lambda } \lambda ^x }}{{x!}}, \lambda>0
 
 \(\lambda\) represents the average rate (average number of goals, average number of letters you recieve, etc.). So, we can treat the number of goals scored by the home and away team as Poisson distributions. The plot below shows the proportion of goals scored compared to the number of goals estimated by the corresponding Poisson distributions.
 
-![](post_files/figure-markdown_github/unnamed-chunk-4-1.png)
+<div style="text-align:center" markdown="1">
+
+![]({{ base_path }}/images/home_away_goals.png)
+
+</div>
 
 We can use this statistical model to estimate the probability of specfic events.
 
@@ -109,11 +136,19 @@ skellam::dskellam(1,mean(epl_data$homeGoals),mean(epl_data$awayGoals))
 
     ## [1] 0.2270677
 
-![](post_files/figure-markdown_github/unnamed-chunk-6-1.png)
+<div style="text-align:center" markdown="1">
+
+![]({{ base_path }}/images/skellam_goals.png)
+
+</div>
 
 So, hopefully you can see how we can adapt this approach to model specific matches. We just need to know the average number of goals scored by each team and feed this data into a Poisson model. Let's have a look at the distribution of goals scored by Chelsea and Sunderland (teams who finished 1st and last, repsectively).
 
-![](post_files/figure-markdown_github/unnamed-chunk-7-1.png)
+<div style="text-align:center" markdown="1">
+
+![]({{ base_path }}/images/chelsea_sunderland_goals.png)
+
+</div>
 
 Building A Model
 ----------------
@@ -273,9 +308,13 @@ Sports Betting/Trading
 
 Unlike traditional bookmakers, on betting exchanges (and Betfair isn't the only one- it's just the biggest), you bet against other people (with Betfair taking a commission on winnings). It acts as a sort of stock market for sports events. And, like a stock market, due to the [efficient market hypothesis](https://en.wikipedia.org/wiki/Efficient-market_hypothesis), the prices available at Betfair reflect the true price/odds of those events happening (in theory anyway). Below, I've posted a screenshot of the Betfair exchange on Sunday 21st May (a few hours before those matches started).
 
-![](betfair_exchange.png)
+<div style="text-align:center" markdown="1">
 
-The numbers inside the boxes represent the best available prices and the amount available at those prices. The blue boxes signify back bets (i.e. betting that an event will happen- going long using stock market terminology), while the pink boxes represent lay bets (i.e. betting that something won't happen- i.e. shorting). For example, if we were to bet ??100 on Chelsea to win, we would receive the original amount plus 100\*1.13= ??13 should they win (of course, we would lose our ??100 if they didn't win). Now, how can we compare these prices to the probabilities returned by our model. Well, decimal odds can be converted to the probabilities quite easily: it's simply the inverse of the decimal odds. For example, the implied probability of Chelsea winning is 1/1.13 (=0.885- our model put the probability at 0.889). I'm focusing on decimal odds, but you might also be familiar with [Moneyline (American) Odds](https://www.pinnacle.com/en/betting-articles/educational/odds-formats-available-at-pinnacle-sports) (e.g. +200) and fractional odds (e.g. 2/1). The relationship between decimal odds, moneyline and probability is illustrated in the table below. I'll stick with decimal odds because the alternatives are either unfamiliar to me (Moneyline) or just stupid (fractional odds).
+![]({{ base_path }}/images/betfair_exchange.png)
+
+</div>
+
+The numbers inside the boxes represent the best available prices and the amount available at those prices. The blue boxes signify back bets (i.e. betting that an event will happen- going long using stock market terminology), while the pink boxes represent lay bets (i.e. betting that something won't happen- i.e. shorting). For example, if we were to bet £100 on Chelsea to win, we would receive the original amount plus 100\*1.13= £13 should they win (of course, we would lose our £100 if they didn't win). Now, how can we compare these prices to the probabilities returned by our model. Well, decimal odds can be converted to the probabilities quite easily: it's simply the inverse of the decimal odds. For example, the implied probability of Chelsea winning is 1/1.13 (=0.885- our model put the probability at 0.889). I'm focusing on decimal odds, but you might also be familiar with [Moneyline (American) Odds](https://www.pinnacle.com/en/betting-articles/educational/odds-formats-available-at-pinnacle-sports) (e.g. +200) and fractional odds (e.g. 2/1). The relationship between decimal odds, moneyline and probability is illustrated in the table below. I'll stick with decimal odds because the alternatives are either unfamiliar to me (Moneyline) or just stupid (fractional odds).
 
 So, we have our model probabilities and (if we trust the exchange) we know the true probabilities of each event happening. Ideally, our model would idenitfy situations the market has underestimated the chances of an event occuring (or not occuring in the case of lay bets). For example, in a simple game of red or black, imagine if you were offered $2 for every $1 wagered (plus your stake), if you guessed correctly. The implied probability is 0.333, but any valid model would return a probability of 0.5. The odds returned by our model and the betfair exchange are compared in the table below.
 
@@ -296,7 +335,11 @@ epl_1617 <- read.csv(text=getURL("http://www.football-data.co.uk/mmz4281/1617/E0
   mutate(FHgoals= HTAG+HTHG, SHgoals= FTHG+FTAG-HTAG-HTHG) 
 ```
 
-![](post_files/figure-markdown_github/unnamed-chunk-13-1.png)
+<div style="text-align:center" markdown="1">
+
+![]({{ base_path }}/images/goals_per_half.png)
+
+</div>
 
 We have irrefutable evidence that violates the whole basis of our model, rendering this whole post pointless!!! Rather than a simple univariate Poisson model, we might have [more success](http://www.ajbuckeconbikesail.net/wkpapers/Airports/MVPoisson/soccer_betting.pdf) with a [bivariate Poisson distriubtion](http://www.stat-athens.aueb.gr/~karlis/Bivariate%20Poisson%20Regression.pdf). The [Weibull distribution](https://en.wikipedia.org/wiki/Weibull_distribution) has also been proposed as a [viable alternative](http://www.sportstradingnetwork.com/article/journal/using-the-weibull-count-distribution-for-predicting-the-results-of-football-matches/). These might be topics for future blog posts.
 
