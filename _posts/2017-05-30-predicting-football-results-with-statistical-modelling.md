@@ -1,6 +1,6 @@
 ---
 title: "Predicting Football Results With Statistical Modelling"
-excerpt: "Combining the world's most popular sport with everyone's favourite discrete distribution, this post checks whether you can predict football matches with the Poisson distribution."
+excerpt: "Combining the world's most popular sport with everyone's favourite discrete probability distribution, this post predicts football matches using the Poisson distribution."
 layout: single
 header:
   overlay_image: football-overlay.jpg
