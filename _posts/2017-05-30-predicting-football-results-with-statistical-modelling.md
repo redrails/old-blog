@@ -92,7 +92,7 @@ $$
 P\left( x \right) = \frac{e^{-\lambda} \lambda ^x }{x!}, \lambda>0
 $$
 
-\(\lambda\) represents the average rate (average number of goals, average number of letters you recieve, etc.). So, we can treat the number of goals scored by the home and away team as Poisson distributions. The plot below shows the proportion of goals scored compared to the number of goals estimated by the corresponding Poisson distributions.
+(\lambda\) represents the average rate (average number of goals, average number of letters you recieve, etc.). So, we can treat the number of goals scored by the home and away team as Poisson distributions. The plot below shows the proportion of goals scored compared to the number of goals estimated by the corresponding Poisson distributions.
 
 <div style="text-align:center" markdown="1">
 
@@ -330,7 +330,7 @@ Something Poissony
 
 So should we bet the house on Manchester United? Probably not (though they did win!). There's some non-statistical reasons to resist backing them. Keen football fans would notice that these matches represent the final gameweek of the season. Most teams have very little to play for, meaning that the matches are less predictable (especially when they involve unmotivated 'bigger' teams). Compounding that, Man United were set to play Ajax in the Europa Final three days later. [Man United manager, Jose Mourinho, had even confirmed that he would rest the first team, saving them for the much more important final](https://www.theguardian.com/football/2017/may/17/jose-mourinho-manchester-united-last-premier-league-game). In a similar fashion, injuries/suspensions to key players, managerial sackings would render our model inaccurate. Don't understimate the role of domain knowledge in statistical modelling/machine learning. We could also think of improvements to the model that would [incorporate time when considering previous matches](http://opisthokonta.net/?p=890) (i.e. more recent matches should be weighted more strongly).
 
-Statistically speaking, is a Poisson distribution even appropriate? Our model was founded on the belief that the number goals can be accurately expressed as a Poisson distribution. If that assumption is misguided, then the model outputs will be unreliable. Given a Poisson distribution with mean, ($\lambda$), then the number of events in half that time period follows a Poisson distribution with mean, ($\lambda/2$). In football terms, according to our Poisson model of goals, there should be an equal number of goals in the first and second halves. Unfortunately, that doesn't appear to hold true.
+Statistically speaking, is a Poisson distribution even appropriate? Our model was founded on the belief that the number goals can be accurately expressed as a Poisson distribution. If that assumption is misguided, then the model outputs will be unreliable. Given a Poisson distribution with mean, (\lambda), then the number of events in half that time period follows a Poisson distribution with mean, (\lambda/2). In football terms, according to our Poisson model of goals, there should be an equal number of goals in the first and second halves. Unfortunately, that doesn't appear to hold true.
 
 ``` r
 # the first half goals is missing for a few matches from the API
