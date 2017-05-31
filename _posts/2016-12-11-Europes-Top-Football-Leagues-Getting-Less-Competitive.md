@@ -489,8 +489,4 @@ all_leagues %>%  dplyr::group_by(league) %>% dplyr::mutate(Season = 0:(n()-1)) %
 
 ### Summary
 
-{% include odds_conversion_table.html %}
-
-{% include prob_comparison_table.html %}
-
 Using a combination of graph theory and more conventional statistics, we've shown that Europe's major football leagues are becoming less competitive. It supports the belief that the gap between the super-rich and the smaller clubs is widening. Now, whether you think this is a good or bad development for the sport probably depends on your club allegiance. However, we can all agree that it's unlikely a team like Deportivo La Coruna will win La Liga with 68 points in the near future.
