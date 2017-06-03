@@ -20,7 +20,6 @@ tags:
 author: "David Sheehan"
 date: "12 December 2016"
 encoding: UTF-8
-hidden: true
 ---
 
 {% include base_path %}
