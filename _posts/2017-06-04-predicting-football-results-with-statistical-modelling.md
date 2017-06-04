@@ -6,7 +6,7 @@ header:
   overlay_image: football-overlay.jpg
   overlay_filter: 0.4
   caption: ""
-  cta_label: "R version"
+  cta_label: "Switch to R version"
   cta_url: "https://dashee87.github.io/data%20science/football/r/predicting-football-results-with-statistical-modelling/"
 categories:
   - football
