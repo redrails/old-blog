@@ -6,7 +6,7 @@ header:
   overlay_image: football-overlay.jpg
   overlay_filter: 0.4
   caption: ""
-  cta_label: "Python version"
+  cta_label: "Switch to Python version"
   cta_url: "https://dashee87.github.io/football/python/predicting-football-results-with-statistical-modelling/"
 categories:
   - data science
