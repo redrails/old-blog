@@ -23,7 +23,7 @@ date: "4 June 2017"
 hidden: true
 ---
 
-Football (or soccer to my American readers) is full of clichés: "It's a game of two halves", "taking it one game at a time" and "Liverpool have failed to win the Premier League". You're less likely to hear "Treating the number of goals scored by each team as independent Poisson processes, statistical modelling suggests that the home team have a 60% chance of winning today". But this is actually a bit of cliché too (it has been discussed [here](https://www.pinnacle.com/en/betting-articles/soccer/how-to-calculate-poisson-distribution), [here](https://help.smarkets.com/hc/en-gb/articles/115001457989-How-to-calculate-Poisson-distribution-for-football-betting), [here](http://pena.lt/y/2014/11/02/predicting-football-using-r/), [here](http://opisthokonta.net/?p=296) [and particularly well here](https://dashee87.github.io/data%20science/football/r/predicting-football-results-with-statistical-modelling/)). As we'll discover, a simple Poisson model is, well, overly simplistic. But it's a good starting point and a nice intuitive way to learn about statistical modelling. So, if you came here looking to make money, [I hear this guy makes £5000 per month without leaving the house](http://www.make5000poundspermonth.co.uk/).
+Football (or soccer to my American readers) is full of clichés: "It's a game of two halves", "taking it one game at a time" and "Liverpool have failed to win the Premier League". You're less likely to hear "Treating the number of goals scored by each team as independent Poisson processes, statistical modelling suggests that the home team have a 60% chance of winning today". But this is actually a bit of cliché too (it has been discussed [here](https://www.pinnacle.com/en/betting-articles/soccer/how-to-calculate-poisson-distribution), [here](https://help.smarkets.com/hc/en-gb/articles/115001457989-How-to-calculate-Poisson-distribution-for-football-betting), [here](http://pena.lt/y/2014/11/02/predicting-football-using-r/), [here](http://opisthokonta.net/?p=296) and [particularly well here](https://dashee87.github.io/data%20science/football/r/predicting-football-results-with-statistical-modelling/)). As we'll discover, a simple Poisson model is, well, overly simplistic. But it's a good starting point and a nice intuitive way to learn about statistical modelling. So, if you came here looking to make money, [I hear this guy makes £5000 per month without leaving the house](http://www.make5000poundspermonth.co.uk/).
 
 ## Poisson Distribution
 
@@ -206,13 +206,14 @@ from statsmodels.genmod.generalized_estimating_equations import GEE
 from statsmodels.genmod.cov_struct import Independence
 from statsmodels.genmod.families import Poisson
 
-goal_model_data = pd.concat([epl_1617[['HomeTeam','AwayTeam','HomeGoals']].assign(home=1).rename(
+goal_model_data = pd.concat(
+            [epl_1617[['HomeTeam','AwayTeam','HomeGoals']].assign(home=1).rename(
             columns={'HomeTeam':'team', 'AwayTeam':'opponent','HomeGoals':'goals'}),
            epl_1617[['AwayTeam','HomeTeam','AwayGoals']].assign(home=0).rename(
             columns={'AwayTeam':'team', 'HomeTeam':'opponent','AwayGoals':'goals'})])
 
 poisson_model = GEE.from_formula("goals ~ home + team + opponent",groups="home",
-                    data= goal_model_data, cov_struct=Independence(), family=Poisson()).fit()
+                  data=goal_model_data, cov_struct=Independence(), family=Poisson()).fit()
 poisson_model.summary()
 ```
 
@@ -513,7 +514,8 @@ Statistically speaking, is a Poisson distribution even appropriate? Our model wa
 epl_1617_halves = pd.read_csv("http://www.football-data.co.uk/mmz4281/1617/E0.csv")
 epl_1617_halves = epl_1617_halves[['FTHG', 'FTAG', 'HTHG', 'HTAG']]
 epl_1617_halves['FHgoals'] = epl_1617_halves['HTHG'] + epl_1617_halves['HTAG']
-epl_1617_halves['SHgoals'] = epl_1617_halves['FTHG'] + epl_1617_halves['FTAG'] - epl_1617_halves['FHgoals']
+epl_1617_halves['SHgoals'] = epl_1617_halves['FTHG'] + epl_1617_halves['FTAG'] - 
+                               epl_1617_halves['FHgoals']
 epl_1617_halves = epl_1617_halves[['FHgoals', 'SHgoals']]
 ```
 
