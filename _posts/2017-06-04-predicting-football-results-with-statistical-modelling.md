@@ -199,21 +199,18 @@ So, hopefully you can see how we can adapt this approach to model specific match
 
 You should now be convinced that the number of goals scored by each team can be approximated by a Poisson distribution. Due to a relatively sample size (each team plays at most 19 home/away games), the accuracy of this approximation can vary significantly (especially earlier in the season when teams have played fewer games). Similar to before, we could now calculate the probability of various events in this Chelsea Sunderland match. But rather than treat each match separately, we'll build a more general Poisson regression model ([what is that?](https://en.wikipedia.org/wiki/Poisson_regression)).
 
-
 ```python
 # importing the tools required for the Poisson regression model
-from statsmodels.genmod.generalized_estimating_equations import GEE
-from statsmodels.genmod.cov_struct import Independence
-from statsmodels.genmod.families import Poisson
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
 
-goal_model_data = pd.concat(
-            [epl_1617[['HomeTeam','AwayTeam','HomeGoals']].assign(home=1).rename(
+goal_model_data = pd.concat([epl_1617[['HomeTeam','AwayTeam','HomeGoals']].assign(home=1).rename(
             columns={'HomeTeam':'team', 'AwayTeam':'opponent','HomeGoals':'goals'}),
            epl_1617[['AwayTeam','HomeTeam','AwayGoals']].assign(home=0).rename(
             columns={'AwayTeam':'team', 'HomeTeam':'opponent','AwayGoals':'goals'})])
 
-poisson_model = GEE.from_formula("goals ~ home + team + opponent",groups="home",
-                  data=goal_model_data, cov_struct=Independence(), family=Poisson()).fit()
+poisson_model = smf.glm(formula="goals ~ home + team + opponent", data=goal_model_data, 
+                        family=sm.families.Poisson()).fit()
 poisson_model.summary()
 ```
 
@@ -221,30 +218,30 @@ poisson_model.summary()
 
 
 <table class="simpletable">
-<caption>GEE Regression Results</caption>
+<caption>Generalized Linear Model Regression Results</caption>
 <tr>
-  <th>Dep. Variable:</th>                <td>goals</td>        <th>  No. Observations:  </th>    <td>740</td>  
+  <th>Dep. Variable:</th>        <td>goals</td>      <th>  No. Observations:  </th>  <td>   740</td> 
 </tr>
 <tr>
-  <th>Model:</th>                         <td>GEE</td>         <th>  No. clusters:      </th>     <td>2</td>   
+  <th>Model:</th>                 <td>GLM</td>       <th>  Df Residuals:      </th>  <td>   700</td> 
 </tr>
 <tr>
-  <th>Method:</th>                    <td>Generalized</td>     <th>  Min. cluster size: </th>    <td>370</td>  
+  <th>Model Family:</th>        <td>Poisson</td>     <th>  Df Model:          </th>  <td>    39</td> 
 </tr>
 <tr>
-  <th></th>                      <td>Estimating Equations</td> <th>  Max. cluster size: </th>    <td>370</td>  
+  <th>Link Function:</th>         <td>log</td>       <th>  Scale:             </th>    <td>1.0</td>  
 </tr>
 <tr>
-  <th>Family:</th>                      <td>Poisson</td>       <th>  Mean cluster size: </th>   <td>370.0</td> 
+  <th>Method:</th>               <td>IRLS</td>       <th>  Log-Likelihood:    </th> <td> -1042.4</td>
 </tr>
 <tr>
-  <th>Dependence structure:</th>     <td>Independence</td>     <th>  Num. iterations:   </th>     <td>6</td>   
+  <th>Date:</th>           <td>Sat, 10 Jun 2017</td> <th>  Deviance:          </th> <td>  776.11</td>
 </tr>
 <tr>
-  <th>Date:</th>                   <td>Sat, 03 Jun 2017</td>   <th>  Scale:             </th>   <td>0.942</td> 
+  <th>Time:</th>               <td>11:17:38</td>     <th>  Pearson chi2:      </th>  <td>  659.</td> 
 </tr>
 <tr>
-  <th>Covariance type: </th>            <td>robust</td>        <th>  Time:              </th> <td>23:37:10</td>
+  <th>No. Iterations:</th>         <td>8</td>        <th>                     </th>     <td> </td>   
 </tr>
 </table>
 <table class="simpletable">
@@ -252,140 +249,132 @@ poisson_model.summary()
                <td></td>                 <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th> <th>[95.0% Conf. Int.]</th> 
 </tr>
 <tr>
-  <th>Intercept</th>                  <td>    0.3725</td> <td>    0.019</td> <td>   19.130</td> <td> 0.000</td> <td>    0.334     0.411</td>
+  <th>Intercept</th>                  <td>    0.3725</td> <td>    0.198</td> <td>    1.880</td> <td> 0.060</td> <td>   -0.016     0.761</td>
 </tr>
 <tr>
-  <th>team[T.Bournemouth]</th>        <td>   -0.2891</td> <td>    0.186</td> <td>   -1.552</td> <td> 0.121</td> <td>   -0.654     0.076</td>
+  <th>team[T.Bournemouth]</th>        <td>   -0.2891</td> <td>    0.179</td> <td>   -1.612</td> <td> 0.107</td> <td>   -0.641     0.062</td>
 </tr>
 <tr>
-  <th>team[T.Burnley]</th>            <td>   -0.6458</td> <td>    0.247</td> <td>   -2.616</td> <td> 0.009</td> <td>   -1.130    -0.162</td>
+  <th>team[T.Burnley]</th>            <td>   -0.6458</td> <td>    0.200</td> <td>   -3.230</td> <td> 0.001</td> <td>   -1.038    -0.254</td>
 </tr>
 <tr>
-  <th>team[T.Chelsea]</th>            <td>    0.0789</td> <td>    0.190</td> <td>    0.416</td> <td> 0.677</td> <td>   -0.293     0.451</td>
+  <th>team[T.Chelsea]</th>            <td>    0.0789</td> <td>    0.162</td> <td>    0.488</td> <td> 0.626</td> <td>   -0.238     0.396</td>
 </tr>
 <tr>
-  <th>team[T.Crystal Palace]</th>     <td>   -0.3865</td> <td>    0.039</td> <td>   -9.906</td> <td> 0.000</td> <td>   -0.463    -0.310</td>
+  <th>team[T.Crystal Palace]</th>     <td>   -0.3865</td> <td>    0.183</td> <td>   -2.107</td> <td> 0.035</td> <td>   -0.746    -0.027</td>
 </tr>
 <tr>
-  <th>team[T.Everton]</th>            <td>   -0.2008</td> <td>    0.254</td> <td>   -0.790</td> <td> 0.429</td> <td>   -0.699     0.297</td>
+  <th>team[T.Everton]</th>            <td>   -0.2008</td> <td>    0.173</td> <td>   -1.161</td> <td> 0.246</td> <td>   -0.540     0.138</td>
 </tr>
 <tr>
-  <th>team[T.Hull]</th>               <td>   -0.7006</td> <td>    0.366</td> <td>   -1.914</td> <td> 0.056</td> <td>   -1.418     0.017</td>
+  <th>team[T.Hull]</th>               <td>   -0.7006</td> <td>    0.204</td> <td>   -3.441</td> <td> 0.001</td> <td>   -1.100    -0.302</td>
 </tr>
 <tr>
-  <th>team[T.Leicester]</th>          <td>   -0.4204</td> <td>    0.222</td> <td>   -1.898</td> <td> 0.058</td> <td>   -0.855     0.014</td>
+  <th>team[T.Leicester]</th>          <td>   -0.4204</td> <td>    0.187</td> <td>   -2.249</td> <td> 0.025</td> <td>   -0.787    -0.054</td>
 </tr>
 <tr>
-  <th>team[T.Liverpool]</th>          <td>    0.0162</td> <td>    0.100</td> <td>    0.163</td> <td> 0.871</td> <td>   -0.179     0.212</td>
+  <th>team[T.Liverpool]</th>          <td>    0.0162</td> <td>    0.164</td> <td>    0.099</td> <td> 0.921</td> <td>   -0.306     0.338</td>
 </tr>
 <tr>
-  <th>team[T.Man City]</th>           <td>    0.0117</td> <td>    0.033</td> <td>    0.352</td> <td> 0.725</td> <td>   -0.054     0.077</td>
+  <th>team[T.Man City]</th>           <td>    0.0117</td> <td>    0.164</td> <td>    0.072</td> <td> 0.943</td> <td>   -0.310     0.334</td>
 </tr>
 <tr>
-  <th>team[T.Man United]</th>         <td>   -0.3572</td> <td>    0.034</td> <td>  -10.614</td> <td> 0.000</td> <td>   -0.423    -0.291</td>
+  <th>team[T.Man United]</th>         <td>   -0.3572</td> <td>    0.181</td> <td>   -1.971</td> <td> 0.049</td> <td>   -0.713    -0.002</td>
 </tr>
 <tr>
-  <th>team[T.Middlesbrough]</th>      <td>   -1.0087</td> <td>    0.165</td> <td>   -6.123</td> <td> 0.000</td> <td>   -1.332    -0.686</td>
+  <th>team[T.Middlesbrough]</th>      <td>   -1.0087</td> <td>    0.225</td> <td>   -4.481</td> <td> 0.000</td> <td>   -1.450    -0.568</td>
 </tr>
 <tr>
-  <th>team[T.Southampton]</th>        <td>   -0.5804</td> <td>    0.103</td> <td>   -5.612</td> <td> 0.000</td> <td>   -0.783    -0.378</td>
+  <th>team[T.Southampton]</th>        <td>   -0.5804</td> <td>    0.195</td> <td>   -2.976</td> <td> 0.003</td> <td>   -0.963    -0.198</td>
 </tr>
 <tr>
-  <th>team[T.Stoke]</th>              <td>   -0.6082</td> <td>    0.123</td> <td>   -4.962</td> <td> 0.000</td> <td>   -0.848    -0.368</td>
+  <th>team[T.Stoke]</th>              <td>   -0.6082</td> <td>    0.197</td> <td>   -3.094</td> <td> 0.002</td> <td>   -0.994    -0.223</td>
 </tr>
 <tr>
-  <th>team[T.Sunderland]</th>         <td>   -0.9619</td> <td>    0.078</td> <td>  -12.379</td> <td> 0.000</td> <td>   -1.114    -0.810</td>
+  <th>team[T.Sunderland]</th>         <td>   -0.9619</td> <td>    0.222</td> <td>   -4.329</td> <td> 0.000</td> <td>   -1.397    -0.526</td>
 </tr>
 <tr>
-  <th>team[T.Swansea]</th>            <td>   -0.5136</td> <td>    0.124</td> <td>   -4.129</td> <td> 0.000</td> <td>   -0.757    -0.270</td>
+  <th>team[T.Swansea]</th>            <td>   -0.5136</td> <td>    0.192</td> <td>   -2.673</td> <td> 0.008</td> <td>   -0.890    -0.137</td>
 </tr>
 <tr>
-  <th>team[T.Tottenham]</th>          <td>    0.0532</td> <td>    0.111</td> <td>    0.480</td> <td> 0.631</td> <td>   -0.164     0.270</td>
+  <th>team[T.Tottenham]</th>          <td>    0.0532</td> <td>    0.162</td> <td>    0.328</td> <td> 0.743</td> <td>   -0.265     0.371</td>
 </tr>
 <tr>
-  <th>team[T.Watford]</th>            <td>   -0.5969</td> <td>    0.192</td> <td>   -3.115</td> <td> 0.002</td> <td>   -0.972    -0.221</td>
+  <th>team[T.Watford]</th>            <td>   -0.5969</td> <td>    0.197</td> <td>   -3.035</td> <td> 0.002</td> <td>   -0.982    -0.211</td>
 </tr>
 <tr>
-  <th>team[T.West Brom]</th>          <td>   -0.5567</td> <td>    0.172</td> <td>   -3.238</td> <td> 0.001</td> <td>   -0.894    -0.220</td>
+  <th>team[T.West Brom]</th>          <td>   -0.5567</td> <td>    0.194</td> <td>   -2.876</td> <td> 0.004</td> <td>   -0.936    -0.177</td>
 </tr>
 <tr>
-  <th>team[T.West Ham]</th>           <td>   -0.4802</td> <td>    0.134</td> <td>   -3.573</td> <td> 0.000</td> <td>   -0.744    -0.217</td>
+  <th>team[T.West Ham]</th>           <td>   -0.4802</td> <td>    0.189</td> <td>   -2.535</td> <td> 0.011</td> <td>   -0.851    -0.109</td>
 </tr>
 <tr>
-  <th>opponent[T.Bournemouth]</th>    <td>    0.4109</td> <td>    0.076</td> <td>    5.429</td> <td> 0.000</td> <td>    0.263     0.559</td>
+  <th>opponent[T.Bournemouth]</th>    <td>    0.4109</td> <td>    0.196</td> <td>    2.092</td> <td> 0.036</td> <td>    0.026     0.796</td>
 </tr>
 <tr>
-  <th>opponent[T.Burnley]</th>        <td>    0.1657</td> <td>    0.024</td> <td>    6.857</td> <td> 0.000</td> <td>    0.118     0.213</td>
+  <th>opponent[T.Burnley]</th>        <td>    0.1657</td> <td>    0.206</td> <td>    0.806</td> <td> 0.420</td> <td>   -0.237     0.569</td>
 </tr>
 <tr>
-  <th>opponent[T.Chelsea]</th>        <td>   -0.3036</td> <td>    0.191</td> <td>   -1.592</td> <td> 0.111</td> <td>   -0.677     0.070</td>
+  <th>opponent[T.Chelsea]</th>        <td>   -0.3036</td> <td>    0.234</td> <td>   -1.298</td> <td> 0.194</td> <td>   -0.762     0.155</td>
 </tr>
 <tr>
-  <th>opponent[T.Crystal Palace]</th> <td>    0.3287</td> <td>    0.053</td> <td>    6.217</td> <td> 0.000</td> <td>    0.225     0.432</td>
+  <th>opponent[T.Crystal Palace]</th> <td>    0.3287</td> <td>    0.200</td> <td>    1.647</td> <td> 0.100</td> <td>   -0.062     0.720</td>
 </tr>
 <tr>
-  <th>opponent[T.Everton]</th>        <td>   -0.0442</td> <td>    0.000</td> <td> -105.735</td> <td> 0.000</td> <td>   -0.045    -0.043</td>
+  <th>opponent[T.Everton]</th>        <td>   -0.0442</td> <td>    0.218</td> <td>   -0.202</td> <td> 0.840</td> <td>   -0.472     0.384</td>
 </tr>
 <tr>
-  <th>opponent[T.Hull]</th>           <td>    0.4979</td> <td>    0.040</td> <td>   12.313</td> <td> 0.000</td> <td>    0.419     0.577</td>
+  <th>opponent[T.Hull]</th>           <td>    0.4979</td> <td>    0.193</td> <td>    2.585</td> <td> 0.010</td> <td>    0.120     0.875</td>
 </tr>
 <tr>
-  <th>opponent[T.Leicester]</th>      <td>    0.3369</td> <td>    0.040</td> <td>    8.503</td> <td> 0.000</td> <td>    0.259     0.414</td>
+  <th>opponent[T.Leicester]</th>      <td>    0.3369</td> <td>    0.199</td> <td>    1.694</td> <td> 0.090</td> <td>   -0.053     0.727</td>
 </tr>
 <tr>
-  <th>opponent[T.Liverpool]</th>      <td>   -0.0374</td> <td>    0.096</td> <td>   -0.391</td> <td> 0.696</td> <td>   -0.225     0.150</td>
+  <th>opponent[T.Liverpool]</th>      <td>   -0.0374</td> <td>    0.217</td> <td>   -0.172</td> <td> 0.863</td> <td>   -0.463     0.389</td>
 </tr>
 <tr>
-  <th>opponent[T.Man City]</th>       <td>   -0.0993</td> <td>    0.090</td> <td>   -1.099</td> <td> 0.272</td> <td>   -0.276     0.078</td>
+  <th>opponent[T.Man City]</th>       <td>   -0.0993</td> <td>    0.222</td> <td>   -0.448</td> <td> 0.654</td> <td>   -0.534     0.335</td>
 </tr>
 <tr>
-  <th>opponent[T.Man United]</th>     <td>   -0.4220</td> <td>    0.094</td> <td>   -4.484</td> <td> 0.000</td> <td>   -0.606    -0.238</td>
+  <th>opponent[T.Man United]</th>     <td>   -0.4220</td> <td>    0.241</td> <td>   -1.754</td> <td> 0.079</td> <td>   -0.894     0.050</td>
 </tr>
 <tr>
-  <th>opponent[T.Middlesbrough]</th>  <td>    0.1196</td> <td>    0.102</td> <td>    1.169</td> <td> 0.242</td> <td>   -0.081     0.320</td>
+  <th>opponent[T.Middlesbrough]</th>  <td>    0.1196</td> <td>    0.208</td> <td>    0.574</td> <td> 0.566</td> <td>   -0.289     0.528</td>
 </tr>
 <tr>
-  <th>opponent[T.Southampton]</th>    <td>    0.0458</td> <td>    0.105</td> <td>    0.437</td> <td> 0.662</td> <td>   -0.160     0.251</td>
+  <th>opponent[T.Southampton]</th>    <td>    0.0458</td> <td>    0.211</td> <td>    0.217</td> <td> 0.828</td> <td>   -0.369     0.460</td>
 </tr>
 <tr>
-  <th>opponent[T.Stoke]</th>          <td>    0.2266</td> <td>    0.076</td> <td>    2.987</td> <td> 0.003</td> <td>    0.078     0.375</td>
+  <th>opponent[T.Stoke]</th>          <td>    0.2266</td> <td>    0.203</td> <td>    1.115</td> <td> 0.265</td> <td>   -0.172     0.625</td>
 </tr>
 <tr>
-  <th>opponent[T.Sunderland]</th>     <td>    0.3707</td> <td>    0.199</td> <td>    1.859</td> <td> 0.063</td> <td>   -0.020     0.761</td>
+  <th>opponent[T.Sunderland]</th>     <td>    0.3707</td> <td>    0.198</td> <td>    1.876</td> <td> 0.061</td> <td>   -0.017     0.758</td>
 </tr>
 <tr>
-  <th>opponent[T.Swansea]</th>        <td>    0.4336</td> <td>    0.169</td> <td>    2.558</td> <td> 0.011</td> <td>    0.101     0.766</td>
+  <th>opponent[T.Swansea]</th>        <td>    0.4336</td> <td>    0.195</td> <td>    2.227</td> <td> 0.026</td> <td>    0.052     0.815</td>
 </tr>
 <tr>
-  <th>opponent[T.Tottenham]</th>      <td>   -0.5431</td> <td>    0.031</td> <td>  -17.666</td> <td> 0.000</td> <td>   -0.603    -0.483</td>
+  <th>opponent[T.Tottenham]</th>      <td>   -0.5431</td> <td>    0.252</td> <td>   -2.156</td> <td> 0.031</td> <td>   -1.037    -0.049</td>
 </tr>
 <tr>
-  <th>opponent[T.Watford]</th>        <td>    0.3533</td> <td>    0.047</td> <td>    7.560</td> <td> 0.000</td> <td>    0.262     0.445</td>
+  <th>opponent[T.Watford]</th>        <td>    0.3533</td> <td>    0.198</td> <td>    1.782</td> <td> 0.075</td> <td>   -0.035     0.742</td>
 </tr>
 <tr>
-  <th>opponent[T.West Brom]</th>      <td>    0.0970</td> <td>    0.096</td> <td>    1.012</td> <td> 0.312</td> <td>   -0.091     0.285</td>
+  <th>opponent[T.West Brom]</th>      <td>    0.0970</td> <td>    0.209</td> <td>    0.463</td> <td> 0.643</td> <td>   -0.313     0.507</td>
 </tr>
 <tr>
-  <th>opponent[T.West Ham]</th>       <td>    0.3485</td> <td>    0.170</td> <td>    2.047</td> <td> 0.041</td> <td>    0.015     0.682</td>
+  <th>opponent[T.West Ham]</th>       <td>    0.3485</td> <td>    0.198</td> <td>    1.758</td> <td> 0.079</td> <td>   -0.040     0.737</td>
 </tr>
 <tr>
-  <th>home</th>                       <td>    0.2969</td> <td>    0.000</td> <td> 1119.652</td> <td> 0.000</td> <td>    0.296     0.297</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Skew:</th>          <td>      0.5936</td> <th>  Kurtosis:          </th> <td>      0.1543</td>
-</tr>
-<tr>
-  <th>Centered skew:</th> <td>      0.5936</td> <th>  Centered kurtosis: </th> <td>      0.1543</td>
+  <th>home</th>                       <td>    0.2969</td> <td>    0.063</td> <td>    4.702</td> <td> 0.000</td> <td>    0.173     0.421</td>
 </tr>
 </table>
 
 
 
-If you're curious about the `GEE.from_formula(...)` part, you can find more information [here](http://nbviewer.jupyter.org/urls/umich.box.com/shared/static/ir0bnkup9rywmqd54zvm.ipynb). I'm more interested in the values presented in the `coef` column in the model summary table, which are analogous to the slopes in linear regression. Similar to [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression), we take the [exponent of the parameter values](http://www.lisa.stat.vt.edu/sites/default/files/Poisson.and_.Logistic.Regression.pdf). A positive value implies more goals ($$e^{x}>1 \forall x > 0$$), while values closer to zero represent more neutral effects ($$e^{0}=1$$). Towards the bottom of the table you might notice that `home` has a `coef` of 0.2969. This captures the fact that home teams generally score more goals than the away team (specifically, $$e^{0.2969}$$=1.35 times more likely). But not all teams are created equal. Chelsea has an estimate of 0.0789, while the corresponding value for Sunderland is -0.9619 (sort of saying Chelsea (Sunderland) are better (much worse!) scorers than average). Finally, the `opponent*` values penalize/reward teams based on the quality of the opposition. This mimics the defensive strength of each team (Chelsea: -0.3036; Sunderland: 0.3707). In other words, you're less likely to score against Chelsea. Hopefully, that all makes both statistical and intuitive sense.
+If you're curious about the `smf.glm(...)` part, you can find more information [here](http://www.statsmodels.org/stable/examples/notebooks/generated/glm_formula.html) (edit: earlier versions of this post had erroneously employed a Generalised Estimating Equation (GEE)- [what's the difference?](https://stats.stackexchange.com/questions/16390/when-to-use-generalized-estimating-equations-vs-mixed-effects-models)). I'm more interested in the values presented in the `coef` column in the model summary table, which are analogous to the slopes in linear regression. Similar to [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression), we take the [exponent of the parameter values](http://www.lisa.stat.vt.edu/sites/default/files/Poisson.and_.Logistic.Regression.pdf). A positive value implies more goals ($$e^{x}>1 \forall x > 0$$), while values closer to zero represent more neutral effects ($$e^{0}=1$$). Towards the bottom of the table you might notice that `home` has a `coef` of 0.2969. This captures the fact that home teams generally score more goals than the away team (specifically, $$e^{0.2969}$$=1.35 times more likely). But not all teams are created equal. Chelsea has a `coef` of 0.0789, while the corresponding value for Sunderland is -0.9619 (sort of saying Chelsea (Sunderland) are better (much worse!) scorers than average). Finally, the `opponent*` values penalize/reward teams based on the quality of the opposition. This relfects the defensive strength of each team (Chelsea: -0.3036; Sunderland: 0.3707). In other words, you're less likely to score against Chelsea. Hopefully, that all makes both statistical and intuitive sense.
 
-Let's start making some predictions for the upcoming match. We simply pass our teams into `poisson_model` and it'll return the expected average number of goals for your team (we need to run it twice- we calculate the expected average number of goals for each team separately). So let's see how many goals we expect Chelsea and Sunderland to score.
+Let's start making some predictions for the upcoming matches. We simply pass our teams into `poisson_model` and it'll return the expected average number of goals for that team (we need to run it twice- we calculate the expected average number of goals for each team separately). So let's see how many goals we expect Chelsea and Sunderland to score.
 
 
 ```python
