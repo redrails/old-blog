@@ -407,10 +407,10 @@ Just like before, we have two Poisson distributions. From this, we can calculate
 
 ```python
 def simulate_match(foot_model, homeTeam, awayTeam, max_goals=10):
-    home_goals_avg = goals_model.predict(pd.DataFrame(data={'team': homeTeam, 
+    home_goals_avg = foot_model.predict(pd.DataFrame(data={'team': homeTeam, 
                                                             'opponent': awayTeam,'home':1},
                                                       index=[1]))[0]
-    away_goals_avg = goals_model.predict(pd.DataFrame(data={'team': awayTeam, 
+    away_goals_avg = foot_model.predict(pd.DataFrame(data={'team': awayTeam, 
                                                             'opponent': homeTeam,'home':0},
                                                       index=[1]))[0]
     team_pred = [[poisson.pmf(i, team_avg) for i in range(0, max_goals+1)] for team_avg in [home_goals_avg, away_goals_avg]]
@@ -516,7 +516,7 @@ epl_1617_halves = epl_1617_halves[['FHgoals', 'SHgoals']]
 
 
 
-We have irrefutable evidence that violates the whole basis of our model, rendering this whole post as pointless as Sunderland!!! Or we can build on our crude first attempt. Rather than a simple univariate Poisson model, we might have [more success](http://www.ajbuckeconbikesail.net/wkpapers/Airports/MVPoisson/soccer_betting.pdf) with a [bivariate Poisson distriubtion](http://www.stat-athens.aueb.gr/~karlis/Bivariate%20Poisson%20Regression.pdf). The [Weibull distribution](https://en.wikipedia.org/wiki/Weibull_distribution) has also been proposed as a [viable alternative](http://www.sportstradingnetwork.com/article/journal/using-the-weibull-count-distribution-for-predicting-the-results-of-football-matches/). These might be topics for future blog posts.
+We have irrefutable evidence that violates a fundamental assumption of our model, rendering this whole post as pointless as Sunderland!!! Or we can build on our crude first attempt. Rather than a simple univariate Poisson model, we might have [more success](http://www.ajbuckeconbikesail.net/wkpapers/Airports/MVPoisson/soccer_betting.pdf) with a [bivariate Poisson distriubtion](http://www.stat-athens.aueb.gr/~karlis/Bivariate%20Poisson%20Regression.pdf). The [Weibull distribution](https://en.wikipedia.org/wiki/Weibull_distribution) has also been proposed as a [viable alternative](http://www.sportstradingnetwork.com/article/journal/using-the-weibull-count-distribution-for-predicting-the-results-of-football-matches/). These might be topics for future blog posts.
 
 ## Summary
 
