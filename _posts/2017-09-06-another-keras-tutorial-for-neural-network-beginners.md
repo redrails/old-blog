@@ -24,7 +24,7 @@ date: "06 September 2017"
 
 I've noticed that the term machine learning has become increasingly synonymous with deep learning (DL), artificial intelligence (AI) and neural networks (NNs). For example, [posts on the machine learning subreddit almost exclusively relate to neural network based approaches](https://www.reddit.com/r/MachineLearning/comments/6mloim/discussion_is_this_rmachinelearning_or/?st=j50yusg2&sh=68bba8ff) (and [great non-DL posts are not recognised sufficiently for their greatness](https://www.reddit.com/r/MachineLearning/comments/6a94oi/p_unsupervised_machine_learning_explained_with)). So it's time to get on board the hype train! Next stop, Keras! This post is actually relatively basic; [we won't convert photos of horses to photos of zebras](https://github.com/junyanz/CycleGAN), [we won't create jazz music](https://github.com/jisungk/deepjazz). In fact, we won't do anything interesting. We'll just construct a simple Keras model to do basic predictions and illustrate some good practices along the way.
 
-As always, the source code is available from my Github account.
+As always, the source code is available from [my Github account](https://github.com/dashee87/blogScripts/blob/master/Jupyter/2017-09-06-another-keras-tutorial-for-neural-network-beginners.ipynb).
 
 ## Motivation
 
@@ -537,4 +537,4 @@ Thanks for reading!!! I need to lie down.
 
 ## Source Code
 
-The original code is available as a Jupyter notebook [here]().
+The original code is available as a Jupyter notebook [here](https://github.com/dashee87/blogScripts/blob/master/Jupyter/2017-09-06-another-keras-tutorial-for-neural-network-beginners.ipynb).
