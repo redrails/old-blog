@@ -3,7 +3,7 @@ title: "Another Keras Tutorial For Neural Network Beginners"
 excerpt: "This post hopes to promote some good practices for beginners aiming to build neural networks in Keras"
 layout: single
 header:
-  overlay_image: neuron-overlay.jpg
+  overlay_image: neuron_overlay.jpg
   overlay_filter: 0.4
   caption: "Needs more neurons"
 categories:
