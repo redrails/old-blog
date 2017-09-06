@@ -46,7 +46,11 @@ I know that cartoon refers to layers (this post will primarily look at neurons),
 
 As Keras is a wrapper for Theano and TensorFlow, you first need to install one of these libraries on your computer (you don't need to install both). You could install them all with one command but it make sense to break up the installation process for debugging purposes. Depending on your operating system, there's extensive installation documentation for both [Theano](http://deeplearning.net/software/theano/install.html) and [TensorFlow](https://www.tensorflow.org/install/). Having installed Theano or TF, from the command line, you can then either install Keras from PyPi or conda if you're working off Anaconda.
 
-![Commands to install Keras](post_images/install_keras.png)
+<div style="text-align:center" markdown="1">
+
+![Commands to install Keras]({{ base_path }}/images/install_keras.png)
+
+</div>
 
 You can check if that all worked by running this short Python code.
 
