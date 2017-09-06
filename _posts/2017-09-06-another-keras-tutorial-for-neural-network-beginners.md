@@ -254,7 +254,9 @@ To prevent needless repitition, I'm going to wrap the model construction and per
 ```python
 def runNN(X_train_set, Y_train_set, X_test_set, Y_test_set, n_neurons, n_epochs, seed=155,
           history=True, del_files=True, validation_split=0.0, early_stopping=None):
-  
+# it's a long function so I've omitted it from this post
+# can be found in the accompanying Jupyter notebook
+# https://github.com/dashee87/blogScripts/blob/master/Jupyter/2017-09-06-another-keras-tutorial-for-neural-network-beginners.ipynb
 ```
 
 
