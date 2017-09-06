@@ -85,7 +85,7 @@ By default, Keras is configured to use a TensorFlow backend. To switch this to T
 </div>
 
 
-### Model Construction Basics
+## Model Construction Basics
 
 Like the posts that motivated this tutorial, I'm going to use the [Pima Indians Diabetes dataset](https://archive.ics.uci.edu/ml/machine-learning-databases/pima-indians-diabetes/), a standard machine learning dataset with the objective to predict diabetes sufferers. It records various physiological measures of [Pima Indians](https://en.wikipedia.org/wiki/Pima_people) and whether subjects had developed diabetes. At just 768 rows, it's a small dataset, especially in the context of deep learning. But its size will mean that we don't need to worry about things like [batch-size](https://stats.stackexchange.com/questions/153531/what-is-batch-size-in-neural-network), [CPUs vs GPUs](https://medium.com/@erikhallstrm/hello-world-tensorflow-649b15aed18c) and other computational concerns associated with complex NNs.
 
