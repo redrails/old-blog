@@ -26,7 +26,7 @@ I've noticed that the term machine learning has become increasingly synonymous w
 
 As always, the source code is available from my Github account.
 
-### Motivation
+## Motivation
 
 Tensor Flow (TF), Theano, Torch are among the most common deep learning libraries. The differences between each library has been discussed [elsewhere](https://deeplearning4j.org/compare-dl4j-torch7-pylearn). Basically, it comes down to the language in which it was written (i.e. Python, C++, etc.) and the level of abstraction. The last part of that sentence was deliberately vague. Essentially, you want to balance flexibility (customised networks) with readability/interpretation. That's where Keras comes in. I found the TF syntax to be initially a little strange. Keras is effectively a [simplified intuitive API built on top of Tensor Flow or Theano](https://blog.keras.io/keras-as-a-simplified-interface-to-tensorflow-tutorial.html) (you select the backend configuration). So, unless you require that customisation or sophistication that comes with a lower level interface, Keras should be sufficient for your purposes.
 
@@ -42,7 +42,7 @@ In my quest for a more rigorous tutorial, I then stumbled across [this post](htt
 
 I know that cartoon refers to layers (this post will primarily look at neurons), but you get the idea. In machine learning, a little bit of knowledge (and shitloads of neurons) can be a dangerous thing.
 
-### Installing Keras
+## Installing Keras
 
 As Keras is a wrapper for Theano and TensorFlow, you first need to install one of these libraries on your computer (you don't need to install both). You could install them all with one command but it make sense to break up the installation process for debugging purposes. Depending on your operating system, there's extensive installation documentation for both [Theano](http://deeplearning.net/software/theano/install.html) and [TensorFlow](https://www.tensorflow.org/install/). Having installed Theano or TF, from the command line, you can then either install Keras from PyPi or conda if you're working off Anaconda.
 
@@ -137,7 +137,8 @@ Okay, we've converted the dataset into a numpy array. The last column indicates 
 
 
 ```python
-X_train, X_test, Y_train, Y_test = train_test_split(dataset[:,0:8], dataset[:,8], test_size=0.25, random_state=87)
+X_train, X_test, Y_train, Y_test = train_test_split(dataset[:,0:8], dataset[:,8], 
+                                                    test_size=0.25, random_state=87)
 ```
 
 The data for the model is ready. Now we just need a model. We'll start with a simple single layer fully connected neural network (this is generally not considered deep learning, where deepness is determined by the number of hidden layers). This is pleasingly simple to build in Keras. We just initialise our model and then sequentially add layers (see GIF below). We also need to decide how to assess the accuracy of the model (called loss). As it's a classification problem, [cross entropy](https://en.wikipedia.org/wiki/Cross_entropy) is the most appropriate measure of error (a regression task might use mean squared error). A full list of the error functions available with Keras can be found [here](https://keras.io/losses/).
@@ -358,7 +359,7 @@ nn_output_scaled['acc'][-1]
 
 We did it! By normalizing the input data, we surpassed that 95% accuracy benchmark and even attained perfect accuracy on the training set. Maybe if we added more neurons, we could defy mathematical logic and beat perfection. Mo' neurons, mo' money! However, as the training error on the standardised inputs approached zero, the test error showed no improvement. In fact, it even appears to significantly worsen. In other words, we have another case of overfitting. On a positive note, this graph also demonstrates the benefits of standardising your input data (as long as you don't allow the model overfit).
 
-# Validation Set & Early Stopping
+## Validation Set & Early Stopping
 
 Remember, a good model is one that generalises well to unseen data. As such, reductions in the training error are only beneficial if they coincide with improvements in the test accuracy. Ideally, we'd stop training the model when it's no longer improving the test accuracy (known as [early stopping](https://en.wikipedia.org/wiki/Early_stopping)). This is the reasoning behind the validation set. During the training phase, the model parameters (node weights in the case of NNs) are tuned on the training data, while the accuracy of the model is regularly assessed on data that sits outside of the training data (i.e. the validation set). As long as the validation error is decreasing, the model can continue to fine tune its parameters. Though they may seem to conceptually fulfill the same role, just beware that the validation and test datasets should be strictly separated. As model training incorporated the validation set, predictive performance can only be determined on the test set (hence, the training/validation/test split convention).
 
@@ -386,7 +387,7 @@ nn_output_scaled = runNN(scaler.fit_transform(X_train), Y_train, scaler.fit_tran
 
 As well as preventing overfitting, one obvious advantage of early stopping is that it allows the model to stop early. You won't find that kind of insight on [machinelearningmastery](https://machinelearningmastery.com/)!!! While it may not appear hugely beneficial for our small simplified model, in the world of deep learning and driverless cars, this could save you some time. Of course, early stopping raises the prospect of premature stopping (i.e. terminating the training phase at a sub-optimal configuration). This risk can be mitigated by increasing the `patience` argument or loosening your definition of an improvement. As an aside, note the erratic behaviour exhibited by the model trained on unscaled data, which can be attributed to the instability of gradients derived from highly unbalanced input values.
 
-# Hyperparameter Tuning (& Cross-Validation)
+## Hyperparameter Tuning (& Cross-Validation)
 
 Hopefully, you've realised that less is sometimes more. Iterating over fewer epochs can actually improve the predictive power of the model. How about the number of nodes in the single hidden layer? Surely, we should just cramming them in there. Right? Well, this is known as hyperparamater tuning/optimisation- as opposed to parameter tuning, which is changing the model weights during the training phase. We can run multiple models with varying number of nodes (which we specify) and accept the version that performs best on the validation set. This is known as grid search (we're searching over a grid of values... yet more insightful insights you won't find anywhere else). Note that the process is similar if you want to tune other model hyperparameters (e.g. learning rate, batch size, activation functions, etc.). I'm actually going to compare the models on loss rather than accuracy; though it's less intuitive, it is more informative (an improvement in model loss doesn't necessarily coincide with better accuracy).
 
@@ -476,7 +477,7 @@ my_grid[np.argmin(np.mean(all_kfolds_results,axis=1))]
 
 Looking at the averages alone, we'd conclude that 200 neurons is optimal. Those error bars represent the standard deviation, which measures the statistical uncertainty around those means. I won't delve into hypothesis testing ((the merits of which can be debated)[https://stats.stackexchange.com/questions/185048/should-repeated-cross-validation-be-used-to-assess-predictive-models?rq=1]), but superficially we can see that most of those errors bars overlap, meaning there's very little significant difference between each case (don't put that sentence in your paper submission). The size of the bars is worth noting, as it measures model stability. Depending on your circumstances, rather than overall accuracy, you may prefer a model that performs well consistently (small bars), as that could indicate it's more likely to maintain its performance on unseen data.
 
-Before you seek out an [online t-test calculator](https://www.graphpad.com/quickcalcs/ttest1.cfm), it's worth noting that the training/validation split can be sliced and diced in a whole multitude of ways ($\binom{576}{115} > 4\times10^{123}$). So far, we've assessed the hyperparameters on a single 5-fold cross validation configuration. Obviously, I don't recommend exhausting the full array of potential cross-validations, but it's good practice to compare your models across a number of different splits (called repeated cross-validation). Simply call [RepeatedStratifiedKfold](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html) and specify the number of repeats. To illustrate it in action, I'll opt for 4 repeats (in practice, [you'd probably want to increase this number](https://stats.stackexchange.com/questions/82546/how-many-times-should-we-repeat-a-k-fold-cv)).
+Before you seek out an [online t-test calculator](https://www.graphpad.com/quickcalcs/ttest1.cfm), it's worth noting that the training/validation split can be sliced and diced in a whole multitude of ways ($$\binom{576}{115} > 4\times10^{123}$$). So far, we've assessed the hyperparameters on a single 5-fold cross validation configuration. Obviously, I don't recommend exhausting the full array of potential cross-validations, but it's good practice to compare your models across a number of different splits (called repeated cross-validation). Simply call [RepeatedStratifiedKfold](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RepeatedStratifiedKFold.html) and specify the number of repeats. To illustrate it in action, I'll opt for 4 repeats (in practice, [you'd probably want to increase this number](https://stats.stackexchange.com/questions/82546/how-many-times-should-we-repeat-a-k-fold-cv)).
 
 
 ```python
@@ -522,7 +523,7 @@ It's a close contest but a hidden layer with 200 neurons is the winner. We could
 
 Finally, we can answer the age old question of the optimal number of neurons to put into a single hidden layer feed forward neural network model to predict diabetes sufferers among Pima Indians. It's 200... Or maybe 100. But it's certainly within those two numbers. Ah actually, that's not necessarily true. I need to look at 250. And 201...
 
-# Summary
+## Summary
 
 This post was much more detailed than I had initially planned. Who knew there were so many ways to mess up a neural net? If you intend to actually gain some meaningful insights from your model (could happen...), then here are my top tips:
 
@@ -534,6 +535,6 @@ This post was much more detailed than I had initially planned. Who knew there we
 
 Thanks for reading!!! I need to lie down.
 
-# Source Code
+## Source Code
 
 The original code is available as a Jupyter notebook [here]().
