@@ -37,7 +37,7 @@ In my quest for a more rigorous tutorial, I then stumbled across [this post](htt
 
 <div style="text-align:center" markdown="1">
 
-<a href="https://dashee87.github.io/images/more_layers___.png" data-fancybox data-caption="More neurons">
+<a class="fancybox" href="https://dashee87.github.io/images/more_layers___.png">
 	<img src="https://dashee87.github.io/images/more_layers___.png" alt="" />
 </a>
 </div>
