@@ -497,3 +497,9 @@ Thanks for reading!!! I need to lie down.
 ## Source Code
 
 The original code is available as a Jupyter notebook [here](https://github.com/dashee87/blogScripts/blob/master/Jupyter/2017-09-06-another-keras-tutorial-for-neural-network-beginners.ipynb).
+
+  <script type="text/javascript">
+$("selector").fancybox({
+    arrows : false
+});
+  </script>
