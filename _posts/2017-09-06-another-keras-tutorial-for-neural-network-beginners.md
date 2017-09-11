@@ -34,10 +34,12 @@ Having settled on Keras, I wanted to build a simple NN. I did what any good data
 
 In my quest for a more rigorous tutorial, I then stumbled across [this post](https://datanonymous.wordpress.com/using-a-neural-network-to-predict-diabetes-in-pima-indians/), claiming to achieve 95 % accuracy on the same dataset. Being sceptical about this feat, I could see the improvements were realised by expanding the single hidden layer (see cartoon below), with accuracy assessed on the training set. In other words, it was a classic case of overfitting. So, this post is my way to set the record straight and hopefully instill best practices in fellow deep learning newbies.
 
+
 <div style="text-align:center" markdown="1">
 
-![More neurons]({{ base_path }}/images/more_layers___.png)
-
+<a href="https://dashee87.github.io/images/more_layers___.png" data-fancybox data-caption="More neurons">
+	<img src="https://dashee87.github.io/images/more_layers___.png" alt="" />
+</a>
 </div>
 
 I know that cartoon refers to layers (this post will primarily look at neurons), but you get the idea. In machine learning, a little bit of knowledge (and shitloads of neurons) can be a dangerous thing.
