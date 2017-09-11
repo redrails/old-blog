@@ -415,9 +415,8 @@ for grid_vals in my_grid:
 </div>
 
 <div style="text-align:center" markdown="1">
-
-<a class="fancybox" href="/images/cross_validation.gif">
-    <img src="/images/cross_validation.gif"/>
+<a id="single_2" href="/images/cross_validation.gif" title="Cross Validation For Hyparameter Tuning">
+	<img src="/images/cross_validation.gif" alt="" />
 </a>
 </div>
 
@@ -498,8 +497,3 @@ Thanks for reading!!! I need to lie down.
 
 The original code is available as a Jupyter notebook [here](https://github.com/dashee87/blogScripts/blob/master/Jupyter/2017-09-06-another-keras-tutorial-for-neural-network-beginners.ipynb).
 
-  <script type="text/javascript">
-$("selector").fancybox({
-    arrows : false
-});
-  </script>
