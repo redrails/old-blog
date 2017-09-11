@@ -416,7 +416,7 @@ for grid_vals in my_grid:
 
 <div style="text-align:center" markdown="1">
 
-<a href="/images/cross_validation.gif)" data-fancybox data-caption="More neurons">
+<a href="/images/cross_validation.gif" data-fancybox data-caption="More neurons">
 	<img src="/images/cross_validation.gif" alt="" />
 </a>
 </div>
