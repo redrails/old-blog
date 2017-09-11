@@ -144,9 +144,9 @@ X_train, X_test, Y_train, Y_test = train_test_split(dataset[:,0:8], dataset[:,8]
 The data for the model is ready. Now we just need a model. We'll start with a simple single layer fully connected neural network (this is generally not considered deep learning, where deepness is determined by the number of hidden layers). This is pleasingly simple to build in Keras. We just initialise our model and then sequentially add layers (see GIF below). We also need to decide how to assess the accuracy of the model (called loss). As it's a classification problem, [cross entropy](https://en.wikipedia.org/wiki/Cross_entropy) is the most appropriate measure of error (a regression task might use mean squared error). A full list of the error functions available with Keras can be found [here](https://keras.io/losses/).
 
 <div style="text-align:center" markdown="1">
-
-![Stack more layers with Keras]({{ base_path }}/images/keras_layer_stacking.gif)
-
+<a  href="/images/keras_layer_stacking.gif" title="Stack more layers with Keras!">
+	<img src="/images/keras_layer_stacking.gif" alt="" />
+</a>
 </div>
 
 
