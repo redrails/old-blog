@@ -457,8 +457,8 @@ for grid_vals in my_grid:
 
 
 <div style="text-align:center" markdown="1">
-<a  href="/images/keras_nns__32_0.png" title="Repeated cross validation for hyperparameter tuning">
-	<img src="/images/keras_nns_32_0.png" alt="" />
+<a  href="/images/keras_nns__40_0.png" title="Repeated cross validation for hyperparameter tuning">
+	<img src="/images/keras_nns_40_0.png" alt="" />
 </a>
 </div>
 
