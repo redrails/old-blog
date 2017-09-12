@@ -307,7 +307,7 @@ nn_output_scaled['acc'][-1]
 
 
 
-We did it! By normalizing the input data, we surpassed that 95% accuracy benchmark and even attained perfect accuracy on the training set. Maybe if we added more neurons, we could defy mathematical logic and beat perfection. Mo' neurons, mo' money! However, as the training error on the standardised inputs approached zero, the test error showed no improvement. In fact, it even appears to significantly worsen. In other words, we have another case of overfitting. On a positive note, this graph also demonstrates the benefits of standardising your input data (as long as you don't allow the model overfit).
+We did it! We did it! By normalizing the input data, we actually attained perfect accuracy on the training set, surpassing the 95% accuracy benchmark set on a less reputable blog.  Maybe if we added more neurons, we could defy mathematical logic and beat perfection. Mo' neurons, mo' money! However, as the training error on the standardised inputs approached zero, the test error showed no improvement. In fact, it even appears to significantly worsen. In other words, we have another case of overfitting. On a positive note, this graph also demonstrates the benefits of standardising your input data (as long as you don't allow the model overfit).
 
 ## Validation Set & Early Stopping
 
@@ -339,7 +339,7 @@ As well as preventing overfitting, one obvious advantage of early stopping is th
 
 ## Hyperparameter Tuning (& Cross-Validation)
 
-Hopefully, you've realised that less is sometimes more. Iterating over fewer epochs can actually improve the predictive power of the model. How about the number of nodes in the single hidden layer? Surely, we should just cramming them in there. Right? Well, this is known as hyperparamater tuning/optimisation- as opposed to parameter tuning, which is changing the model weights during the training phase. We can run multiple models with varying number of nodes (which we specify) and accept the version that performs best on the validation set. This is known as grid search (we're searching over a grid of values... yet more insightful insights you won't find anywhere else). Note that the process is similar if you want to tune other model hyperparameters (e.g. learning rate, batch size, activation functions, etc.). I'm actually going to compare the models on loss rather than accuracy; though it's less intuitive, it is more informative (an improvement in model loss doesn't necessarily coincide with better accuracy).
+Hopefully, you've realised that less is sometimes more. Iterating over fewer epochs can actually improve the predictive power of the model. How about the number of nodes in the single hidden layer? Surely, we should just cramming them in there. Right? Well, this is known as hyperparamater tuning/optimisation- as opposed to parameter tuning, which is changing the model weights during the training phase. We can run multiple models with varying number of nodes (which we specify) and accept the version that performs best on the validation set. This is known as grid search (we're searching over a grid of values... yet more insightful insights you won't find anywhere else). Note that the process is similar if you want to tune other model hyperparameters (e.g. learning rate, batch size, activation functions, etc.). I'm actually going to compare the models on loss (cross-entropy for our model) rather than accuracy; though it's less intuitive, it is more informative (an improvement in model loss doesn't necessarily produce better accuracy).
 
 
 ```python
@@ -407,7 +407,7 @@ for grid_vals in my_grid:
 ```
 
 <div style="text-align:center" markdown="1">
-<a id="single_2" href="/images/cross_validation.gif" title="Cross Validation For Hyparameter Tuning">
+<a id="single_2" href="/images/cross_validation.gif" title="Cross Validation For Hyperparameter Tuning">
 	<img src="/images/cross_validation.gif" alt="" />
 </a>
 </div>
