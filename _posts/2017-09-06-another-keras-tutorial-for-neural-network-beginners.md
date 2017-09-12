@@ -265,7 +265,7 @@ my_second_nn = runNN(X_train, Y_train, X_test, Y_test, 1000, 1000)
 
 
 <div style="text-align:center" markdown="1">
-<a  href="/images/keras_nns__22_0.png" title="More neurons, more overfitting">
+<a  href="/images/keras_nns__22_0.png">
 	<img src="/images/keras_nns_22_0.png" alt="" />
 </a>
 </div>
