@@ -329,8 +329,8 @@ nn_output_scaled = runNN(scaler.fit_transform(X_train), Y_train, scaler.fit_tran
 
 
 <div style="text-align:center" markdown="1">
-<a  href="/images/keras_nns__25_0.png" title="Early stopping to prevent overfitting">
-	<img src="/images/keras_nns__25_0.png" alt="" />
+<a  href="/images/keras_nns__29_0.png" title="Early stopping to prevent overfitting">
+	<img src="/images/keras_nns__29_0.png" alt="" />
 </a>
 </div>
 
