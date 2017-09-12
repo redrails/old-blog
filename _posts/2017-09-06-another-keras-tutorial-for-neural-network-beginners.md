@@ -265,8 +265,8 @@ my_second_nn = runNN(X_train, Y_train, X_test, Y_test, 1000, 1000)
 
 
 <div style="text-align:center" markdown="1">
-<a  href="/images/keras_nns__22_0.png">
-	<img src="/images/keras_nns_22_0.png" alt="" />
+<a  href="/images/keras_nns__22_0.png" title="More neurons, more overfitting">
+	<img src="/images/keras_nns__22_0.png" alt="" />
 </a>
 </div>
 
@@ -291,7 +291,7 @@ nn_output_scaled = runNN(scaler.fit_transform(X_train), Y_train,
 
 <div style="text-align:center" markdown="1">
 <a  href="/images/keras_nns__25_0.png" title="Overfitting a neural net with standardised inputs">
-	<img src="/images/keras_nns_25_0.png" alt="" />
+	<img src="/images/keras_nns__25_0.png" alt="" />
 </a>
 </div>
 
@@ -330,7 +330,7 @@ nn_output_scaled = runNN(scaler.fit_transform(X_train), Y_train, scaler.fit_tran
 
 <div style="text-align:center" markdown="1">
 <a  href="/images/keras_nns__25_0.png" title="Early stopping to prevent overfitting">
-	<img src="/images/keras_nns_25_0.png" alt="" />
+	<img src="/images/keras_nns__25_0.png" alt="" />
 </a>
 </div>
 
@@ -368,7 +368,7 @@ nn_outputs_early = np.array(nn_outputs_early)
 
 <div style="text-align:center" markdown="1">
 <a  href="/images/keras_nns__32_0.png" title="Model performance as a function of neuron number">
-	<img src="/images/keras_nns_32_0.png" alt="" />
+	<img src="/images/keras_nns__32_0.png" alt="" />
 </a>
 </div>
 
@@ -405,12 +405,6 @@ for grid_vals in my_grid:
                                     early_stopping=early_stop_crit)['test_loss'])
     all_kfolds_results.append(kfolds_results)
 ```
-
-<div style="text-align:center" markdown="1">
-
-![Cross validation Keras]({{ base_path }}/images/cross_validation.gif)
-
-</div>
 
 <div style="text-align:center" markdown="1">
 <a id="single_2" href="/images/cross_validation.gif" title="Cross Validation For Hyparameter Tuning">
@@ -458,7 +452,7 @@ for grid_vals in my_grid:
 
 <div style="text-align:center" markdown="1">
 <a  href="/images/keras_nns__40_0.png" title="Repeated cross validation for hyperparameter tuning">
-	<img src="/images/keras_nns_40_0.png" alt="" />
+	<img src="/images/keras_nns__40_0.png" alt="" />
 </a>
 </div>
 
