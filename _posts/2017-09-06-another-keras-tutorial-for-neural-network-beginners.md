@@ -240,11 +240,10 @@ for i in range(len(my_first_nn_fitted.history['acc'])):
 ```
 
 <div style="text-align:center" markdown="1">
-
-![]({{ base_path }}/images/keras_nns__19_0.png)
-
+<a  href="/images/keras_nns__19_0.png">
+	<img src="/images/keras_nns__19_0.png" alt="" />
+</a>
 </div>
-
 
 Okay, we achieved about 75% accuracy on the training set, which corresponds to 70 % accuracy on the test set. As the performance on the two datasets is not hugely divergent, this suggests that our model does not suffer from significant overfitting. [Recall that 95 % accuracy has been reported on this dataset](https://datanonymous.wordpress.com/using-a-neural-network-to-predict-diabetes-in-pima-indians/), so we still have room for improvement. So how can we improve our basic model? Well, by stuffing more neurons in there, of course! We'll opt for 1000 neurons in a single fully connected hidden layer.
 
@@ -266,10 +265,12 @@ my_second_nn = runNN(X_train, Y_train, X_test, Y_test, 1000, 1000)
 
 
 <div style="text-align:center" markdown="1">
-
-![]({{ base_path }}/images/keras_nns__22_0.png)
-
+<a  href="/images/keras_nns__22_0.png" title="More neurons, more overfitting">
+	<img src="/images/keras_nns_22_0.png" alt="" />
+</a>
 </div>
+
+
 
 
 You'll notice a gradual reduction in the training error, without any corresponding improvement in the test prediction (it actually appears to get worse). This represents textbook overfitting. Our neural network model has fine-tuned its parameters to the training dataset, so that it performs poorly on any unseen data. In other words, the model is highly specialised to the training set and doesn't generalise well beyond the training data. It's analogous to including more complex interaction terms in a simple regression task (also known as the [bias-variance tradeoff](https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff)). A [good analogy](https://dswalter.github.io/blog/overfitting-regularization-hyperparameters/) is a model that's trained to detect a specific species of bird. The more it trains, its ability to detect other bird species worsens.
@@ -289,11 +290,10 @@ nn_output_scaled = runNN(scaler.fit_transform(X_train), Y_train,
 
 
 <div style="text-align:center" markdown="1">
-
-![]({{ base_path }}/images/keras_nns__25_0.png)
-
+<a  href="/images/keras_nns__25_0.png" title="Overfitting a neural net with standardised inputs">
+	<img src="/images/keras_nns_25_0.png" alt="" />
+</a>
 </div>
-
 
 
 ```python
@@ -329,9 +329,9 @@ nn_output_scaled = runNN(scaler.fit_transform(X_train), Y_train, scaler.fit_tran
 
 
 <div style="text-align:center" markdown="1">
-
-![]({{ base_path }}/images/keras_nns__29_0.png)
-
+<a  href="/images/keras_nns__25_0.png" title="Early stopping to prevent overfitting">
+	<img src="/images/keras_nns_25_0.png" alt="" />
+</a>
 </div>
 
 
@@ -367,9 +367,9 @@ nn_outputs_early = np.array(nn_outputs_early)
 ```
 
 <div style="text-align:center" markdown="1">
-
-![]({{ base_path }}/images/keras_nns__32_0.png)
-
+<a  href="/images/keras_nns__32_0.png" title="Model performance as a function of neuron number">
+	<img src="/images/keras_nns_32_0.png" alt="" />
+</a>
 </div>
 
 
@@ -457,9 +457,9 @@ for grid_vals in my_grid:
 
 
 <div style="text-align:center" markdown="1">
-
-![]({{ base_path }}/images/keras_nns__40_0.png)
-
+<a  href="/images/keras_nns__32_0.png" title="Repeated cross validation for hyperparameter tuning">
+	<img src="/images/keras_nns_32_0.png" alt="" />
+</a>
 </div>
 
 
