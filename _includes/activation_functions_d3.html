@@ -87,10 +87,25 @@
 </select>
 </br>
 </br>
-<input type="text" name="tourPrice" value="">
 <form name="message" method="post" id="plot_inputs">
  <div style="float:left;margin-right:20px;margin-left:100px;">
-             <input id="alpha_input" type="number" value=0.7 style="display: none;" onchange="InitChart();">
+        <label for="alpha_input" style="display: none" id="alpha_input_label">&alpha;<sub> </sub></label>
+        <input id="alpha_input" type="text" value=0.7 style="display: none;" onchange="InitChart();">
+    </div>
+
+    <div style="float:left;margin-right:20px;">
+        <label for="alpha_input_r" style="display: none" id="alpha_input_r_label">&alpha;<sub>r</sub></label>
+        <input id="alpha_input_r" type="text" value=0.4 style="display: none;" onchange="InitChart();">
+    </div>
+    
+    <div style="float:left;margin-right:20px;">
+        <label for="t_input_l" style="display: none" id="t_input_l_label">t<sub>l</sub></label>
+        <input id="t_input_l" type="number" value=-1.0 style="display: none;" onchange="InitChart();">
+    </div>
+
+    <div style="float:left;margin-right:20px;">
+        <label for="t_input_r" style="display: none" id="t_input_r_label">t<sub>r</sub></label>
+        <input id="t_input_r" type="number" value=1.0 style="display: none;" onchange="InitChart();">
     </div>
 
     <br style="clear:both;" />
