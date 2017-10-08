@@ -542,6 +542,10 @@ vis.append("text")
 	})
 	.text("f '(x)");
 
+    vis.attr('preserveAspectRatio',"xMinYMin meet")
+  .attr("viewBox", "0 0 "+WIDTH+" "+HEIGHT)
+  .attr('width', '100%')
+  .attr('height', '80%')
 
 function InitChart() {
        var myClasses = document.getElementById("plot_inputs"),
