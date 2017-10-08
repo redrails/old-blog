@@ -136,7 +136,7 @@
 
 <script type="text/javascript">
 
-  MathJax.Hub.Config({
+   MathJax.Hub.Config({
     tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
       processEscapes: true
@@ -344,10 +344,10 @@ vis.append("rect")
 vis.append("foreignObject")
    .data(func_tags)
    .attr("id", "func_equation")
-   .attr("class", "func_text")
    .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)            
 	 .attr("y",  MARGINS.top+boxmargin/2)
    .append("xhtml:div")
+   .attr("class", "func_text")
    .text(function(d) { return d.func_tex });
 
 vis.append("text")
@@ -418,10 +418,10 @@ vis.append("rect")
 vis.append("foreignObject")
    .data(deriv_func_tags)
    .attr("id", "deriv_func_equation")
-   .attr("class", "deriv_func_text")
    .attr("x", WIDTH-MARGINS.right+boxmargin*1.5) 
 	 .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin/2)
    .append("xhtml:div")
+   .attr("class", "deriv_func_text")
    .html(function(d) {return d.deriv_func_tex});
 
 vis.append("text")
@@ -1927,6 +1927,9 @@ vis.select("#func_equation")
     .remove();
   
   document.getElementById('func_primer').innerHTML=func_tags[0].func_primer;
+
+}
+
 
 }
 
