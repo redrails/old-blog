@@ -323,9 +323,9 @@ vis.append("svg:path")
   .attr("fill", "none");
 
 vis.append("rect")
-   .attr("x", WIDTH-MARGINS.right+boxmargin/2.0)             
+   .attr("x", WIDTH-MARGINS.right+boxmargin)             
 	 .attr("y",  MARGINS.top)
-   .attr("width",  MARGINS.right-boxmargin)
+   .attr("width",  MARGINS.right-boxmargin*2)
    .attr("height", (HEIGHT-MARGINS.top)/2-boxmargin)
    .attr("rx", 10)
    .attr("ry", 10)
@@ -334,36 +334,35 @@ vis.append("rect")
    .attr('stroke-opacity', '0.4')
    .attr('fill-opacity', '0.1')
    .style("fill", "blue")
-   .attr("class","info_rect)")
+   .attr("class","info_rect")
    .attr("id","func_rect");
 
 vis.append("foreignObject")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)            
-	 .attr("y",  MARGINS.top+boxmargin/2)
-   .append("xhtml:div")
    .attr("id", "func_equation")
    .attr("class", "func_text")
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)            
+	 .attr("y",  MARGINS.top+boxmargin/2)
+   .append("xhtml:div")
    .text(function(d) { return d.func_tex });
 
 vis.append("text")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)                .attr("y",  MARGINS.top+boxmargin*5)
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+boxmargin*5)
    .attr("id", "func_range")
    .attr("class", "func_text")
    .html(function(d) { return "Range: " + d.func_range });
 
 vis.append("text")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)                  
-	 .attr("y",  MARGINS.top+boxmargin*6.3)
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+boxmargin*6.3)
    .attr("id", "func_mono")
    .attr("class", "func_text")
    .html(function(d) { return "Monotonic:" + d.func_mono });
 
 vis.append("text")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)               
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)               
 	 .attr("y",  MARGINS.top+boxmargin*7.6)
    .attr("id", "func_contin")
    .attr("class", "func_text")
@@ -371,7 +370,7 @@ vis.append("text")
 
 vis.append("text")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)                  
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                  
 	 .attr("y",  MARGINS.top+boxmargin*8.9)
    .attr("id", "func_origin")
    .attr("class", "func_text")
@@ -379,14 +378,14 @@ vis.append("text")
 
 vis.append("text")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)               
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)               
 	 .attr("y",  MARGINS.top+boxmargin*10.2)
    .attr("id", "func_symm")
    .attr("class", "func_text")
    .text(function(d) { return "Symmetry: " + d.func_symm });
 
 vis.append("text")
-   .attr("x", WIDTH-boxmargin*4)              
+   .attr("x", WIDTH-95)              
 	 .attr("y",  MARGINS.top+boxmargin*10.2)
    .attr("xlink:href", "https://dashee87.github.io/")
    .attr("id", "func_ref")
@@ -415,10 +414,11 @@ vis.append("rect")
 vis.append("foreignObject")
    .attr("x", WIDTH-MARGINS.right+boxmargin*1.5) 
 	 .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin/2)
-   .data(deriv_func_tags)
-   .append("xhtml:div")
    .attr("id", "deriv_func_equation")
    .attr("class", "deriv_func_text")
+   .data(deriv_func_tags)
+   .append("xhtml:div")
+   .style("font", "16px 'Helvetica Neue'")
    .html(function(d) {return d.deriv_func_tex});
 
 vis.append("text")
@@ -542,10 +542,139 @@ vis.append("text")
 	})
 	.text("f '(x)");
 
-    vis.attr('preserveAspectRatio',"xMinYMin meet")
-  .attr("viewBox", "0 0 "+WIDTH+" "+HEIGHT)
-  .attr('width', '100%')
-  .attr('height', '80%')
+d3.select(window)
+  .on("resize", function() {
+  alert("HERE");
+  vis = d3.select("#visualisation");
+  WIDTH = parseInt(vis.style("width"));
+  HEIGHT = parseInt(vis.style("height"));
+    MARGINS = {
+      top: HEIGHT/25.0,
+      right: WIDTH/2.5,
+      bottom: HEIGHT/25.0,
+      left: WIDTH/50.0,
+    };
+      boxmargin=(HEIGHT-MARGINS.top)/24.0;
+    xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain(axis_limits.slice(0, 2));
+
+    yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain(axis_limits.slice(2, 4));
+
+    xAxis = d3.svg.axis()
+      .scale(xRange)
+      .tickSize(5)
+      .tickSubdivide(true);
+
+    yAxis = d3.svg.axis()
+      .scale(yRange)
+      .tickSize(5)
+      .orient("left")
+      .tickSubdivide(true);
+  
+   vis.select("#graph_xaxis")
+    .attr("transform", "translate(0," + (HEIGHT-MARGINS.bottom+MARGINS.top)/2 + ")")
+    .call(xAxis);
+
+  vis.select("#graph_yaxis")
+    .attr("transform", "translate(" + (WIDTH-MARGINS.right+MARGINS.left)/2 + ",0)")
+    .call(yAxis);
+  
+  vis.selectAll(".tick")
+    .filter(function (d) { return d === 0;  })
+    .remove();
+
+  lineFunc = d3.svg.line()
+  .x(function (d) {
+    return xRange(d.x);
+  })
+  .y(function (d) {
+    return yRange(d.y);
+  })
+  .interpolate('linear');
+  
+  vis.select("#top_assymptote")
+     .attr("d", lineFunc([{"x":axis_limits[0],"y":assymptote_top},
+                       {"x":axis_limits[1],"y":assymptote_top}]))
+  
+    vis.select("#bottom_assymptote")
+       .attr("d", lineFunc([{"x":axis_limits[0],"y":assymptote_bottom},
+                       {"x":axis_limits[1],"y":assymptote_bottom}]))
+  
+//d3.select("#func").remove();
+  
+vis.select("#func")
+  .attr("d", lineFunc(lineData)); 
+
+vis.select("#deriv_func")
+  .attr("d", lineFunc(lineData_deriv));
+
+vis.select("#func_rect")
+   .attr("x", WIDTH-MARGINS.right+boxmargin)             
+	 .attr("y",  MARGINS.top)
+   .attr("width",  MARGINS.right-boxmargin*2)
+   .attr("height", (HEIGHT-MARGINS.top)/2-boxmargin);
+
+vis.select("#func_equation")
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)            
+	 .attr("y",  MARGINS.top+boxmargin/2);
+
+vis.select("#func_range")
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+boxmargin*5);
+
+vis.select("#func_mono")
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+boxmargin*6.3);
+
+vis.select("#func_contin")
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+boxmargin*7.6);
+
+vis.select("#func_origin")
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+boxmargin*8.9);
+
+vis.select("#func_symm")
+   .data(func_tags)
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+boxmargin*10.2);
+
+vis.select("#func_ref")
+   .attr("x", WIDTH-95)              
+	 .attr("y",  MARGINS.top+boxmargin*10.2);
+
+
+// derivative rectangle
+
+vis.select("#deriv_func_rect")
+   .attr("x", WIDTH-MARGINS.right+boxmargin)             
+	 .attr("y",  MARGINS.top+HEIGHT/2)
+   .attr("width",  MARGINS.right-boxmargin*2)
+   .attr("height", (HEIGHT-MARGINS.top)/2-boxmargin);
+
+vis.select("#deriv_func_equation")
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5) 
+	 .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin/2);
+
+vis.select("#deriv_func_range")
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*5);
+
+
+vis.select("#deriv_func_mono")
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*6.3);
+
+
+vis.select("#deriv_func_contin")
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*7.6);
+
+vis.select("#deriv_func_van")
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*8.9);
+
+vis.select("#deriv_func_exp")
+   .attr("x", WIDTH-boxmargin*10)                
+   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*8.9);
+
+vis.select("#deriv_func_sat")
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3);
+
+vis.select("#deriv_func_dead")
+   .attr("x", WIDTH-boxmargin*10)                
+   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3);
+  });
 
 function InitChart() {
        var myClasses = document.getElementById("plot_inputs"),
@@ -558,12 +687,12 @@ function InitChart() {
 var activ_func = document.getElementById("select_activ").value;
 
   
-var lineData = [];
-var lineData_deriv = [];
+lineData = [];
+lineData_deriv = [];
   
   
-var assymptote_top = 5,
-    assymptote_bottom = -5 
+ assymptote_top = 5;
+ assymptote_bottom = -5;
 
 switch(activ_func) {
   case "relu":
@@ -1798,6 +1927,7 @@ vis.select("#func_equation")
   document.getElementById('func_primer').innerHTML=func_tags[0].func_primer;
 
 }
+
 
 
 </script>
