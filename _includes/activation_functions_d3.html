@@ -224,12 +224,12 @@ for (var i = -3; i <= 3; i=i+0.001) {
     WIDTH = parseInt(vis.style("width")),
     HEIGHT = parseInt(vis.style("height")),
     MARGINS = {
-      top: 20,
-      right: 400,
-      bottom: 20,
-      left: 20
+      top: HEIGHT/25.0,
+      right: WIDTH/3.5,
+      bottom: HEIGHT/25.0,
+      left: WIDTH/50.0,
     },
-      boxmargin=20,
+      boxmargin=(HEIGHT-MARGINS.top)/24.0,
     xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain(axis_limits.slice(0, 2)),
 
     yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain(axis_limits.slice(2, 4)),
