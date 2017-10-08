@@ -136,7 +136,7 @@
 
 <script type="text/javascript">
 
-MathJax.Hub.Config({
+  MathJax.Hub.Config({
     tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
       processEscapes: true
@@ -228,8 +228,7 @@ for (var i = -3; i <= 3; i=i+0.001) {
     y: 0
   });
 };
-
-  
+ 
   var vis = d3.select("#visualisation"),
     WIDTH = parseInt(vis.style("width")),
     HEIGHT = parseInt(vis.style("height")),
@@ -258,11 +257,13 @@ for (var i = -3; i <= 3; i=i+0.001) {
   vis.append("svg:g")
     .attr("class", "x axis")
     .attr("transform", "translate(0," + (HEIGHT-MARGINS.bottom+MARGINS.top)/2 + ")")
+    .attr("id", "graph_xaxis")
     .call(xAxis);
 
   vis.append("svg:g")
     .attr("class", "y axis")
     .attr("transform", "translate(" + (WIDTH-MARGINS.right+MARGINS.left)/2 + ",0)")
+    .attr("id", "graph_yaxis")
     .call(yAxis);
   
   vis.selectAll(".tick")
@@ -287,6 +288,9 @@ for (var i = -3; i <= 3; i=i+0.001) {
   .x([-3,3])
   .y([5,5])
   .interpolate('linear');
+
+var asymptote_top=5,
+    asymptote_bottom=-5;
   
 //d3.select("#func").remove();
   
@@ -310,7 +314,7 @@ vis.append("svg:path")
   .attr("stroke", "gray")
   .attr("stroke-width", 2)
   .style("stroke-dasharray", ("3, 3"))
-  .attr("id", "top_assymptote")      
+  .attr("id", "top_asymptote")      
   .attr("fill", "none");
 
 vis.append("svg:path")
@@ -319,7 +323,7 @@ vis.append("svg:path")
   .attr("stroke", "gray")
   .attr("stroke-width", 2)
   .style("stroke-dasharray", ("3, 3"))
-  .attr("id", "bottom_assymptote")      
+  .attr("id", "bottom_asymptote")      
   .attr("fill", "none");
 
 vis.append("rect")
@@ -591,13 +595,13 @@ d3.select(window)
   })
   .interpolate('linear');
   
-  vis.select("#top_assymptote")
-     .attr("d", lineFunc([{"x":axis_limits[0],"y":assymptote_top},
-                       {"x":axis_limits[1],"y":assymptote_top}]))
+  vis.select("#top_asymptote")
+     .attr("d", lineFunc([{"x":axis_limits[0],"y":asymptote_top},
+                       {"x":axis_limits[1],"y":asymptote_top}]))
   
-    vis.select("#bottom_assymptote")
-       .attr("d", lineFunc([{"x":axis_limits[0],"y":assymptote_bottom},
-                       {"x":axis_limits[1],"y":assymptote_bottom}]))
+    vis.select("#bottom_asymptote")
+       .attr("d", lineFunc([{"x":axis_limits[0],"y":asymptote_bottom},
+                       {"x":axis_limits[1],"y":asymptote_bottom}]))
   
 //d3.select("#func").remove();
   
@@ -691,8 +695,8 @@ lineData = [];
 lineData_deriv = [];
   
   
- assymptote_top = 5;
- assymptote_bottom = -5;
+ asymptote_top = 5;
+ asymptote_bottom = -5;
 
 switch(activ_func) {
   case "relu":
@@ -865,7 +869,7 @@ switch(activ_func) {
     
           axis_limits = [-3,3,-1.5,1.5];
     for (var i = -3; i <= 3; i=i+0.001) {
-      assymptote_top = 1;
+      asymptote_top = 1;
       temp_sigmoid = 1.0/(1.0+Math.exp(-i));
       lineData.push({
         x: i,
@@ -902,8 +906,8 @@ switch(activ_func) {
     
           axis_limits = [-3,3,-1.6,1.6];
     for (var i = -3; i <= 3; i=i+0.001) {
-      assymptote_top = Math.PI/2;
-      assymptote_bottom = -Math.PI/2;
+      asymptote_top = Math.PI/2;
+      asymptote_bottom = -Math.PI/2;
       lineData.push({
         x: i,
         y: Math.atan(i)
@@ -939,8 +943,8 @@ switch(activ_func) {
       
     axis_limits = [-3,3,-1.6,1.6];    
     for (var i = -3; i <= 3; i=i+0.001) {
-      assymptote_top = 1;
-      assymptote_bottom = -1;
+      asymptote_top = 1;
+      asymptote_bottom = -1;
       lineData.push({
         x: i,
         y: i/(1+Math.abs(i))
@@ -1164,8 +1168,8 @@ switch(activ_func) {
   "deriv_func_dead" : "&#10060;"}];
     
           axis_limits = [-3,3,-1.5,1.5];
-          assymptote_top = 1;
-          assymptote_bottom = -1;
+          asymptote_top = 1;
+          asymptote_bottom = -1;
     for (var i = -3; i <= 3; i=i+0.001) {
       lineData.push({
         x: i,
@@ -1201,8 +1205,8 @@ switch(activ_func) {
   "deriv_func_dead" : "&#10060;"}];
     
           axis_limits = [-3,3,-2,2];
-          assymptote_top = 1.7519;
-          assymptote_bottom = -1.7519;
+          asymptote_top = 1.7519;
+          asymptote_bottom = -1.7519;
     for (var i = -3; i <= 3; i=i+0.001) {
       lineData.push({
         x: i,
@@ -1471,8 +1475,8 @@ switch(activ_func) {
   "deriv_func_dead" : "&#10060;"}];
     
           axis_limits = [-3,3,-1.5,1.5];
-    assymptote_top = 1;
-    assymptote_bottom = -1;
+    asymptote_top = 1;
+    asymptote_bottom = -1;
     for (var i = -3; i <= 3; i=i+0.001) {
       lineData.push({
         x: i,
@@ -1508,7 +1512,7 @@ switch(activ_func) {
   "deriv_func_dead" : "&#10060;"}];
     
           axis_limits = [-3,3,-1.5,1.5];
-          assymptote_top = 1;
+          asymptote_top = 1;
     for (var i = -3; i <= 3; i=i+0.001) {
       temp_val = Math.exp(-Math.exp(i))
       lineData.push({
@@ -1532,7 +1536,7 @@ switch(activ_func) {
   "func_contin" : "C"+"⁰"+" (iff α ≠ 1)",
   "func_mono" : "&#9989; (iff &alpha; &ge;0)",
   "func_origin" : "&#10060; iff &alpha;&ne;1",
-  "func_symm" : "Assymetrical (iff |α|≠1)",
+  "func_symm" : "asymetrical (iff |α|≠1)",
    "func_ref": "https://arxiv.org/abs/1502.01852",
    "func_primer": "<b>Parameteric Rectified Linear Unit</b> (<b>PReLU</b>) belongs to the rectifier family of activation functions headed up by ReLU. It shares some similarities with RReLU and Leaky ReLU, as it incorporates a linear term for negative valued inputs. The key distinction is that the slope of this line is actually learned during model training."}];
        
@@ -1580,7 +1584,7 @@ switch(activ_func) {
   "func_contin" : "C"+"⁰"+" (iff α ≠ 1)",
   "func_mono" : "&#9989; (iff &alpha; &ge;0)",
   "func_origin" : "&#10060; iff &alpha;&ne;1",
-  "func_symm" : "Assymetrical (iff |α|≠1)",
+  "func_symm" : "asymetrical (iff |α|≠1)",
    "func_ref": "https://arxiv.org/abs/1505.00853",
    "func_primer": ""}];
        
@@ -1906,19 +1910,19 @@ vis.select("#func_equation")
               vis.select("#deriv_func_dead")
       .html("Dead Neurons:"+deriv_func_tags[0].deriv_func_dead );
   
-  // update assymptote lines 
+  // update asymptote lines 
   
-        vis.select("#top_assymptote")
+        vis.select("#top_asymptote")
           .transition()
            .duration(1000)
-           .attr("d", lineFunc([{"x":axis_limits[0],"y":assymptote_top},
-                                {"x":axis_limits[1],"y":assymptote_top}]))
+           .attr("d", lineFunc([{"x":axis_limits[0],"y":asymptote_top},
+                                {"x":axis_limits[1],"y":asymptote_top}]))
   
-          vis.select("#bottom_assymptote")
+          vis.select("#bottom_asymptote")
           .transition()
            .duration(1000)
-           .attr("d", lineFunc([{"x":axis_limits[0],"y":assymptote_bottom},
-                                {"x":axis_limits[1],"y":assymptote_bottom}]))
+           .attr("d", lineFunc([{"x":axis_limits[0],"y":asymptote_bottom},
+                                {"x":axis_limits[1],"y":asymptote_bottom}]))
   
     vis.selectAll(".tick")
     .filter(function (d) { return d === 0;  })
@@ -1927,6 +1931,7 @@ vis.select("#func_equation")
   document.getElementById('func_primer').innerHTML=func_tags[0].func_primer;
 
 }
+
 
 
 
