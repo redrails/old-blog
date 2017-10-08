@@ -11,7 +11,6 @@ tags:
 - activation function
 author: "David Sheehan"
 date: "08 October 2017"
-output: "md_document"
 ---
   
 
