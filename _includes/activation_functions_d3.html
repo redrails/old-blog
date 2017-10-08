@@ -416,11 +416,11 @@ vis.append("rect")
    .attr("id","deriv_func_rect");
 
 vis.append("foreignObject")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5) 
-	 .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin/2)
+   .data(deriv_func_tags)
    .attr("id", "deriv_func_equation")
    .attr("class", "deriv_func_text")
-   .data(deriv_func_tags)
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5) 
+	 .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin/2)
    .append("xhtml:div")
    .style("font", "16px 'Helvetica Neue'")
    .html(function(d) {return d.deriv_func_tex});
@@ -548,6 +548,7 @@ vis.append("text")
 
 d3.select(window)
   .on("resize", function() {
+  alert("HERE");
   vis = d3.select("#visualisation");
   WIDTH = parseInt(vis.style("width"));
   HEIGHT = parseInt(vis.style("height"));
@@ -1930,6 +1931,8 @@ vis.select("#func_equation")
   document.getElementById('func_primer').innerHTML=func_tags[0].func_primer;
 
 }
+
+
 
 
 
