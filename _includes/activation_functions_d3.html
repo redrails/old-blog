@@ -422,7 +422,6 @@ vis.append("foreignObject")
    .attr("x", WIDTH-MARGINS.right+boxmargin*1.5) 
 	 .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin/2)
    .append("xhtml:div")
-   .style("font", "16px 'Helvetica Neue'")
    .html(function(d) {return d.deriv_func_tex});
 
 vis.append("text")
@@ -548,7 +547,6 @@ vis.append("text")
 
 d3.select(window)
   .on("resize", function() {
-  alert("HERE");
   vis = d3.select("#visualisation");
   WIDTH = parseInt(vis.style("width"));
   HEIGHT = parseInt(vis.style("height"));
