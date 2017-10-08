@@ -28,4 +28,4 @@ Select an activation function from the menu below to plot it and its
 first derivative. Some properties relevant for neural networks are
 provided in the boxes on the right.
 
-{% include activation\_function\_d3.html %}
+{% include activation_functions_d3.html %}
