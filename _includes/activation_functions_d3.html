@@ -47,6 +47,20 @@
 .func_text{
   font-size: 0.6em
 }
+    
+    .deriv_func_text{
+  font-size: 0.6em
+}
+    
+    #func_equation{
+     font: "Helvetica Neue;
+     font-size: 0.7em;
+}
+
+#deriv_func_equation{
+     font: "Helvetica Neue
+     font-size: 0.7em;
+}
 
   </style>
   <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
@@ -330,7 +344,6 @@ vis.append("foreignObject")
    .append("xhtml:div")
    .attr("id", "func_equation")
    .attr("class", "func_text")
-   .style("font", "16px 'Helvetica Neue'")
    .text(function(d) { return d.func_tex });
 
 vis.append("text")
@@ -406,7 +419,6 @@ vis.append("foreignObject")
    .append("xhtml:div")
    .attr("id", "deriv_func_equation")
    .attr("class", "deriv_func_text")
-   .style("font", "16px 'Helvetica Neue'")
    .html(function(d) {return d.deriv_func_tex});
 
 vis.append("text")
