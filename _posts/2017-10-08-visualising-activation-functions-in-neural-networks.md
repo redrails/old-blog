@@ -29,3 +29,5 @@ first derivative. Some properties relevant for neural networks are
 provided in the boxes on the right.
 
 {% include activation_functions_d3.html %}
+
+If you spot any errors or want your fancy activation function included, then please get in touch! Thank for reading!!!
