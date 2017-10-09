@@ -143,7 +143,7 @@
 
 <script type="text/javascript">
 
-   MathJax.Hub.Config({
+    MathJax.Hub.Config({
     tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
       processEscapes: true
@@ -247,6 +247,7 @@ for (var i = -3; i <= 3; i=i+0.001) {
     },
       boxmargin=(HEIGHT-MARGINS.top)/24.0,
       boxmargin_horizontal = MARGINS.right/2.2,
+      rect_margin = MARGINS.right/50.0,
     xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain(axis_limits.slice(0, 2)),
 
     yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain(axis_limits.slice(2, 4)),
@@ -335,9 +336,9 @@ vis.append("svg:path")
   .attr("fill", "none");
 
 vis.append("rect")
-   .attr("x", WIDTH-MARGINS.right+boxmargin/2)             
+   .attr("x", WIDTH-MARGINS.right+rect_margin)             
 	 .attr("y",  MARGINS.top)
-   .attr("width",  MARGINS.right-boxmargin)
+   .attr("width",  MARGINS.right-rect_margin*2.0)
    .attr("height", (HEIGHT-MARGINS.top)/2-boxmargin)
    .attr("rx", 10)
    .attr("ry", 10)
@@ -352,7 +353,7 @@ vis.append("rect")
 vis.append("foreignObject")
    .data(func_tags)
    .attr("id", "func_equation")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)            
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2)            
 	 .attr("y",  MARGINS.top+boxmargin/2)
    .append("xhtml:div")
    .attr("class", "func_text")
@@ -360,7 +361,7 @@ vis.append("foreignObject")
 
 vis.append("text")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2)                 
    .attr("y",  MARGINS.top+boxmargin*5)
    .attr("id", "func_range")
    .attr("class", "func_text")
@@ -368,7 +369,7 @@ vis.append("text")
 
 vis.append("text")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2)                 
    .attr("y",  MARGINS.top+boxmargin*6.3)
    .attr("id", "func_mono")
    .attr("class", "func_text")
@@ -376,7 +377,7 @@ vis.append("text")
 
 vis.append("text")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)               
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2)                
 	 .attr("y",  MARGINS.top+boxmargin*7.6)
    .attr("id", "func_contin")
    .attr("class", "func_text")
@@ -384,7 +385,7 @@ vis.append("text")
 
 vis.append("text")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)                  
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2)                   
 	 .attr("y",  MARGINS.top+boxmargin*8.9)
    .attr("id", "func_origin")
    .attr("class", "func_text")
@@ -392,7 +393,7 @@ vis.append("text")
 
 vis.append("text")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)               
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2)          
 	 .attr("y",  MARGINS.top+boxmargin*10.2)
    .attr("id", "func_symm")
    .attr("class", "func_text")
@@ -411,9 +412,9 @@ vis.append("text")
 // derivative rectangle
 
 vis.append("rect")
-   .attr("x", WIDTH-MARGINS.right+boxmargin/2)             
+   .attr("x", WIDTH-MARGINS.right+rect_margin)                   
 	 .attr("y",  MARGINS.top+HEIGHT/2)
-   .attr("width",  MARGINS.right-boxmargin)
+   .attr("width",  MARGINS.right-rect_margin*2.0)  
    .attr("height", (HEIGHT-MARGINS.top)/2-boxmargin)
    .attr("rx", 10)
    .attr("ry", 10)
@@ -428,14 +429,14 @@ vis.append("rect")
 vis.append("foreignObject")
    .data(deriv_func_tags)
    .attr("id", "deriv_func_equation")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1) 
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)  
 	 .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin/2)
    .append("xhtml:div")
    .attr("class", "deriv_func_text")
    .html(function(d) {return d.deriv_func_tex});
 
 vis.append("text")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)               
    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*5)
    .data(deriv_func_tags)
    .attr("id", "deriv_func_range")
@@ -444,7 +445,7 @@ vis.append("text")
 
 
 vis.append("text")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)               
    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*6.3)
    .data(deriv_func_tags)
    .attr("id", "deriv_func_mono")
@@ -454,7 +455,7 @@ vis.append("text")
 
 
 vis.append("text")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)           
    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*7.6)
    .data(deriv_func_tags)
    .attr("id", "deriv_func_contin")
@@ -462,7 +463,7 @@ vis.append("text")
    .html(function(d) { return "Continuous: " + d.deriv_func_contin });
 
 vis.append("text")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)               
    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*8.9)
    .data(deriv_func_tags)
    .attr("id", "deriv_func_van")
@@ -478,7 +479,7 @@ vis.append("text")
    .html(function(d) { return "Exploding Gradient:" + d.deriv_func_exp });
 
 vis.append("text")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)                
    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3)
    .data(deriv_func_tags)
    .attr("id", "deriv_func_sat")
@@ -572,6 +573,7 @@ d3.select(window)
       left: WIDTH/50.0,
     };
       boxmargin=(HEIGHT-MARGINS.top)/24.0;
+        rect_margin = MARGINS.right/50.0;
         boxmargin_horizontal = MARGINS.right/2.2,
     xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain(axis_limits.slice(0, 2));
 
@@ -626,34 +628,34 @@ vis.select("#deriv_func")
   .attr("d", lineFunc(lineData_deriv));
 
 vis.select("#func_rect")
-   .attr("x", WIDTH-MARGINS.right+boxmargin)             
+   .attr("x", WIDTH-MARGINS.right+rect_margin)             
 	 .attr("y",  MARGINS.top)
-   .attr("width",  MARGINS.right-boxmargin*2)
-   .attr("height", (HEIGHT-MARGINS.top)/2-boxmargin);
+   .attr("width",  MARGINS.right-rect_margin*2.0)
+   .attr("height", (HEIGHT-MARGINS.top)/2-boxmargin)
 
 vis.select("#func_equation")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)            
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)           
 	 .attr("y",  MARGINS.top+boxmargin/2);
 
 vis.select("#func_range")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)                
    .attr("y",  MARGINS.top+boxmargin*5);
 
 vis.select("#func_mono")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)                
    .attr("y",  MARGINS.top+boxmargin*6.3);
 
 vis.select("#func_contin")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)             
    .attr("y",  MARGINS.top+boxmargin*7.6);
 
 vis.select("#func_origin")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)                
    .attr("y",  MARGINS.top+boxmargin*8.9);
 
 vis.select("#func_symm")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)               
    .attr("y",  MARGINS.top+boxmargin*10.2);
 
 vis.select("#func_ref")
@@ -664,31 +666,31 @@ vis.select("#func_ref")
 // derivative rectangle
 
 vis.select("#deriv_func_rect")
-   .attr("x", WIDTH-MARGINS.right+boxmargin)             
-	 .attr("y",  MARGINS.top+HEIGHT/2)
-   .attr("width",  MARGINS.right-boxmargin*2)
+   .attr("x", WIDTH-MARGINS.right+rect_margin)             
+  .attr("y",  MARGINS.top+HEIGHT/2)
+   .attr("width",  MARGINS.right-rect_margin*2.0)
    .attr("height", (HEIGHT-MARGINS.top)/2-boxmargin);
 
 vis.select("#deriv_func_equation")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5) 
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)    
 	 .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin/2);
 
 vis.select("#deriv_func_range")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)                   
    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*5);
 
 
 vis.select("#deriv_func_mono")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)                  
    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*6.3);
 
 
 vis.select("#deriv_func_contin")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)                  
    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*7.6);
 
 vis.select("#deriv_func_van")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)                  
    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*8.9);
 
 vis.select("#deriv_func_exp")
@@ -696,7 +698,7 @@ vis.select("#deriv_func_exp")
    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*8.9);
 
 vis.select("#deriv_func_sat")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)                   
    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3);
 
 vis.select("#deriv_func_dead")
@@ -1960,6 +1962,7 @@ vis.select("#func_equation")
   document.getElementById('func_primer').innerHTML=func_tags[0].func_primer;
 
 }
+
 
 
 
