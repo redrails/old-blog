@@ -142,8 +142,7 @@
 </div>
 
 <script type="text/javascript">
-
-    MathJax.Hub.Config({
+  MathJax.Hub.Config({
     tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
       processEscapes: true
@@ -1612,7 +1611,7 @@ switch(activ_func) {
   "func_origin" : "&#10060; iff &alpha;&ne;1",
   "func_symm" : "asymetrical (iff |α|≠1)",
    "func_ref": "https://arxiv.org/abs/1505.00853",
-   "func_primer": ""}];
+   "func_primer": "<b>Randomized Leaky Rectified Linear Unit</b> (<b>RReLU</b>) belongs to the rectifier family of activation functions headed up by ReLU. It's very similar to Leaky ReLU and PReLU, as it incorporates a linear term for negative valued inputs. The key distinction is that the slope of this line is randomly assigned for each node (typically from a uniform distribution).""}];
        
        deriv_func_tags=
     [{"deriv_func_tex":"$f'(x) =\\begin{cases}1 & \\text{for } x\\geq0\\\\\\alpha & \\text{for } x<0\\end{cases} $",
@@ -1962,13 +1961,6 @@ vis.select("#func_equation")
   document.getElementById('func_primer').innerHTML=func_tags[0].func_primer;
 
 }
-
-
-
-
-
-
-
 
 </script>
 </body>
