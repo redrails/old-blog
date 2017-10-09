@@ -352,14 +352,16 @@ vis.append("foreignObject")
 
 vis.append("text")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+boxmargin*5)
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+boxmargin*5)
    .attr("id", "func_range")
    .attr("class", "func_text")
    .html(function(d) { return "Range: " + d.func_range });
 
 vis.append("text")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+boxmargin*6.3)
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+boxmargin*6.3)
    .attr("id", "func_mono")
    .attr("class", "func_text")
    .html(function(d) { return "Monotonic:" + d.func_mono });
@@ -425,7 +427,8 @@ vis.append("foreignObject")
    .html(function(d) {return d.deriv_func_tex});
 
 vis.append("text")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*5)
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*5)
    .data(deriv_func_tags)
    .attr("id", "deriv_func_range")
    .attr("class", "deriv_func_text")
@@ -433,7 +436,8 @@ vis.append("text")
 
 
 vis.append("text")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*6.3)
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*6.3)
    .data(deriv_func_tags)
    .attr("id", "deriv_func_mono")
    .attr("class", "deriv_func_text")
@@ -442,14 +446,16 @@ vis.append("text")
 
 
 vis.append("text")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*7.6)
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*7.6)
    .data(deriv_func_tags)
    .attr("id", "deriv_func_contin")
    .attr("class", "deriv_func_text")
    .html(function(d) { return "Continuous: " + d.deriv_func_contin });
 
 vis.append("text")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*8.9)
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*8.9)
    .data(deriv_func_tags)
    .attr("id", "deriv_func_van")
    .attr("class", "deriv_func_text")
@@ -464,7 +470,8 @@ vis.append("text")
    .html(function(d) { return "Exploding Gradient:" + d.deriv_func_exp });
 
 vis.append("text")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3)
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3)
    .data(deriv_func_tags)
    .attr("id", "deriv_func_sat")
    .attr("class", "deriv_func_text")
@@ -620,20 +627,25 @@ vis.select("#func_equation")
 	 .attr("y",  MARGINS.top+boxmargin/2);
 
 vis.select("#func_range")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+boxmargin*5);
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+boxmargin*5);
 
 vis.select("#func_mono")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+boxmargin*6.3);
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+boxmargin*6.3);
 
 vis.select("#func_contin")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+boxmargin*7.6);
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+boxmargin*7.6);
 
 vis.select("#func_origin")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+boxmargin*8.9);
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+boxmargin*8.9);
 
 vis.select("#func_symm")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+boxmargin*10.2);
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+boxmargin*10.2);
 
 vis.select("#func_ref")
    .attr("x", WIDTH-95)              
@@ -653,25 +665,30 @@ vis.select("#deriv_func_equation")
 	 .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin/2);
 
 vis.select("#deriv_func_range")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*5);
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*5);
 
 
 vis.select("#deriv_func_mono")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*6.3);
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*6.3);
 
 
 vis.select("#deriv_func_contin")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*7.6);
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*7.6);
 
 vis.select("#deriv_func_van")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*8.9);
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*8.9);
 
 vis.select("#deriv_func_exp")
    .attr("x", WIDTH-boxmargin*10)                
    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*8.9);
 
 vis.select("#deriv_func_sat")
-   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3);
+   .attr("x", WIDTH-MARGINS.right+boxmargin*1.5)                
+   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3);
 
 vis.select("#deriv_func_dead")
    .attr("x", WIDTH-boxmargin*10)                
@@ -1378,7 +1395,7 @@ switch(activ_func) {
   "func_origin" : "&#10060;",
   "func_symm" : "Asymmetrical",
    "func_ref": "https://arxiv.org/pdf/1603.00391.pdf",
-       "func_primer":"<b>Hard Sigmoid</b> is a quasilinear version of the Logistic Sigmoid activation function. It's easier to compute, which makes learning computationally faster, though the zero valued first derivatives could promote dead neurons/slow learning (see ReLU)."}];
+       "func_primer":"<b>Hard Sigmoid</b> is a piecewise linear version of the Logistic Sigmoid activation function. It's easier to compute, which makes learning computationally faster, though the zero valued first derivatives could promote dead neurons/slow learning (see ReLU)."}];
 
   deriv_func_tags=
     [{"deriv_func_tex":"$f(x) =\\begin{cases}0 & \\text{for } x<-2.5\\\\0.2 & \\text{for } -2.5\\geq x\\leq 2.5 \\\\0 & \\text{for } x>2.5\\end{cases} $",
@@ -1423,7 +1440,7 @@ switch(activ_func) {
   "func_origin" : "&#9989;",
   "func_symm" : "Anti-Symmetrical",
    "func_ref": "https://arxiv.org/pdf/1603.00391.pdf",
-       "func_primer":"<b>HardTanh</b> is a quasilinear version of the Tanh activation function. It's easier to compute, which makes learning computationally faster, though the zero valued first derivatives could promote dead neurons/slow learning (see ReLU)."}];
+       "func_primer":"<b>HardTanh</b> is a piecewise linear version of the Tanh activation function. It's easier to compute, which makes learning computationally faster, though the zero valued first derivatives could promote dead neurons/slow learning (see ReLU)."}];
 
   deriv_func_tags=
     [{"deriv_func_tex":"$f(x) =\\begin{cases}0 & \\text{for } x<-1\\\\1 & \\text{for } -1\\geq x\\leq 1 \\\\0 & \\text{for } x>1\\end{cases} $",
@@ -1625,6 +1642,7 @@ switch(activ_func) {
         document.getElementById("alpha_input_label").style.display = "block";
         document.getElementById("alpha_input").style.display = "block";
         var alpha  = parseFloat(document.getElementById("alpha_input").value);
+     asymptote_bottom = -alpha;
    func_tags = [{
       "func_tex":"$f(x) = \\begin{cases}\\alpha(e^x - 1) & \\text{for } x < 0\\\\x & \\text{for } x \\ge 0\\end{cases} $",
   "func_range" : "(-&alpha;, &infin;) &alpha; <0, [0, &infin;) &alpha; &ge;0",
@@ -1691,6 +1709,8 @@ switch(activ_func) {
   "deriv_func_exp" : "&#9989",
   "deriv_func_sat" : "&#9989",
   "deriv_func_dead" : "&#10060;"}];
+    
+     asymptote_bottom = -1.0507*1.67326;
     
           axis_limits = [-3,3,-3,3];
     for (var i = -3; i < 3; i=i+0.001) {
@@ -1836,9 +1856,11 @@ var axis_ratio = (axis_limits[1]-axis_limits[0])-(axis_limits[3]-axis_limits[2])
       MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
   
 vis.select("#func_equation")
+    .select("div")
     .text(func_tags[0].func_tex );
   
   vis.select("#deriv_func_equation")
+    .select("div")
     .text(deriv_func_tags[0].deriv_func_tex );
   
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
@@ -1929,6 +1951,8 @@ vis.select("#func_equation")
   document.getElementById('func_primer').innerHTML=func_tags[0].func_primer;
 
 }
+
+
 
 
 
