@@ -895,7 +895,7 @@ switch(activ_func) {
   "func_origin" : "&#9989;",
   "func_symm" : "Asymmetrical",
    "func_ref": "",
-   "func_primer":"Well known from its role in logistic regression, ranging between 0 and 1, the <b>Logistic Sigmoid</b> (or more commonly just <b>Sigmoid</b>) activation function introduces the concept of probability to neural networks. Its derivative is non-zero and easy to compute (it's a function of its original output). However, it's gradually being replaced by Tanh as the textbook activation function for classification tasks, as the latter is anti-symmetrical and centred on the origin."}];
+   "func_primer":"Well known from its role in logistic regression, ranging between 0 and 1, the <b>Logistic Sigmoid</b> (or more commonly just <b>Sigmoid</b>) activation function introduces the concept of probability to neural networks. Its derivative is non-zero and easy to compute (it's a function of its original output). However, it's gradually being replaced by Tanh as the textbook activation function for classification tasks, as the latter is anti-symmetrical and centered on the origin."}];
 
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f'(x) &= \\frac{e^{-x}}{(1+e^{-x})^2} \\\\&= f(x)(1-f(x)) \\end{align*}$",
@@ -969,7 +969,7 @@ switch(activ_func) {
   "func_origin" : "&#9989;",
   "func_symm" : "Anti-Symmetrical",
   "func_ref":"http://www.iro.umontreal.ca/~lisa/publications2/index.php/attachments/single/205",
-    "func_primer":"<b>Softsign</b> is another alternative to Tanh activation. Like Tanh, it's anti-symmetrical, zero centred, differentiable and returns a value between -1 and 1. Its flatter shape and more slowly declining derivative suggest that it may learn more efficiently. On the other hand, calculation of the derivative is more computationally cumbersome than Tanh."}];
+    "func_primer":"<b>Softsign</b> is another alternative to Tanh activation. Like Tanh, it's anti-symmetrical, zero centered, differentiable and returns a value between -1 and 1. Its flatter shape and more slowly declining derivative suggest that it may learn more efficiently. On the other hand, calculation of the derivative is more computationally cumbersome than Tanh."}];
 
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f'(x)=\\frac{1}{(1+|x|)^2} \\end{align*}$",
@@ -1006,7 +1006,7 @@ switch(activ_func) {
   "func_origin" : "&#10060;",
   "func_symm" : "Asymmetrical",
   "func_ref":"http://proceedings.mlr.press/v15/glorot11a/glorot11a.pdf",
-    "func_primer":"A smooth alternative to ReLU, <b>SoftPlus</b> can return any value greater than zero. Unlike ReLU, its derivative is continuous and non-zero everywhere, which guards against dead neurons. However, again unlike ReLU, it's asymmetrical and not centred on zero, which may hinder learning. Furthermore, as the derivative is always less than 1, vanishing gradients could be a concern."}];
+    "func_primer":"A smooth alternative to ReLU, <b>SoftPlus</b> can return any value greater than zero. Unlike ReLU, its derivative is continuous and non-zero everywhere, which guards against dead neurons. However, again unlike ReLU, it's asymmetrical and not centered on zero, which may hinder learning. Furthermore, as the derivative is always less than 1, vanishing gradients could be a concern."}];
 
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f'(x)=\\frac{1}{1+e^{-x}}\\end{align*}$",
@@ -1077,7 +1077,7 @@ switch(activ_func) {
   "func_origin" : "&#9989;",
   "func_symm" : "Anti-Symmetrical",
    "func_ref": "",
-    "func_primer":"Like Cos, <b>Sinusoid</b> (or simply <b>Sin</b>) activation introduces periodicity to neural networks. It returns a value between -1 and 1, is zero centred and anti-symmetrical and its derivative is continuous."}];
+    "func_primer":"Like Cos, <b>Sinusoid</b> (or simply <b>Sin</b>) activation introduces periodicity to neural networks. It returns a value between -1 and 1, is zero centered and anti-symmetrical and its derivative is continuous."}];
 
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f'(x)=\\cos(x)\\end{align*}$",
@@ -1195,7 +1195,7 @@ switch(activ_func) {
   "func_origin" : "&#9989;",
   "func_symm" : "Anti-Symmetrical",
    "func_ref": "",
-    "func_primer":"Gradually replacing the logistic sigmoid function as the activation function of choice for classification tasks, <b>Tanh</b> (or <b>Hyperbolic Tan</b>) possesses various traits that are favoured in neural networks. It's entirely differentiable, centred on zero and anti-symmetrical. To mitigate slow learning and/or vanishing gradients, flatter variations on this function (log-log, softsign, symmetrical sigmoid, etc.) can be employed."}];
+    "func_primer":"Gradually replacing the logistic sigmoid function as the activation function of choice for classification tasks, <b>Tanh</b> (or <b>Hyperbolic Tan</b>) possesses various traits that are favoured in neural networks. It's entirely differentiable, centered on zero and anti-symmetrical. To mitigate slow learning and/or vanishing gradients, flatter variations on this function (log-log, softsign, symmetrical sigmoid, etc.) can be employed."}];
 
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f'(x)&=1-\\tanh^2(x)\\\\&=1-f(x)^2\\end{align*}$",
@@ -1502,7 +1502,7 @@ switch(activ_func) {
   "func_origin" : "&#10060;",
   "func_symm" : "Symmetrical",
    "func_ref": "",
-    "func_primer":"<b>Symmetrical Sigmoid</b> is another alternative to Tanh activation (it's actually equivalent to Tanh activation with the input halved). Like Tanh, it's anti-symmetrical, zero centred, differentiable and returns a value between -1 and 1. Its flatter shape and more slowly declining derivative suggest that it may learn more efficiently."}];
+    "func_primer":"<b>Symmetrical Sigmoid</b> is another alternative to Tanh activation (it's actually equivalent to Tanh activation with the input halved). Like Tanh, it's anti-symmetrical, zero centered, differentiable and returns a value between -1 and 1. Its flatter shape and more slowly declining derivative suggest that it may learn more efficiently."}];
 
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f(x)&=0.5(1-\\tanh^2(x/2))\\\\&=0.5(1-f(x)^2)\\end{align*}$",
