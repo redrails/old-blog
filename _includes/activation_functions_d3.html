@@ -389,7 +389,7 @@ vis.append("text")
    .attr("y",  MARGINS.top+boxmargin*6.3)
    .attr("id", "func_mono")
    .attr("class", "func_text")
-   .html(function(d) { return "Monotonic:" + d.func_mono });
+   .html(function(d) { return "Monotonic: " + d.func_mono });
 
 vis.append("text")
    .data(func_tags)
@@ -397,7 +397,7 @@ vis.append("text")
 	 .attr("y",  MARGINS.top+boxmargin*7.6)
    .attr("id", "func_contin")
    .attr("class", "func_text")
-   .text(function(d) { return "Continuity:" + d.func_contin });
+   .text(function(d) { return "Continuity: " + d.func_contin });
 
 vis.append("text")
    .data(func_tags)
@@ -405,7 +405,7 @@ vis.append("text")
 	 .attr("y",  MARGINS.top+boxmargin*8.9)
    .attr("id", "func_origin")
    .attr("class", "func_text")
-   .html(function(d) { return "Identity at Origin:" + d.func_origin});
+   .html(function(d) { return "Identity at Origin: " + d.func_origin});
 
 
 
@@ -750,7 +750,7 @@ switch(activ_func) {
   "func_contin" : "C"+"⁰",
   "func_mono" : "&#9989;",
   "func_origin" : "&#10060;",
-  "func_symm" : 'Symmetry: Asymmetrical',
+  "func_symm" : 'Asymmetrical',
    "func_ref": "http://dl.acm.org/citation.cfm?id=3104322.3104425",
    "func_primer": "<b>Rectified linear unit</b> (<b>ReLU</b>) is considered the most common activation function in neural networks. It retains the biological motivation of the step function (neuron only fires if inputs exceed threshold), but has a non-zero derivative at positive inputs, which allows gradient based learning (though the derivative is undefined at exactly 0). It's also quite quick to compute as neither the function nor its derivative involve complex mathematical operations. However, as the derivative is 0 at non-positive inputs, ReLU may suffer from slow learning or even dead neurons, where neurons that have negative valued inputs are unable to update their weights due to the zero-valued gradients, rendering them silent for the remainder of the training phase."}];
        
@@ -1896,19 +1896,19 @@ vis.select("#func_equation")
 
    vis.select("#func_contin")
           .transition()
-      .text("Continuity:"+func_tags[0].func_contin );
+      .text("Continuity: "+func_tags[0].func_contin );
   
      vis.select("#func_symm")
-        .html(func_tags[0].func_symm );
+        .html( "Symmetry: " + func_tags[0].func_symm );
   
      vis.select("#func_range")
-      .html("Range:"+func_tags[0].func_range );
+      .html("Range: "+func_tags[0].func_range );
   
       vis.select("#func_mono")
-      .html("Monotonic:"+func_tags[0].func_mono );
+      .html("Monotonic: "+func_tags[0].func_mono );
   
         vis.select("#func_origin")
-      .html("Identity at Origin:"+func_tags[0].func_origin);
+      .html("Identity at Origin: "+func_tags[0].func_origin);
    
   
   
@@ -1923,19 +1923,19 @@ vis.select("#func_equation")
   // update derivative info table
   
   vis.select("#deriv_func_contin")
-      .html("Continuous:"+deriv_func_tags[0].deriv_func_contin );
+      .html("Continuous: "+deriv_func_tags[0].deriv_func_contin );
   
      vis.select("#deriv_func_range")
-      .html("Range:"+deriv_func_tags[0].deriv_func_range );
+      .html("Range: "+deriv_func_tags[0].deriv_func_range );
   
       vis.select("#deriv_func_mono")
-      .html("Monotonic:"+deriv_func_tags[0].deriv_func_mono );
+      .html("Monotonic: "+deriv_func_tags[0].deriv_func_mono );
   
         vis.select("#deriv_func_origin")
-      .html("Identity at Origin:"+deriv_func_tags[0].deriv_func_origin);
+      .html("Identity at Origin: "+deriv_func_tags[0].deriv_func_origin);
   
           vis.select("#deriv_func_symm")
-      .html("Identity at Origin:"+deriv_func_tags[0].deriv_func_symm);
+      .html("Identity at Origin: "+deriv_func_tags[0].deriv_func_symm);
   
   
   // update asymptote lines 
