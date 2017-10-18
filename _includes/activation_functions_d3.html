@@ -1968,20 +1968,20 @@ vis.select("#func_equation")
   
   document.getElementById('func_primer').innerHTML=func_tags[0].func_primer;
   
-  if(activ_func=="srelu" || activ_func=="prelu" ||  activ_func=="rrelu" || activ_func=="elu"){
+   if(activ_func=="srelu" || activ_func=="prelu" ||  activ_func=="rrelu" || activ_func=="elu"){
   
      vis.select("#deriv_func_exp")
      .select("tspan")
      .html("Exploding: ")
      .append("svg:tspan")
-     .style("fill",deriv_func_tags[0].deriv_func_exp.includes("Yes") ? "red" : "#00e600")
+     .style("fill",deriv_func_tags[0].deriv_func_exp.indexOf("Yes")>-1 ? "red" : "#00e600")
      .html(deriv_func_tags[0].deriv_func_exp );
      
           vis.select("#deriv_func_van")
      .select("tspan")
      .html("Vanishing: ")
      .append("svg:tspan")
-     .style("fill",deriv_func_tags[0].deriv_func_van.includes("Yes") ? "red" : "#00e600")
+     .style("fill",deriv_func_tags[0].deriv_func_van.indexOf("Yes")>-1 ? "red" : "#00e600")
      .html(deriv_func_tags[0].deriv_func_van );
      
    }else{
@@ -1989,30 +1989,28 @@ vis.select("#func_equation")
      .select("tspan")
      .html("Exploding Gradient: ")
      .append("svg:tspan")
-     .style("fill", deriv_func_tags[0].deriv_func_exp.indexOf("Yes")==-1  ? "red" : "#00e600")
+     .style("fill", deriv_func_tags[0].deriv_func_exp.indexOf("Yes")>-1  ? "red" : "#00e600")
      .html(deriv_func_tags[0].deriv_func_exp );
 
   vis.select("#deriv_func_van")
      .select("tspan")
      .html("Vanishing Gradient: ")
      .append("svg:tspan")
-     .style("fill", deriv_func_tags[0].deriv_func_van.indexOf("Yes")==-1 ? "red" : "#00e600")
+     .style("fill", deriv_func_tags[0].deriv_func_van.indexOf("Yes")>-1 ? "red" : "#00e600")
      .html(deriv_func_tags[0].deriv_func_van );
    }
   vis.select("#deriv_func_sat")
      .select("tspan")
      .select("tspan")
-     .style("fill", deriv_func_tags[0].deriv_func_sat.indexOf("Yes")==-1  ? "red" : "#00e600")
+     .style("fill", deriv_func_tags[0].deriv_func_sat.indexOf("Yes")>-1  ? "red" : "#00e600")
      .html(deriv_func_tags[0].deriv_func_sat );
 
   
   vis.select("#deriv_func_dead")
      .select("tspan")
      .select("tspan")
-     .style("fill", deriv_func_tags[0].deriv_func_dead.indexOf("Yes")==-1  ? "red" : "#00e600")
+     .style("fill", deriv_func_tags[0].deriv_func_dead.indexOf("Yes")>-1  ? "red" : "#00e600")
      .html(deriv_func_tags[0].deriv_func_dead );
-   
-   
    }
   
 </script>
