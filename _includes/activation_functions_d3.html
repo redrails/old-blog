@@ -167,7 +167,7 @@ color: white;
     <br>
 
 <script type="text/javascript">
-  MathJax.Hub.Config({
+MathJax.Hub.Config({
     tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
       processEscapes: true
@@ -261,7 +261,7 @@ for (var i = -3; i <= 3; i=i+0.001) {
 };
  
   var vis = d3.select("#visualisation"),
-    WIDTH = parseInt(document.getElementById("browser_warning").offsetWidth),
+    WIDTH = parseInt(document.getElementById("func_primer").offsetWidth+120),
     HEIGHT = parseInt(vis.style("height")),
  //   HEIGHT = parseInt(document.documentElement.clientHeight)*0.8,
     MARGINS = {
@@ -591,7 +591,7 @@ vis.append("text")
 d3.select(window)
   .on("resize", function() {
   vis = d3.select("#visualisation");
-  WIDTH = parseInt(document.getElementById("browser_warning").offsetWidth);
+  WIDTH = parseInt(document.getElementById("func_primer").offsetWidth);
   HEIGHT = parseInt(vis.style("height"));
     MARGINS = {
       top: HEIGHT/25.0,
@@ -732,6 +732,7 @@ vis.select("#deriv_func_dead")
    .attr("x", WIDTH-boxmargin_horizontal)                
    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3);
   });
+
 
 function InitChart() {
        var myClasses = document.getElementById("plot_inputs"),
@@ -1967,20 +1968,20 @@ vis.select("#func_equation")
   
   document.getElementById('func_primer').innerHTML=func_tags[0].func_primer;
   
-   if(activ_func=="srelu" || activ_func=="prelu" ||  activ_func=="rrelu" || activ_func=="elu"){
+  if(activ_func=="srelu" || activ_func=="prelu" ||  activ_func=="rrelu" || activ_func=="elu"){
   
      vis.select("#deriv_func_exp")
      .select("tspan")
      .html("Exploding: ")
      .append("svg:tspan")
-     .style("fill", deriv_func_tags[0].deriv_func_exp.includes("Yes") ? "red" : "#00e600")
+     .style("fill",deriv_func_tags[0].deriv_func_exp.includes("Yes") ? "red" : "#00e600")
      .html(deriv_func_tags[0].deriv_func_exp );
      
           vis.select("#deriv_func_van")
      .select("tspan")
      .html("Vanishing: ")
      .append("svg:tspan")
-     .style("fill", deriv_func_tags[0].deriv_func_van.includes("Yes") ? "red" : "#00e600")
+     .style("fill",deriv_func_tags[0].deriv_func_van.includes("Yes") ? "red" : "#00e600")
      .html(deriv_func_tags[0].deriv_func_van );
      
    }else{
@@ -1988,27 +1989,27 @@ vis.select("#func_equation")
      .select("tspan")
      .html("Exploding Gradient: ")
      .append("svg:tspan")
-     .style("fill", deriv_func_tags[0].deriv_func_exp.includes("Yes") ? "red" : "#00e600")
+     .style("fill", deriv_func_tags[0].deriv_func_exp.indexOf("Yes")==-1  ? "red" : "#00e600")
      .html(deriv_func_tags[0].deriv_func_exp );
 
   vis.select("#deriv_func_van")
      .select("tspan")
      .html("Vanishing Gradient: ")
      .append("svg:tspan")
-     .style("fill", deriv_func_tags[0].deriv_func_van.includes("Yes") ? "red" : "#00e600")
+     .style("fill", deriv_func_tags[0].deriv_func_van.indexOf("Yes")==-1 ? "red" : "#00e600")
      .html(deriv_func_tags[0].deriv_func_van );
    }
   vis.select("#deriv_func_sat")
      .select("tspan")
      .select("tspan")
-     .style("fill", deriv_func_tags[0].deriv_func_sat.includes("Yes") ? "red" : "#00e600")
+     .style("fill", deriv_func_tags[0].deriv_func_sat.indexOf("Yes")==-1  ? "red" : "#00e600")
      .html(deriv_func_tags[0].deriv_func_sat );
 
   
   vis.select("#deriv_func_dead")
      .select("tspan")
      .select("tspan")
-     .style("fill", deriv_func_tags[0].deriv_func_dead.includes("Yes") ? "red" : "#00e600")
+     .style("fill", deriv_func_tags[0].deriv_func_dead.indexOf("Yes")==-1  ? "red" : "#00e600")
      .html(deriv_func_tags[0].deriv_func_dead );
    
    
