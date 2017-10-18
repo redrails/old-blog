@@ -8,7 +8,6 @@
        
     @-moz-document url-prefix() { 
 #visualisation{
-    width: 900px;
     height: 500px;
 }
 }
@@ -166,7 +165,7 @@ color: white;
     <br>
 
 <script type="text/javascript">
-    MathJax.Hub.Config({
+  MathJax.Hub.Config({
     tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
       processEscapes: true
@@ -260,8 +259,9 @@ for (var i = -3; i <= 3; i=i+0.001) {
 };
  
   var vis = d3.select("#visualisation"),
-    WIDTH = parseInt(vis.style("width")),
+    WIDTH = parseInt(document.getElementById("intro_text").offsetWidth),
     HEIGHT = parseInt(vis.style("height")),
+ //   HEIGHT = parseInt(document.documentElement.clientHeight)*0.8,
     MARGINS = {
       top: HEIGHT/25.0,
       right: WIDTH/2.5,
@@ -589,7 +589,7 @@ vis.append("text")
 d3.select(window)
   .on("resize", function() {
   vis = d3.select("#visualisation");
-  WIDTH = parseInt(vis.style("width"));
+  WIDTH = parseInt(document.getElementById("intro_text").offsetWidth);
   HEIGHT = parseInt(vis.style("height"));
     MARGINS = {
       top: HEIGHT/25.0,
