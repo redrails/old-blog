@@ -175,6 +175,8 @@ MathJax.Hub.Config({
   });
 
 
+
+
         function erf(x) {
             var z;
             const ERF_A = 0.147; 
@@ -461,6 +463,14 @@ vis.append("foreignObject")
    .append("xhtml:div")
    .attr("class", "deriv_func_text")
    .html(function(d) {return d.deriv_func_tex});
+
+if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+     vis.select("#func_equation")
+     .attr("width", MARGINS.right-rect_margin*2)                  .attr("height",  boxmargin*3);
+  
+       vis.select("#deriv_func_equation")
+     .attr("width", MARGINS.right-rect_margin*2)                  .attr("height",  boxmargin*3);
+}
 
 vis.append("text")
    .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)               
@@ -2011,8 +2021,8 @@ vis.select("#func_equation")
      .select("tspan")
      .style("fill", deriv_func_tags[0].deriv_func_dead.indexOf("Yes")>-1  ? "red" : "#00e600")
      .html(deriv_func_tags[0].deriv_func_dead );
+   
    }
-  
 </script>
 </body>
 </html>
