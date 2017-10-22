@@ -232,8 +232,8 @@ var lineData_deriv = [];
       "func_tex":"$f(x) =\\begin{cases}1 & \\text{for } x\\geq0\\\\0 & \\text{for } x<0\\end{cases} $",
   "func_range" : "{0, 1}",
   "func_contin" : "C"+"⁻¹",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#10060;",
+  "func_mono" : "✅",
+  "func_origin" : "❌",
   "func_symm" : "Asymmetrical",
    "func_ref": "",
    "func_primer":"More theoretical than practical, the <b>Step</b> (alternatively, <b>Binary Step</b> or <b>Heaviside</b>) activation function mimics the all-or-nothing behaviour of biological neurons. It's not useful for modern neural networks, as its derivative is zero (except at 0 where it's undefined), making gradient based approaches for optimisation impossible."}];
@@ -241,9 +241,9 @@ var lineData_deriv = [];
   deriv_func_tags=
     [{"deriv_func_tex":"$f'(x) =\\begin{cases}0 & \\text{for } x\\neq0\\\\? & \\text{for } x=0\\end{cases} $",
   "deriv_func_range" : "{0}",
-  "deriv_func_contin" : "&#10060;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#10060;",
+  "deriv_func_contin" : "❌",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "❌",
   "deriv_func_van" : "No",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "No",
@@ -380,27 +380,24 @@ vis.append("rect")
 vis.append("foreignObject")
    .data(func_tags)
    .attr("id", "func_equation")
-   .attr("x", WIDTH-MARGINS.right+rect_margin*2)            
-	 .attr("y",  MARGINS.top+boxmargin/2)
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2)      .attr("y",  MARGINS.top+boxmargin/2)
    .append("xhtml:div")
    .attr("class", "func_text")
    .text(function(d) { return d.func_tex });
 
 vis.append("text")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+rect_margin*2)                 
-   .attr("y",  MARGINS.top+boxmargin*5)
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2)      .attr("y",  MARGINS.top+boxmargin*5)
    .attr("id", "func_range")
    .attr("class", "func_text")
-   .html(function(d) { return "Range: " + d.func_range });
+   .text(function(d) { return "Range: " + d.func_range });
 
 vis.append("text")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+rect_margin*2)                 
-   .attr("y",  MARGINS.top+boxmargin*6.3)
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2)      .attr("y",  MARGINS.top+boxmargin*6.3)
    .attr("id", "func_mono")
    .attr("class", "func_text")
-   .html(function(d) { return "Monotonic: " + d.func_mono });
+   .text(function(d) { return "Monotonic: " + d.func_mono });
 
 vis.append("text")
    .data(func_tags)
@@ -426,7 +423,7 @@ vis.append("text")
 	 .attr("y",  MARGINS.top+boxmargin*10.2)
    .attr("id", "func_symm")
    .attr("class", "func_text")
-   .html(function(d) { return "Symmetry: " + d.func_symm });
+   .text(function(d) { return "Symmetry: " + d.func_symm });
 
 vis.append("text")
    .attr("x", WIDTH-boxmargin_horizontal/1.7)              
@@ -478,7 +475,7 @@ vis.append("text")
    .data(deriv_func_tags)
    .attr("id", "deriv_func_range")
    .attr("class", "deriv_func_text")
-   .html(function(d) { return "Range: " + d.deriv_func_range });
+   .text(function(d) { return "Range: " + d.deriv_func_range });
 
 
 vis.append("text")
@@ -492,8 +489,7 @@ vis.append("text")
 
 
 vis.append("text")
-   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)           
-   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*7.6)
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*7.6)
    .data(deriv_func_tags)
    .attr("id", "deriv_func_contin")
    .attr("class", "deriv_func_text")
@@ -504,32 +500,30 @@ vis.append("text")
    .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)              .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*8.9)
    .attr("id", "deriv_func_van")
    .attr("class", "deriv_func_text")
-     .append("svg:tspan").html("Vanishing Gradient: ")
-  .append("svg:tspan").style("fill", "#00e600").html(deriv_func_tags[0].deriv_func_van);
+     .append("svg:tspan").text("Vanishing Gradient: ")
+  .append("svg:tspan").style("fill", "#00e600").text(deriv_func_tags[0].deriv_func_van);
 
 vis.append("text")
    .attr("x", WIDTH-boxmargin_horizontal)             
    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*8.9)
    .attr("id", "deriv_func_exp")
    .attr("class", "deriv_func_text")
-   .append("svg:tspan").html("Exploding Gradient: ")
-  .append("svg:tspan").style("fill", "#00e600").html(deriv_func_tags[0].deriv_func_exp);
+   .append("svg:tspan").text("Exploding Gradient: ")
+  .append("svg:tspan").style("fill", "#00e600").text(deriv_func_tags[0].deriv_func_exp);
 
 vis.append("text")
-   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)                
-   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3)
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3)
    .attr("id", "deriv_func_sat")
    .attr("class", "deriv_func_text")
-   .append("svg:tspan").html("Saturation: ")
-  .append("svg:tspan").style("fill", "#00e600").html(deriv_func_tags[0].deriv_func_sat);
+   .append("svg:tspan").text("Saturation: ")
+  .append("svg:tspan").style("fill", "#00e600").text(deriv_func_tags[0].deriv_func_sat);
 
 vis.append("text")
-   .attr("x", WIDTH-boxmargin_horizontal)                
-   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3)
+   .attr("x", WIDTH-boxmargin_horizontal)            .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3)
    .attr("id", "deriv_func_dead")
    .attr("class", "deriv_func_text")
-   .append("svg:tspan").html("Dead Neurons: ")
-  .append("svg:tspan").style("fill", "red").html(deriv_func_tags[0].deriv_func_dead);
+   .append("svg:tspan").text("Dead Neurons: ")
+  .append("svg:tspan").style("fill", "red").text(deriv_func_tags[0].deriv_func_dead);
 
 vis.append("text")
 	.attr("x", MARGINS.left)             
@@ -723,24 +717,19 @@ vis.select("#deriv_func_mono")
 
 
 vis.select("#deriv_func_contin")
-   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)                  
-   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*7.6);
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*7.6);
 
 vis.select("#deriv_func_van")
-   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)                  
-   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*8.9);
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*8.9);
 
 vis.select("#deriv_func_exp")
-   .attr("x", WIDTH-boxmargin_horizontal)                
-   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*8.9);
+   .attr("x", WIDTH-boxmargin_horizontal)            .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*8.9);
 
 vis.select("#deriv_func_sat")
-   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)                   
-   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3);
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2.0)    .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3);
 
 vis.select("#deriv_func_dead")
-   .attr("x", WIDTH-boxmargin_horizontal)                
-   .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3);
+   .attr("x", WIDTH-boxmargin_horizontal)            .attr("y",  MARGINS.top+(HEIGHT/2)+boxmargin*10.3);
   });
 
 
@@ -766,10 +755,10 @@ switch(activ_func) {
   case "relu":
    func_tags = [{
       "func_tex":"$f(x) =\\begin{cases}x & \\text{for } x\\geq0\\\\0 & \\text{for } x<0\\end{cases} $",
-  "func_range" : "[0, +&infin;)",
+  "func_range" : "[0, ∞)",
   "func_contin" : "C"+"⁰",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#10060;",
+  "func_mono" : "✅",
+  "func_origin" : "❌",
   "func_symm" : 'Asymmetrical',
    "func_ref": "http://dl.acm.org/citation.cfm?id=3104322.3104425",
    "func_primer": "<b>Rectified linear unit</b> (<b>ReLU</b>) is considered the most common activation function in neural networks. It retains the biological motivation of the step function (neuron only fires if inputs exceed threshold), but has a non-zero derivative at positive inputs, which allows gradient based learning (though the derivative is undefined at exactly 0). It's also quite quick to compute as neither the function nor its derivative involve complex mathematical operations. However, as the derivative is 0 at non-positive inputs, ReLU may suffer from slow learning or even dead neurons, where neurons that have negative valued inputs are unable to update their weights due to the zero-valued gradients, rendering them silent for the remainder of the training phase."}];
@@ -777,9 +766,9 @@ switch(activ_func) {
        deriv_func_tags=
     [{"deriv_func_tex":"$f'(x) =\\begin{cases}1 & \\text{for } x\\geq0\\\\0 & \\text{for } x<0\\end{cases} $",
   "deriv_func_range" : "{0,1}",
-  "deriv_func_contin" : "&#10060;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#10060;",
+  "deriv_func_contin" : "❌",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "❌",
   "deriv_func_van" : "No",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "No",
@@ -802,8 +791,8 @@ switch(activ_func) {
       "func_tex":"$f(x) =\\begin{cases}1 & \\text{for } x\\geq0\\\\0 & \\text{for } x<0\\end{cases} $",
   "func_range" : "{0, 1}",
   "func_contin" : "C"+"⁻¹",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#9989;",
+  "func_mono" : "✅",
+  "func_origin" : "✅",
   "func_symm" : "Asymmetrical",
    "func_ref": "",
    "func_primer":"More theoretical than practical, the <b>Step</b> (alternatively, <b>Binary Step</b> or <b>Heaviside</b>) activation function mimics the all-or-nothing behaviour of biological neurons. It's not useful for modern neural networks, as its derivative is zero (except at 0 where it's undefined), making gradient based approaches for optimisation impossible."}];
@@ -811,9 +800,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex":"$f'(x) =\\begin{cases}0 & \\text{for } x\\neq0\\\\? & \\text{for } x=0\\end{cases} $",
   "deriv_func_range" : "{0}",
-  "deriv_func_contin" : "&#10060;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#10060;",
+  "deriv_func_contin" : "❌",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "❌",
   "deriv_func_van" : "No",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "No",
@@ -837,8 +826,8 @@ switch(activ_func) {
       "func_tex":"$f(x) =\\begin{cases}1 & x>0\\\\-1 &  x<0 \\\\0 &  x=0\\end{cases} $",
   "func_range" : "{-1,0, 1}",
   "func_contin" : "C"+"⁻¹",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#10060;",
+  "func_mono" : "✅",
+  "func_origin" : "❌",
   "func_symm" : "Anti-Symmetrical",
    "func_ref": "",
        "func_primer":"The <b>Signum</b> (or just <b>Sign</b>) is a scaled version of the binary step activation function. It takes the value -1 and 1 for negative and postive values, respectively, and zero at the origin. Though lacking the biological motivation of the step function, the function is anti-symmetrical, which is thought to be a favourable trait for an activation function."}];
@@ -846,9 +835,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex":"$f'(x) =\\begin{cases}0 & \\text{for } x\\neq0\\\\? & \\text{for } x=0\\end{cases} $",
   "deriv_func_range" : "{0}",
-  "deriv_func_contin" : "&#10060;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#10060;",
+  "deriv_func_contin" : "❌",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "❌",
   "deriv_func_van" : "No",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "No",
@@ -877,10 +866,10 @@ switch(activ_func) {
     case "identity":
     func_tags =  [{
       "func_tex":"$\\begin{align*}f(x) = x\\end{align*}$",
-  "func_range" : "(-&infin;, +&infin;)",
+  "func_range" : "(-∞;, +∞)",
   "func_contin" : "C"+"∞",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#9989;",
+  "func_mono" : "✅",
+  "func_origin" : "✅",
   "func_symm" : "Anti-Symmetrical",
    "func_ref": "",
     "func_primer":"With the <b>Identity</b> activation function, node output is equal to its input. It's perfectly suited to tasks where the underlying behaviour is linear, similar to linear regression. When non-linearities exist, this activation function alone is insufficient, though it may still be employed as the activation function on the final output nodes for regression-like tasks."}];
@@ -888,9 +877,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex":"$\\begin{align*}f'(x) = 1\\end{align*}$",
   "deriv_func_range" : "{1}",
-  "deriv_func_contin" : "&#9989;",
-  "deriv_func_mono" : "&#9989;",
-  "deriv_func_symm" : "&#9989;",
+  "deriv_func_contin" : "✅",
+  "deriv_func_mono" : "✅",
+  "deriv_func_symm" : "✅",
   "deriv_func_van" : "No",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "No",
@@ -914,8 +903,8 @@ switch(activ_func) {
       "func_tex":"$\\begin{align*}f(x) = \\frac{1}{1 + e^{-x}} \\end{align*}$",
   "func_range" : "(0, 1)",
   "func_contin" : "C"+"∞",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#10060;",
+  "func_mono" : "✅",
+  "func_origin" : "❌",
   "func_symm" : "Asymmetrical",
    "func_ref": "",
    "func_primer":"Well known from its role in logistic regression, ranging between 0 and 1, the <b>Logistic Sigmoid</b> (or more commonly just <b>Sigmoid</b>) activation function introduces the concept of probability to neural networks. Its derivative is non-zero and easy to compute (it's a function of its original output). However, it's gradually being replaced by Tanh as the textbook activation function for classification tasks, as the latter is anti-symmetrical and centered on the origin."}];
@@ -923,9 +912,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f'(x) &= \\frac{e^{-x}}{(1+e^{-x})^2} \\\\&= f(x)(1-f(x)) \\end{align*}$",
   "deriv_func_range" : "(0,0.25)",
-  "deriv_func_contin" : "&#9989;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#9989;",
+  "deriv_func_contin" : "✅",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "✅",
   "deriv_func_van" : "Yes",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "Yes",
@@ -949,10 +938,10 @@ switch(activ_func) {
     
     func_tags =  [{
       "func_tex":"$\\begin{align*}f(x) =\\tan^{-1}(x) \\end{align*}$",
-  "func_range" : "(-&pi;/2, &pi;/2)",
+  "func_range" : "(-π/2, π/2)",
   "func_contin" : "C"+"∞",
-  "func_mono" : "&#10060;",
-  "func_origin" : "&#9989;",
+  "func_mono" : "❌",
+  "func_origin" : "✅",
   "func_symm" : "Symmetrical",
    "func_ref": "",
     "func_primer":"Visually similar to the hyperbolic tangent (Tanh) function, flatter shape of the <b>ArcTan</b> activation function allows it to be discerning than its hyperbolic counterpart. By default, its output ranges between -&pi;/2 and &pi;/2. The derivative also approaches zero more slowly, meaning that it can learn more efficiently. That said, calculation of the derivative is more computationally expensive than Tanh."}];
@@ -960,9 +949,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f'(x)=\\frac{1}{x^2+1} \\end{align*}$",
   "deriv_func_range" : "(0,1]",
-  "deriv_func_contin" : "&#9989;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#9989;",
+  "deriv_func_contin" : "✅",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "✅",
   "deriv_func_van" : "Yes",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "Yes",
@@ -986,10 +975,10 @@ switch(activ_func) {
     
     func_tags =  [{
       "func_tex":"$\\begin{align*}f(x)=\\frac{x}{1+|x|} \\end{align*}$",
-  "func_range" : "(0, &infin;)",
+  "func_range" : "(0, ∞)",
   "func_contin" : "C¹",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#9989;",
+  "func_mono" : "✅",
+  "func_origin" : "✅",
   "func_symm" : "Anti-Symmetrical",
   "func_ref":"http://www.iro.umontreal.ca/~lisa/publications2/index.php/attachments/single/205",
     "func_primer":"<b>Softsign</b> is another alternative to Tanh activation. Like Tanh, it's anti-symmetrical, zero centered, differentiable and returns a value between -1 and 1. Its flatter shape and more slowly declining derivative suggest that it may learn more efficiently. On the other hand, calculation of the derivative is more computationally cumbersome than Tanh."}];
@@ -997,9 +986,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f'(x)=\\frac{1}{(1+|x|)^2} \\end{align*}$",
   "deriv_func_range" : "(0,1]",
-  "deriv_func_contin" : "&#9989;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#9989;",
+  "deriv_func_contin" : "✅",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "✅",
   "deriv_func_van" : "Yes",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "Yes",
@@ -1023,10 +1012,10 @@ switch(activ_func) {
     
     func_tags =  [{
       "func_tex":"$\\begin{align*}f(x)=\\ln(1+e^x) \\end{align*}$",
-  "func_range" : "(0, &infin;)",
+  "func_range" : "(0, ∞)",
   "func_contin" : "C"+"∞",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#10060;",
+  "func_mono" : "✅",
+  "func_origin" : "❌",
   "func_symm" : "Asymmetrical",
   "func_ref":"http://proceedings.mlr.press/v15/glorot11a/glorot11a.pdf",
     "func_primer":"A smooth alternative to ReLU, <b>SoftPlus</b> can return any value greater than zero. Unlike ReLU, its derivative is continuous and non-zero everywhere, which guards against dead neurons. However, again unlike ReLU, it's asymmetrical and not centered on zero, which may hinder learning. Furthermore, as the derivative is always less than 1, vanishing gradients could be a concern."}];
@@ -1034,9 +1023,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f'(x)=\\frac{1}{1+e^{-x}}\\end{align*}$",
   "deriv_func_range" : "(0,1)",
-  "deriv_func_contin" : "&#9989;",
-  "deriv_func_mono" : "&#9989;",
-  "deriv_func_symm" : "&#10060;",
+  "deriv_func_contin" : "✅",
+  "deriv_func_mono" : "✅",
+  "deriv_func_symm" : "❌",
   "deriv_func_van" : "Yes",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "Yes",
@@ -1059,10 +1048,10 @@ switch(activ_func) {
     
     func_tags =  [{
       "func_tex":"$\\begin{align*}f(x)=\\frac{\\sqrt{x^2 + 1} - 1}{2} + x \\end{align*}$",
-  "func_range" : "(-&infin;, &infin;)",
+  "func_range" : "(-∞, ∞)",
   "func_contin" : "C"+"∞",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#9989;",
+  "func_mono" : "✅",
+  "func_origin" : "✅",
   "func_symm" : "Asymmetrical",
    "func_ref": "",
     "func_primer":"A sort of compromise between Identity and ReLU activation, <b>Bent Identity</b> allows non-linear behaviours, while its non-zero derivative promotes efficient learning and overcomes the issues of dead neurons associated with ReLU. As its derivative can return values either side of 1, it can be susceptible to both exploding and vanishing gradients."}];
@@ -1070,9 +1059,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f'(x)=\\frac{x}{2\\sqrt{x^2 + 1}} + 1\\end{align*}$",
   "deriv_func_range" : "(0.5, 1.5)",
-  "deriv_func_contin" : "&#9989;",
-  "deriv_func_mono" : "&#9989;",
-  "deriv_func_symm" : "&#10060;",
+  "deriv_func_contin" : "✅",
+  "deriv_func_mono" : "✅",
+  "deriv_func_symm" : "❌",
   "deriv_func_van" : "Yes",
   "deriv_func_exp" : "Yes",
   "deriv_func_sat" : "No",
@@ -1096,8 +1085,8 @@ switch(activ_func) {
       "func_tex":"$\\begin{align*}f(x)=\\sin(x) \\end{align*}$",
   "func_range" : "[-1, -1]",
   "func_contin" : "C"+"∞",
-  "func_mono" : "&#10060;",
-  "func_origin" : "&#9989;",
+  "func_mono" : "❌",
+  "func_origin" : "✅",
   "func_symm" : "Anti-Symmetrical",
    "func_ref": "",
     "func_primer":"Like Cos, <b>Sinusoid</b> (or simply <b>Sin</b>) activation introduces periodicity to neural networks. It returns a value between -1 and 1, is zero centered and anti-symmetrical and its derivative is continuous."}];
@@ -1105,9 +1094,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f'(x)=\\cos(x)\\end{align*}$",
   "deriv_func_range" : "[-1, -1]",
-  "deriv_func_contin" : "&#9989;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#10060;",
+  "deriv_func_contin" : "✅",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "❌",
   "deriv_func_van" : "Yes",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "No",
@@ -1133,8 +1122,8 @@ switch(activ_func) {
       "func_tex":"$\\begin{align*}f(x)=\\cos(x) \\end{align*}$",
   "func_range" : "[-1, -1]",
   "func_contin" : "C"+"∞",
-  "func_mono" : "&#10060;",
-  "func_origin" : "&#10060;",
+  "func_mono" : "❌",
+  "func_origin" : "❌",
   "func_symm" : "Symmetrical",
    "func_ref": "",
     "func_primer":"Like Sin, <b>Cos</b> (or <b>Cosine</b>) activation introduces periodicity to neural networks. It returns a value between -1 and 1 and its derivative is continuous. Unlike Sinusoid, it is symmetrical and not centered on zero."}];
@@ -1142,9 +1131,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f'(x)=\\-sin(x)\\end{align*}$",
   "deriv_func_range" : "[-1, -1]",
-  "deriv_func_contin" : "&#9989;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#9989;",
+  "deriv_func_contin" : "✅",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "✅",
   "deriv_func_van" : "Yes",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "No",
@@ -1168,20 +1157,20 @@ switch(activ_func) {
     
     func_tags =  [{
       "func_tex":"$f(x)=\\begin{cases}1 & \\text{for } x = 0\\\\\\frac{\\sin(x)}{x} & \\text{for } x \\ne 0\\end{cases}$",
-  "func_range" : "[&asymp;-0.2172,1]",
+  "func_range" : "[≈-0.2172,1]",
   "func_contin" : "C"+"∞",
-  "func_mono" : "&#10060;",
-  "func_origin" : "&#10060;",
+  "func_mono" : "❌",
+  "func_origin" : "❌",
   "func_symm" : "Symmetrical",
    "func_ref":"https://www.spiedigitallibrary.org/conference-proceedings-of-spie/2760/1/Function-approximation-using-a-sinc-neural-network/10.1117/12.235959.short?SSO=1",
     "func_primer":"The <b>Sinc</b> (or <b>Cardinal Sine</b> to give its full name) function features prominently in signal processing, as it represents the Fourier transform of a rectangle function. As an activation function, it benefits from being entirely differentiable and symmetric, though it's vulnerable to vanishing gradients."}];
 
   deriv_func_tags=
     [{"deriv_func_tex": "$f'(x)=\\begin{cases}0 & \\text{for } x = 0\\\\\\frac{\\cos(x)}{x} - \\frac{\\sin(x)}{x^2} & \\text{for } x \\ne 0\\end{cases}$",
-  "deriv_func_range" : "(&asymp;-0.4362, &asymp;0.4362)",
-  "deriv_func_contin" : "&#9989;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#10060;",
+  "deriv_func_range" : "(≈-0.4362, ≈0.4362)",
+  "deriv_func_contin" : "✅",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "❌",
   "deriv_func_van" : "Yes",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "Yes",
@@ -1214,8 +1203,8 @@ switch(activ_func) {
       "func_tex":"$\\begin{align*}f(x)&=\\tanh(x)\\\\&=\\frac{2}{1+e^{-2x}}-1\\end{align*}$",
   "func_range" : "(-1, -1)",
   "func_contin" : "C"+"∞",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#9989;",
+  "func_mono" : "✅",
+  "func_origin" : "✅",
   "func_symm" : "Anti-Symmetrical",
    "func_ref": "",
     "func_primer":"Gradually replacing the logistic sigmoid function as the activation function of choice for classification tasks, <b>Tanh</b> (or <b>Hyperbolic Tan</b>) possesses various traits that are favoured in neural networks. It's entirely differentiable, centered on zero and anti-symmetrical. To mitigate slow learning and/or vanishing gradients, flatter variations on this function (log-log, softsign, symmetrical sigmoid, etc.) can be employed."}];
@@ -1223,9 +1212,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f'(x)&=1-\\tanh^2(x)\\\\&=1-f(x)^2\\end{align*}$",
   "deriv_func_range" : "(0, 1]",
-  "deriv_func_contin" : "&#9989;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#9989;",
+  "deriv_func_contin" : "✅",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "✅",
   "deriv_func_van" : "Yes",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "Yes",
@@ -1251,8 +1240,8 @@ switch(activ_func) {
       "func_tex":"$\\begin{align*}f(x)&=1.7519\\tanh(\\frac{2}{3}x)\\end{align*}$",
   "func_range" : "(-1.7519 , 1.7519)",
   "func_contin" : "C"+"∞",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#10060;",
+  "func_mono" : "✅",
+  "func_origin" : "❌",
   "func_symm" : "Anti-Symmetrical",
    "func_ref": "http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf",
     "func_primer":"<b>LeCun Tanh</b> (alternatively known as <b>Scaled Tanh</b>) is a scaled version of the Tanh activation function. It possesses several properties that supposedly improve learning: f(&plusmn; 1) = &plusmn;1; the second derivative is maximised at x=1; and the effective gain is close to 1. See the Reference in the blue box for more information."}];
@@ -1260,9 +1249,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f'(x)&=1.7519*\\frac{2}{3}(1-\\tanh^2(\\frac{2}{3}x))\\\\&=1.7519*\\frac{2}{3}-\\frac{2}{3*1.7519}f(x)^2\\end{align*}$",
   "deriv_func_range" : "(0, 1.167933]",
-  "deriv_func_contin" : "&#9989;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#9989;",
+  "deriv_func_contin" : "✅",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "✅",
   "deriv_func_van" : "Yes",
   "deriv_func_exp" : "Yes",
   "deriv_func_sat" : "Yes",
@@ -1286,10 +1275,10 @@ switch(activ_func) {
       case "leakyrelu":
    func_tags = [{
       "func_tex":"$f(x) =\\begin{cases}x & \\text{for } x\\geq0\\\\0.01x & \\text{for } x<0\\end{cases} $",
-  "func_range" : "(-&infin;, &infin;)",
+  "func_range" : "(-∞, ∞)",
   "func_contin" : "C"+"⁰",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#9989;",
+  "func_mono" : "✅",
+  "func_origin" : "✅",
   "func_symm" : "Asymmetrical",
    "func_ref": "https://pdfs.semanticscholar.org/367f/2c63a6f6a10b3b64b8729d601e69337ee3cc.pdf",
    "func_primer":"A variation on the classic (and widely popular) ReLU activation, <b>Leaky Rectified Linear Unit</b> (<b>Leaky ReLU</b>) includes a very small slope for negative value inputs. This mitigates against dead neurons, as the derivative is always non-zero, allowing gradient based learning to occur (however slow)."}];
@@ -1297,9 +1286,9 @@ switch(activ_func) {
        deriv_func_tags=
     [{"deriv_func_tex":"$f'(x) =\\begin{cases}1 & \\text{for } x\\geq0\\\\0.01 & \\text{for } x<0\\end{cases} $",
   "deriv_func_range" : "{0.01, 1}",
-  "deriv_func_contin" : "&#10060;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#10060;",
+  "deriv_func_contin" : "❌",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "❌",
   "deriv_func_van" : "Yes",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "No",
@@ -1333,18 +1322,18 @@ switch(activ_func) {
       "func_tex":"$\\begin{align*}f(x)=e^{-x^2}\\end{align*}$",
   "func_range" : "(0, 1]",
   "func_contin" : "C"+"∞",
-  "func_mono" : "&#10060;",
-  "func_origin" : "&#10060;",
+  "func_mono" : "❌",
+  "func_origin" : "❌",
   "func_symm" : "Symmetrical",
    "func_ref": "",
     "func_primer":"Not to be confused with Gaussian kernels commonly employed in Radial Basis Function Networks (RBFNs), the Gaussian function is less popular with Multi-Layer Perceptron type models. It's entirely differentiable and symmetric, though the first derivative quickly converges towards zero."}];
 
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f'(x)&=-2xe^{-x^2}\\\\ &= -2x f(x)\\end{align*}$",
-  "deriv_func_range" : "(-&infin;, &infin)",
-  "deriv_func_contin" : "&#9989;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#10060;",
+  "deriv_func_range" : "(-∞, &infin)",
+  "deriv_func_contin" : "✅",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "❌",
   "deriv_func_van" : "Yes",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "Yes",
@@ -1366,10 +1355,10 @@ switch(activ_func) {
     case "absolute":
     func_tags =  [{
       "func_tex":"$\\begin{align*}f(x)=|x|\\end{align*}$",
-  "func_range" : "[0, &infin;)",
+  "func_range" : "[0, ∞)",
   "func_contin" : "C"+"⁰",
-  "func_mono" : "&#10060;",
-  "func_origin" : "&#10060;",
+  "func_mono" : "❌",
+  "func_origin" : "❌",
   "func_symm" : "Symmetrical",
    "func_ref": "",
     "func_primer":"As the name suggests, the <b>Absolute</b> activation function returns the absolute value of the input. Its derivative is easy to compute and is defined everywhere except 0. As the magnitude of the derivative is equal to 1, this activation fucntion does not suffer from vanishing/exploding gradients."}];
@@ -1377,9 +1366,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex": "$f'(x) =\\begin{cases}-1 & \\text{for } x<0\\\\1 & \\text{for } x>0\\\\? & \\text{for } x=0\\end{cases}$",
   "deriv_func_range" : "{-1, 1}",
-  "deriv_func_contin" : "&#10060;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#10060;",
+  "deriv_func_contin" : "❌",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "❌",
   "deriv_func_van" : "No",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "No",
@@ -1402,24 +1391,24 @@ switch(activ_func) {
          case "probit":
     func_tags =  [{
       "func_tex":"$\\begin{align*}f(x)&=\\Phi(x)\\\\&=\\sqrt{2}\\,\\operatorname{erf}^{-1}(2x-1)\\end{align*}$",
-  "func_range" : "(-&infin;, &infin;)",
-  "func_contin" : "C&infin;",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#9989;",
-  "func_symm" : "&#10060;",
+  "func_range" : "(-∞, ∞)",
+  "func_contin" : "C∞",
+  "func_mono" : "✅",
+  "func_origin" : "✅",
+  "func_symm" : "❌",
    "func_ref": "",
     "func_primer":""}];
 
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f(x)&=\\sqrt{2\\pi}\\exp^{[\\operatorname{erf}^{-1}(2x-1)]^2}\\\\&=\\sqrt{2}\\,\\operatorname{erf}^{-1}(2x-1)\\end{align*}$",
   "deriv_func_range" : "(0, 1]",
-  "deriv_func_contin" : "&#9989;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#9989;",
+  "deriv_func_contin" : "✅",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "✅",
   "deriv_func_van" : "No",
-  "deriv_func_exp" : "&#10060;",
-  "deriv_func_sat" : "&#10060;",
-  "deriv_func_dead" : "&#10060;"}];
+  "deriv_func_exp" : "❌",
+  "deriv_func_sat" : "❌",
+  "deriv_func_dead" : "❌"}];
     
           axis_limits = [-1,1,-3,3];
     alert(Math.exp(-Math.pow(1,2)/2)/(Math.sqrt(2*Math.PI)));
@@ -1440,8 +1429,8 @@ switch(activ_func) {
       "func_tex":"$f(x) =\\begin{cases}0 & \\text{for } x<-2.5\\\\0.2x + 0.5 & \\text{for } -2.5\\geq x\\leq 2.5 \\\\1 & \\text{for } x>2.5\\end{cases} $",
   "func_range" : "[0,1]",
   "func_contin" : "C"+"⁰",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#10060;",
+  "func_mono" : "✅",
+  "func_origin" : "❌",
   "func_symm" : "Asymmetrical",
    "func_ref": "https://arxiv.org/pdf/1603.00391.pdf",
        "func_primer":"<b>Hard Sigmoid</b> is a piecewise linear approximation of the Logistic Sigmoid activation function. It's easier to compute, which makes learning computationally faster, though the zero valued first derivatives could promote dead neurons/slow learning (see ReLU)."}];
@@ -1449,9 +1438,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex":"$f(x) =\\begin{cases}0 & \\text{for } x<-2.5\\\\0.2 & \\text{for } -2.5\\geq x\\leq 2.5 \\\\0 & \\text{for } x>2.5\\end{cases} $",
   "deriv_func_range" : "{0, 0.2}",
-  "deriv_func_contin" : "&#10060;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#10060;",
+  "deriv_func_contin" : "❌",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "❌",
   "deriv_func_van" : "Yes",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "No",
@@ -1485,8 +1474,8 @@ switch(activ_func) {
       "func_tex":"$f(x) =\\begin{cases}-1 & \\text{for } x<-1\\\\x & \\text{for } -1\\geq x\\leq 1 \\\\1 & \\text{for } x>1\\end{cases} $",
   "func_range" : "[-1,1]",
   "func_contin" : "C"+"⁰",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#9989;",
+  "func_mono" : "✅",
+  "func_origin" : "✅",
   "func_symm" : "Anti-Symmetrical",
    "func_ref": "https://arxiv.org/pdf/1603.00391.pdf",
        "func_primer":"<b>HardTanh</b> is a piecewise linear approximation of the Tanh activation function. It's easier to compute, which makes learning computationally faster, though the zero valued first derivatives could promote dead neurons/slow learning (see ReLU)."}];
@@ -1494,9 +1483,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex":"$f(x) =\\begin{cases}0 & \\text{for } x<-1\\\\1 & \\text{for } -1\\geq x\\leq 1 \\\\0 & \\text{for } x>1\\end{cases} $",
   "deriv_func_range" : "{0,1}",
-  "deriv_func_contin" : "&#10060;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#10060;",
+  "deriv_func_contin" : "❌",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "❌",
   "deriv_func_van" : "No",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "No",
@@ -1521,8 +1510,8 @@ switch(activ_func) {
       "func_tex":"$\\begin{align*}f(x)&=\\tanh(x/2)\\\\&=\\frac{1-e^{-x}}{1+e^{-x}}\\end{align*}$",
   "func_range" : "(-1, -1)",
   "func_contin" : "C"+"∞",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#10060;",
+  "func_mono" : "✅",
+  "func_origin" : "❌",
   "func_symm" : "Symmetrical",
    "func_ref": "",
     "func_primer":"<b>Symmetrical Sigmoid</b> is another alternative to Tanh activation (it's actually equivalent to Tanh activation with the input halved). Like Tanh, it's anti-symmetrical, zero centered, differentiable and returns a value between -1 and 1. Its flatter shape and more slowly declining derivative suggest that it may learn more efficiently."}];
@@ -1530,9 +1519,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f(x)&=0.5(1-\\tanh^2(x/2))\\\\&=0.5(1-f(x)^2)\\end{align*}$",
   "deriv_func_range" : "(0, 0.5]",
-  "deriv_func_contin" : "&#9989;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#9989;",
+  "deriv_func_contin" : "✅",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "✅",
   "deriv_func_van" : "Yes",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "Yes",
@@ -1558,8 +1547,8 @@ switch(activ_func) {
       "func_tex":"$\\begin{align*}f(x)=1-e^{-e^{x}}\\end{align*}$",
   "func_range" : "(0, 1)",
   "func_contin" : "C"+"∞",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#10060;",
+  "func_mono" : "✅",
+  "func_origin" : "❌",
   "func_symm" : "Asymmetrical",
    "func_ref": "",
     "func_primer":"Returning values between 0 and 1, the <b>Complementary Log Log</b> (or just <b>Log Log</b>) activation function is a potential alternative to the classic logistic sigmoid. It saturates more quickly and has a value exceeding 0.5 at the origin."}];
@@ -1567,9 +1556,9 @@ switch(activ_func) {
   deriv_func_tags=
     [{"deriv_func_tex": "$\\begin{align*}f'(x)=e^{x}(e^{-e^{x}}) = e^{x-e^{x}}\\end{align*}$",
   "deriv_func_range" : "(0, 1/e]",
-  "deriv_func_contin" : "&#9989;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#10060;",
+  "deriv_func_contin" : "✅",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "❌",
   "deriv_func_van" : "Yes",
   "deriv_func_exp" : "No",
   "deriv_func_sat" : "Yes",
@@ -1596,24 +1585,24 @@ switch(activ_func) {
         var alpha  = parseFloat(document.getElementById("alpha_input").value);
    func_tags = [{
       "func_tex":"$f_{\\alpha}(x) =\\begin{cases}x & \\text{for } x\\geq0\\\\\\alpha x & \\text{for } x<0\\end{cases} $",
-  "func_range" : "(-&infin;, &infin;) &alpha; <0, [0, &infin;) &alpha; &ge;0",
+  "func_range" : "(-∞, ∞) α <0, [0, ∞) α ≥0",
   "func_contin" : "C"+"⁰"+" (iff α ≠ 1)",
-  "func_mono" : "&#9989; (iff &alpha; &ge;0)",
-  "func_origin" : "&#10060; iff &alpha;&ne;1",
+  "func_mono" : "✅ (iff α ≥0)",
+  "func_origin" : "❌ iff α≠1",
   "func_symm" : "asymetrical (iff |α|≠1)",
    "func_ref": "https://arxiv.org/abs/1502.01852",
    "func_primer": "<b>Parameteric Rectified Linear Unit</b> (<b>PReLU</b>) belongs to the rectifier family of activation functions headed up by ReLU. It shares some similarities with RReLU and Leaky ReLU, as it incorporates a linear term for negative valued inputs. The key distinction is that the slope of this line is actually learned during model training."}];
        
        deriv_func_tags=
     [{"deriv_func_tex":"$f'_{\\alpha}(x) =\\begin{cases}1 & \\text{for } x\\geq0\\\\\\alpha & \\text{for } x<0\\end{cases} $",
-  "deriv_func_range" : "{&alpha;, 1}",
-  "deriv_func_contin" : "&#10060; (iff α ≠ 1)",
-  "deriv_func_mono" : "&#10060; (iff α ≠ 1)",
-  "deriv_func_symm" : "&#10060;",
-  "deriv_func_van" : "Yes (iff &alpha;<1)",
-  "deriv_func_exp" : "No (iff &alpha;<1)",
+  "deriv_func_range" : "{α, 1}",
+  "deriv_func_contin" : "❌ (iff α ≠ 1)",
+  "deriv_func_mono" : "❌ (iff α ≠ 1)",
+  "deriv_func_symm" : "❌",
+  "deriv_func_van" : "Yes (iff α<1)",
+  "deriv_func_exp" : "No (iff α<1)",
   "deriv_func_sat" : "No",
-  "deriv_func_dead" : "No (iff &alpha;&ne;0)"}];
+  "deriv_func_dead" : "No (iff α≠0)"}];
     
           axis_limits = [-3,3,-3,3];
     for (var i = -3; i < 3; i=i+0.001) {
@@ -1644,24 +1633,24 @@ switch(activ_func) {
         var alpha  = 6*Math.random()-3;
    func_tags = [{
       "func_tex":"$f(x) =\\begin{cases}x & \\text{for } x\\geq0\\\\\\alpha x & \\text{for } x<0\\end{cases} $",
-  "func_range" : "(-&infin;, &infin;) &alpha; <0, [0, &infin;) &alpha; &ge;0",
+  "func_range" : "(-∞, ∞) α <0, [0, ∞) α ≥0",
   "func_contin" : "C"+"⁰"+" (iff α ≠ 1)",
-  "func_mono" : "&#9989; (iff &alpha; &ge;0)",
-  "func_origin" : "&#10060; iff &alpha;&ne;1",
+  "func_mono" : "✅ (iff α ≥0)",
+  "func_origin" : "❌ iff α≠1",
   "func_symm" : "Asymetrical (iff |α|≠1)",
    "func_ref": "https://arxiv.org/abs/1505.00853",
    "func_primer": "<b>Randomized Leaky Rectified Linear Unit</b> (<b>RReLU</b>) belongs to the rectifier family of activation functions headed up by ReLU. It's very similar to Leaky ReLU and PReLU, as it incorporates a linear term for negative valued inputs. The key distinction is that the slope of this line is randomly assigned for each node (typically from a uniform distribution)."}];
        
        deriv_func_tags=
     [{"deriv_func_tex":"$f'(x) =\\begin{cases}1 & \\text{for } x\\geq0\\\\\\alpha & \\text{for } x<0\\end{cases} $",
-  "deriv_func_range" : "{&alpha;, 1}",
-  "deriv_func_contin" : "&#10060; (iff α ≠ 1)",
-  "deriv_func_mono" : "&#10060; (iff α ≠ 1)",
-  "deriv_func_symm" : "&#10060;",
-  "deriv_func_van" : "Yes (iff &alpha;<1)",
-  "deriv_func_exp" : "No (iff &alpha;<1)",
+  "deriv_func_range" : "{α, 1}",
+  "deriv_func_contin" : "❌ (iff α ≠ 1)",
+  "deriv_func_mono" : "❌ (iff α ≠ 1)",
+  "deriv_func_symm" : "❌",
+  "deriv_func_van" : "Yes (iff α<1)",
+  "deriv_func_exp" : "No (iff α<1)",
   "deriv_func_sat" : "No",
-  "deriv_func_dead" : "No (iff &alpha;&ne;0)"}];
+  "deriv_func_dead" : "No (iff α≠0)"}];
     
           axis_limits = [-3,3,-3,3];
     for (var i = -3; i < 3; i=i+0.001) {
@@ -1694,24 +1683,24 @@ switch(activ_func) {
      asymptote_bottom = -alpha;
    func_tags = [{
       "func_tex":"$f(x) = \\begin{cases}\\alpha(e^x - 1) & \\text{for } x < 0\\\\x & \\text{for } x \\ge 0\\end{cases} $",
-  "func_range" : "(-&alpha;, &infin;) &alpha; <0, [0, &infin;) &alpha; &ge;0",
+  "func_range" : "(-α, ∞) α <0, [0, ∞) α ≥0",
   "func_contin" : "C"+"⁰"+" (iff α ≠ 1)",
-  "func_mono" : "&#9989; (iff &alpha; &ge;0)",
-  "func_origin" : "&#10060; iff &alpha;&ne;1",
+  "func_mono" : "✅ (iff α ≥0)",
+  "func_origin" : "❌ iff α≠1",
   "func_symm" : "Asymmetrical",
    "func_ref": "https://arxiv.org/abs/1511.07289",
    "func_primer":"<b>Exponential Linear Unit</b> (<b>ELU</b>) belongs the rectifier family headed up by ReLU. Like PRELU and RReLU, it produces a non-zero output for negative valued inputs. It differs from its rectifier counterparts by including a negative exponential term, which protects against dead neurons and improves learning as the derivative converges towards zero."}];
        
        deriv_func_tags=
     [{"deriv_func_tex":"$f'(x) = \\begin{cases} \\alpha e^{x} = f(x) + \\alpha & \\text{for } x < 0\\\\1 & \\text{for } x \\ge 0\\end{cases}$",
-  "deriv_func_range" :  "{(0, &alpha;] &cup; 1}",
-  "deriv_func_contin" : "&#10060; (unless α = 1)",
-  "deriv_func_mono" : "&#9989; (unless |&alpha;|>1)",
-  "deriv_func_symm" : "&#10060;",
+  "deriv_func_range" :  "{(0, α] ∪ 1}",
+  "deriv_func_contin" : "❌ (unless α = 1)",
+  "deriv_func_mono" : "✅ (unless |α|>1)",
+  "deriv_func_symm" : "❌",
   "deriv_func_van" : "Yes",
-  "deriv_func_exp" : "No (iff &alpha;<1)",
+  "deriv_func_exp" : "No (iff α<1)",
   "deriv_func_sat" : "Yes",
-  "deriv_func_dead" : "No (iff &alpha;&ne;0)"}];
+  "deriv_func_dead" : "No (iff α≠0)"}];
     
           axis_limits = [-3,3,-3,3];
     for (var i = -3; i < 3; i=i+0.001) {
@@ -1740,20 +1729,20 @@ switch(activ_func) {
     case "selu":
    func_tags = [{
       "func_tex":"$f(x) = \\lambda \\begin{cases}\\alpha(e^x - 1) & \\text{for } x < 0\\\\x & \\text{for } x \\ge 0 \\end{cases}\\\\\\text{ with } \\lambda = 1.0507, \\alpha = 1.67326 $",
-  "func_range" : "(-&lambda;&alpha;, &infin;)",
+  "func_range" : "(-λα, ∞)",
   "func_contin" : "C"+"⁰",
-  "func_mono" : "&#9989;",
-  "func_origin" : "&#10060;",
+  "func_mono" : "✅",
+  "func_origin" : "❌",
   "func_symm" : "Asymmetrical",
    "func_ref": "https://arxiv.org/abs/1706.02515",
    "func_primer": "<b>Scaled Exponential Linear Unit</b> (<b>SELU</b>) is simply a variation on the Exponetial Linear Unit (ELU) activation function, where &lambda; and &alpha; have been fixed (to 1.0507 and 1.67326, respectively). The reasoning behind these values (zero mean/unit variance) forms the basis of Self-Normalising Neural Networks (SNNs- see the Reference link in the blue box for more information)."}];
        
        deriv_func_tags=
     [{"deriv_func_tex":"$f'(x) = \\begin{cases}\\lambda\\alpha e^{x} = \\lambda(f(x) + \\alpha) & \\text{for } x < 0\\\\\\lambda & \\text{for } x \\ge 0\\end{cases}$",
-  "deriv_func_range" : "(0, &lambda;&alpha;)",
-  "deriv_func_contin" : "&#10060;",
-  "deriv_func_mono" : "&#10060;",
-  "deriv_func_symm" : "&#10060;",
+  "deriv_func_range" : "(0, λα)",
+  "deriv_func_contin" : "❌",
+  "deriv_func_mono" : "❌",
+  "deriv_func_symm" : "❌",
   "deriv_func_van" : "Yes",
   "deriv_func_exp" : "Yes",
   "deriv_func_sat" : "Yes",
@@ -1804,24 +1793,24 @@ switch(activ_func) {
     
    func_tags = [{
       "func_tex":"$f_{t_l,a_l,t_r,a_r}(x) = \\begin{cases}t_l + a_l (x - t_l) & \\text{for } x \\le t_l\\\\x & \\text{for } t_l < x < t_r\\\\t_r + a_r (x - t_r) & \\text{for } x \\ge t_r\\end{cases}$",
-  "func_range" : "(-&infin;, &infin;)",
+  "func_range" : "(-∞, ∞)",
   "func_contin" : "C"+"⁰"+" (unless α_l=a_r=1)",
-  "func_mono" : "&#9989; (unless &exist; &alpha;<0)",
-  "func_origin" : "&#9989; (unless t_l>0 or t_r<0)",
+  "func_mono" : "✅ (unless ∃ α<0)",
+  "func_origin" : "✅ (unless t_l>0 or t_r<0)",
   "func_symm" : "Asymmetrical (generally)",
    "func_ref": "https://arxiv.org/abs/1512.07030",
    "func_primer":"<b>S-shaped Rectified Linear Activation Unit</b> (<b>SReLU</b>) belongs to the rectifier family of activation functions headed up by ReLU. It's composed of three piecewise linear functions. The slopes of two of those functions, as well as the locations at which the functions meet, are learned during model training."}];
        
        deriv_func_tags=
     [{"deriv_func_tex":"$f'_{t_l,a_l,t_r,a_r}(x) = \\begin{cases}a_l & \\text{for } x \\le t_l\\\\1   & \\text{for } t_l < x < t_r\\\\a_r & \\text{for } x \\ge t_r\\end{cases}$",
-  "deriv_func_range" : "{&alpha;_l, &alpha;_r, 1}",
-  "deriv_func_contin" : "&#10060; (unless &alpha;_l=&alpha;_r=1)",
-  "deriv_func_mono" : "&#10060; (unless &alpha;_l&le;1 & &alpha;_r&ge;1)",
-  "deriv_func_symm" : "&#10060;",
-  "deriv_func_van" : "Yes (iff &exist; &alpha;<1)",
-  "deriv_func_exp" : "Yes (iff &exist; &alpha;>1)",
+  "deriv_func_range" : "{α_l, α_r, 1}",
+  "deriv_func_contin" : "❌ (unless α_l=α_r=1)",
+  "deriv_func_mono" : "❌ (unless α_l≤1 & α_r≥1)",
+  "deriv_func_symm" : "❌",
+  "deriv_func_van" : "Yes (iff ∃ α<1)",
+  "deriv_func_exp" : "Yes (iff ∃ α>1)",
   "deriv_func_sat" : "No",
-  "deriv_func_dead" : "No (iff ∄ &alpha;=0)"}];
+  "deriv_func_dead" : "No (iff ∄ α=0)"}];
     
           axis_limits = [-3,3,-3,3];
     for (var i = -3; i < 3; i=i+0.001) {
@@ -1919,16 +1908,20 @@ vis.select("#func_equation")
       .text("Continuity: "+func_tags[0].func_contin );
   
      vis.select("#func_symm")
-        .html( "Symmetry: " + func_tags[0].func_symm );
+         .transition()
+        .text( "Symmetry: " + func_tags[0].func_symm );
   
      vis.select("#func_range")
-      .html("Range: "+func_tags[0].func_range );
+        .transition()
+      .text("Range: "+func_tags[0].func_range );
   
       vis.select("#func_mono")
-      .html("Monotonic: "+func_tags[0].func_mono );
+         .transition()
+      .text("Monotonic: "+func_tags[0].func_mono );
   
         vis.select("#func_origin")
-      .html("Identity at Origin: "+func_tags[0].func_origin);
+           .transition()
+      .text("Identity at Origin: "+func_tags[0].func_origin);
    
   
   
@@ -1943,19 +1936,24 @@ vis.select("#func_equation")
   // update derivative info table
   
   vis.select("#deriv_func_contin")
-      .html("Continuous: "+deriv_func_tags[0].deriv_func_contin );
+     .transition()
+      .text("Continuous: "+deriv_func_tags[0].deriv_func_contin );
   
      vis.select("#deriv_func_range")
-      .html("Range: "+deriv_func_tags[0].deriv_func_range );
+      .transition()
+      .text("Range: "+deriv_func_tags[0].deriv_func_range );
   
       vis.select("#deriv_func_mono")
-      .html("Monotonic: "+deriv_func_tags[0].deriv_func_mono );
+         .transition()
+      .text("Monotonic: "+deriv_func_tags[0].deriv_func_mono );
   
         vis.select("#deriv_func_origin")
-      .html("Identity at Origin: "+deriv_func_tags[0].deriv_func_origin);
+          .transition()
+      .text("Identity at Origin: "+deriv_func_tags[0].deriv_func_origin);
   
           vis.select("#deriv_func_symm")
-      .html("Identity at Origin: "+deriv_func_tags[0].deriv_func_symm);
+        .transition()
+      .text("Identity at Origin: "+deriv_func_tags[0].deriv_func_symm);
   
   
   // update asymptote lines 
@@ -1982,45 +1980,46 @@ vis.select("#func_equation")
   
      vis.select("#deriv_func_exp")
      .select("tspan")
-     .html("Exploding: ")
+     .text("Exploding: ")
      .append("svg:tspan")
      .style("fill",deriv_func_tags[0].deriv_func_exp.indexOf("Yes")>-1 ? "red" : "#00e600")
-     .html(deriv_func_tags[0].deriv_func_exp );
+     .text(deriv_func_tags[0].deriv_func_exp );
      
           vis.select("#deriv_func_van")
      .select("tspan")
-     .html("Vanishing: ")
+     .text("Vanishing: ")
      .append("svg:tspan")
      .style("fill",deriv_func_tags[0].deriv_func_van.indexOf("Yes")>-1 ? "red" : "#00e600")
-     .html(deriv_func_tags[0].deriv_func_van );
+     .text(deriv_func_tags[0].deriv_func_van );
      
    }else{
     vis.select("#deriv_func_exp")
      .select("tspan")
-     .html("Exploding Gradient: ")
+     .text("Exploding Gradient: ")
      .append("svg:tspan")
      .style("fill", deriv_func_tags[0].deriv_func_exp.indexOf("Yes")>-1  ? "red" : "#00e600")
-     .html(deriv_func_tags[0].deriv_func_exp );
+     .text(deriv_func_tags[0].deriv_func_exp );
 
   vis.select("#deriv_func_van")
      .select("tspan")
-     .html("Vanishing Gradient: ")
+     .text("Vanishing Gradient: ")
      .append("svg:tspan")
      .style("fill", deriv_func_tags[0].deriv_func_van.indexOf("Yes")>-1 ? "red" : "#00e600")
-     .html(deriv_func_tags[0].deriv_func_van );
+     .text(deriv_func_tags[0].deriv_func_van );
    }
   vis.select("#deriv_func_sat")
      .select("tspan")
      .select("tspan")
      .style("fill", deriv_func_tags[0].deriv_func_sat.indexOf("Yes")>-1  ? "red" : "#00e600")
-     .html(deriv_func_tags[0].deriv_func_sat );
+     .text(deriv_func_tags[0].deriv_func_sat );
 
   
   vis.select("#deriv_func_dead")
      .select("tspan")
      .select("tspan")
      .style("fill", deriv_func_tags[0].deriv_func_dead.indexOf("Yes")>-1  ? "red" : "#00e600")
-     .html(deriv_func_tags[0].deriv_func_dead );
+     .text(deriv_func_tags[0].deriv_func_dead );
+   
    
    }
 </script>
