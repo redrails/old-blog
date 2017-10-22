@@ -401,19 +401,17 @@ vis.append("text")
 
 vis.append("text")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+rect_margin*2)                
-	 .attr("y",  MARGINS.top+boxmargin*7.6)
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2)        .attr("y",  MARGINS.top+boxmargin*7.6)
    .attr("id", "func_contin")
    .attr("class", "func_text")
    .text(function(d) { return "Continuity: " + d.func_contin });
 
 vis.append("text")
    .data(func_tags)
-   .attr("x", WIDTH-MARGINS.right+rect_margin*2)                   
-	 .attr("y",  MARGINS.top+boxmargin*8.9)
+   .attr("x", WIDTH-MARGINS.right+rect_margin*2)        .attr("y",  MARGINS.top+boxmargin*8.9)
    .attr("id", "func_origin")
    .attr("class", "func_text")
-   .html(function(d) { return "Identity at Origin: " + d.func_origin});
+   .text(function(d) { return "Identity at Origin: " + d.func_origin});
 
 
 
@@ -485,7 +483,7 @@ vis.append("text")
    .attr("id", "deriv_func_mono")
    .attr("class", "deriv_func_text")
    .style("colour","blue")
-   .html(function(d) { return "Montonic: " + d.deriv_func_mono });
+   .text(function(d) { return "Montonic: " + d.deriv_func_mono });
 
 
 vis.append("text")
@@ -493,7 +491,7 @@ vis.append("text")
    .data(deriv_func_tags)
    .attr("id", "deriv_func_contin")
    .attr("class", "deriv_func_text")
-   .html(function(d) { return "Continuous: " + d.deriv_func_contin });
+   .text(function(d) { return "Continuous: " + d.deriv_func_contin });
 
 
 vis.append("text")
@@ -2022,6 +2020,9 @@ vis.select("#func_equation")
    
    
    }
+  
+
+
 </script>
 </body>
 </html>
