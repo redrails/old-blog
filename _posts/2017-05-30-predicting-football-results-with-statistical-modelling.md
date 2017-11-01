@@ -92,7 +92,7 @@ You'll notice that, on average, the home team scores more goals than the away te
 
 \\[
 P\left( x \right) = \frac{e^{-\lambda} \lambda ^x }{x!}, \lambda>0
-//]
+\\]
 
 \\(lambda\\) represents the average rate (average number of goals, average number of letters you receive, etc.). So, we can treat the number of goals scored by the home and away team as Poisson distributions. The plot below shows the proportion of goals scored compared to the number of goals estimated by the corresponding Poisson distributions.
 
