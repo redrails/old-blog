@@ -23,7 +23,7 @@ If you were to pick the three most ridiculous fads of 2017, they would definitel
 
 I thought this was a completely unique concept to combine deep learning and cryptos (blog-wise at least), but in researching this post (i.e. looking for code to copy+paste), I came across [something quite similar](http://www.jakob-aungiers.com/articles/a/Multidimensional-LSTM-Networks-to-Predict-Bitcoin-Price). That post only touched on Bitcoin (the most famous crypto of them all), but I'll also discuss Ethereum (commonly known as ether, eth or lambo-money). And since Ether is clearly superior to Bitcoin ([have you not heard of Metropolis?](https://ethereumprice.org/ground-breaking-metropolis-release-flying-radar/)), this post will definitely be better than that other one.
 
-We're going to employ a Long Short Term Memory (LSTM) model; it's a particular type of deep learning model that is well suited to time series data (or any data with temporal/spatial/structural order e.g. movies, sentences, etc.). If you wish to truly understand the underlying theory (what kind of crypto enthusiast are you?), then I'd recommend [this blog](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) or [this blog](http://blog.echen.me/2017/05/30/exploring-lstms/) or the [original (white)paper](http://www.bioinf.jku.at/publications/older/2604.pdf). As I'm shamelessly trying to appeal to a wider non-machine learning audience, I'll keep the code to a minimum. There's a Jupyter (Python) notebook available here, if you want to play around with the data or build your own models. Let's get started!
+We're going to employ a Long Short Term Memory (LSTM) model; it's a particular type of deep learning model that is well suited to time series data (or any data with temporal/spatial/structural order e.g. movies, sentences, etc.). If you wish to truly understand the underlying theory (what kind of crypto enthusiast are you?), then I'd recommend [this blog](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) or [this blog](http://blog.echen.me/2017/05/30/exploring-lstms/) or the [original (white)paper](http://www.bioinf.jku.at/publications/older/2604.pdf). As I'm shamelessly trying to appeal to a wider non-machine learning audience, I'll keep the code to a minimum. There's a [Jupyter (Python) notebook available here](https://github.com/dashee87/blogScripts/blob/master/Jupyter/2017-11-20-predicting-cryptocurrency-prices-with-deep-learning.ipynb), if you want to play around with the data or build your own models. Let's get started!
 
 ### Data
 
@@ -215,7 +215,7 @@ Let's get our random walk model to predict the closing prices over the total tes
 </div>
 
 
-The model predictions are extremely sensitive to the random seed. I've selected one where the full interval random walk looks almost decent for Ethereum. In the accompanying Jupyter notebook, you can interactively play around with the seed value below to see how badly it can perform.
+The model predictions are extremely sensitive to the random seed. I've selected one where the full interval random walk looks almost decent for Ethereum. In the [accompanying Jupyter notebook](https://github.com/dashee87/blogScripts/blob/master/Jupyter/2017-11-20-predicting-cryptocurrency-prices-with-deep-learning.ipynb), you can interactively play around with the seed value below to see how badly it can perform.
 
 <div style="text-align:center" markdown="1">
 
@@ -548,7 +548,7 @@ We shouldn't be too surprised by its apparent accuracy here. The model could acc
 </div>
 
 
-Caveats aside about the misleading nature of single point predictions, our LSTM model *seems* to have performed well on the unseen test set. The most obvious flaw is that it fails to detect the inevitable downturn when the eth price suddenly shoots up (e.g mid-June and October). In fact, this is a persistent failure; it's just more apparent at these spikes. The predicted price regularly seems equivalent to the actual price just shifted one day later (e.g. the drop in mid-July). We can also build a similar LSTM model for Bitcoin- test set predictions are plotted below (see [Jupyter notebook for full code]()).
+Caveats aside about the misleading nature of single point predictions, our LSTM model *seems* to have performed well on the unseen test set. The most obvious flaw is that it fails to detect the inevitable downturn when the eth price suddenly shoots up (e.g mid-June and October). In fact, this is a persistent failure; it's just more apparent at these spikes. The predicted price regularly seems equivalent to the actual price just shifted one day later (e.g. the drop in mid-July). We can also build a similar LSTM model for Bitcoin- test set predictions are plotted below (see [Jupyter notebook for full code](https://github.com/dashee87/blogScripts/blob/master/Jupyter/2017-11-20-predicting-cryptocurrency-prices-with-deep-learning.ipynb)).
 
 
 <div style="text-align:center" markdown="1">
@@ -591,6 +591,6 @@ $$
 \end{align}
 $$
 
-But I'm sure they'll eventually find some use cases for deep learning. In the meantime, you can build your own models by downloading the Python code [here](). Thanks for reading!
+But I'm sure they'll eventually find some use cases for deep learning. In the meantime, you can build your own models by downloading the Python code [here](https://github.com/dashee87/blogScripts/blob/master/Jupyter/2017-11-20-predicting-cryptocurrency-prices-with-deep-learning.ipynb). Thanks for reading!
 
 &#42; This blog does not constitute financial advice and should not be taken as such. While cryptocurrency investments will definitely go up in value forever, they may also go down.
