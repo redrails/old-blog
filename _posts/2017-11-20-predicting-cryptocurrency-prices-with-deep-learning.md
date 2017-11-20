@@ -1,9 +1,9 @@
 ---
-title: "Predicting Cryptocurrency prices with Deep Learning"
+title: "Predicting Cryptocurrency Prices With Deep Learning"
 excerpt: "This post brings together cryptos and deep learning in a desperate attempt for Reddit popularity."
 layout: single
 header:
-  overlay_image: lambo_money.png
+  overlay_image: lambo_moon_.jpg
   overlay_filter: 0.7
   caption: "Not a Lambo, actually a Cadillac. That might not even be Earth's moon either."
 categories:
