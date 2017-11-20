@@ -168,10 +168,11 @@ We have some data, so now we need to build a model. In deep learning, the data i
 
 You can see that the training period mostly consists of periods when cryptos were relatively cheaper. As such, the training data may not be representative of the test data, undermining the model's ability to generalise to unseen data (you could try to make your data stationary- discussed [here](https://dashee87.github.io/data%20science/general/A-Road-Incident-Model-Analysis/)). But why let negative realities get in the way of baseless optimism? Before we take our deep artificially intelligent machine learning model to the moon, it's worth discussing a simpler model. The most basic model is to set tomorrow's price equal to today's price (which we'll crudely call a lag model). This is how we'd define such a model in mathematical terms:
 
+$$
 \begin{align}
 PredPrice_{t} & = ActualPrice_{t-1}
 \end{align}
-
+$$
 
 <div style="text-align:center" markdown="1">
 
@@ -181,9 +182,11 @@ PredPrice_{t} & = ActualPrice_{t-1}
 
 Extending this trivial lag model, [stock prices are commonly treated as random walks](https://www.tcd.ie/Economics/assets/pdf/SER/2007/Samuel_Dupernex.pdf), which can be defined in these mathematical terms:
 
+$$
 \begin{align}
 PredPrice_{t} & = ActualPrice_{t-1} * \epsilon, \epsilon \sim N(\mu, \sigma)
 \end{align}
+$$
 
 We'll determine &mu; and &sigma; from the training sets and apply the random walk model to the Bitcoin and Ethereum test sets.
 
@@ -197,9 +200,11 @@ Wow! Look at those prediction lines. Apart from a few kinks, it broadly tracks t
 
 Single point predictions are unfortunately quite common when evaluating time series models (e.g.[here](https://medium.com/@binsumi/neural-networks-and-bitcoin-d452bfd7757e) and [here](https://blog.statsbot.co/time-series-prediction-using-recurrent-neural-networks-lstms-807fa6ca7f)). A better idea could be to measure its accuracy on multi-point predictions. That way, errors from previous predictions aren't reset but rather are compounded by subsequent predictions. Thus, poor models are penalised more heavily. In mathematical terms:
 
+$$
 \begin{align}
 PredPrice_{t} & = PredPrice_{t-1} * \epsilon, \epsilon \sim N(\mu, \sigma)\ \&  \ PredPrice_0 = Price_0
 \end{align}
+$$
 
 Let's get our random walk model to predict the closing prices over the total test set.
 
@@ -579,10 +584,12 @@ Aiming to beat random walks is a pretty low bar. It would be more interesting to
 
 Hopefully, you've detected my scepticism when it comes to applying deep learning to predict changes in crypto prices. That's because we're overlooking the best framework of all: human intelligence. Clearly, the perfect model* for predicting cryptos is:
 
+$$
 \begin{align}
 & Price^{Crypto}_{t} > Price^{Crypto}_{t-1} \,  \forall \ Crypto \neq OmiseGo \textrm{, }  \\
 & \textrm{  where } Price^{Crypto}_{t} \to moon \textrm{, as } t \to    \infty           
 \end{align}
+$$
 
 But I'm sure they'll eventually find some use cases for deep learning. In the meantime, you can build your own models by downloading the Python code [here](). Thanks for reading!
 
