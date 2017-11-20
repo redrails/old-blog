@@ -5,7 +5,7 @@ layout: single
 header:
   overlay_image: lambo_moon_.jpg
   overlay_filter: 0.2
-  caption: "Not a Lambo, actually a Cadillac. That might not even be Earth's moon either."
+  caption: "Not a Lambo, it's actually a Cadillac. That might not even be Earth's moon either."
 categories:
   - deep learning
   - python
