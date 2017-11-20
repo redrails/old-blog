@@ -4,7 +4,7 @@ excerpt: "This post brings together cryptos and deep learning in a desperate att
 layout: single
 header:
   overlay_image: lambo_moon_.jpg
-  overlay_filter: 0.7
+  overlay_filter: 0.2
   caption: "Not a Lambo, actually a Cadillac. That might not even be Earth's moon either."
 categories:
   - deep learning
