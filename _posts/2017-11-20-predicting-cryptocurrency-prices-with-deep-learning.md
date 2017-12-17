@@ -210,7 +210,7 @@ Let's get our random walk model to predict the closing prices over the total tes
 
 <div style="text-align:center" markdown="1">
 
-![]({{ base_path }}/images/bitcoin_ether_random_walk_long.png)
+![]({{ base_path }}/images/bitcoin_ether_long_random_walk.png)
 
 </div>
 
