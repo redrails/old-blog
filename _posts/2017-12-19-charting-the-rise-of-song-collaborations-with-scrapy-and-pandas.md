@@ -3,7 +3,7 @@ title: "Charting the Rise of Song Collaborations with Scrapy and Pandas"
 excerpt: "Taking a break from deep learning, this post explores the recent surge in song collaborations in the pop charts"
 layout: single
 header:
-  overlay_image: football-overlay.jpg
+  overlay_image: studio-collab-overlay.jpg
   overlay_filter: 0.4
   caption: "Dropping some sick beatz"
 categories:
