@@ -44,7 +44,7 @@ class ChartSpider(scrapy.Spider):
     def parse(self, response):
         self.logger.info('Scraping page: %s', response.url)
         chart_week = re.sub(' -.*', '', 
-                            response.css('.article-heading+ .article-date::text').extract_first().strip())
+                        response.css('.article-heading+ .article-date::text').extract_first().strip())
         
         for (artist, chart_pos, artist_num, track, label, lastweek, peak_pos, weeks_on_chart) in \
                              zip(response.css('#main .artist a::text').extract(),
@@ -69,7 +69,11 @@ class ChartSpider(scrapy.Spider):
 
 Briefly explaining what happened there: We create a class called `ChartSpider`, essentially our customised spider (called `ukChartSpider`). We specify the page we want to scrape (`start_urls`). The spider then selects specific CSS elements (`response.css()`) within the page that contain the information we want (e.g. `#main .artist a` represents the artist's name). These tags may seem complicated, but they're actually quite easy to retrieve with a tool like [Selector Gadget](http://selectorgadget.com/). Isolate the elements you want to extract and copy the css elements highlighted with the tool (see image below).
 
-![title](selector_gadget_.png)
+<div style="text-align:center" markdown="1">
+
+![]({{ base_path }}/images/selector_gadget_.png)
+
+</div>
 
 Finally, we'll opt to write the spider output to a json file called `uk_charts.json`. We're now ready to launch `ukChartSpider`. Note that the process for the US Billboard chart is very similar. That code can be found in the accompanying Jupyter notebook.
 
@@ -244,7 +248,7 @@ That table shows the top 5 singles in the UK for week starting 8st December 2017
       <td>WEST END FEAT. SYBIL</td>
       <td>41240</td>
       <td>8</td>
-      <td>14 February 1993</td>
+      <td>1993-02-14</td>
       <td>PWL SANCTUARY</td>
       <td>4</td>
       <td>3</td>
@@ -256,7 +260,7 @@ That table shows the top 5 singles in the UK for week starting 8st December 2017
       <td>JODE FEATURING YO-HANS</td>
       <td>7134</td>
       <td>75</td>
-      <td>1998-12-20 00:00:00</td>
+      <td>1998-12-20</td>
       <td>LOGIC</td>
       <td>48</td>
       <td>48</td>
@@ -268,7 +272,7 @@ That table shows the top 5 singles in the UK for week starting 8st December 2017
       <td>MUTINY FEAT D-EMPRESS</td>
       <td>9653</td>
       <td>100</td>
-      <td>2000-09-24 00:00:00</td>
+      <td>2000-09-24</td>
       <td>AZULI</td>
       <td></td>
       <td>100</td>
@@ -280,7 +284,7 @@ That table shows the top 5 singles in the UK for week starting 8st December 2017
       <td>RAK-SU FT WYCLEF/NAUGHTY BOY</td>
       <td>52716</td>
       <td>2</td>
-      <td>2017-12-08 00:00:00</td>
+      <td>2017-12-08</td>
       <td>SYCO MUSIC</td>
       <td></td>
       <td>2</td>
@@ -292,7 +296,7 @@ That table shows the top 5 singles in the UK for week starting 8st December 2017
       <td>DJ SAMMY AND YANOU FT DO</td>
       <td>3502</td>
       <td>98</td>
-      <td>2004-09-12 00:00:00</td>
+      <td>2004-09-12</td>
       <td>DATA/MOS</td>
       <td>100</td>
       <td>1</td>
@@ -304,7 +308,7 @@ That table shows the top 5 singles in the UK for week starting 8st December 2017
       <td>SELENA GOMEZ &amp; MARSHMELLO</td>
       <td>52496</td>
       <td>12</td>
-      <td>2017-12-08 00:00:00</td>
+      <td>2017-12-08</td>
       <td>INTERSCOPE</td>
       <td>9</td>
       <td>9</td>
@@ -316,7 +320,7 @@ That table shows the top 5 singles in the UK for week starting 8st December 2017
       <td>SOLDIERS WITH ROBIN GIBB</td>
       <td>25894</td>
       <td>75</td>
-      <td>2011-10-30 00:00:00</td>
+      <td>2011-10-30</td>
       <td>DMG TV</td>
       <td></td>
       <td>75</td>
@@ -328,7 +332,7 @@ That table shows the top 5 singles in the UK for week starting 8st December 2017
       <td>KUNGS VS COOKIN' ON 3 BURNERS</td>
       <td>49557</td>
       <td>96</td>
-      <td>2017-01-27 00:00:00</td>
+      <td>2017-01-27</td>
       <td>3 BEAT</td>
       <td>90</td>
       <td>2</td>
@@ -340,7 +344,7 @@ That table shows the top 5 singles in the UK for week starting 8st December 2017
       <td>SLADE VS. FLUSH</td>
       <td>5538</td>
       <td>97</td>
-      <td>1999-01-17 00:00:00</td>
+      <td>1999-01-17</td>
       <td>POLYDOR</td>
       <td></td>
       <td>30</td>
@@ -609,17 +613,22 @@ uk_charts.head()
 We've appended a column denoting whether that song represents that artist's only ever entry in the charts. We can use a few more tricks to weed out mislabelled collaborations. We'll ignore entries where the artist name contains 'AND THE' or '& THE'. Again, it's not perfect, but it should get us most of the way (data science in a nutshell). For example, 'Ariana Grande & The Weeknd' would be overlooked, so I'll crudely include a clause to allow The Weeknd related collaborations. With those caveats, let's plot the historical frequency of these various collaboration terms.
 
 
+<div style="text-align:center" markdown="1">
 
+![]({{ base_path }}/images/uk_us_collaboration_terms.png)
 
-![png](2017-12-19-charting-the-rise-of-music-collaborations-with-scrapy-and-pandas_files/2017-12-19-charting-the-rise-of-music-collaborations-with-scrapy-and-pandas_17_0.png)
-
+</div>
 
 In the 1960s, 70s and 80s, colloborations were relatively rare (~5% of charted singles) and generally took the form of duets. Things changed in the mid 90s, when the number of colloborations increases significantly, with duets dying off and featured artists taking over. I blame rap music. Comparing the two charts, the UK and US prefer 'ft' and 'featuring', repsectively ([two nations divided by a common language](https://english.stackexchange.com/questions/74737/what-is-the-origin-of-the-phrase-two-nations-divided-by-a-common-language)). The Billboard chart doesn't seem to like the '/' notation, while the UK is generally much more eclectic. 
 
 Finally, we can plot the proportion of songs that were collobarations (satisfied any of these conditions).
 
 
-![png](2017-12-19-charting-the-rise-of-music-collaborations-with-scrapy-and-pandas_files/2017-12-19-charting-the-rise-of-music-collaborations-with-scrapy-and-pandas_19_0.png)
+<div style="text-align:center" markdown="1">
+
+![]({{ base_path }}/images/uk_us_collaboration_prop.png)
+
+</div>
 
 
 Clearly, collaborations are on the rise in both the US and UK, with nearly half of all charted songs now constituting collaborations of some form. I should say the Billboard chart has always consisted of 100 songs (hence the name), while the UK chart originally had 12 songs (gradually increasing to 50 in 1960 and 75 in 1978, finally settling on 100 in 1994). That may explain why the UK records high percentages in 1950s, as it would only require several colloborations. 
