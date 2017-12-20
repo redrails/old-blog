@@ -6,6 +6,8 @@ header:
   overlay_image: studio-collab-overlay.jpg
   overlay_filter: 0.4
   caption: "Dropping some sick beatz"
+  cta_label: "Switch to R version"
+  cta_url: "https://dashee87.github.io/data%20science/r/charting-the-rise-of-song-collaborations/"
 categories:
   - data science
   - python
