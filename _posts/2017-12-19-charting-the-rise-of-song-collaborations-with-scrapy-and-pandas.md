@@ -22,12 +22,13 @@ date: "19 December 2017"
 
 Keen readers of this blog (hi Mom!) might have noticed my recent focus on neural networks and deep learning. It's good for popularity, as deep learning posts are automatically cool ([I'm really big in China now](https://jiasuhui.com/article/3855)). Well, I'm going to leave the AI alone this time. In fact, this post won't even really constitute data science. Instead, I'm going to explore a topic that has been on my mind and maybe produce a few graphs.
 
-These days, my main interaction with modern music is through the radio at the gym. It wasn't always like this. I mean [I used to be with it](https://www.youtube.com/watch?v=ajmI1P3r1w4), but then they changed what it was. I wouldn't go so far as to say that modern music is weird and scary, but it's certainly getting harder to keep up. It doesn't help that songs now have about 5 people on them. Back in my day, you might include a [brief rapper cameo to appear more edgy](http://www.youtube.com/watch?v=kfVsfOSbJY0&t=2m30s). So I thought I'd explore how song collaborations have come to dominate the charts. Note that the accompanying Jupyter notebook can be viewed here. Let's get started!
+These days, my main interaction with modern music is through the radio at the gym. It wasn't always like this. I mean [I used to be with it](https://www.youtube.com/watch?v=ajmI1P3r1w4), but then they changed what it was. I wouldn't go so far as to say that modern music is weird and scary, but it's certainly getting harder to keep up. It doesn't help that songs now have about 5 people on them. Back in my day, you might include a [brief rapper cameo to appear more edgy](http://www.youtube.com/watch?v=kfVsfOSbJY0&t=2m30s). So I thought I'd explore how song collaborations have come to dominate the charts. 
+
+Note that the accompanying Jupyter notebook can be viewed [here](https://github.com/dashee87/blogScripts/blob/master/Jupyter/2017-12-19-charting-the-rise-of-song-collaborations-with-scrapy-and-pandas.ipynb). Let's get started!
 
 ## Scrapy
 
 In my research, I came across a similar [post](https://medium.com/fun-with-data-and-stats/visualizing-artist-collaborations-in-the-billboard-top-10-songs-ff6188a0f57b). That one looked at the top 10 of the Billboard charts going back to 1990. Just to be different, I'll primarily focus on the UK singles chart, though I'll also pull data from the Billboard chart. From what I can tell, there's no public API. But it's not too hard to scrape the data off [the official site](http://www.officialcharts.com/charts/singles-chart/). I'm going to use [Scrapy](https://scrapy.org/). We'll set up a spider to pull the relevant data and then navigate to the previous week's chart and repeat that process until it finally reaches the [first chart in November 1952](http://www.officialcharts.com/charts/singles-chart/19521114/7501/). This is actually the first time I've ever used Scrapy (hence the motivation for this post), so check out its extensive documentation if you have any issues. Scrapy isn't the only option for web scraping with Python (others reviewed [here](https://bigishdata.com/2017/06/06/web-scraping-with-python-part-two-library-overview-of-requests-urllib2-beautifulsoup-lxml-scrapy-and-more/), but I like how easy it is to [deploy and automate](https://doc.scrapy.org/en/latest/topics/deploy.html) your spiders for larger projects.
-
 
 ```python
 import scrapy
@@ -75,7 +76,7 @@ Briefly explaining what happened there: We create a class called `ChartSpider`, 
 
 </div>
 
-Finally, we'll opt to write the spider output to a json file called `uk_charts.json`. We're now ready to launch `ukChartSpider`. Note that the process for the US Billboard chart is very similar. That code can be found in the accompanying Jupyter notebook.
+Finally, we'll opt to write the spider output to a json file called `uk_charts.json`. Scrapy accepts [numerous file formats](https://doc.scrapy.org/en/latest/topics/feed-exports.html) (including CSV), but I went with JSON as it's easier to append to this file type, which may be useful if your spider unexpectedly terminates.  We're now ready to launch `ukChartSpider`. Note that the process for the US Billboard chart is very similar. That code can be found in the [accompanying Jupyter notebook](https://github.com/dashee87/blogScripts/blob/master/Jupyter/2017-12-19-charting-the-rise-of-song-collaborations-with-scrapy-and-pandas.ipynb).
 
 
 ```python
@@ -101,7 +102,7 @@ process.start()
 
 ## Pandas
 
-If that all went to plan, we can now load in the json file as pandas dataframe (unless you changed the file path, it should be sitting in your working directory). If you can't wait for the spider to conclude, then you can import the file directly from github (you can also find the corresponding Billboard Hot 100 file there).
+If that all went to plan, we can now load in the json file as pandas dataframe (unless you changed the file path, it should be sitting in your working directory). If you can't wait for the spider to conclude, then you can import the file directly from github (you can also find the corresponding Billboard Hot 100 file [there](https://github.com/dashee87/blogScripts/tree/master/files)- you might prefer downloading the files and importing them locally).
 
 
 ```python
@@ -623,7 +624,6 @@ In the 1960s, 70s and 80s, colloborations were relatively rare (~5% of charted s
 
 Finally, we can plot the proportion of songs that were collobarations (satisfied any of these conditions).
 
-
 <div style="text-align:center" markdown="1">
 
 ![]({{ base_path }}/images/uk_us_collaboration_prop.png)
@@ -639,4 +639,4 @@ Broadly speaking, the number of collaborations is pretty similar across the two 
 
 Using [Scrapy](https://scrapy.org/), we pulled historical data for both the [UK Singles Chart](http://www.officialcharts.com/charts/singles-chart/) and the [Billboard Hot 100](https://www.billboard.com/charts/hot-100). We converted it into a Pandas dataframe, which allowed us to manipulate the artist names to distinguish collaborations and highlight of popularity of various collaboration types. Finally, we've illustrated the recent surge in song collaborations, which now account for nearly half of all songs on the chart.
 
-So, that's it. I apologise for the speculations and lack of cool machine learning. In my next post, I'll return to artificial intelligence to predict future duets between current and now deceased artists (e.g. 'Bob Marley & The Weeknd'). While you wait a very long time for that, you can download the historical UK chart and Billboard Top 100 files here or play around with the accompanying Jupyter notebook. Thanks for reading!
+So, that's it. I apologise for the speculations and lack of cool machine learning. In my next post, I'll return to artificial intelligence to predict future duets between current and now deceased artists (e.g. 'Bob Marley & The Weeknd'). While you wait a very long time for that, you can download the historical UK chart and Billboard Top 100 files [here](https://github.com/dashee87/blogScripts/tree/master/files) or play around with the [accompanying Jupyter notebook](https://github.com/dashee87/blogScripts/blob/master/Jupyter/2017-12-19-charting-the-rise-of-song-collaborations-with-scrapy-and-pandas.ipynb). Thanks for reading!
