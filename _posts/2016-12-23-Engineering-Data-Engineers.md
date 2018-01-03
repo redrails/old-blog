@@ -18,6 +18,7 @@ tags:
   - jobbR
   - NLP
 author: "David Sheehan"
+datatable: true
 date: "23 December 2016"
 ---
 
@@ -165,6 +166,7 @@ knitr::kable(de_df %>% inner_join(de_idf,by=c("word"="word")) %>%
                select(rank,word,tf,idf,tf_idf)  %>% head(40), digits=3)
 ```
 
+<div class="datatable-begin"></div>
 |  rank| word           |     tf|    idf|  tf\_idf|
 |-----:|:---------------|------:|------:|--------:|
 |     1| engineer       |  0.825|  2.372|    1.957|
@@ -207,6 +209,7 @@ knitr::kable(de_df %>% inner_join(de_idf,by=c("word"="word")) %>%
 |    38| production     |  0.214|  3.152|    0.673|
 |    39| processes      |  0.262|  2.487|    0.652|
 |    40| build          |  0.408|  1.576|    0.643|
+<div class="datatable-end"></div>
 
 It's a good sanity check that 'engineer' returned the highest `tf_idf` score, as we'd expect that to be relatively specific to data engineer job descriptions. Also, it's reassuring that the generic terms that previously scored well (e.g. 'data', 'team', 'will') are not in the table. The table provides some interesting insights. Take the example of 'spark': it has a relatively high `tf`, but is penalised by a low idf (spark is also a key skill among data scientists). 'etl', on the other hand, has a considerably lower `tf`, but outranks spark due to its higher `idf` (etl is a term more uniquely associated with data engineers).
 
