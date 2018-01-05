@@ -152,7 +152,6 @@ all_df %>% arrange(-tf) %>% head
     ## 5       team 342
     ## 6       work 314
 
-{% include league_goal_table.html %}
 
 Taking the term frequency (`tf`) alone, unsurprisingly, we see that 'data' and 'engineer' are two of the three most common words in data engineer job descriptions. The remaining terms are more generic, illustrated by their high ranking among all jobs. This demonstrates the importance of the inverse document frequency (`idf`) component. It will penalise terms such as 'skills', 'team' and 'work', as they're not strongly associated with data engineers exclusively. We'll normalise the `tf` score (divide by the max) and calculate the `idf`. The `tf_idf` is simply the product of the `tf` and `idf`.
 
