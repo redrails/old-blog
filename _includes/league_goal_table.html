@@ -1786,9 +1786,10 @@
 </table>
 
     <script >
-      $(document).ready( function () {
+  $.noConflict();
+jQuery( document ).ready(function( $ ) {
     $('#league_goals_table').DataTable();
-} );
+});
     </script>
 
 </body>
