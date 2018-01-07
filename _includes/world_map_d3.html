@@ -453,8 +453,8 @@ var tip = d3.tip()
 
 
 var margin = {top: 0, right: 0, bottom: 0, left: 0},
-            width = 1000 - margin.left - margin.right,
-            height = 600 - margin.top - margin.bottom;
+            width = 900 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
 
 var path = d3.geoPath();
 
@@ -474,7 +474,7 @@ svg.append("rect")
     .on("click", clicked);
 
 var projection = d3.geoEquirectangular()
-                   .scale(170)
+                   .scale(160)
                   .translate( [width / 2, 0.6*height]);
 
 var path = d3.geoPath().projection(projection);
