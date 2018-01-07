@@ -157,9 +157,8 @@ Taking the term frequency (`tf`) alone, unsurprisingly, we see that 'data' and '
 
 
 <div class="first_checkbox" style="text-align:left">
-<span>
 <input type="checkbox" name="link_checkbox" id="link_checkbox" class="link_checkbox" value="link_checkbox" accesskey="k" />
-</span> Error Bars <br>
+Error Bars <br>
 </div>
 <span class="result_img" style="text-align:center">
 <img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half_python.png" alt="result.png" />
