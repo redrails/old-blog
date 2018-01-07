@@ -163,7 +163,6 @@ Error Bars <br>
 <img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half_python.png" alt="result.png" />
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 $("#link_checkbox").click(function () {
     if ($(this).is(":checked")) {
