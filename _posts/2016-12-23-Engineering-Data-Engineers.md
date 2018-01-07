@@ -162,7 +162,7 @@ Taking the term frequency (`tf`) alone, unsurprisingly, we see that 'data' and '
     	</span> Error Bars
 </div>
 <br>
-<span class="result_img">
+<span class="result_img" style="text-align:center">
       <img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half_python.png" alt="result.png" />
     </span>
 
