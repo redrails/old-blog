@@ -218,6 +218,8 @@ It's a good sanity check that 'engineer' returned the highest `tf_idf` score, as
 
 It's important to note that there is no strict defintion of either `tf` or `idf`. If you wish, you can attach more importance to either by applying a particular variant ([a few examples here](https://en.wikipedia.org/wiki/Tf%E2%80%93idf#Definition)). I suppose it depends whether you think terms like 'spark' (high `tf`; low `idf`) should rank more highly than terms like 'etl' (low `tf`; high `idf`).
 
+{% include world_map_d3.html %}
+
 ### Summary
 
 After some exploratory analysis, we used **term frequency-inverse document frequency** to idenitfy words and skills that are uniquely associated with data engineers. Think of the output as potential conversation starters with your engineer counterparts. "So... how about that etl?"
