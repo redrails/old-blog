@@ -215,7 +215,7 @@ input:checked + .slider:before {
 <div>Error Bars<br>
 <label class="switch" style="text-align:left">
   <input type="checkbox" checked id="link_checkbox">
-  <span class="slider round">Error Bars</span><br>
+  <span class="slider round"></span>
 </label>
 </div>
 <div class="result_img" style="text-align:center">
