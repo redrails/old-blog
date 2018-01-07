@@ -99,7 +99,7 @@
 <input type="radio" name="d3_map_choice" value="adv" checked="checked" onclick="update_map(this.value);">Home Advantage 
 <input type="radio" name="d3_map_choice"  value="goals" onclick="update_map(this.value)">Goals
 <div class="clearBoth"></div>
-    <svg id="world_map" width="600" height="1200"></svg>
+    <svg id="world_map"></svg>
 
 
   
@@ -453,8 +453,8 @@ var tip = d3.tip()
 
 
 var margin = {top: 0, right: 0, bottom: 0, left: 0},
-            width = 1200 - margin.left - margin.right,
-            height = 600 - margin.top - margin.bottom;
+            width = 800 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
 
 var path = d3.geoPath();
 
