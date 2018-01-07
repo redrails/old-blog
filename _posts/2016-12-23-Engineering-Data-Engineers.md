@@ -155,24 +155,28 @@ all_df %>% arrange(-tf) %>% head
 
 Taking the term frequency (`tf`) alone, unsurprisingly, we see that 'data' and 'engineer' are two of the three most common words in data engineer job descriptions. The remaining terms are more generic, illustrated by their high ranking among all jobs. This demonstrates the importance of the inverse document frequency (`idf`) component. It will penalise terms such as 'skills', 'team' and 'work', as they're not strongly associated with data engineers exclusively. We'll normalise the `tf` score (divide by the max) and calculate the `idf`. The `tf_idf` is simply the product of the `tf` and `idf`.
 
-<html>
-
-<head>
-<title>Title</title>
-</head>
-
-<body>
-
 
 <div class="first_checkbox" style="text-align:center">
-<span>
-<input type="checkbox" name="link_checkbox" id="link_checkbox" class="link_checkbox" value="link_checkbox" accesskey="k" />
-</span> Error Bars
+  <span>
+        <input type="checkbox" name="link_checkbox" id="link_checkbox" class="link_checkbox" value="link_checkbox" accesskey="k" />
+    	</span> Error Bars
 </div>
 <br>
 <span class="result_img">
-<img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half_python.png" alt="result.png" />
-</span>
+      <img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half_python.png" alt="result.png" />
+    </span>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+$("#link_checkbox").click(function () {
+    if ($(this).is(":checked")) {
+        $('#picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half.png');
+    } else {
+        $('#picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half_python.png');
+    }
+});
+</script>
+
 
 ``` r
 de_df$tf = de_df$tf/max(de_df$tf)
