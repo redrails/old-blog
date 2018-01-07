@@ -474,8 +474,8 @@ svg.append("rect")
     .on("click", clicked);
 
 var projection = d3.geoEquirectangular()
-                   .scale(160)
-                  .translate( [width / 2, 0.6*height]);
+                   .scale(150)
+                  .translate( [width / 2, 0.55*height]);
 
 var path = d3.geoPath().projection(projection);
 
@@ -484,8 +484,8 @@ svg.call(tip);
 var g = svg.append("g")
             .attr('class', 'map');
 
-var textLabels = svg.append("text")
-                 .attr("x", width*0.7)
+var map_instructions = svg.append("text")
+                 .attr("x", width*0.5)
                  .attr("y", height*0.98)
                  .text("Click on country to zoom. Click on background to reset view.")
                  .attr("font-family", "sans-serif")
