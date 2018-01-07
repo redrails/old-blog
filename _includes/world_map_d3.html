@@ -474,7 +474,7 @@ svg.append("rect")
     .on("click", clicked);
 
 var projection = d3.geoEquirectangular()
-                   .scale(190)
+                   .scale(150)
                   .translate( [width / 2, 0.6*height]);
 
 var path = d3.geoPath().projection(projection);
