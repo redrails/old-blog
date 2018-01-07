@@ -165,14 +165,14 @@ Taking the term frequency (`tf`) alone, unsurprisingly, we see that 'data' and '
 
 
 <div class="first_checkbox" style="text-align:center">
-  <span>
-        <input type="checkbox" name="link_checkbox" id="link_checkbox" class="link_checkbox" value="link_checkbox" accesskey="k" />
-    	</span> Error Bars
+<span>
+<input type="checkbox" name="link_checkbox" id="link_checkbox" class="link_checkbox" value="link_checkbox" accesskey="k" />
+</span> Error Bars
 </div>
 <br>
 <span class="result_img">
-      <img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half_python.png" alt="result.png" />
-    </span>
+<img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half_python.png" alt="result.png" />
+</span>
 
 <script type="text/javascript">
 $("#link_checkbox").click(function () {
