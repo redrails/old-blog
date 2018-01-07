@@ -214,7 +214,7 @@ input:checked + .slider:before {
 
 <label class="switch" style="text-align:left">
   <input type="checkbox" checked id="link_checkbox">
-  <span class="slider round"></span>
+  <span class="slider round">Error Bars</span><br>
 </label>
 <div class="result_img" style="text-align:center">
 <img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half.png" alt="result.png" />
