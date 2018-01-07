@@ -511,8 +511,8 @@ function update_map(map_choice){
     .range(["rgb(247,251,255)", "rgb(222,235,247)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)","rgb(33,113,181)","rgb(8,81,156)","rgb(8,48,107)","rgb(3,19,43)"]);
   }
 queue()
-    .defer(d3.json, "https://raw.githubusercontent.com/dashee87/dashee87.github.io/master/_includes/world_topo.json")
-    .defer(d3.tsv, "https://raw.githubusercontent.com/dashee87/dashee87.github.io/master/_includes/home_advantage.tsv")
+    .defer(d3.json, "{{base}}/_includes/world_topo.json")
+    .defer(d3.tsv, "{{base}}/_includes/home_advantage.tsv")
     .await(ready);
 
 
