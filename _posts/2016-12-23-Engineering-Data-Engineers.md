@@ -217,7 +217,7 @@ input:checked + .slider:before {
   <span class="slider round"></span>
 </label>
 <div class="result_img" style="text-align:center">
-<img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half_python.png" alt="result.png" />
+<img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half.png" alt="result.png" />
 </div>
 
 <script type="text/javascript">
