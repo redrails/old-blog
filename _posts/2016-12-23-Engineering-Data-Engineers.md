@@ -160,9 +160,9 @@ Taking the term frequency (`tf`) alone, unsurprisingly, we see that 'data' and '
 <input type="checkbox" name="link_checkbox" id="link_checkbox" class="link_checkbox" value="link_checkbox" accesskey="k" />
 Error Bars <br>
 </div>
-<span class="result_img" style="text-align:center">
+<div class="result_img" style="text-align:center">
 <img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half_python.png" alt="result.png" />
-</span>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
