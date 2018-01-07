@@ -216,7 +216,7 @@ knitr::kable(de_df %>% inner_join(de_idf,by=c("word"="word")) %>%
 
 It's a good sanity check that 'engineer' returned the highest `tf_idf` score, as we'd expect that to be relatively specific to data engineer job descriptions. Also, it's reassuring that the generic terms that previously scored well (e.g. 'data', 'team', 'will') are not in the table. The table provides some interesting insights. Take the example of 'spark': it has a relatively high `tf`, but is penalised by a low idf (spark is also a key skill among data scientists). 'etl', on the other hand, has a considerably lower `tf`, but outranks spark due to its higher `idf` (etl is a term more uniquely associated with data engineers).
 
-{% include league_goals_table.html %}
+{% include league_goal_table.html %}
 
 It's important to note that there is no strict defintion of either `tf` or `idf`. If you wish, you can attach more importance to either by applying a particular variant ([a few examples here](https://en.wikipedia.org/wiki/Tf%E2%80%93idf#Definition)). I suppose it depends whether you think terms like 'spark' (high `tf`; low `idf`) should rank more highly than terms like 'etl' (low `tf`; high `idf`).
 
