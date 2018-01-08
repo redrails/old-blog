@@ -26,11 +26,11 @@ avg_goals_rank,home_adv_rank,country,league,num_games,num_teams,avg_goals,home_a
 24,117,Bermuda,Premier League 2016/2017,90,10,3.356,0.134,-0.099,0.368,BMU
 25,85,Australia,A-League 2016/2017,135,10,3.348,0.213,0.018,0.409,AUS
 26,120,Faroe Islands,Premier League 2017,134,10,3.343,0.122,-0.068,0.312,FRO
-27,72,Wales,Premier League 2016/2017,132,12,3.333,0.246,0.047,0.446,WAL
+27,72,Wales,Premier League 2016/2017,132,12,3.333,0.246,0.047,0.446,WLS
 28,96,Iceland,Pepsideild 2017,132,12,3.333,0.184,-0.012,0.38,ISL
 29,71,Italy,Serie A 2016/2017,379,20,3.33,0.257,0.139,0.375,ITA
 30,68,Spain,LaLiga 2016/2017,380,20,3.326,0.263,0.144,0.381,ESP
-31,61,Netherlands,Eredivisie 2016/2017,306,18,3.314,0.296,0.163,0.43,NLD
+31,61,Netherlands,Eredivisie 2016/2017,306,18,3.314,0.296,0.163,0.43,NLX
 32,49,Germany,Bundesliga 2016/2017,306,18,3.314,0.315,0.181,0.449,DEU
 33,67,Turkmenistan,Yokary Liga 2017,143,9,3.301,0.278,0.084,0.472,TKM
 34,95,Saudi Arabia,Saudi Professional League 2016/2017,182,14,3.297,0.186,0.018,0.354,SAU
@@ -49,7 +49,7 @@ avg_goals_rank,home_adv_rank,country,league,num_games,num_teams,avg_goals,home_a
 47,90,Cyprus,First Division 2016/2017,182,14,3.154,0.191,0.019,0.363,CYP
 48,110,Trinidad and Tobago,Pro League 2017,90,10,3.133,0.145,-0.098,0.387,TTO
 49,69,Poland,Ekstraklasa 2016/2017,240,16,3.125,0.26,0.107,0.414,POL
-50,30,France,Ligue 1 2016/2017,379,20,3.103,0.375,0.248,0.502,FRA
+50,30,France,Ligue 1 2016/2017,379,20,3.103,0.375,0.248,0.502,FXX
 51,112,Chile,Primera Division 2016/2017,120,16,3.1,0.145,-0.068,0.357,CHL
 52,0,Nigeria,Premier League 2017,379,20,3.087,1.195,1.027,1.363,NGA
 53,111,Malta,Premier League 2016/2017,197,12,3.076,0.145,-0.021,0.31,MLT
@@ -65,7 +65,7 @@ avg_goals_rank,home_adv_rank,country,league,num_games,num_teams,avg_goals,home_a
 63,38,FYR of Macedonia,First League 2016/2017,180,10,2.978,0.349,0.163,0.535,MKD
 64,127,Georgia,Erovnuli Liga 2017,179,10,2.961,0.108,-0.067,0.283,GEO
 65,41,Moldova,Divizia Nationala 2016/2017,165,11,2.958,0.341,0.147,0.536,MDA
-66,94,Scotland,Premiership 2016/2017,198,12,2.949,0.187,0.016,0.358,SCO
+66,94,Scotland,Premiership 2016/2017,198,12,2.949,0.187,0.016,0.358,SCT
 67,115,Oman,Professional League 2016/2017,182,14,2.945,0.136,-0.04,0.311,OMN
 68,79,Mexico,Primera Division 2016/2017,306,18,2.941,0.234,0.095,0.373,MEX
 69,36,Kazakhstan,Premier League 2017,198,12,2.929,0.361,0.18,0.542,KAZ
@@ -82,7 +82,7 @@ avg_goals_rank,home_adv_rank,country,league,num_games,num_teams,avg_goals,home_a
 80,28,Kosovo,Superliga 2016/2017,196,12,2.867,0.386,0.2,0.571,KOS
 81,92,Tajikistan,Vysshaya Liga 2017,84,8,2.833,0.189,-0.077,0.456,TJK
 82,109,Swaziland,MTN Premier League 2016/2017,131,12,2.824,0.146,-0.065,0.358,SWZ
-83,63,Palestine,West Bank League 2016/2017,131,12,2.809,0.287,0.066,0.508,PSE
+83,63,Palestine,West Bank League 2016/2017,131,12,2.809,0.287,0.066,0.508,PSX
 84,70,Czech Republic,1. Liga 2016/2017,240,16,2.808,0.259,0.098,0.421,CZE
 85,105,El Salvador,Primera Division 2016/2017,263,12,2.806,0.161,0.01,0.311,SLV
 86,5,Guatemala,Liga Nacional 2016/2017,264,12,2.803,0.62,0.448,0.792,GTM
@@ -137,7 +137,7 @@ avg_goals_rank,home_adv_rank,country,league,num_games,num_teams,avg_goals,home_a
 135,87,Syria,Premier League 2016/2017,239,16,2.393,0.197,0.025,0.37,SYR
 136,51,Guinea,Ligue 1 2016/2017,181,14,2.365,0.312,0.105,0.519,GIN
 137,89,Burundi,Ligue A 2016/2017,239,16,2.343,0.192,0.018,0.366,BDI
-138,150,Libya,Premier League 2017,83,28,2.337,-0.015,-0.324,0.293,LIB
+138,150,Libya,Premier League 2017,83,28,2.337,-0.015,-0.324,0.293,LBY
 139,16,Albania,Super League 2016/2017,180,10,2.333,0.488,0.269,0.707,ALB
 140,1,Haiti,Championnat National 2017,237,16,2.329,0.741,0.533,0.949,HTI
 141,12,Mozambique,Mocambola 2017,240,16,2.325,0.501,0.31,0.692,MOZ
