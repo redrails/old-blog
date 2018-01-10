@@ -98,7 +98,82 @@ temp_goals_df = pd.read_csv("http://www.football-data.co.uk/mmz4281/1617/E0.csv"
 
 The goals ratio calculation is obviously much simpler and definitely more intuitive. But it doesn't allow me to reference [my previous post](https://dashee87.github.io/football/python/predicting-football-results-with-statistical-modelling/) as much ([link](https://dashee87.github.io/football/python/predicting-football-results-with-statistical-modelling/) [link](https://dashee87.github.io/football/python/predicting-football-results-with-statistical-modelling/) [link](https://dashee87.github.io/football/python/predicting-football-results-with-statistical-modelling/)) and it fails to provide any uncertainty around the headline figure. Let's plot the home advantage figure for the top 5 divisions of the English league pyramid for since 2005. You can remove those hugely informative confidence interval bars by switching the toggle.
 
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
 
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>
+
+<div font-size=0.8em>Error Bars<br>
+<label class="switch" style="text-align:left">
+  <input type="checkbox" checked id="link_checkbox">
+  <span class="slider round"></span>
+</label>
+</div>
+<div class="result_img" style="text-align:center">
+<img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half.png" alt="result.png" />
+</div>
+
+<script type="text/javascript">
+$("#link_checkbox").click(function () {
+    if ($(this).is(":checked")) {
+        $('#picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/england_home_field_advantage_bars.png');
+    } else {
+        $('#picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/england_home_field_advantage.png');
+    }
+});
+</script>
 
 
 It's probably more apparent without those hugely informative confidence interval bars, but it seems that the home advantage score decreases slightly as you move down the pyramid ([analysis by Sky Sports produced something similar](http://www.skysports.com/football/news/11096/10955089/sky-sports-bust-common-football-myths-home-advantage)). This might make sense for two reasons. Firstly, bigger teams generally have larger stadiums and more supporters, which could strengthen the home field advantage. Secondly, as you go down the leagues, I suspect the quality gap between teams narrows. Taking it to an extreme, when I used to play Sunday league football, it didn't really matter where we played... we still lost. In that sense, one must be careful comparing the home advantage between leagues, as it will be affected by the relative team strengths within those leagues. For example, a league with a very dominant team (or teams) will record a lower home advantage score, as that dominant team will score goals home and away with little difference (Man Utd would probably beat Cork City 6-0 at Old Trafford and Turners Cross!).
