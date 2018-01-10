@@ -512,7 +512,7 @@ function update_map(map_choice){
   }
 queue()
     .defer(d3.json, "https://raw.githubusercontent.com/dashee87/dashee87.github.io/master/_includes/world_topo.json")
-    .defer(d3.tsv, "https://raw.githubusercontent.com/dashee87/dashee87.github.io/master/_includes/home_advantage.tsv")
+    .defer(d3.csv, "https://raw.githubusercontent.com/dashee87/dashee87.github.io/master/_includes/home_advantage.csv")
     .await(ready);
 
 
@@ -526,11 +526,11 @@ function ready(error, data, country_info) {
     if(adv_map){
       overlay_choice = "Home Advantage Score";
     metric[d.countryCode] = d.home_advantage_score;
-    ByRank[d.countryCode] = d.home_adv_rank;
+    ByRank[d.countryCode] = parseInt(d.home_adv_rank)+1;
     }else{
       overlay_choice = "Average Goals";
     metric[d.countryCode] = d.avg_goals;
-    ByRank[d.countryCode] = d.avg_goals_rank;
+    ByRank[d.countryCode] = parseInt(d.avg_goals_rank)+1;
     }
     ByLeague[d.countryCode] = d.league;
   
