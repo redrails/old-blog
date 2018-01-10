@@ -4,7 +4,7 @@ excerpt: "This post investigates the universally known but poorly understood hom
 layout: single
 header:
   overlay_image: home_field_overlay.jpg
-  overlay_filter: 0.4
+  overlay_filter: 0.5
   caption: "I guessed AEK Athens, but it's actually Columbus Crew of the MLS"
 categories:
   - data science
