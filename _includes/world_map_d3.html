@@ -607,6 +607,7 @@ function clicked(d) {
     k = s;
     
     centered = d;
+     map_instructions.attr("fill", "none");
   } else if(centered == d){
    // alert("ifelse");
     var centroid = path.centroid(d);
@@ -621,7 +622,7 @@ function clicked(d) {
     k = 1;
     s = 1;
     centered = null;
-    map_instructions.attr("fill", "none");
+    map_instructions.attr("fill", "black");
   }
 
  // g.selectAll("path")
