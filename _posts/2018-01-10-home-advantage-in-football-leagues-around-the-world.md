@@ -155,14 +155,14 @@ input:checked + .slider:before {
 }
 </style>
 
-<div font-size=0.8em>Error Bars<br>
+<div style="font-size=0.8em">Error Bars<br>
 <label class="switch" style="text-align:left">
   <input type="checkbox" checked id="link_checkbox">
   <span class="slider round"></span>
 </label>
 </div>
 <div class="result_img" style="text-align:center">
-<img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half.png" alt="result.png" />
+<img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/england_home_field_advantage_bars.png" alt="result.png" />
 </div>
 
 <script type="text/javascript">
