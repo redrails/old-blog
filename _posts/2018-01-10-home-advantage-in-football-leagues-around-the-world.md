@@ -155,7 +155,7 @@ input:checked + .slider:before {
 }
 </style>
 
-<div style="font-size=0.8em">Error Bars<br>
+<div style="font-size=0.7em">Error Bars<br>
 <label class="switch" style="text-align:left">
   <input type="checkbox" checked id="link_checkbox">
   <span class="slider round"></span>
@@ -180,7 +180,25 @@ It's probably more apparent without those hugely informative confidence interval
 
 Having warned about the dangers of comparing different leagues with this approach, let's now compare the top five leagues in Europe over the same time period as before.
 
+<div style="font-size=0.7em">Error Bars<br>
+<label class="switch" style="text-align:left">
+  <input type="checkbox" id="europe_link_checkbox">
+  <span class="slider round"></span>
+</label>
+</div>
+<div class="result_img" style="text-align:center">
+<img id="europe_picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/europe_home_field_advantage.png" alt="result.png" />
+</div>
 
+<script type="text/javascript">
+$("#europe_link_checkbox").click(function () {
+    if ($(this).is(":checked")) {
+        $('#europe_picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/europe_home_field_advantage_bars.png');
+    } else {
+        $('#europe_picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/europe_home_field_advantage.png');
+    }
+});
+</script>
 
 
 Honestly, there's not much going on there. With the poissble exception of the Spanish La Liga since 2010, the home field advantage enjoyed by the teams in each league is broadly similar (and that's before we bring in the idea of confidence intervals and hypothesis testing).
