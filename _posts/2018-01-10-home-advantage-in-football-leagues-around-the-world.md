@@ -1,6 +1,6 @@
 ---
 title: "Home Advantage in Football Leagues Around the World"
-excerpt: "This post investigates the universally known but poorly understood home advantage and how it differs in football leagues around the world"
+excerpt: "This post investigates the universally known but poorly understood home advantage and how it varies in football leagues around the world"
 layout: single
 header:
   overlay_image: home_advantage_overlay.jpg
