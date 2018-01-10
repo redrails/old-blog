@@ -3,7 +3,7 @@ title: "Home Advantage in Football Leagues Around the World"
 excerpt: "This post investigates the universally known but poorly understood home advantage and how it varies in football leagues around the world"
 layout: single
 header:
-  overlay_image: home_advantage_overlay.jpg
+  overlay_image: home_field_overlay.jpg
   overlay_filter: 0.4
   caption: "I guessed AEK Athens, but it's actually Columbus Crew of the MLS"
 categories:
@@ -237,7 +237,7 @@ We're ready to put it all together. I'll omit the code (though it can be found h
 
 {% include league_goal_table.html %}
 
-Focusing on the `home_advantage_score` column, teams in Nigeria by far enjoy the greatest benefit from playing at home (score = 1.195). In other words, home teams scored 3.3 (= $e^{1.195}$) times more goals than their opponents. This isn't new information and [can be attributed to a combination of corruption (e.g. bribing referees) and violent fans](https://www.theguardian.com/football/blog/2013/oct/29/nigeria-toughest-league-win-away). In fact, my motivation for this post was to identify more football corruption hotspots. Alas, when it comes to home turf invincibility, it seems Nigeria are the World Cup winners.
+Focusing on the `home_adv score` column, teams in Nigeria by far enjoy the greatest benefit from playing at home (score = 1.195). In other words, home teams scored 3.3 (= $e^{1.195}$) times more goals than their opponents. This isn't new information and [can be attributed to a combination of corruption (e.g. bribing referees) and violent fans](https://www.theguardian.com/football/blog/2013/oct/29/nigeria-toughest-league-win-away). In fact, my motivation for this post was to identify more football corruption hotspots. Alas, when it comes to home turf invincibility, it seems Nigeria are the World Cup winners.
 
 Fifteen leagues have a negative `home_advantage_score`, meaning that visiting teams actually scored more goals than their hosts- though none was statistically significant. By some distance, the Maldives records the most negative score. Luckily, I've twice researched this beautiful archipelago and I'm aware that [all matches in the Dhiveli Premier League are played at the national stadium in MalÃ©](https://en.wikipedia.org/wiki/Dhivehi_Premier_League#Stadiums) (much like the [Gibraltar Premier League](https://en.wikipedia.org/wiki/2017%E2%80%9318_Gibraltar_Premier_Division#Teams)). So it would make sense that there's no particular advantage gained by the home team. Libya is another interesting example. Owing to security issues, [all matches in the Libyan Premier League are played in neutral venues with no spectators present](https://en.wikipedia.org/wiki/2017%E2%80%9318_Libyan_Premier_League#Stadiums). Quite fittingly, it returned a home advantage score just off zero. Generally speaking, the leagues with near zero home advantage come from small countries (minimal inconvenience for travelling teams) with a small number of teams and they tend to share stadiums.
 
