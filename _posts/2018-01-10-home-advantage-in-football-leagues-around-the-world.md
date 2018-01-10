@@ -155,7 +155,7 @@ input:checked + .slider:before {
 }
 </style>
 
-<div style="font-size:0.8em">Error Bars<br>
+<div style="font-size:0.9em">Error Bars<br>
 <label class="switch" style="text-align:left">
   <input type="checkbox" checked id="link_checkbox">
   <span class="slider round"></span>
@@ -180,7 +180,7 @@ It's probably more apparent without those hugely informative confidence interval
 
 Having warned about the dangers of comparing different leagues with this approach, let's now compare the top five leagues in Europe over the same time period as before.
 
-<div style="font-size:0.8em">Error Bars<br>
+<div style="font-size:0.9em">Error Bars<br>
 <label class="switch" style="text-align:left">
   <input type="checkbox" id="europe_link_checkbox">
   <span class="slider round"></span>
