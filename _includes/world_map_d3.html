@@ -475,7 +475,7 @@ svg.append("rect")
     .on("click", clicked);
 
 var projection = d3.geoEquirectangular()
-                   .scale(150)
+                   .scale(145)
                   .translate( [width / 2, 0.55*height]);
 
 var path = d3.geoPath().projection(projection);
@@ -488,6 +488,7 @@ var g = svg.append("g")
 var map_instructions = svg.append("text")
                  .attr("x", width*0.5)
                  .attr("y", height*0.98)
+                 .attr("id", "map_instructions")
                  .text("Click on country to zoom. Click on background to reset view.")
                  .attr("font-family", "sans-serif")
                  .attr("font-size", "0.7em")
@@ -620,6 +621,7 @@ function clicked(d) {
     k = 1;
     s = 1;
     centered = null;
+              map_instructions.attr("fill", "none")
   }
 
  // g.selectAll("path")
