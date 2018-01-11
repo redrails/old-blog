@@ -155,84 +155,6 @@ all_df %>% arrange(-tf) %>% head
 
 Taking the term frequency (`tf`) alone, unsurprisingly, we see that 'data' and 'engineer' are two of the three most common words in data engineer job descriptions. The remaining terms are more generic, illustrated by their high ranking among all jobs. This demonstrates the importance of the inverse document frequency (`idf`) component. It will penalise terms such as 'skills', 'team' and 'work', as they're not strongly associated with data engineers exclusively. We'll normalise the `tf` score (divide by the max) and calculate the `idf`. The `tf_idf` is simply the product of the `tf` and `idf`.
 
-<style>
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-.switch input {display:none;}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-</style>
-
-<div>Error Bars<br>
-<label class="switch" style="text-align:left">
-  <input type="checkbox" checked id="link_checkbox">
-  <span class="slider round"></span>
-</label>
-</div>
-<div class="result_img" style="text-align:center">
-<img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half.png" alt="result.png" />
-</div>
-
-<script type="text/javascript">
-$("#link_checkbox").click(function () {
-    if ($(this).is(":checked")) {
-        $('#picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half.png');
-    } else {
-        $('#picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/goals_per_half_python.png');
-    }
-});
-</script>
-
-
 ``` r
 de_df$tf = de_df$tf/max(de_df$tf)
 de_idf <- data.frame(word=row.names(all_tdm),
@@ -294,11 +216,9 @@ knitr::kable(de_df %>% inner_join(de_idf,by=c("word"="word")) %>%
 
 It's a good sanity check that 'engineer' returned the highest `tf_idf` score, as we'd expect that to be relatively specific to data engineer job descriptions. Also, it's reassuring that the generic terms that previously scored well (e.g. 'data', 'team', 'will') are not in the table. The table provides some interesting insights. Take the example of 'spark': it has a relatively high `tf`, but is penalised by a low idf (spark is also a key skill among data scientists). 'etl', on the other hand, has a considerably lower `tf`, but outranks spark due to its higher `idf` (etl is a term more uniquely associated with data engineers).
 
-{% include league_goal_table.html %}
 
 It's important to note that there is no strict defintion of either `tf` or `idf`. If you wish, you can attach more importance to either by applying a particular variant ([a few examples here](https://en.wikipedia.org/wiki/Tf%E2%80%93idf#Definition)). I suppose it depends whether you think terms like 'spark' (high `tf`; low `idf`) should rank more highly than terms like 'etl' (low `tf`; high `idf`).
 
-{% include world_map_d3.html %}
 
 ### Summary
 
