@@ -1,7 +1,7 @@
 avg_goals_rank,home_adv_rank,country,league,num_games,num_teams,avg_goals,home_advantage_score,left_tail,right_tail,countryCode
-0,4,Bolivia,Liga de Futbol Prof 2016/2017,132,12,4.47,0.624,0.431,0.818,BOL
-1,143,Canada,CSL 2017,56,8,4.357,0.025,-0.228,0.277,CAN
-2,140,Djibouti,Division 1 2016/2017,90,10,4.067,0.045,-0.163,0.252,DJI
+0,143,Canada,CSL 2017,56,8,4.357,0.025,-0.228,0.277,CAN
+1,140,Djibouti,Division 1 2016/2017,90,10,4.067,0.045,-0.163,0.252,DJI
+2,5,Bolivia,Liga de Futbol Prof 2016/2017,396,12,3.843,0.618,0.498,0.739,BOL
 3,73,New Zealand,Football Championship 2016/2017,90,10,4.0,0.244,0.024,0.465,NZL
 4,103,Estonia,Meistriliiga 2017,180,10,3.967,0.171,0.017,0.324,EST
 5,159,Maldives,Dhivehi Premier League 2017,56,8,3.964,-0.37,-0.782,0.042,MDV
