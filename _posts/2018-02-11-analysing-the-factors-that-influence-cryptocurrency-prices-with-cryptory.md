@@ -27,7 +27,11 @@ As always, the full code for this post can found on my GitHub account.
 
 `cryptory` is available on [PyPi](https://pypi.python.org/pypi/cryptory/0.1.0) and [GitHub](https://github.com/dashee87/cryptory), so installing it is as easy as running `pip install cryptory` in your command line/shell.
 
-![](install_cryptory.png)
+<div style="text-align:center" markdown="1">
+
+![]({{ base_path }}/images/install_cryptory.png)
+
+</div>
 
 It relies on pandas, numpy, BeautifulSoup and [pytrends](https://github.com/GeneralMills/pytrends), but, if necesssary, these packages should be automatically installed alongisde cryptory.
 
@@ -35,6 +39,7 @@ The next step is to load the package into the working environment. Specifically,
 
 
 ```python
+# import package
 from cryptory import Cryptory
 ```
 
@@ -60,6 +65,7 @@ We'll now create our own cryptory object, which we'll call `my_cryptory`. You ne
 
 
 ```python
+# initialise object
 my_cryptory = Cryptory(from_date="2017-01-01")
 ```
 
@@ -543,23 +549,30 @@ my_cryptory.extract_poloniex(coin1="btc", coin2="eth")
 
 We're now in a position to perform some basic analysis of cryptocurrencies prices.
 
+<div style="text-align:center" markdown="1">
 
-![png](images/crypto_price_2017.png)
+![]({{ base_path }}/images/crypto_price_2017.png)
+
+</div>
 
 
 Of course, that graph is meaningless. You can't just compare the price for single units of each coin. You need to consider the total supply and the market cap. It's like saying the dollar is undervalued compared to the Japanese Yen. But I probably shouldn't worry. It's not as if people are [buying cryptos based on them being superficially cheap](https://www.youtube.com/watch?v=SvMF10ZXVoQ). More relevant here is the relative change in price since the start of 2017, which we can plot quite easily with a little pandas magic ([pct_change](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.pct_change.html)).
 
+<div style="text-align:center" markdown="1">
 
-![png](images/crypto_price_2017_norm.png)
+![]({{ base_path }}/images/crypto_price_2017_norm.png)
 
+</div>
 
 Those coins are provided on [bitinfocharts](https://bitinfocharts.com/comparison/bitcoin-price.html) and they tend to represent older legacy coins. For example, the coin from this list that performed best over 2017 was Reddcoin. It started 2017 with a market cap of less than 1 million dollars, but finished it with a value of around $250m, reaching a peak of over 750m in early Jan 2018. You'll notice that each coin shows the same general behaviour- a sustained rise between March and June, followed by another spike in December and a noticeable sell-off in Jan 2018. 
 
 With a little help from pandas, we can produce a crypto price correlation plot (use the dropdown menu to switch between [Pearson](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) and [Spearman](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient) correlation).
 
+<div style="text-align:center" markdown="1">
 
-![png](images/crypto_price_correlation.png)
+![]({{ base_path }}/images/crypto_price_correlation.png)
 
+</div>
 
 There's nothing too surprising ([or novel](https://blog.patricktriest.com/analyzing-cryptocurrencies-python/)) here. It's well known that cryptos are heavily correlated- they tend to [spike](https://imgur.com/a/UBQaw#KLDWEIG) and [crash](https://www.reddit.com/r/CryptoCurrency/comments/7it7zi/93_of_the_top_100_cryptos_are_down_today_most_of/?st=jd5sd4p0&sh=cea8d0f0) collectively. There's a few reasons for this: Most importantly, the vast majority of coins can only be exchanged with the few big coins (e.g. btc and eth). As they are priced relative to these big coins, a change in btc or eth will also change the value of those smaller coins. Secondly, it's not like the stock market. Ethereum and Bitcoin are not as different as, say, Facebook and General Motors. While stock prices are linked to hitting financial targets (i.e. quarterly earnings reports) and wider macroeconomic factors, most cryptos (maybe all) are currently powered by hope and aspirations (well, hype and speculation) around blockchain technology. That's not to say coins can't occasionally buck the market e.g. ripple (xrp) in early December. However, overperformance is often followed by market underperformance (e.g. ripple in January 2018).
 
@@ -720,7 +733,11 @@ my_cryptory.extract_reddit_metrics("eos", "subscriber-growth")
 Now we can investigate the relationship between price and subreddit growth.
 
 
-![png](images/crypto_reddit_price.png)
+<div style="text-align:center" markdown="1">
+
+![]({{ base_path }}/images/crypto_reddit_price.png)
+
+</div>
 
 
 Visually speaking, there's clearly some correlation between price and subreddit member growth (the y-axis was normalised using the conventional [min-max scaling](https://stats.stackexchange.com/questions/70801/how-to-normalize-data-to-0-1-range)). While the Spearman rank correlation is similarly high for both coins, the Pearson correlation coefficient is significantly stronger for iota, highlighting the importance of not relying on one single measure. At the time of writing, iota and eos both had a marketcap of about \$5bn (11th and 9th  overall), though the number of subscribers to the iota subreddit was over 3 times more than the eos subreddit (105k and 30k, respectively). While this doesn't establish whether the relationship between price and reddit is predictive or reactive, it does suggest that reddit metrics could be useful model features for some coins.
@@ -808,7 +825,11 @@ Now we can investigate the relationship between crypto price and google search p
 
 
 
-![png](images/google_reddit_price.png)
+<div style="text-align:center" markdown="1">
+
+![]({{ base_path }}/images/google_reddit_price.png)
+
+</div>
 
 
 As before, it's visually obvious and statisically clear that there's a strong correlation between google searches and coin prices. Again, this a well known observation ([here](http://uk.businessinsider.com/bitcoin-price-correlation-google-search-2017-9), [here](https://www.express.co.uk/finance/city/911979/Cryptocurrency-Google-search-bitcoin-boom-ethereum-price-warning-boost) and [here](https://www.reddit.com/r/dataisbeautiful/duplicates/7ldxy7/2017_bitcoin_value_versus_google_search_interest/)). What's not so apparent is whether google search drives or follows the price. That chicken and egg question question will be addressed in my next deep learning post. 
@@ -818,7 +839,11 @@ A few words on Verge (xvg): eccentric (i.e. [crazy](http://uk.businessinsider.co
 Anyway, back to `cryptory`, you can supply more than one keyword at a time, allowing you to visualise the relative popularity of different terms. Let's go back to the early days and compare the historical popularity of Kim Kardashian and Bitcoin since 2013.
 
 
-![png](images/kim_k_bitcoin.png)
+<div style="text-align:center" markdown="1">
+
+![]({{ base_path }}/images/kim_k_bitcoin.png)
+
+</div>
 
 
 According to Google Trends, bitcoin became a more popular search term in June 2018 (a sure sign of a bubble if ever there was one- [just realised this isn't a unique insight either](http://uk.businessinsider.com/bitcoin-passes-beyonc-taylor-swift-and-kim-kardashians-popularity-2017-12?r=US&IR=T)). That said, Bitcoin has never reached the heights of Kim Kardashian on the 13th November 2014 (obviously, the day [Kim Kardashian broke the internet](https://www.theguardian.com/lifeandstyle/2014/dec/17/kim-kardashian-butt-break-the-internet-paper-magazine)).  The graph shows daily values, but you'll notice that it quite closely matches what you'd get for [the same weekly search on the Google Trends website](https://trends.google.com/trends/explore?date=2013-01-01%202018-02-03&q=kim%20kardashian,bitcoin).
@@ -950,8 +975,11 @@ You may notice the previous closing prices are carried over on days the stock ma
 With a little help from pandas, we can visualise the performance of bitcoin relative to some specific stocks and [indices](http://business.nasdaq.com/marketinsite/2016/Indexes-or-Indices-Whats-the-deal.html).
 
 
+<div style="text-align:center" markdown="1">
 
-![png](images/bitcoin_stocks_price_norm.png)
+![]({{ base_path }}/images/bitcoin_stocks_price_norm.png)
+
+</div>
 
 
 This graph shows the return you would have received if you had invested on January 3rd. As Bitcoin went up the most (>10x returns), it was objectively the best investment. While the inclusion of some names is hopefully intuitive enough, AMD and NVIDIA (and Intel to some extent) are special cases, as these companies produce the [graphics cards](http://www.techradar.com/news/best-mining-gpu) that underpin the hugely energy intensive (i.e. [wasteful](https://www.theguardian.com/technology/2018/jan/17/bitcoin-electricity-usage-huge-climate-cryptocurrency)) process of [crypto mining](https://news.bitcoin.com/a-visit-to-a-bitcoin-mining-farm-in-sichuan-china-reveals-troubles-beyond-regulation/). Kodak (not to be confused with the pre 2012 bankruptcy Kodak) made the list, as they announced their intention in early Jan 2018 to [create their own "photo-centric cryptocurrency"](https://www.nytimes.com/2018/01/30/technology/kodak-blockchain-bitcoin.html) (yes, that's what caused that blip).
@@ -959,8 +987,11 @@ This graph shows the return you would have received if you had invested on Janua
 As before, with a little bit of pandas work, you can create a bitcoin stock market correlation plot.
 
 
+<div style="text-align:center" markdown="1">
 
-![png](images/stock_bitcoin_corr.png)
+![]({{ base_path }}/images/stock_bitcoin_corr.png)
+
+</div>
 
 
 The highest correlation recorded (0.75) is between Google and Nasdaq, which is not surprising, as the former is large component of the latter. As for Bitcoin, it was most correlated with Google (0.12), but its relationship with the stock market was generally quite weak.
@@ -1095,14 +1126,22 @@ my_cryptory.get_metal_prices()
 Again, we can easily plot the change in commodity over 2017 and 2018.
 
 
-![png](images/bitcoin_commodity_price.png)
+<div style="text-align:center" markdown="1">
+
+![]({{ base_path }}/images/bitcoin_commodity_price.png)
+
+</div>
 
 
 Look at silly old gold appreciating slowly over 2017 and 2018, thus representing a [stable store of wealth](https://www.bullionvault.com/gold-guide/why-gold). As before, we can plot a price correlation matrix.
 
 
+<div style="text-align:center" markdown="1">
 
-![png](images/bitcoin_commodity_corr.png)
+![]({{ base_path }}/images/bitcoin_commodity_corr)
+
+</div>
+
 
 
 Unsurprisingly, the various precious metals exhibit significant correlation, while bitcoin value appears completely unconnected. I suppose negative correlation could have provided evidence that people are moving away from traditional stores of value, but there's little evidence to support this theory.
@@ -1270,8 +1309,11 @@ my_cryptory.get_oil_prices()
 As you can see, oil is up about 20% since the start of 2017. Of course, you can plot the price over a longer time period.
 
 
+<div style="text-align:center" markdown="1">
 
-![png](images/oil_price_2000s.png)
+![]({{ base_path }}/images/oil_price_2000s.png)
+
+</div>
 
 
 ## Future
