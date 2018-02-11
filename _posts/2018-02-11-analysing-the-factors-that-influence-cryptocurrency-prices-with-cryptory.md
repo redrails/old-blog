@@ -1138,7 +1138,7 @@ Look at silly old gold appreciating slowly over 2017 and 2018, thus representing
 
 <div style="text-align:center" markdown="1">
 
-![]({{ base_path }}/images/bitcoin_commodity_corr)
+![]({{ base_path }}/images/bitcoin_commodity_corr.png)
 
 </div>
 
