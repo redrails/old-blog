@@ -98,7 +98,7 @@ my_cryptory.extract_coinmarketcap("bitcoin")
 </style>
 <table border="1" class="dataframe">
   <thead>
-    <tr style="text-align: right;">
+    <tr style="text-align: middle;">
       <th></th>
       <th>date</th>
       <th>open</th>
