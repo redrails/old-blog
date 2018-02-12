@@ -511,11 +511,28 @@ Those coins are provided on [bitinfocharts](https://bitinfocharts.com/comparison
 
 With a little help from pandas, we can produce a crypto price correlation plot (use the dropdown menu to switch between [Pearson](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) and [Spearman](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient) correlation).
 
-<div style="text-align:center" markdown="1">
-
-![]({{ base_path }}/images/crypto_price_correlation.png)
-
+<div>
+<select id="corr_choice_price">
+  <option value="pearson">Pearson</option>
+  <option value="spearman">Spearman</option>
+</select>
 </div>
+<div class="result_img" style="text-align:center">
+<img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/crypto_price_correlation.png" alt="result.png" />
+</div>
+
+<script type="text/javascript">
+$("#corr_choice_price").change(function () {
+   menu_val = $(this).val();
+    if (menu_val=="pearson") {
+        $('#picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/crypto_price_correlation.png');
+    } else {
+        $('#picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/england_home_field_advantage.png');
+    }
+});
+</script>
+
+
 
 There's nothing too surprising ([or novel](https://blog.patricktriest.com/analyzing-cryptocurrencies-python/)) here. It's well known that cryptos are heavily correlated- they tend to [spike](https://imgur.com/a/UBQaw#KLDWEIG) and [crash](https://www.reddit.com/r/CryptoCurrency/comments/7it7zi/93_of_the_top_100_cryptos_are_down_today_most_of/?st=jd5sd4p0&sh=cea8d0f0) collectively. There's a few reasons for this: Most importantly, the vast majority of coins can only be exchanged with the few big coins (e.g. btc and eth). As they are priced relative to these big coins, a change in btc or eth will also change the value of those smaller coins. Secondly, it's not like the stock market. Ethereum and Bitcoin are not as different as, say, Facebook and General Motors. While stock prices are linked to hitting financial targets (i.e. quarterly earnings reports) and wider macroeconomic factors, most cryptos (maybe all) are currently powered by hope and aspirations (well, hype and speculation) around blockchain technology. That's not to say coins can't occasionally buck the market e.g. ripple (xrp) in early December. However, overperformance is often followed by market underperformance (e.g. ripple in January 2018).
 
@@ -690,7 +707,7 @@ Anyway, back to `cryptory`, you can supply more than one keyword at a time, allo
 </div>
 
 
-According to Google Trends, bitcoin became a more popular search term in June 2018 (a sure sign of a bubble if ever there was one- [just realised this isn't a unique insight either](http://uk.businessinsider.com/bitcoin-passes-beyonc-taylor-swift-and-kim-kardashians-popularity-2017-12?r=US&IR=T)). That said, Bitcoin has never reached the heights of Kim Kardashian on the 13th November 2014 (obviously, the day [Kim Kardashian broke the internet](https://www.theguardian.com/lifeandstyle/2014/dec/17/kim-kardashian-butt-break-the-internet-paper-magazine)).  The graph shows daily values, but you'll notice that it quite closely matches what you'd get for [the same weekly search on the Google Trends website](https://trends.google.com/trends/explore?date=2013-01-01%202018-02-03&q=kim%20kardashian,bitcoin).
+According to Google Trends, bitcoin became a more popular search term in June 2017 (a sure sign of a bubble if ever there was one- [just realised this isn't a unique insight either](http://uk.businessinsider.com/bitcoin-passes-beyonc-taylor-swift-and-kim-kardashians-popularity-2017-12?r=US&IR=T)). That said, Bitcoin has never reached the heights of Kim Kardashian on the 13th November 2014 (obviously, the day [Kim Kardashian broke the internet](https://www.theguardian.com/lifeandstyle/2014/dec/17/kim-kardashian-butt-break-the-internet-paper-magazine)).  The graph shows daily values, but you'll notice that it quite closely matches what you'd get for [the same weekly search on the Google Trends website](https://trends.google.com/trends/explore?date=2013-01-01%202018-02-03&q=kim%20kardashian,bitcoin).
 
 While social metrics like reddit and google popularity can be powerful tools to study cryptocurrency prices, you may also want to incorporate data related to finance and the wider global economy.
 
