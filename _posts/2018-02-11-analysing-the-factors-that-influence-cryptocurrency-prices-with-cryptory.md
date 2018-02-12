@@ -512,7 +512,7 @@ Those coins are provided on [bitinfocharts](https://bitinfocharts.com/comparison
 With a little help from pandas, we can produce a crypto price correlation plot (use the dropdown menu to switch between [Pearson](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) and [Spearman](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient) correlation).
 
 <div>
-<select id="corr_choice_price">
+<select id="corr_choice_price" style="font-size:0.8em">
   <option value="pearson">Pearson</option>
   <option value="spearman">Spearman</option>
 </select>
