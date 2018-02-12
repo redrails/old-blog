@@ -21,7 +21,7 @@ You may have seen [my previous post](https://dashee87.github.io/deep%20learning/
 
 With that in mind, I created a new Python package called [cryptory](https://github.com/dashee87/cryptory). Not to be confused with the [obscure Go repo](https://github.com/mtamer/cryptory) (damn you, mtamer) or [that bitcoin scam](https://www.reddit.com/r/Scams/comments/2ao4aw/cryptorycom_scam_alert_stay_away/?st=jd3c7q9a&sh=9af44946) (you try to come up with a crypto package name that isn't associated with some scam), it integrates various packages and protocols so that you can get historical crypto (just daily... for now) and wider economic/social data in one place. Rather than making more crypto based jokes, I should probably just explain the package.
 
-As always, the full code for this post can found on my GitHub account.
+As always, the full code for this post can found on my [GitHub account](https://github.com/dashee87/blogScripts/blob/master/Jupyter/2018-02-11-analysing-the-factors-that-influence-cryptocurrency-prices-with-cryptory.ipynb).
 
 ## Installation
 
@@ -1077,7 +1077,7 @@ my_cryptory.get_exchange_rates(from_currency="USD", to_currency="EUR")
 
 
 
-As you can see, the USD has lost ground to the Euro over the last year. We can easily add a few more USD exchange rates (spoiler alert:the USD has depreciated relative to most major currencies). As the results are similar to the precious metals, that code can be found in the Jupyter notebook.
+As you can see, the USD has lost ground to the Euro over the last year. We can easily add a few more USD exchange rates (spoiler alert:the USD has depreciated relative to most major currencies). As the results are similar to the precious metals, that code can be found in the [Jupyter notebook](https://github.com/dashee87/blogScripts/blob/master/Jupyter/2018-02-11-analysing-the-factors-that-influence-cryptocurrency-prices-with-cryptory.ipynb).
 
 ### Oil Prices
 
@@ -1162,4 +1162,4 @@ So what's the future of cryptos? Moon, obviously! As for the future of `cryptory
 -  more Asian-centric data sources (Japan and South Korea are said to account for [40%](https://www.ft.com/content/384936ac-e70c-11e7-97e2-916d4fbac0da) and [20%](http://www.straitstimes.com/asia/south-korean-officials-grapple-with-bitcoin-mania) of global bitcoin volume, respectively)
 - more financial/crypto data (integrate [Quandl api](https://www.quandl.com/tools/python))
 
-In my next post, I'll use `cryptory` to (hopefully) improve the [previous LSTM crypto price prediction model](https://dashee87.github.io/deep%20learning/python/predicting-cryptocurrency-prices-with-deep-learning/). While you wait for that, you can perform your own cryptocurrency analysis with the accompnaying Jupyter notebook. Thanks for reading!
+In my next post, I'll use `cryptory` to (hopefully) improve the [previous LSTM crypto price prediction model](https://dashee87.github.io/deep%20learning/python/predicting-cryptocurrency-prices-with-deep-learning/). While you wait for that, you can perform your own cryptocurrency analysis with the [accompanying Jupyter notebook](https://github.com/dashee87/blogScripts/blob/master/Jupyter/2018-02-11-analysing-the-factors-that-influence-cryptocurrency-prices-with-cryptory.ipynb). Thanks for reading!
