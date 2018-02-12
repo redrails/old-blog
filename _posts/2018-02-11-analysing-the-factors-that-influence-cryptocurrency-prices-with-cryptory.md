@@ -57,7 +57,7 @@ help(Cryptory)
      |  
      |  __init__(self, from_date, to_date=None, ascending=False, fillgaps=True, timeout=10.0)
      |      Initialise cryptory class
-
+     ...
     
 
 
@@ -93,7 +93,7 @@ my_cryptory.extract_coinmarketcap("bitcoin")
     }
 
     .dataframe thead th {
-        text-align: right;
+        text-align: left;
     }
 </style>
 <table border="1" class="dataframe">
@@ -210,7 +210,7 @@ my_cryptory.extract_bitinfocharts("btc")
         text-align: right;
     }
 </style>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe" width="30%">
   <thead>
     <tr style="text-align: right;">
       <th></th>
