@@ -986,11 +986,27 @@ Again, we can easily plot the change in commodity over 2017 and 2018.
 Look at silly old gold appreciating slowly over 2017 and 2018, thus representing a [stable store of wealth](https://www.bullionvault.com/gold-guide/why-gold). As before, we can plot a price correlation matrix.
 
 
-<div style="text-align:center" markdown="1">
-
-![]({{ base_path }}/images/bitcoin_commodity_corr.png)
-
+<div>
+<select id="corr_choice_metal" style="font-size:0.8em">
+  <option value="pearson">Pearson</option>
+  <option value="spearman">Spearman</option>
+</select>
 </div>
+<div class="result_img" style="text-align:center">
+<img id="metal_picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/bitcoin_commodity_corr.png" alt="result.png" />
+</div>
+<div><br></div>
+ 
+<script type="text/javascript">
+$("#corr_choice_metal").change(function () {
+   menu_val = $(this).val();
+    if (menu_val=="pearson") {
+        $('#metal_picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/bitcoin_commodity_corr.png');
+    } else {
+        $('#metal_picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/bitcoin_commodity_corr_spear.png');
+    }
+});
+</script>
 
 
 
