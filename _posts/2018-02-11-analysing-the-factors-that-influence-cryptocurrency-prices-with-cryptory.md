@@ -519,6 +519,7 @@ With a little help from pandas, we can produce a crypto price correlation plot (
 </div>
 <div class="result_img" style="text-align:center">
 <img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/crypto_price_correlation.png" alt="result.png" />
+<br>
 </div>
 
 <script type="text/javascript">
