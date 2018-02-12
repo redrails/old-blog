@@ -197,7 +197,7 @@ my_cryptory.extract_bitinfocharts("btc")
 
 
 <div>
-<table border="1" class="dataframe" style="width:40%">
+<table border="1" class="dataframe" style="width:50%">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -262,7 +262,7 @@ my_cryptory.extract_bitinfocharts("eth", metric='transactionfees')
 
 
 <div>
-<table border="1" class="dataframe" style="width:40%">
+<table border="1" class="dataframe" style="width:50%">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -541,7 +541,7 @@ my_cryptory.extract_reddit_metrics("iota", "subscriber-growth")
 
 
 <div>
-<table border="1" class="dataframe" style="width:40%">
+<table border="1" class="dataframe" style="width:50%">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -621,7 +621,7 @@ my_cryptory.get_google_trends(kw_list=['bitcoin'])
 
 
 <div>
-<table border="1" class="dataframe" style="width:40%">
+<table border="1" class="dataframe" style="width:50%">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -986,7 +986,7 @@ my_cryptory.get_exchange_rates(from_currency="USD", to_currency="EUR")
 
 
 <div>
-<table border="1" class="dataframe" style="width:40%">
+<table border="1" class="dataframe" style="width:50%">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -1054,7 +1054,7 @@ my_cryptory.get_oil_prices()
 
 
 <div>
-<table border="1" class="dataframe" style="width:40%">
+<table border="1" class="dataframe" style="width:50%">
   <thead>
     <tr style="text-align: right;">
       <th></th>
