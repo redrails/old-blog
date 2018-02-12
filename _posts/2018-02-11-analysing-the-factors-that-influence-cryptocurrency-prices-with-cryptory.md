@@ -518,17 +518,17 @@ With a little help from pandas, we can produce a crypto price correlation plot (
 </select>
 </div>
 <div class="result_img" style="text-align:center">
-<img id="picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/crypto_price_correlation.png" alt="result.png" />
-<br>
+<img id="price_picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/crypto_price_correlation.png" alt="result.png" />
 </div>
-
+<div><br></div>
+ 
 <script type="text/javascript">
 $("#corr_choice_price").change(function () {
    menu_val = $(this).val();
     if (menu_val=="pearson") {
-        $('#picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/crypto_price_correlation.png');
+        $('#price_picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/crypto_price_correlation.png');
     } else {
-        $('#picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/england_home_field_advantage.png');
+        $('#price_picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/england_home_field_advantage.png');
     }
 });
 </script>
