@@ -182,7 +182,6 @@ my_cryptory.extract_coinmarketcap("bitcoin")
     </tr>
   </tbody>
 </table>
-<p>406 rows × 7 columns</p>
 </div>
 
 
@@ -243,7 +242,6 @@ my_cryptory.extract_bitinfocharts("btc")
     </tr>
   </tbody>
 </table>
-<p>406 rows × 2 columns</p>
 </div>
 
 
@@ -308,7 +306,6 @@ my_cryptory.extract_bitinfocharts("eth", metric='transactionfees')
     </tr>
   </tbody>
 </table>
-<p>406 rows × 2 columns</p>
 </div>
 
 
@@ -379,7 +376,6 @@ my_cryptory.extract_bitinfocharts("eth"), on='date', how='inner')
     </tr>
   </tbody>
 </table>
-<p>406 rows × 3 columns</p>
 </div>
 
 
@@ -490,7 +486,6 @@ my_cryptory.extract_poloniex(coin1="btc", coin2="eth")
     </tr>
   </tbody>
 </table>
-<p>406 rows × 8 columns</p>
 </div>
 
 
@@ -587,7 +582,6 @@ my_cryptory.extract_reddit_metrics("iota", "subscriber-growth")
     </tr>
   </tbody>
 </table>
-<p>407 rows × 2 columns</p>
 </div>
 
 
@@ -667,7 +661,6 @@ my_cryptory.get_google_trends(kw_list=['bitcoin'])
     </tr>
   </tbody>
 </table>
-<p>405 rows × 2 columns</p>
 </div>
 
 
@@ -803,7 +796,6 @@ my_cryptory.get_stock_prices("%5EDJI")
     </tr>
   </tbody>
 </table>
-<p>406 rows × 7 columns</p>
 </div>
 
 
@@ -943,7 +935,6 @@ my_cryptory.get_metal_prices()
     </tr>
   </tbody>
 </table>
-<p>406 rows × 8 columns</p>
 </div>
 
 
@@ -1032,7 +1023,6 @@ my_cryptory.get_exchange_rates(from_currency="USD", to_currency="EUR")
     </tr>
   </tbody>
 </table>
-<p>406 rows × 2 columns</p>
 </div>
 
 
@@ -1100,7 +1090,6 @@ my_cryptory.get_oil_prices()
     </tr>
   </tbody>
 </table>
-<p>406 rows × 2 columns</p>
 </div>
 
 
