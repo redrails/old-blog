@@ -528,7 +528,7 @@ $("#corr_choice_price").change(function () {
     if (menu_val=="pearson") {
         $('#price_picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/crypto_price_correlation.png');
     } else {
-        $('#price_picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/england_home_field_advantage.png');
+        $('#price_picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/crypto_price_correlation_spear.png');
     }
 });
 </script>
