@@ -83,7 +83,7 @@ my_cryptory.extract_coinmarketcap("bitcoin")
 
 
 <div>
-<style scoped>
+<style>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -197,19 +197,6 @@ my_cryptory.extract_bitinfocharts("btc")
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe" style="width:30%">
   <thead>
     <tr style="text-align: right;">
@@ -275,20 +262,7 @@ my_cryptory.extract_bitinfocharts("eth", metric='transactionfees')
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe" style="width:30%">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -351,20 +325,7 @@ my_cryptory.extract_bitinfocharts("eth"), on='date', how='inner')
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe" style="width:50%">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -435,19 +396,6 @@ my_cryptory.extract_poloniex(coin1="btc", coin2="eth")
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -593,20 +541,7 @@ my_cryptory.extract_reddit_metrics("iota", "subscriber-growth")
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe" style="width:30%">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -658,77 +593,6 @@ my_cryptory.extract_reddit_metrics("iota", "subscriber-growth")
 
 
 
-```python
-my_cryptory.extract_reddit_metrics("eos", "subscriber-growth")
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>date</th>
-      <th>subscriber_growth</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2018-02-10</td>
-      <td>92</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2018-02-09</td>
-      <td>78</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2018-02-08</td>
-      <td>100</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>405</th>
-      <td>2017-01-03</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>406</th>
-      <td>2017-01-02</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>407</th>
-      <td>2017-01-01</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-<p>408 rows × 2 columns</p>
-</div>
-
-
 
 Now we can investigate the relationship between price and subreddit growth.
 
@@ -757,20 +621,7 @@ my_cryptory.get_google_trends(kw_list=['bitcoin'])
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe" style="width:30%">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -866,19 +717,6 @@ my_cryptory.get_stock_prices("%5EDJI")
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1011,19 +849,6 @@ my_cryptory.get_metal_prices()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1161,20 +986,7 @@ my_cryptory.get_exchange_rates(from_currency="USD", to_currency="EUR")
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe" style="width:30%">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -1242,20 +1054,7 @@ my_cryptory.get_oil_prices()
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe" style="width:30%">
   <thead>
     <tr style="text-align: right;">
       <th></th>
