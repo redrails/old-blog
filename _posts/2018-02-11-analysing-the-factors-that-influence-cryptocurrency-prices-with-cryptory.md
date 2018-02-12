@@ -835,11 +835,27 @@ This graph shows the return you would have received if you had invested on Janua
 As before, with a little bit of pandas work, you can create a bitcoin stock market correlation plot.
 
 
-<div style="text-align:center" markdown="1">
-
-![]({{ base_path }}/images/stock_bitcoin_corr.png)
-
+<div>
+<select id="corr_choice_stock" style="font-size:0.8em">
+  <option value="pearson">Pearson</option>
+  <option value="spearman">Spearman</option>
+</select>
 </div>
+<div class="result_img" style="text-align:center">
+<img id="stock_picture" src="https://github.com/dashee87/dashee87.github.io/raw/master/images/stock_bitcoin_corr.png" alt="result.png" />
+</div>
+<div><br></div>
+ 
+<script type="text/javascript">
+$("#corr_choice_stock").change(function () {
+   menu_val = $(this).val();
+    if (menu_val=="pearson") {
+        $('#stock_picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/stock_bitcoin_corr.png');
+    } else {
+        $('#stock_picture').attr('src', 'https://github.com/dashee87/dashee87.github.io/raw/master/images/stock_bitcoin_corr_spear.png');
+    }
+});
+</script>
 
 
 The highest correlation recorded (0.75) is between Google and Nasdaq, which is not surprising, as the former is large component of the latter. As for Bitcoin, it was most correlated with Google (0.12), but its relationship with the stock market was generally quite weak.
