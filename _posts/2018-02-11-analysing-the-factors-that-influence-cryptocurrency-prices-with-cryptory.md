@@ -210,7 +210,7 @@ my_cryptory.extract_bitinfocharts("btc")
         text-align: right;
     }
 </style>
-<table border="1" class="dataframe" width="30%">
+<table border="1" class="dataframe" style="width:30%">
   <thead>
     <tr style="text-align: right;">
       <th></th>
