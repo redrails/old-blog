@@ -7,6 +7,10 @@ tags:
   - .NET
   - ASP
   - web
+header:
+  overlay_image: http://tech.tokopedia.com/assets/img/u/cover--unit_test.jpg
+  overlay_filter: 0.4
+  caption: ""
 ---
 
 With my unbelievably bad experience so far with [Microsoft ASP.NET Identity 2.0](https://msdn.microsoft.com/en-us/library/mt173608(v=vs.108).aspx) I figured that I would write a small post giving a little bit of an insight as to what I've been doing in regards to setting up users, roles and permissions.
