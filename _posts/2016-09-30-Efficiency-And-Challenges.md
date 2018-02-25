@@ -5,6 +5,10 @@ categories:
 tags:
   - personal
   - blog
+header:
+  overlay_image: https://tmrwedition.files.wordpress.com/2016/11/efficient1.jpg
+  overlay_filter: 0.4
+  caption: ""
 ---
 
 # Why efficiency?
