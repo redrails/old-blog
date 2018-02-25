@@ -6,6 +6,10 @@ tags:
   - spring
   - java
   - web
+header:
+  overlay_image: http://tech.tokopedia.com/assets/img/u/cover--unit_test.jpg
+  overlay_filter: 0.4
+  caption: ""
 ---
 
 [In the last tutorial](http://ihtasham.com/devblog/posts/getting-started-with-spring), we covered how to build a simple SpringMVC web-application using Spring Security and Boot. In this tutorial we will be testing the controllers that we created with very easy to implement [MockMvc](http://docs.spring.io/autorepo/docs/spring-security/4.0.0.RELEASE/reference/html/test-mockmvc.html) tests.
