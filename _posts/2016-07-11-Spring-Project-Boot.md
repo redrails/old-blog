@@ -6,6 +6,10 @@ tags:
   - spring
   - java
   - web
+header:
+  overlay_image: http://4.bp.blogspot.com/-_FcPlpLJlJc/VfiAWDETfHI/AAAAAAAACGE/IWnS0V_sTh0/s1600/spring-mvc-io.png
+  overlay_filter: 0.4
+  caption: ""
 ---
 [Spring](https://spring.io/) is a web-development framework for Java which allows you to create web-applications in a very organised and intuitive manner.
 
