@@ -33,7 +33,7 @@ In my study, we focused on the three main types of automatons:
 - Non-deterministic finite automatons
 - Pushdown automatons
 
-A DFA or deterministic finite automaton provides some very useful tools that we can use such as parsing regular languages and being able to accept desired inputs. An example of this can be something like accepting a language such that {α ∈ {0,1}∗ : |α|<sub>0</sub> is even}.. Given this we can construct a DFA like the following:
+A DFA or deterministic finite automaton provides some very useful tools that we can use such as parsing regular languages and being able to accept desired inputs. Given this we can construct a DFA like the following:
 
 ![](https://i.imgur.com/B07kgEI.png)
 
@@ -41,13 +41,13 @@ This machine we have constructed has two states. One marked with a double circle
 
 #### Restrictions
 
-The restriction with this is that we cannot keep a track of what symbols we are reading, so if we wanted to be able to have a language such that {α ∈ {0,1}∗ : |α|<sub>0</sub><sup>n</sup>|α|<sub>1</sub><sup>n</sup>} is accepted, we would have trouble keeping a track of |α|<sub>0</sub> symbols and thus we don't have the tools required at this point to be able to compute our expression. How do we solve this? It's easy, we use a way of keeping a track; and a very simple way to do this is by utilising a stack which we can throw symbols onto and pop when we are checking for something. This is where Pushdown Automata helps us.
+The restriction with this is that we cannot keep a track of what symbols we are reading. How do we solve this? It's easy, we use a way of keeping a track; and a very simple way to do this is by utilising a stack which we can throw symbols onto and pop when we are checking for something. This is where Pushdown Automata helps us.
 
 #### What is a PDA?
 
 A PDA is very similar to a DFA as we have covered above, but adds the capability of using a stack. A PDA introduces a notion of "pushing" and "popping" symbols as we read inputs. It also introduces the notion of having a "stack symbol" which is just used to denote the bottom of the stack, i.e. where the stack finishes. 
 
-We can construct a PDA for the language we mentioned above: {α ∈ {a,b}∗ : |α|<sub>a</sub><sup>n</sup>|α|<sub>b</sub><sup>n</sup>}:
+We can construct a PDA for the language we mentioned above:
 
 ![](https://i.imgur.com/clTzgh2.png)
 
