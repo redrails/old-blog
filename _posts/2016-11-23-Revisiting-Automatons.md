@@ -8,11 +8,9 @@ tags:
   - theory
   - computer science
 header:
-  overlay_image: football-overlay.jpg
+  overlay_image: http://78.media.tumblr.com/90bdcdf331d6fa6817612eb4c8fbf09f/tumblr_inline_mr9wsb2UCV1qz4rgp.png
   overlay_filter: 0.4
   caption: ""
-  cta_label: "Switch to Python version"
-  cta_url: "https://dashee87.github.io/football/python/predicting-football-results-with-statistical-modelling/"
 ---
 
 In my second year of studying Computer Science I was introduced to the theory of computation as well as the very important notions of Automata.
