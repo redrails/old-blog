@@ -8,7 +8,7 @@ tags:
   - ASP
   - web
 header:
-  overlay_image: http://tech.tokopedia.com/assets/img/u/cover--unit_test.jpg
+  overlay_image: http://www.zenesys.com/media/1068/aspnet.png
   overlay_filter: 0.4
   caption: ""
 ---
