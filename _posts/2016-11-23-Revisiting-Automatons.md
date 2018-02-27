@@ -33,7 +33,7 @@ In my study, we focused on the three main types of automatons:
 - Non-deterministic finite automatons
 - Pushdown automatons
 
-A DFA or deterministic finite automaton provides some very useful tools that we can use such as parsing regular languages and being able to accept desired inputs. An example of this can be something like accepting a language such that ${α ∈ {0,1}∗ : |α|_{0} is even}$.. Given this we can construct a DFA like the following:
+A DFA or deterministic finite automaton provides some very useful tools that we can use such as parsing regular languages and being able to accept desired inputs. An example of this can be something like accepting a language such that $${α ∈ {0,1}∗ : |α|_{0} is even}$$.. Given this we can construct a DFA like the following:
 
 ![](https://i.imgur.com/B07kgEI.png)
 
