@@ -1,12 +1,12 @@
 ---
 title: "Getting started with Twilio"
 categories:
-  - article
+  - tutorial
 tags:
-  - java
-  - automata
-  - theory
-  - computer science
+  - python
+  - twilio
+  - sms
+  - web
 header:
   overlay_image: http://www.cloudways.com/blog/wp-content/uploads/Twilio-SMS-on-Cloud-Banner.jpg
   overlay_filter: 0.4
