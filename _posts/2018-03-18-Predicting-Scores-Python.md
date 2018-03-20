@@ -271,7 +271,7 @@ plotstats(obj)
 ```
 
 
-![png](../images/football/output_25_0.png)
+![png](/images/football/output_25_0.png)
 
 
 ### Manchester City's home defence vs Manchester United's away offence
@@ -285,7 +285,7 @@ plotstats(obj)
 ```
 
 
-![png](../images/football/output_27_0.png)
+![png](/images/football/output_27_0.png)
 
 
 ## Simulation
