@@ -7,7 +7,7 @@ tags:
   - stats
   - data
 header:
-  overlay_image: https://blog.takipi.com/wp-content/uploads/2017/07/cshark_vrs_java_480.png
+  overlay_image: https://www.banner-man.co.uk/user/products/large/premier_league_banners-04.jpg
   overlay_filter: 0.4
 ---
 
