@@ -9,6 +9,8 @@ header:
   overlay_filter: 0.4
 ---
 
+A better way to write unit tests.
+
 I have recently started to care more and more about test-coverage and unit testing. It is something that I am starting to promote more and more, not only for numbers but because unit tests are important.
 Why, you ask? Firstly because of TDD, but mostly because when you create a PR with some functional changes or development on an existing code-base, I have no idea what you might actually be doing. Unit tests
 however, will help me understand and I here is what has helped me a great deal!
