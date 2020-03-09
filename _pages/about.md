@@ -2,10 +2,16 @@
 layout: single
 title: "About"
 author: "Ihtasham Ch"
-date: "25 February 2018"
+date: "March 2020"
 permalink: /about/
 author_profile: true
 
 ---
 
-I am a Computer Science graduate from the University of Leicester. I am currently working as a consultant, mostly in the field of software engineering and business analytics. This blog is based around a lot of my learning experiences from university as well as my involvement with many other tech related things. You may find tutorials, articles, rants and some experiments I have conducted. Feel free to disqus on my posts.
+Ihtasham is a Computer Science graduate from the University of Leicester, with a passion for software engineering and Cloud. 
+
+Ihtasham is an AWS certified Solutions Architect and has a great deal of experience working with web technologies in conjunction with Cloud architectures. He has worked closely with Node.js, React, .NET and Spring. 
+
+He is currently working as a Software Engineer in the consulting industry and has worked for many high profile clients both in the private and public sector.
+
+He has also led teams in fast-paced projects and understands the Agile framework proficiently.
